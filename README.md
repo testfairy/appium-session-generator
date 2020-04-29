@@ -1,0 +1,1 @@
+# appium-session-generator
