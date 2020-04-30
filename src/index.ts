@@ -1,6 +1,10 @@
 import Mustache from 'mustache'
 import fs from 'fs'
 
+// TODO : Input can also look like this, make a coproduct type
+// data.put("t", INPUT_TYPE_KEY);
+// data.put("act", event.getAction());
+// data.put("kc", event.getKeyCode());
 type Input = {
   x: number
   y: number
