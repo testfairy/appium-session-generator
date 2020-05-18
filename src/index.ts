@@ -78,9 +78,6 @@ const generateTestLines = (sessionData: SessionData): AppiumTest => {
     // Choose the one with lowest ts, using following priorities
     let currentLine: Event = currentForegroundActivity
 
-    console.log(currentLine)
-    // console.log(currentUserInteraction)
-
     if (currentLine.ts >= currentCheckpoint.ts) {
       currentLine = currentCheckpoint
     }
@@ -92,8 +89,6 @@ const generateTestLines = (sessionData: SessionData): AppiumTest => {
     if (currentLine.ts >= currentInput.ts) {
       currentLine = currentInput
     }
-
-    console.log(currentLine)
     /////////////
 
     // Insert a test line for selected
@@ -127,6 +122,8 @@ const generateTestLines = (sessionData: SessionData): AppiumTest => {
 
   return { testLines, incomplete: i >= MAX_EVENTS }
 }
+
+// Public API ////////////////////////////////////////////////////////
 
 export type SessionData = {
   packageName: string
