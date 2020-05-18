@@ -28,7 +28,15 @@
     "semi": false,
     "singleQuote": true,
     "trailingComma": "none",
-    "useTabs": false
+    "useTabs": false,
+    "overrides": [
+      {
+        "files": "*.js",
+        "options": {
+          "semi": true
+        }
+      }
+    ]
   },
   "name": "appium-session-generator",
   "author": "Diego Perini",
@@ -42,5 +50,13 @@
   "dependencies": {
     "@types/mustache": "^4.0.1",
     "mustache": "^4.0.1"
+  },
+  "jest": {
+    "modulePaths": [
+      "src"
+    ],
+    "moduleDirectories": [
+      "node_modules"
+    ]
   }
 }
