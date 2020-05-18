@@ -91,6 +91,8 @@ const generateTestLines = (sessionData: SessionData): AppiumTest => {
     }
     /////////////
 
+    // TODO : Add sleep duration to make use in mustache, use difference between current ts and the previous
+
     // Insert a test line for selected
     if (currentLine.ts !== Number.MAX_SAFE_INTEGER) {
       // Pushing lines with the wrappers below lets mustache select the necessary template by key lookup
@@ -144,7 +146,13 @@ export const generateIndexJs = (
       'template/index.js.mustache', // TODO : Figure out how to browserify this file read
       { encoding: 'utf8' }
     ),
-    { testLines, sessionUrl, incomplete: incomplete, interactionInterval: 100 }
+    {
+      testLines,
+      sessionUrl,
+      incomplete,
+      interactionInterval: 100, // TODO : remove this by syncing interaction timings with timestamps
+      initialDelay: 5000
+    }
   )
 
   // TODO : Copy template folder

@@ -71,6 +71,15 @@ export const addTimeString = (event: Event) => {
 }
 
 export const sanitizeInput = (input: Input): Input => {
+  // private float parseScaling(String value) {
+  // 	if (value.equals("high")) {
+  // 		return 1.0f;
+  // 	}
+
+  // 	return 0.5f;
+  // }
+  // high = 1.0, else = 0.5
+  // TODO : Fix (x, y) values by using video scaling from sessionData (ratios above)
   return {
     ...input,
     touchDown: !(input as KeyInput).kc && input.act === 0,
