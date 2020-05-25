@@ -89,16 +89,17 @@ exports.back = function(promiseChain) {
 };
 
 exports.waitActivity = function(promiseChain, activityName) {
-  let attempt = 0;
+  let attemptCount = 0;
 
   function attempt(chain) {
     chain = chain.getCurrentActivity();
-    chain.then(function(foundActivity) {
-      if (foundActivity === activityName && attempt < 10) {
-        return chain.sleep(1000).then(function() {
-          return attempt(chain);
-        });
-      } else if (foundActivity !== activityName && attempt === 10) {
+
+    return chain.then(function(foundActivity) {
+      if (foundActivity === activityName) {
+        return chain;
+      }
+
+      if (foundActivity !== activityName && attemptCount === 10) {
         throw new Error(
           'Waited 10 seconds for ' +
             activityName +
@@ -106,6 +107,11 @@ exports.waitActivity = function(promiseChain, activityName) {
             foundActivity
         );
       }
+
+      return chain.sleep(1000).then(function() {
+        attemptCount++;
+        return attempt(chain);
+      });
     });
   }
 

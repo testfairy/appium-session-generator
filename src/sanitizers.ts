@@ -4,7 +4,8 @@ import {
   Input,
   Event,
   KeyInput,
-  TouchInput
+  TouchInput,
+  MetaEvent
 } from 'session-types';
 
 export const addTimeString = (event: Event) => {
@@ -71,7 +72,9 @@ export const sanitizeUserInteraction = (
   };
 };
 
-export const correctScaling = (options: string) => (input: Input): Input => {
+export const correctScaling = (options: string, metaEvents: MetaEvent[]) => (
+  input: Input
+): Input => {
   let optionsArr = options.split(',');
 
   let inverseVideoScaling = 1;
@@ -98,13 +101,24 @@ export const correctScaling = (options: string) => (input: Input): Input => {
     }
   });
 
+  let statusBarHeight = 0;
+  let foundDeviceConfiguration = metaEvents.find(function(
+    meta: MetaEvent
+  ): boolean {
+    return meta.type === 37 && (meta as any).statusBarHeight;
+  });
+
+  if (foundDeviceConfiguration) {
+    statusBarHeight = (foundDeviceConfiguration as any).statusBarHeight;
+  }
+
   let result = {
     ...input
   } as TouchInput;
 
   if (result.x && result.y) {
     result.x = result.x * inverseVideoScaling;
-    result.y = result.y * inverseVideoScaling;
+    result.y = Math.max(0, result.y * inverseVideoScaling - statusBarHeight);
   }
 
   return result;

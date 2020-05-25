@@ -5,7 +5,8 @@ import {
   Input,
   Checkpoint,
   UserInteraction,
-  ForegroundActivity
+  ForegroundActivity,
+  MetaEvent
 } from 'session-types';
 import {
   sanitizeUserInteraction,
@@ -39,7 +40,7 @@ const generateTestLines = (sessionData: SessionData): AppiumTest => {
 
   let inputs = sessionData.input
     .map(sanitizeInput)
-    .map(correctScaling(sessionData.options))
+    .map(correctScaling(sessionData.options, sessionData.meta))
     .map(addTimeString);
   let checkpoints = sessionData.checkpoints.map(addTimeString);
   let userInteractions = sessionData.userInteractions
@@ -94,8 +95,6 @@ const generateTestLines = (sessionData: SessionData): AppiumTest => {
       currentLine = currentUserInteraction;
     }
     /////////////
-
-    // TODO : Add sleep duration to make use in mustache, use difference between current ts and the previous
 
     if (testLines.length > 0) {
       let lastLine = testLines[testLines.length - 1];
@@ -157,6 +156,7 @@ export type SessionData = {
   checkpoints: Checkpoint[];
   userInteractions: UserInteraction[];
   foregroundActivities: ForegroundActivity[];
+  meta: MetaEvent[];
 };
 
 export const generateIndexJs = (
