@@ -12,7 +12,8 @@
   },
   "scripts": {
     "start": "tsdx watch",
-    "build": "tsdx build",
+    "build": "tsdx build --target node",
+    "build-browser": "tsdx build --target web && browserify dist/appium-session-generator.cjs.development.js -o dist/appium-session-generator.cjs.development.browser.js",
     "test": "tsdx test",
     "lint": "tsdx lint",
     "prepare": "tsdx build"
@@ -42,6 +43,8 @@
   "author": "Diego Perini",
   "module": "dist/appium-session-generator.esm.js",
   "devDependencies": {
+    "@types/file-saver": "^2.0.1",
+    "browserify": "^16.5.1",
     "husky": "^4.2.5",
     "tsdx": "^0.13.2",
     "tslib": "^1.11.1",
@@ -49,6 +52,8 @@
   },
   "dependencies": {
     "@types/mustache": "^4.0.1",
+    "file-saver": "^2.0.2",
+    "jszip": "^3.4.0",
     "mustache": "^4.0.1"
   },
   "jest": {

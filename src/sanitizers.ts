@@ -6,7 +6,7 @@ import {
   KeyInput,
   TouchInput,
   MetaEvent
-} from 'session-types';
+} from './session-types';
 
 export const addTimeString = (event: Event) => {
   let timeString = new Date(event.ts * 1000).toISOString().substr(11, 8);

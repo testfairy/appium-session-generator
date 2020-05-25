@@ -1,5 +1,4 @@
 import Mustache from 'mustache';
-import fs from 'fs';
 import {
   Event,
   Input,
@@ -7,7 +6,7 @@ import {
   UserInteraction,
   ForegroundActivity,
   MetaEvent
-} from 'session-types';
+} from './session-types';
 import {
   sanitizeUserInteraction,
   ignoreSplashActivity,
@@ -15,7 +14,8 @@ import {
   addTimeString,
   sanitizeForegroundActivity,
   correctScaling
-} from 'sanitizers';
+} from './sanitizers';
+import { readTextFile } from './file-system';
 
 const MAX_EVENTS = 10000;
 
@@ -159,17 +159,14 @@ export type SessionData = {
   meta: MetaEvent[];
 };
 
-export const generateIndexJs = (
+export const generateIndexJs = async (
   sessionUrl: string,
   sessionData: SessionData
-): string => {
+): Promise<string> => {
   let { testLines, incomplete } = generateTestLines(sessionData);
 
   let indexJs = Mustache.render(
-    fs.readFileSync(
-      'template/index.js.mustache', // TODO : Figure out how to browserify this file read
-      { encoding: 'utf8' }
-    ),
+    await readTextFile('template/index.js.mustache'),
     {
       testLines,
       sessionUrl,
