@@ -12,8 +12,9 @@
   },
   "scripts": {
     "start": "tsdx watch",
-    "build": "tsdx build --target node",
-    "build-browser": "tsdx build --target web && browserify dist/appium-session-generator.cjs.development.js -o dist/appium-session-generator.cjs.development.browser.js",
+    "build": "npm run build-node && npm run build-browser",
+    "build-node": "tsdx build --target node && mv dist dist-node",
+    "build-browser": "tsdx build --target web && browserify dist/appium-session-generator.cjs.development.js -o dist/appium-session-generator.cjs.development.browser.js && mv dist dist-browser",
     "test": "tsdx test",
     "lint": "tsdx lint",
     "prepare": "tsdx build"
