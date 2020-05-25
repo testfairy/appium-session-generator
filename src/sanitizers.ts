@@ -3,43 +3,58 @@ import {
   ForegroundActivity,
   Input,
   Event,
-  KeyInput
-} from 'session-types'
+  KeyInput,
+  TouchInput
+} from 'session-types';
+
+export const addTimeString = (event: Event) => {
+  let timeString = new Date(event.ts * 1000).toISOString().substr(11, 8);
+
+  let hhMMSS = timeString.split(':');
+  if (hhMMSS[0] === '00') {
+    timeString = hhMMSS[1] + ':' + hhMMSS[2];
+  }
+
+  return {
+    ...event,
+    timeString
+  };
+};
 
 export const sanitizeUserInteraction = (
   userInteraction: UserInteraction
 ): UserInteraction => {
-  let interaction = { ...userInteraction } // Copy interaction to modify
+  let interaction = { ...userInteraction }; // Copy interaction to modify
 
   if (interaction.className && interaction.className.length > 0) {
-    delete interaction.accessibilityClassName // Not needed if className is known
-    delete interaction.viewTag
+    delete interaction.accessibilityClassName; // Not needed if className is known
+    delete interaction.viewTag;
   } else {
-    delete interaction.className
+    delete interaction.className;
 
-    let accessibilityClassName = interaction.accessibilityClassName
+    let accessibilityClassName = interaction.accessibilityClassName;
     if (accessibilityClassName && accessibilityClassName.length > 0) {
-      delete interaction.viewTag // Not needed if accessibilityClassName is known
+      delete interaction.viewTag; // Not needed if accessibilityClassName is known
     } else {
-      delete interaction.accessibilityClassName
+      delete interaction.accessibilityClassName;
     }
   }
 
   if (!interaction.viewTag) {
-    delete interaction.viewTag
+    delete interaction.viewTag;
   }
 
   if (interaction.viewId) {
-    let packageIdPair = interaction.viewId.split(':id/')
+    let packageIdPair = interaction.viewId.split(':id/');
 
     if (packageIdPair.length === 2) {
-      interaction.viewId = packageIdPair[1]
+      interaction.viewId = packageIdPair[1];
     }
 
-    delete interaction.className // Not needed if viewId is known
-    delete interaction.accessibilityClassName // Not needed if viewId is known
-    delete interaction.viewTag // Not needed if viewId is known
-    delete interaction.label // Not needed if viewId is known
+    delete interaction.className; // Not needed if viewId is known
+    delete interaction.accessibilityClassName; // Not needed if viewId is known
+    delete interaction.viewTag; // Not needed if viewId is known
+    delete interaction.label; // Not needed if viewId is known
   }
 
   return {
@@ -53,41 +68,57 @@ export const sanitizeUserInteraction = (
     textFieldLostFocus: interaction.kind === 7, // TODO : Android SDK doesn't send this yet
     buttonLongPressed: interaction.kind === 8,
     buttonDoublePressed: interaction.kind === 9
-  }
-}
+  };
+};
 
-export const addTimeString = (event: Event) => {
-  let timeString = new Date(event.ts * 1000).toISOString().substr(11, 8)
+export const correctScaling = (options: string) => (input: Input): Input => {
+  let optionsArr = options.split(',');
 
-  let hhMMSS = timeString.split(':')
-  if (hhMMSS[0] === '00') {
-    timeString = hhMMSS[1] + ':' + hhMMSS[2]
+  let inverseVideoScaling = 1;
+
+  optionsArr.forEach(function(option: string) {
+    if (option.indexOf('video-quality') === 0) {
+      let keyValue = option.split('=');
+
+      if (keyValue.length === 2 && keyValue[1] === 'medium') {
+        inverseVideoScaling = 2;
+      }
+    }
+
+    if (option.indexOf('video-rescale') === 0) {
+      let keyValue = option.split('=');
+
+      if (keyValue.length === 2) {
+        let videoScaling = parseFloat(keyValue[1]);
+
+        if (!isNaN(videoScaling)) {
+          inverseVideoScaling = parseFloat((1 / videoScaling).toFixed(1));
+        }
+      }
+    }
+  });
+
+  let result = {
+    ...input
+  } as TouchInput;
+
+  if (result.x && result.y) {
+    result.x = result.x * inverseVideoScaling;
+    result.y = result.y * inverseVideoScaling;
   }
 
-  return {
-    ...event,
-    timeString
-  }
-}
+  return result;
+};
 
 export const sanitizeInput = (input: Input): Input => {
-  // private float parseScaling(String value) {
-  // 	if (value.equals("high")) {
-  // 		return 1.0f;
-  // 	}
-
-  // 	return 0.5f;
-  // }
-  // high = 1.0, else = 0.5
-  // TODO : Fix (x, y) values by using video scaling from sessionData (ratios above)
   return {
     ...input,
     touchDown: !(input as KeyInput).kc && input.act === 0,
     touchUp: !(input as KeyInput).kc && input.act === 1,
     touchMove: !(input as KeyInput).kc && input.act === 2,
     backButton: (input as KeyInput).kc === 4 && input.act === 0
-  }
-}
+  };
+};
 
 export const ignoreSplashActivity = (
   foregroundActivity: ForegroundActivity,
@@ -99,11 +130,11 @@ export const ignoreSplashActivity = (
     foregroundActivity.ts === -1 &&
     activities[index + 1].ts !== -1
   ) {
-    return true // Assume last activity with -1 ts is not splash
+    return true; // Assume last activity with -1 ts is not splash
   }
 
-  return foregroundActivity.ts >= 0
-}
+  return foregroundActivity.ts >= 0;
+};
 
 export const sanitizeForegroundActivity = (packageName: string) => (
   foregroundActivity: ForegroundActivity
@@ -111,5 +142,5 @@ export const sanitizeForegroundActivity = (packageName: string) => (
   return {
     ...foregroundActivity,
     name: foregroundActivity.name.replace(packageName, '')
-  }
-}
+  };
+};

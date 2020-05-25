@@ -87,3 +87,27 @@ exports.touchUp = function(promiseChain, x, y) {
 exports.back = function(promiseChain) {
   return promiseChain.back();
 };
+
+exports.waitActivity = function(promiseChain, activityName) {
+  let attempt = 0;
+
+  function attempt(chain) {
+    chain = chain.getCurrentActivity();
+    chain.then(function(foundActivity) {
+      if (foundActivity === activityName && attempt < 10) {
+        return chain.sleep(1000).then(function() {
+          return attempt(chain);
+        });
+      } else if (foundActivity !== activityName && attempt === 10) {
+        throw new Error(
+          'Waited 10 seconds for ' +
+            activityName +
+            ' but found ' +
+            foundActivity
+        );
+      }
+    });
+  }
+
+  return attempt(promiseChain);
+};
