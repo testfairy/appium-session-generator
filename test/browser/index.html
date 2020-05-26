@@ -1,0 +1,18 @@
+<html>
+  <head>
+    <script src="sessionData.js"></script>
+    <script src="appium-session-generator.cjs.development.browser.js"></script>
+    <script>
+      async function test() {
+        console.log();
+        await saveGeneratedAppiumTest(
+          await generateIndexJs('http://example.com', window.sessionData),
+          window.sessionData,
+          new Blob()
+        );
+      }
+
+      test();
+    </script>
+  </head>
+</html>

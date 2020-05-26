@@ -13,9 +13,10 @@
   "scripts": {
     "start": "tsdx watch",
     "build": "npm run build-node && npm run build-browser",
-    "build-node": "tsdx build --target node && mv dist dist-node",
-    "build-browser": "tsdx build --target web && browserify dist/appium-session-generator.cjs.development.js -o dist/appium-session-generator.cjs.development.browser.js && mv dist dist-browser",
-    "test": "tsdx test",
+    "build-node": "rm -rf dist-node; tsdx build --target node && mv dist dist-node",
+    "build-browser": "rm -rf dist-browser; tsdx build --target web && browserify dist/appium-session-generator.cjs.development.js -o dist/appium-session-generator.cjs.development.browser.js && mv dist dist-browser",
+    "test": "export TF_BROWSER_TEST=0 && tsdx test; unset TF_BROWSER_TEST",
+    "test-browser": "export TF_BROWSER_TEST=1 && rm -rf test/browser/appium-session-generator.cjs.development.browser.js; npm run build-browser && mv dist-browser/appium-session-generator.cjs.development.browser.js test/browser/appium-session-generator.cjs.development.browser.js && tsdx test; rm -rf dist-browser; unset TF_BROWSER_TEST",
     "lint": "tsdx lint",
     "prepare": "tsdx build"
   },
@@ -45,8 +46,10 @@
   "module": "dist/appium-session-generator.esm.js",
   "devDependencies": {
     "@types/file-saver": "^2.0.1",
+    "@types/node-static": "^0.7.5",
     "browserify": "^16.5.1",
     "husky": "^4.2.5",
+    "node-static": "^0.7.11",
     "tsdx": "^0.13.2",
     "tslib": "^1.11.1",
     "typescript": "^3.8.3"
@@ -56,13 +59,5 @@
     "file-saver": "^2.0.2",
     "jszip": "^3.4.0",
     "mustache": "^4.0.1"
-  },
-  "jest": {
-    "modulePaths": [
-      "src"
-    ],
-    "moduleDirectories": [
-      "node_modules"
-    ]
   }
 }

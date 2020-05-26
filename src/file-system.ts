@@ -1,12 +1,24 @@
 import fs from 'fs';
+import path from 'path';
+import JSZip from 'jszip';
+import { saveAs } from 'file-saver';
 
 const S3_PREFIX = 'TODO/';
 
-const isBrowser = function() {
-  return !(
+let isBrowserCache: boolean | null = null;
+export const isBrowser = (): boolean => {
+  if (isBrowserCache != null) {
+    return isBrowserCache;
+  }
+
+  isBrowserCache = !(
     typeof process !== 'undefined' &&
+    process.release &&
+    process.release.name &&
     process.release.name.search(/node|io.js/) !== -1
   );
+
+  return isBrowserCache;
 };
 
 const httpGetAsync = function(
@@ -43,6 +55,56 @@ const httpGetAsync = function(
   xmlHttp.send(null);
 };
 
+const getFilePathsRecursively = (dir: string): string[] => {
+  if (isBrowser()) {
+    throw new Error('getFilePathsRecursively is not supported in browser');
+  }
+
+  // returns a flat array of absolute paths of all files recursively contained in the dir
+  let results: string[] = [];
+  let list = fs.readdirSync(dir);
+
+  var pending = list.length;
+  if (!pending) return results;
+
+  for (let file of list) {
+    file = path.resolve(dir, file);
+
+    let stat = fs.statSync(file);
+
+    if (stat && stat.isDirectory()) {
+      results = results.concat(getFilePathsRecursively(file));
+    } else {
+      results.push(file);
+    }
+
+    if (!--pending) return results;
+  }
+
+  return results;
+};
+
+const getZipOfFolder = (dir: string): JSZip => {
+  if (isBrowser()) {
+    throw new Error('getZipOfFolder is not supported in browser');
+  }
+
+  // returns a JSZip instance filled with contents of dir.
+
+  let allPaths = getFilePathsRecursively(dir);
+
+  let zip = new JSZip();
+  for (let filePath of allPaths) {
+    // let addPath = path.relative(path.join(dir, '..'), filePath); // use this instead if you want the source folder itself in the zip
+    let addPath = path.relative(dir, filePath); // use this instead if you don't want the source folder itself in the zip
+
+    let data = fs.readFileSync(filePath);
+    zip.file(addPath, data);
+  }
+
+  return zip;
+};
+
 export type BinaryFile = Buffer | Blob;
 
 export const readTextFile = async (fileName: string): Promise<string> => {
@@ -74,5 +136,34 @@ export const readBinaryFile = async (fileName: string): Promise<BinaryFile> => {
     });
   } else {
     return fs.readFileSync(fileName);
+  }
+};
+
+export const buildAppiumZipFile = async (): Promise<JSZip> => {
+  if (isBrowser()) {
+    let templateZipBinary = await readBinaryFile('template.zip');
+    return await JSZip.loadAsync(templateZipBinary);
+  } else {
+    return getZipOfFolder('template');
+  }
+};
+
+export const saveZipFileAs = async (fileName: string, zip: JSZip) => {
+  if (isBrowser()) {
+    await zip.generateAsync({ type: 'blob' }).then(function(blob) {
+      saveAs(blob, fileName);
+    });
+  } else {
+    await new Promise(function(resolve, reject) {
+      zip
+        .generateNodeStream({ type: 'nodebuffer', streamFiles: true })
+        .pipe(fs.createWriteStream(fileName))
+        .on('error', function(err) {
+          reject(err);
+        })
+        .on('finish', function() {
+          resolve();
+        });
+    });
   }
 };

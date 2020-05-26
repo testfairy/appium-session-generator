@@ -15,7 +15,13 @@ import {
   sanitizeForegroundActivity,
   correctScaling
 } from './sanitizers';
-import { readTextFile } from './file-system';
+import {
+  readTextFile,
+  buildAppiumZipFile,
+  saveZipFileAs,
+  BinaryFile,
+  isBrowser
+} from './file-system';
 
 const MAX_EVENTS = 10000;
 
@@ -175,11 +181,31 @@ export const generateIndexJs = async (
     }
   );
 
-  // TODO : Copy template folder
-  //        Remove 'index.js.mustache' from the copy
-  //        Add newly generated 'index.js' to the copy
-  //        Remove 'session/README.md' from the copy
-  //        Zip copy for deploy
-
-  return indexJs; // TODO : Return ZIP file instead
+  return indexJs;
 };
+
+export const saveGeneratedAppiumTest = async (
+  indexJs: string,
+  sessionData: SessionData,
+  apkFile: BinaryFile
+) => {
+  let appiumZip = await buildAppiumZipFile();
+
+  appiumZip.remove('.gitignore');
+  appiumZip.remove('README.md');
+  appiumZip.remove('index.js.mustache');
+  appiumZip.remove('session/app.apk');
+  appiumZip.remove('session/README.md');
+  appiumZip.remove('session/sessionData.json');
+
+  appiumZip.file('index.js', indexJs);
+  appiumZip.file('session/app.apk', apkFile);
+  appiumZip.file('session/sessionData.json', JSON.stringify(sessionData));
+
+  await saveZipFileAs('appium.zip', appiumZip);
+};
+
+if (isBrowser()) {
+  (window as any).generateIndexJs = generateIndexJs;
+  (window as any).saveGeneratedAppiumTest = saveGeneratedAppiumTest;
+}
