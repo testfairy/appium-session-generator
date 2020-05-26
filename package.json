@@ -16,7 +16,7 @@
     "build-node": "rm -rf dist-node; tsdx build --target node && mv dist dist-node",
     "build-browser": "rm -rf dist-browser; tsdx build --target web && browserify dist/appium-session-generator.cjs.development.js -o dist/appium-session-generator.cjs.development.browser.js && mv dist dist-browser",
     "test": "export TF_BROWSER_TEST=0 && tsdx test; unset TF_BROWSER_TEST",
-    "test-browser": "export TF_BROWSER_TEST=1 && rm -rf test/browser/appium-session-generator.cjs.development.browser.js; npm run build-browser && mv dist-browser/appium-session-generator.cjs.development.browser.js test/browser/appium-session-generator.cjs.development.browser.js && tsdx test; rm -rf dist-browser; unset TF_BROWSER_TEST",
+    "test-browser": "export TF_BROWSER_TEST=1 && rm -rf test/browser/appium-session-generator.cjs.development.browser.js; npm run build-browser && mv dist-browser/appium-session-generator.cjs.development.browser.js test/browser/appium-session-generator.cjs.development.browser.js && tsdx test; rm -rf dist-browser; rm -rf test/browser/appium-session-generator.cjs.development.browser.js; unset TF_BROWSER_TEST",
     "lint": "tsdx lint",
     "prepare": "tsdx build"
   },
