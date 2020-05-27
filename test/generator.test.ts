@@ -18,7 +18,7 @@ const BROWSER_TEST =
   process.env.TF_BROWSER_TEST && parseInt(process.env.TF_BROWSER_TEST) === 1;
 
 describe('generator tests', () => {
-  const TIMEOUT_DURATION = 20000;
+  const TIMEOUT_DURATION = 120000;
   jest.setTimeout(TIMEOUT_DURATION);
 
   if (!BROWSER_TEST) {
