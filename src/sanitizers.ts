@@ -141,10 +141,10 @@ export const ignoreSplashActivity = (
 ): boolean => {
   if (
     index + 1 < activities.length &&
-    foregroundActivity.ts === -1 &&
-    activities[index + 1].ts !== -1
+    foregroundActivity.ts <= 0 &&
+    activities[index + 1].ts <= 0 - 1
   ) {
-    return true; // Assume last activity with -1 ts is not splash
+    return true; // Assume last activity with 0 ts is not splash
   }
 
   return foregroundActivity.ts >= 0;
@@ -155,6 +155,7 @@ export const sanitizeForegroundActivity = (packageName: string) => (
 ): ForegroundActivity => {
   return {
     ...foregroundActivity,
-    name: foregroundActivity.name.replace(packageName, '')
+    name: foregroundActivity.name.replace(packageName, ''),
+    ts: Math.max(0, foregroundActivity.ts)
   };
 };

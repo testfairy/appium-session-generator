@@ -70,7 +70,7 @@ const getFilePathsRecursively = (dir: string): string[] => {
   for (let file of list) {
     file = path.resolve(dir, file);
 
-    let stat = fs.statSync(file);
+    let stat = fs.lstatSync(file);
 
     if (stat && stat.isDirectory()) {
       results = results.concat(getFilePathsRecursively(file));
@@ -97,9 +97,21 @@ const getZipOfFolder = (dir: string): JSZip => {
   for (let filePath of allPaths) {
     // let addPath = path.relative(path.join(dir, '..'), filePath); // use this instead if you want the source folder itself in the zip
     let addPath = path.relative(dir, filePath); // use this instead if you don't want the source folder itself in the zip
-
     let data = fs.readFileSync(filePath);
-    zip.file(addPath, data);
+    let stat = fs.lstatSync(filePath);
+    let permissions = stat.mode;
+
+    if (stat.isSymbolicLink()) {
+      zip.file(addPath, fs.readlinkSync(filePath), {
+        unixPermissions: parseInt('120755', 8), // This permission can be more permissive than necessary for non-executables but we don't mind.
+        dir: stat.isDirectory()
+      });
+    } else {
+      zip.file(addPath, data, {
+        unixPermissions: permissions,
+        dir: stat.isDirectory()
+      });
+    }
   }
 
   return zip;
@@ -150,13 +162,19 @@ export const buildAppiumZipFile = async (): Promise<JSZip> => {
 
 export const saveZipFileAs = async (fileName: string, zip: JSZip) => {
   if (isBrowser()) {
-    await zip.generateAsync({ type: 'blob' }).then(function(blob) {
-      saveAs(blob, fileName);
-    });
+    await zip
+      .generateAsync({ type: 'blob', platform: 'UNIX' })
+      .then(function(blob) {
+        saveAs(blob, fileName);
+      });
   } else {
     await new Promise(function(resolve, reject) {
       zip
-        .generateNodeStream({ type: 'nodebuffer', streamFiles: true })
+        .generateNodeStream({
+          platform: 'UNIX',
+          type: 'nodebuffer',
+          streamFiles: true
+        })
         .pipe(fs.createWriteStream(fileName))
         .on('error', function(err) {
           reject(err);

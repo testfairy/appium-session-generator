@@ -3,12 +3,32 @@
     <script src="sessionData.js"></script>
     <script src="appium-session-generator.cjs.production.min.browser.js"></script>
     <script>
+      async function httpGetBlobAsync(theUrl) {
+        return new Promise(function(resolve, reject) {
+          var xmlHttp = new XMLHttpRequest();
+
+          xmlHttp.responseType = 'blob';
+          xmlHttp.onreadystatechange = function() {
+            if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+              resolve(xmlHttp.response);
+            } else if (xmlHttp.readyState == 4) {
+              reject(new Error('Status Code: ' + xmlHttp.status));
+            }
+          };
+
+          xmlHttp.open('GET', theUrl, true); // true for asynchronous
+          xmlHttp.send(null);
+        });
+      }
+
       async function test() {
-        console.log();
+        var sessionUrl =
+          'https://automatic-tests.testfairy.com/projects/6852543-drawmeafairy/builds/9228222/sessions/4450931346';
+
         await saveGeneratedAppiumTest(
-          await generateAppiumIndexJs('http://example.com', window.sessionData),
+          await generateAppiumIndexJs(sessionUrl, window.sessionData),
           window.sessionData,
-          new Blob()
+          await httpGetBlobAsync('http://localhost:8080/s3/app.apk')
         );
       }
 

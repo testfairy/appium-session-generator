@@ -17,7 +17,7 @@
     "build-browser": "rm -rf dist-browser; tsdx build --target web && browserify dist/appium-session-generator.cjs.production.min.js -o dist/appium-session-generator.cjs.production.min.browser.js && mv dist dist-browser",
     "test": "npm run test-node; npm run test-browser",
     "test-node": "export TF_BROWSER_TEST=0 && tsdx test; unset TF_BROWSER_TEST",
-    "test-browser": "export TF_BROWSER_TEST=1 && rm -rf test/browser/appium-session-generator.cjs.production.min.browser.js test/browser/s3; mkdir -p test/browser/s3/template; npm run build-browser && mv dist-browser/appium-session-generator.cjs.production.min.browser.js test/browser/appium-session-generator.cjs.production.min.browser.js && cp template/index.js.mustache test/browser/s3/template/index.js.mustache && tsdx test; rm -rf dist-browser; rm -rf test/browser/appium-session-generator.cjs.production.min.browser.js test/browser/s3; unset TF_BROWSER_TEST",
+    "test-browser": "export TF_BROWSER_TEST=1 && rm -rf test/browser/appium-session-generator.cjs.production.min.browser.js test/browser/s3; mkdir -p test/browser/s3/template; cp test/session/app.apk test/browser/s3/app.apk; npm run build-browser && mv dist-browser/appium-session-generator.cjs.production.min.browser.js test/browser/appium-session-generator.cjs.production.min.browser.js && cp template/index.js.mustache test/browser/s3/template/index.js.mustache && tsdx test; rm -rf dist-browser; rm -rf test/browser/appium-session-generator.cjs.production.min.browser.js test/browser/s3; unset TF_BROWSER_TEST",
     "lint": "tsdx lint",
     "prepare": "tsdx build"
   },

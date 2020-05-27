@@ -109,7 +109,7 @@ const generateTestLines = (sessionData: SessionData): AppiumTest => {
 
     // Insert a test line for selected
     if (currentLine.ts !== Number.MAX_SAFE_INTEGER) {
-      // Pushing lines with the wrappers below lets mustache select the necessary template by key lookup
+      // Pushing lines with the wrappers below lets mustache select the necessary template by key lookup, check TestLine type for valid keys
       switch (currentLine) {
         case currentInput:
           testLines.push({
@@ -128,19 +128,40 @@ const generateTestLines = (sessionData: SessionData): AppiumTest => {
           checkpointIndex++;
           break;
         case currentUserInteraction:
-          testLines.push({
-            userInteraction: currentLine as UserInteraction,
-            sleep: 0,
-            ts: currentLine.ts
-          });
+          if (testLines.length > 1) {
+            // Inject before last event to make sure a screen transition is deferred after view assertions
+            testLines.splice(testLines.length - 2, 0, {
+              userInteraction: currentLine as UserInteraction,
+              sleep: 0,
+              ts: currentLine.ts
+            });
+          } else {
+            testLines.push({
+              userInteraction: currentLine as UserInteraction,
+              sleep: 0,
+              ts: currentLine.ts
+            });
+          }
           userInteractionIndex++;
           break;
         case currentForegroundActivity:
-          testLines.push({
-            foregroundActivity: currentLine as ForegroundActivity,
-            sleep: 0,
-            ts: currentLine.ts
-          });
+          if (
+            testLines.length > 0 &&
+            (testLines[testLines.length - 1] as any).foregroundActivity
+          ) {
+            // Override last activity, it's probably splash like
+            testLines[testLines.length - 1] = {
+              foregroundActivity: currentLine as ForegroundActivity,
+              sleep: 0 + testLines[testLines.length - 1].sleep,
+              ts: currentLine.ts + testLines[testLines.length - 1].sleep
+            };
+          } else {
+            testLines.push({
+              foregroundActivity: currentLine as ForegroundActivity,
+              sleep: 0,
+              ts: currentLine.ts
+            });
+          }
           foregroundActivityIndex++;
           break;
       }

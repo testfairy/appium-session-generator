@@ -1,1 +1,2 @@
-node_modules
+# DON'T IGNORE NODE MODULES, IT IS NECESSARY
+#node_modules
