@@ -4,15 +4,22 @@ import http from 'http';
 
 import JSZip from 'jszip';
 import nodeStatic from 'node-static';
+import opener from 'opener';
+import enableDestroy from 'server-destroy';
 
-import { SessionData, generateIndexJs, saveGeneratedAppiumTest } from '../src';
-import { buildAppiumZipFile } from '../src/file-system';
+import {
+  SessionData,
+  generateAppiumIndexJs,
+  saveGeneratedAppiumTest
+} from '../src';
+import { buildAppiumZipFile, saveZipFileAs } from '../src/file-system';
 
 const BROWSER_TEST =
   process.env.TF_BROWSER_TEST && parseInt(process.env.TF_BROWSER_TEST) === 1;
 
 describe('generator tests', () => {
-  jest.setTimeout(60000);
+  const TIMEOUT_DURATION = 20000;
+  jest.setTimeout(TIMEOUT_DURATION);
 
   if (!BROWSER_TEST) {
     console.log('Testing in node...');
@@ -29,7 +36,7 @@ describe('generator tests', () => {
       let sessionUrl =
         'https://automatic-tests.testfairy.com/projects/6852543-drawmeafairy/builds/9228222/sessions/4450931346';
       let sessionData = require('./session/sessionData.json') as SessionData;
-      let indexJs = await generateIndexJs(sessionUrl, sessionData);
+      let indexJs = await generateAppiumIndexJs(sessionUrl, sessionData);
 
       // console.log(indexJs);
 
@@ -42,7 +49,7 @@ describe('generator tests', () => {
       let sessionData = require('./session/sessionData.json') as SessionData;
 
       await saveGeneratedAppiumTest(
-        await generateIndexJs(sessionUrl, sessionData),
+        await generateAppiumIndexJs(sessionUrl, sessionData),
         sessionData,
         fs.readFileSync(path.resolve('./test/session/app.apk'))
       );
@@ -62,17 +69,45 @@ describe('generator tests', () => {
     console.log('Testing in browser...');
 
     it('should open a browser and prompt save popup for appium.zip', async () => {
-      let server = new nodeStatic.Server('./test/browser', { cache: 0 });
+      let templateZip = await buildAppiumZipFile();
+      await saveZipFileAs('test/browser/s3/template.zip', templateZip);
 
-      await new Promise(function(resolve) {
+      let server = new nodeStatic.Server('./test/browser', { cache: 0 });
+      await new Promise(function(resolve, reject) {
         let timeout: any = undefined;
 
+        let requests: http.IncomingMessage[] = [];
         let httpServer = http
           .createServer(function(request, response) {
+            requests.push(request);
+
             request
               .addListener('end', function() {
-                // TODO : Close connection if html button click, resolve/reject accordingly
-                // clearTimeout(timeout as NodeJS.Timeout);
+                if (request.url) {
+                  let url: string = request.url as string;
+
+                  if (url.indexOf('SUCCESS') !== -1) {
+                    console.log('Test user reported SUCCESS, closing server');
+
+                    request.destroy();
+                    httpServer.destroy();
+
+                    resolve();
+                    clearTimeout(timeout as NodeJS.Timeout);
+
+                    return;
+                  } else if (url.indexOf('FAIL') !== -1) {
+                    request.destroy();
+                    httpServer.destroy();
+
+                    reject(
+                      new Error('Test user reported FAIL, closing server')
+                    );
+                    clearTimeout(timeout as NodeJS.Timeout);
+
+                    return;
+                  }
+                }
 
                 server.serve(request, response);
               })
@@ -80,15 +115,26 @@ describe('generator tests', () => {
           })
           .listen(8080);
 
+        enableDestroy(httpServer);
+
         console.log(
           'Serving for 60 seconds on http://localhost:8080 - Finish the test manually in browser!'
         );
 
+        opener('http://localhost:8080');
+
         timeout = setTimeout(function() {
-          httpServer.close();
-          resolve();
-          clearTimeout(timeout as NodeJS.Timeout);
-        }, 60000);
+          requests.forEach(function(request) {
+            request.destroy();
+          });
+          httpServer.destroy();
+
+          reject(
+            new Error(
+              'No response received from the user, failing and closing server'
+            )
+          );
+        }, TIMEOUT_DURATION / 2);
       });
     });
   }

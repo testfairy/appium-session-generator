@@ -165,7 +165,7 @@ export type SessionData = {
   meta: MetaEvent[];
 };
 
-export const generateIndexJs = async (
+export const generateAppiumIndexJs = async (
   sessionUrl: string,
   sessionData: SessionData
 ): Promise<string> => {
@@ -206,6 +206,6 @@ export const saveGeneratedAppiumTest = async (
 };
 
 if (isBrowser()) {
-  (window as any).generateIndexJs = generateIndexJs;
+  (window as any).generateAppiumIndexJs = generateAppiumIndexJs;
   (window as any).saveGeneratedAppiumTest = saveGeneratedAppiumTest;
 }

@@ -3,7 +3,7 @@ import path from 'path';
 import JSZip from 'jszip';
 import { saveAs } from 'file-saver';
 
-const S3_PREFIX = 'TODO/';
+let S3_PREFIX = 's3/';
 
 let isBrowserCache: boolean | null = null;
 export const isBrowser = (): boolean => {
@@ -167,3 +167,11 @@ export const saveZipFileAs = async (fileName: string, zip: JSZip) => {
     });
   }
 };
+
+export const setAppiumSessionGeneratorS3BaseUrl = (url: string) => {
+  S3_PREFIX = url;
+};
+
+if (isBrowser()) {
+  (window as any).setAppiumSessionGeneratorS3BaseUrl = setAppiumSessionGeneratorS3BaseUrl;
+}
