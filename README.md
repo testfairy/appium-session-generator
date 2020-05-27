@@ -10,7 +10,7 @@ Below is a list of commands you can run to build or test this library.
 
 ### `npm build` or `yarn build`
 
-Bundles the package to the `dist-*` folders for deployment. Currently supports Node and Browser.
+Bundles the package to the `dist-*` folders for deployment. Currently supports node and browsers.
 
 The package is optimized and bundled with Rollup into multiple formats (CommonJS, UMD, and ES Module).
 
