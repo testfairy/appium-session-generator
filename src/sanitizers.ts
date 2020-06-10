@@ -118,7 +118,10 @@ export const correctScaling = (options: string, metaEvents: MetaEvent[]) => (
 
   if (result.x && result.y) {
     result.x = result.x * inverseVideoScaling;
-    result.y = Math.max(0, result.y * inverseVideoScaling);
+    result.y = Math.max(
+      0,
+      result.y * inverseVideoScaling + (statusBarHeight - statusBarHeight)
+    );
   }
 
   return result;
