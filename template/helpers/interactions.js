@@ -21,7 +21,12 @@ exports.findTextInView = function(promiseChain, text, viewClassName) {
     });
 };
 
-exports.findViewById = function(promiseChain, viewId) {
+exports.findViewById = function(
+  promiseChain,
+  viewId,
+  fallbackText,
+  viewClassName
+) {
   return promiseChain
     .elementsByAndroidUIAutomator(
       'new UiSelector().resourceId("' +
@@ -32,7 +37,11 @@ exports.findViewById = function(promiseChain, viewId) {
     )
     .then(function(views) {
       if (views.length == 0) {
-        throw new Error("No view found with id '" + viewId + "'");
+        return exports.findTextInView(
+          promiseChain,
+          fallbackText,
+          viewClassName
+        );
       }
 
       return views;
@@ -82,13 +91,66 @@ exports.touchUp = function(promiseChain, x, y) {
 
     return action.perform();
   });
+  // .then(function () {
+  //   return exports.driver.execute("mobile:performEditorAction", {
+  //     action: "done",
+  //   });
+  // });
 };
 
 exports.back = function(promiseChain) {
   return promiseChain.back();
 };
 
-exports.waitActivity = function(promiseChain, activityName) {
+exports.insertText = function(promiseChain, viewId, text) {
+  return (
+    promiseChain
+      .then(function() {
+        return exports.driver.hideDeviceKeyboard();
+      })
+      // .then(function () {
+      //   promiseChain = exports.findViewById(promiseChain, viewId);
+      //   return promiseChain;
+      // })
+      // .then(function () {
+      //   return exports.click(promiseChain);
+      // })
+      // .then(function () {
+      //   promiseChain = exports.findViewById(promiseChain, viewId);
+      //   return promiseChain;
+      // })
+      // .then(function (elements) {
+      //   if (Array.isArray(elements)) {
+      //     return elements[0].clear();
+      //   } else {
+      //     return elements.clear();
+      //   }
+      // })
+      .then(function() {
+        return exports.driver.execute('mobile:type', { text });
+      })
+      .then(function() {
+        exports.driver.execute('mobile:dismissAlert', {}).catch(function() {});
+      })
+      .then(function() {
+        return exports.driver.execute('mobile:performEditorAction', {
+          action: 'done'
+        });
+      })
+      .then(function() {
+        return exports.driver.pressKeycode(111);
+      })
+  );
+  // .then(function () {
+  //   return exports.driver.hideDeviceKeyboard();
+  // })
+};
+
+exports.waitActivity = function(
+  promiseChain,
+  activityName,
+  isLastActionBackButton
+) {
   let attemptCount = 0;
 
   function attempt(chain) {
@@ -110,7 +172,14 @@ exports.waitActivity = function(promiseChain, activityName) {
 
       return chain.sleep(1000).then(function() {
         attemptCount++;
-        return attempt(chain);
+
+        if (attemptCount == 5 && isLastActionBackButton) {
+          return exports.back(chain).then(function() {
+            return attempt(chain);
+          });
+        } else {
+          return attempt(chain);
+        }
       });
     });
   }

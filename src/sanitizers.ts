@@ -52,10 +52,9 @@ export const sanitizeUserInteraction = (
       interaction.viewId = packageIdPair[1];
     }
 
-    delete interaction.className; // Not needed if viewId is known
     delete interaction.accessibilityClassName; // Not needed if viewId is known
     delete interaction.viewTag; // Not needed if viewId is known
-    delete interaction.label; // Not needed if viewId is known
+    delete interaction.contentDescription; // Not needed if viewId is known
   }
 
   return {
@@ -109,6 +108,7 @@ export const correctScaling = (options: string, metaEvents: MetaEvent[]) => (
   });
 
   if (foundDeviceConfiguration) {
+    // TODO : Improve SDK to report whether this height should be subtracted due to translucency flag in activity
     statusBarHeight = (foundDeviceConfiguration as any).statusBarHeight;
   }
 
@@ -118,7 +118,7 @@ export const correctScaling = (options: string, metaEvents: MetaEvent[]) => (
 
   if (result.x && result.y) {
     result.x = result.x * inverseVideoScaling;
-    result.y = Math.max(0, result.y * inverseVideoScaling - statusBarHeight);
+    result.y = Math.max(0, result.y * inverseVideoScaling);
   }
 
   return result;
@@ -130,7 +130,7 @@ export const sanitizeInput = (input: Input): Input => {
     touchDown: !(input as KeyInput).kc && input.act === 0,
     touchUp: !(input as KeyInput).kc && input.act === 1,
     touchMove: !(input as KeyInput).kc && input.act === 2,
-    backButton: (input as KeyInput).kc === 4 && input.act === 0
+    backButton: (input as KeyInput).kc === 4 && input.act === 1
   };
 };
 
@@ -156,6 +156,7 @@ export const sanitizeForegroundActivity = (packageName: string) => (
   return {
     ...foregroundActivity,
     name: foregroundActivity.name.replace(packageName, ''),
+    isLastActionBackButton: false,
     ts: Math.max(0, foregroundActivity.ts)
   };
 };

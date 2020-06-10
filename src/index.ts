@@ -128,7 +128,12 @@ const generateTestLines = (sessionData: SessionData): AppiumTest => {
           checkpointIndex++;
           break;
         case currentUserInteraction:
-          if (testLines.length > 1) {
+          if (
+            testLines.length > 1 &&
+            (testLines[testLines.length - 1] as any).input &&
+            (testLines[testLines.length - 1] as any).input.ts + 0.05 >=
+              currentLine.ts
+          ) {
             // Inject before last event to make sure a screen transition is deferred after view assertions
             testLines.splice(testLines.length - 2, 0, {
               userInteraction: currentLine as UserInteraction,
@@ -145,6 +150,22 @@ const generateTestLines = (sessionData: SessionData): AppiumTest => {
           userInteractionIndex++;
           break;
         case currentForegroundActivity:
+          console.log(
+            '----------------- currentForegroundActivity ----------------------'
+          );
+          console.log((currentLine as ForegroundActivity).name);
+          console.log(testLines[testLines.length - 1]);
+          if (
+            testLines.length > 1 &&
+            (testLines[testLines.length - 1] as any).input &&
+            (testLines[testLines.length - 1] as any).input.backButton
+          ) {
+            (currentLine as ForegroundActivity).isLastActionBackButton = true;
+          }
+          console.log(
+            '----------------- ************************* ----------------------'
+          );
+
           if (
             testLines.length > 0 &&
             (testLines[testLines.length - 1] as any).foregroundActivity

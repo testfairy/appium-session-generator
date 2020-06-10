@@ -48,11 +48,13 @@ export type Checkpoint = {
 export type UserInteraction = {
   kind: number;
   label: string;
+  contentDescription: string;
   viewId: string;
   className: string;
   accessibilityClassName: string;
   viewTag: string;
   ts: number;
+  isEditText: boolean;
 
   // Embelishments for code generation
   swipe: boolean;
@@ -72,5 +74,6 @@ export type ForegroundActivity = {
   ts: number;
 
   // Embelishments for code generation
+  isLastActionBackButton: boolean;
   timeString: string;
 };
