@@ -91,11 +91,6 @@ exports.touchUp = function(promiseChain, x, y) {
 
     return action.perform();
   });
-  // .then(function () {
-  //   return exports.driver.execute("mobile:performEditorAction", {
-  //     action: "done",
-  //   });
-  // });
 };
 
 exports.back = function(promiseChain) {
@@ -103,47 +98,35 @@ exports.back = function(promiseChain) {
 };
 
 exports.insertText = function(promiseChain, viewId, text) {
-  return (
-    promiseChain
-      .then(function() {
-        return exports.driver.hideDeviceKeyboard();
-      })
-      // .then(function () {
-      //   promiseChain = exports.findViewById(promiseChain, viewId);
-      //   return promiseChain;
-      // })
-      // .then(function () {
-      //   return exports.click(promiseChain);
-      // })
-      // .then(function () {
-      //   promiseChain = exports.findViewById(promiseChain, viewId);
-      //   return promiseChain;
-      // })
-      // .then(function (elements) {
-      //   if (Array.isArray(elements)) {
-      //     return elements[0].clear();
-      //   } else {
-      //     return elements.clear();
-      //   }
-      // })
-      .then(function() {
-        return exports.driver.execute('mobile:type', { text });
-      })
-      .then(function() {
-        exports.driver.execute('mobile:dismissAlert', {}).catch(function() {});
-      })
-      .then(function() {
-        return exports.driver.execute('mobile:performEditorAction', {
-          action: 'done'
-        });
-      })
-      .then(function() {
-        return exports.driver.pressKeycode(111);
-      })
-  );
-  // .then(function () {
-  //   return exports.driver.hideDeviceKeyboard();
-  // })
+  return promiseChain
+    .then(function() {
+      return exports.driver.hideDeviceKeyboard();
+    })
+    .then(function() {
+      promiseChain = exports.findViewById(promiseChain, viewId);
+      return promiseChain;
+    })
+    .then(function(elements) {
+      if (Array.isArray(elements)) {
+        return elements[0].clear();
+      } else {
+        return elements.clear();
+      }
+    })
+    .then(function() {
+      return exports.driver.execute('mobile:type', { text });
+    })
+    .then(function() {
+      exports.driver.execute('mobile:dismissAlert', {}).catch(function() {});
+    })
+    .then(function() {
+      return exports.driver.execute('mobile:performEditorAction', {
+        action: 'done'
+      });
+    })
+    .then(function() {
+      return exports.driver.pressKeycode(111);
+    });
 };
 
 exports.waitActivity = function(

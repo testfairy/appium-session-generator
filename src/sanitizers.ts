@@ -59,6 +59,7 @@ export const sanitizeUserInteraction = (
 
   return {
     ...interaction,
+    isEditTextFocusGain: interaction.isEditText && interaction.kind === 10,
     swipe: interaction.kind === 0,
     buttonPressed: interaction.kind === 1,
     tableCellPressed: interaction.kind === 2, // TODO : Android SDK doesn't send this yet

@@ -1,22 +1,5 @@
-exports.iosPhone = {
-  browserName: '',
-  'appium-version': '1.6',
-  platformName: 'iOS',
-  platformVersion: '10.1',
-  deviceName: 'iPhone 5s',
-  app: undefined // Will be filed before test begins
-};
-
-exports.iosSimulator = {
-  browserName: '',
-  'appium-version': '1.6',
-  platformName: 'iOS',
-  platformVersion: '10.1',
-  deviceName: 'iPhone Simulator',
-  app: undefined // Will be filed before test begins
-};
-
 exports.androidEmulator = {
+  // appWaitActivity: 'EDITME', // EDITME : specify initial activity if necessary
   browserName: '',
   'appium-version': '1.6',
   platformName: 'Android',

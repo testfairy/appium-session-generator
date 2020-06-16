@@ -234,7 +234,6 @@ export const saveGeneratedAppiumTest = async (
   let appiumZip = await buildAppiumZipFile();
 
   appiumZip.remove('.gitignore');
-  appiumZip.remove('README.md');
   appiumZip.remove('index.js.mustache');
   appiumZip.remove('session/app.apk');
   appiumZip.remove('session/README.md');

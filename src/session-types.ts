@@ -58,6 +58,7 @@ export type UserInteraction = {
 
   // Embelishments for code generation
   swipe: boolean;
+  isEditTextFocusGain: boolean;
   buttonPressed: boolean;
   tableCellPressed: boolean; // TODO : Android SDK doesn't send this yet
   checkpointReached: boolean; // TODO : Android SDK doesn't send this yet
