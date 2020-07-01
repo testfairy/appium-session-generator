@@ -103,8 +103,9 @@ const generateTestLines = (sessionData: SessionData): AppiumTest => {
     /////////////
 
     if (testLines.length > 0) {
-      let lastLine = testLines[testLines.length - 1];
-      lastLine.sleep = Math.max((currentLine.ts - lastLine.ts) * 1000, 0);
+      const lastLine = testLines[testLines.length - 1];
+      const sleep = Math.floor((currentLine.ts - lastLine.ts + 0.00001) * 1000)
+      lastLine.sleep = Math.max(sleep, 0);
     }
 
     // Insert a test line for selected
