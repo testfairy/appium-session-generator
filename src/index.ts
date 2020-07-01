@@ -150,11 +150,13 @@ const generateTestLines = (sessionData: SessionData): AppiumTest => {
           userInteractionIndex++;
           break;
         case currentForegroundActivity:
+          /*
           console.log(
             '----------------- currentForegroundActivity ----------------------'
           );
           console.log((currentLine as ForegroundActivity).name);
           console.log(testLines[testLines.length - 1]);
+          */
           if (
             testLines.length > 1 &&
             (testLines[testLines.length - 1] as any).input &&
@@ -162,9 +164,11 @@ const generateTestLines = (sessionData: SessionData): AppiumTest => {
           ) {
             (currentLine as ForegroundActivity).isLastActionBackButton = true;
           }
+          /*
           console.log(
             '----------------- ************************* ----------------------'
           );
+          */
 
           if (
             testLines.length > 0 &&
