@@ -44,15 +44,15 @@ const generateTestLines = (sessionData: SessionData): AppiumTest => {
   let userInteractionIndex = 0;
   let foregroundActivityIndex = 0;
 
-  let inputs = sessionData.input
+  let inputs = (sessionData.events.inputEvents || [])
     .map(sanitizeInput)
-    .map(correctScaling(sessionData.options, sessionData.meta))
+    .map(correctScaling(sessionData.options, sessionData.events.meta))
     .map(addTimeString);
-  let checkpoints = sessionData.checkpoints.map(addTimeString);
-  let userInteractions = sessionData.userInteractions
+  let checkpoints = (sessionData.events.checkpoints || []).map(addTimeString);
+  let userInteractions = (sessionData.events.userInteractions || [])
     .map(sanitizeUserInteraction)
     .map(addTimeString);
-  let foregroundActivities = sessionData.foregroundActivities
+  let foregroundActivities = (sessionData.events.foregroundActivities || [])
     .filter(ignoreSplashActivity)
     .map(sanitizeForegroundActivity(sessionData.packageName))
     .map(addTimeString);
@@ -205,11 +205,13 @@ const generateTestLines = (sessionData: SessionData): AppiumTest => {
 export type SessionData = {
   packageName: string;
   options: string;
-  input: Input[];
-  checkpoints: Checkpoint[];
-  userInteractions: UserInteraction[];
-  foregroundActivities: ForegroundActivity[];
-  meta: MetaEvent[];
+  events: {
+    inputEvents: Input[];
+    checkpoints: Checkpoint[];
+    userInteractions: UserInteraction[];
+    foregroundActivities: ForegroundActivity[];
+    meta: MetaEvent[];
+  };
 };
 
 export const generateAppiumIndexJs = async (

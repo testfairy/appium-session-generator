@@ -13,7 +13,7 @@
   "scripts": {
     "start": "tsdx watch",
     "build": "npm run build-node && npm run build-browser",
-    "build-node": "rm -rf dist-node; tsdx build --target node && mv dist dist-node",
+    "build-node": "rm -rf dist-node; tsdx build --target node && mv dist dist-node && cp -R template dist-node && cp src/cli.js dist-node",
     "build-browser": "rm -rf dist-browser; tsdx build --target web && browserify dist/appium-session-generator.cjs.production.min.js -o dist/appium-session-generator.cjs.production.min.browser.js && mv dist dist-browser",
     "test": "npm run test-node; npm run test-browser",
     "test-node": "export TF_BROWSER_TEST=0 && tsdx test; unset TF_BROWSER_TEST",
@@ -62,6 +62,7 @@
   "dependencies": {
     "@types/mustache": "^4.0.1",
     "file-saver": "^2.0.2",
+    "getopts": "^2.2.5",
     "jszip": "^3.4.0",
     "mustache": "^4.0.1"
   }
