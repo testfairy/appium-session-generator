@@ -64,6 +64,8 @@
     "file-saver": "^2.0.2",
     "getopts": "^2.2.5",
     "jszip": "^3.4.0",
-    "mustache": "^4.0.1"
+    "mustache": "^4.0.1",
+    "request": "^2.88.2",
+    "uuid": "^8.2.0"
   }
 }
