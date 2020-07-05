@@ -236,7 +236,8 @@ export const generateAppiumIndexJs = async (
 export const saveGeneratedAppiumTest = async (
   indexJs: string,
   sessionData: SessionData,
-  apkFile: BinaryFile
+  apkFile: BinaryFile,
+  outputFilePath: string
 ) => {
   let appiumZip = await buildAppiumZipFile();
 
@@ -250,7 +251,7 @@ export const saveGeneratedAppiumTest = async (
   appiumZip.file('session/app.apk', apkFile);
   appiumZip.file('session/sessionData.json', JSON.stringify(sessionData));
 
-  await saveZipFileAs('appium.zip', appiumZip);
+  await saveZipFileAs(outputFilePath, appiumZip);
 };
 
 if (isBrowser()) {
