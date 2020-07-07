@@ -3,12 +3,15 @@ var wd = require('wd');
 exports.packageName = undefined; // Will be filed before test begins
 exports.driver = undefined; // Will be filed before test begins
 
+let promiseChain = null;
+
 exports.begin = function(initialDelay) {
-  return exports.driver.sleep(initialDelay);
+  promiseChain = exports.driver.sleep(initialDelay);
+  return promiseChain;
 };
 
-exports.findTextInView = function(promiseChain, text, viewClassName) {
-  return promiseChain
+exports.findTextInView = function(text, viewClassName, pure) {
+  let result = exports.driver
     .elementByXPath('//' + viewClassName + "[@text='" + text + "']")
     .then(function(view) {
       if (!view) {
@@ -19,15 +22,16 @@ exports.findTextInView = function(promiseChain, text, viewClassName) {
 
       return view;
     });
+
+  if (!pure) {
+    promiseChain = result;
+  }
+
+  return result;
 };
 
-exports.findViewById = function(
-  promiseChain,
-  viewId,
-  fallbackText,
-  viewClassName
-) {
-  return promiseChain
+exports.findViewById = function(viewId, fallbackText, viewClassName, pure) {
+  let result = exports.driver
     .elementsByAndroidUIAutomator(
       'new UiSelector().resourceId("' +
         exports.packageName +
@@ -37,19 +41,21 @@ exports.findViewById = function(
     )
     .then(function(views) {
       if (views.length == 0) {
-        return exports.findTextInView(
-          promiseChain,
-          fallbackText,
-          viewClassName
-        );
+        return exports.findTextInView(fallbackText, viewClassName, pure);
       }
 
       return views;
     });
+
+  if (!pure) {
+    promiseChain = result;
+  }
+
+  return result;
 };
 
-exports.click = function(promiseChain) {
-  return promiseChain.then(function(button) {
+exports.click = function() {
+  return (promiseChain = promiseChain.then(function(button) {
     var action = new wd.TouchAction(exports.driver);
 
     if (Array.isArray(button)) {
@@ -59,52 +65,51 @@ exports.click = function(promiseChain) {
     }
 
     return action.perform();
-  });
+  }));
 };
 
-exports.touchDown = function(promiseChain, x, y) {
-  return promiseChain.then(function() {
+exports.touchDown = function(x, y) {
+  return (promiseChain = promiseChain.then(function() {
     var action = new wd.TouchAction(exports.driver);
 
     action.press({ x: x, y: y });
 
     return action.perform();
-  });
+  }));
 };
 
-exports.touchMove = function(promiseChain, x, y) {
-  return promiseChain.then(function() {
+exports.touchMove = function(x, y) {
+  return (promiseChain = promiseChain.then(function() {
     var action = new wd.TouchAction(exports.driver);
 
     action.moveTo({ x: x, y: y });
 
     return action.perform();
-  });
+  }));
 };
 
-exports.touchUp = function(promiseChain, x, y) {
-  return promiseChain.then(function() {
+exports.touchUp = function(x, y) {
+  return (promiseChain = promiseChain.then(function() {
     var action = new wd.TouchAction(exports.driver);
 
     action.moveTo({ x: x, y: y });
     action.release({ x: x, y: y });
 
     return action.perform();
-  });
+  }));
 };
 
-exports.back = function(promiseChain) {
-  return promiseChain.back();
+exports.back = function() {
+  return (promiseChain = promiseChain.back());
 };
 
-exports.insertText = function(promiseChain, viewId, text) {
-  return promiseChain
+exports.insertText = function(viewId, text) {
+  return (promiseChain = promiseChain
     .then(function() {
       return exports.driver.hideDeviceKeyboard();
     })
     .then(function() {
-      promiseChain = exports.findViewById(promiseChain, viewId);
-      return promiseChain;
+      return exports.findViewById(viewId, undefined, undefined, true);
     })
     .then(function(elements) {
       if (Array.isArray(elements)) {
@@ -117,6 +122,7 @@ exports.insertText = function(promiseChain, viewId, text) {
       return exports.driver.execute('mobile:type', { text });
     })
     .then(function() {
+      // Not returning is intentional. this is fire and forget
       exports.driver.execute('mobile:dismissAlert', {}).catch(function() {});
     })
     .then(function() {
@@ -126,14 +132,10 @@ exports.insertText = function(promiseChain, viewId, text) {
     })
     .then(function() {
       return exports.driver.pressKeycode(111);
-    });
+    }));
 };
 
-exports.waitActivity = function(
-  promiseChain,
-  activityName,
-  isLastActionBackButton
-) {
+exports.waitActivity = function(activityName, isLastActionBackButton) {
   let attemptCount = 0;
 
   function attempt(chain) {
@@ -157,7 +159,7 @@ exports.waitActivity = function(
         attemptCount++;
 
         if (attemptCount == 5 && isLastActionBackButton) {
-          return exports.back(chain).then(function() {
+          return chain.back().then(function() {
             return attempt(chain);
           });
         } else {
@@ -167,5 +169,5 @@ exports.waitActivity = function(
     });
   }
 
-  return attempt(promiseChain);
+  return (promiseChain = attempt(promiseChain));
 };

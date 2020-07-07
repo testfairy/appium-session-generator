@@ -51,7 +51,8 @@ describe('generator tests', () => {
       await saveGeneratedAppiumTest(
         await generateAppiumIndexJs(sessionUrl, sessionData),
         sessionData,
-        fs.readFileSync(path.resolve('./test/session/app.apk'))
+        fs.readFileSync(path.resolve('./test/session/app.apk')),
+        path.resolve('appium.zip')
       );
 
       let zipFilePath = path.resolve('appium.zip');

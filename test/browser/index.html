@@ -28,7 +28,8 @@
         await saveGeneratedAppiumTest(
           await generateAppiumIndexJs(sessionUrl, window.sessionData),
           window.sessionData,
-          await httpGetBlobAsync('http://localhost:8080/s3/app.apk')
+          await httpGetBlobAsync('http://localhost:8080/s3/app.apk'),
+          'appium.zip'
         );
       }
 
