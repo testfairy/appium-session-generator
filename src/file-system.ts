@@ -37,7 +37,7 @@ const httpGetAsync = function(
   }
 
   xmlHttp.onreadystatechange = function() {
-    if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+    if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {
       switch (format) {
         case 'text':
           callback(xmlHttp.responseText.toString());
@@ -46,7 +46,7 @@ const httpGetAsync = function(
           callback(xmlHttp.response);
           break;
       }
-    } else if (xmlHttp.readyState == 4) {
+    } else if (xmlHttp.readyState === 4) {
       callback();
     }
   };

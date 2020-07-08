@@ -1,5 +1,5 @@
 window.sessionData = {
-  appName: "Draw Me A Fairy",
+  appName: 'Draw Me A Fairy',
   packageName: 'com.testfairy.samples.drawmefairy',
   events: {
     inputEvents: [
