@@ -50,7 +50,7 @@ const generateTestLines = (sessionData: SessionData): AppiumTest => {
     .map(addTimeString);
   let checkpoints = (sessionData.events.checkpoints || []).map(addTimeString);
   let userInteractions = (sessionData.events.userInteractions || [])
-    .map(sanitizeUserInteraction)
+    .map(sanitizeUserInteraction(sessionData.events.userInteractions))
     .map(addTimeString);
   let foregroundActivities = (sessionData.events.foregroundActivities || [])
     .filter(ignoreSplashActivity)
@@ -148,6 +148,7 @@ const generateTestLines = (sessionData: SessionData): AppiumTest => {
               ts: currentLine.ts
             });
           }
+
           userInteractionIndex++;
           break;
         case currentForegroundActivity:
@@ -200,6 +201,31 @@ const generateTestLines = (sessionData: SessionData): AppiumTest => {
   return { testLines, incomplete: i >= MAX_EVENTS };
 };
 
+const correctSessionDataFromBrowser = (
+  sessionData: SessionData
+): SessionData => {
+  // Create a copy if already conforms to the SessionData type
+  if (sessionData.events) {
+    return JSON.parse(JSON.stringify(sessionData));
+  }
+
+  // Make it conform to the SessionData type we expect
+  let newSessionData: SessionData = {
+    packageName: sessionData.packageName,
+    options: sessionData.options,
+    events: {
+      inputEvents: (sessionData as any).input,
+      checkpoints: (sessionData as any).checkpoints,
+      userInteractions: (sessionData as any).userInteractions,
+      foregroundActivities: (sessionData as any).foregroundActivities,
+      meta: (sessionData as any).meta
+    }
+  };
+
+  // Create a copy
+  return JSON.parse(JSON.stringify(newSessionData));
+};
+
 // Public API ////////////////////////////////////////////////////////
 
 export type SessionData = {
@@ -218,6 +244,8 @@ export const generateAppiumIndexJs = async (
   sessionUrl: string,
   sessionData: SessionData
 ): Promise<string> => {
+  sessionData = correctSessionDataFromBrowser(sessionData);
+
   let { testLines, incomplete } = generateTestLines(sessionData);
 
   let indexJs = Mustache.render(
@@ -239,6 +267,8 @@ export const saveGeneratedAppiumTest = async (
   apkFile: BinaryFile,
   outputFilePath: string
 ) => {
+  sessionData = correctSessionDataFromBrowser(sessionData);
+
   let appiumZip = await buildAppiumZipFile();
 
   appiumZip.remove('.gitignore');

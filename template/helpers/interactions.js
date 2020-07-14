@@ -54,6 +54,22 @@ exports.findViewById = function(viewId, fallbackText, viewClassName, pure) {
   return result;
 };
 
+exports.findViewByPath = function(path, pure) {
+  let result = exports.driver.elementByXPath(path).then(function(view) {
+    if (!view) {
+      throw new Error("No view found with path '" + path + "'");
+    }
+
+    return view;
+  });
+
+  if (!pure) {
+    promiseChain = result;
+  }
+
+  return result;
+};
+
 exports.click = function() {
   return (promiseChain = promiseChain.then(function(button) {
     var action = new wd.TouchAction(exports.driver);
@@ -103,13 +119,19 @@ exports.back = function() {
   return (promiseChain = promiseChain.back());
 };
 
-exports.insertText = function(viewId, text) {
+exports.insertText = function(text, viewId) {
   return (promiseChain = promiseChain
     .then(function() {
       return exports.driver.hideDeviceKeyboard();
     })
     .then(function() {
-      return exports.findViewById(viewId, undefined, undefined, true);
+      if (viewId) {
+        return exports.findViewById(viewId, undefined, undefined, true);
+      }
+
+      return {
+        clear: function() {}
+      };
     })
     .then(function(elements) {
       if (Array.isArray(elements)) {

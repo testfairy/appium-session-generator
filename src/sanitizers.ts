@@ -23,8 +23,8 @@ export const addTimeString = (event: Event) => {
 };
 
 export const sanitizeUserInteraction = (
-  userInteraction: UserInteraction
-): UserInteraction => {
+  userInteractions: UserInteraction[]
+) => (userInteraction: UserInteraction): UserInteraction => {
   let interaction = { ...userInteraction }; // Copy interaction to modify
 
   if (interaction.className && interaction.className.length > 0) {
@@ -57,18 +57,50 @@ export const sanitizeUserInteraction = (
     delete interaction.contentDescription; // Not needed if viewId is known
   }
 
+  let xPath: string = '';
+  if (interaction.locators.length > 0) {
+    let xPathLocator = interaction.locators.find(function(locator) {
+      return locator.kind === 'xPath';
+    });
+
+    if (xPathLocator) {
+      xPath = xPathLocator.value;
+    }
+  }
+
+  let textBeforeFocusLoss = interaction.label;
+  let textFieldGainedFocus = interaction.isEditText && interaction.kind === 10;
+  if (textFieldGainedFocus) {
+    let currentIndex = userInteractions.findIndex(function(element) {
+      return element === userInteraction;
+    });
+
+    if (currentIndex >= 0) {
+      for (let i = currentIndex + 1; i < userInteractions.length; i++) {
+        let traversedInteraction = userInteractions[i];
+
+        if (traversedInteraction.kind === 7) {
+          textBeforeFocusLoss = traversedInteraction.label;
+          break;
+        }
+      }
+    }
+  }
+
   return {
     ...interaction,
-    isEditTextFocusGain: interaction.isEditText && interaction.kind === 10,
     swipe: interaction.kind === 0,
     buttonPressed: interaction.kind === 1,
     tableCellPressed: interaction.kind === 2, // TODO : Android SDK doesn't send this yet
     checkpointReached: interaction.kind === 3, // TODO : Android SDK doesn't send this yet
     dialogAppeared: interaction.kind === 5, // TODO : Android SDK doesn't send this yet
     dialogDismissed: interaction.kind === 6, // TODO : Android SDK doesn't send this yet
-    textFieldLostFocus: interaction.kind === 7, // TODO : Android SDK doesn't send this yet
+    textFieldLostFocus: interaction.isEditText && interaction.kind === 7,
     buttonLongPressed: interaction.kind === 8,
-    buttonDoublePressed: interaction.kind === 9
+    buttonDoublePressed: interaction.kind === 9,
+    textFieldGainedFocus,
+    xPath,
+    textBeforeFocusLoss
   };
 };
 

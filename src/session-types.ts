@@ -45,6 +45,13 @@ export type Checkpoint = {
   timeString: string;
 };
 
+export type LocatorKind = 'xPath';
+
+export type Locator = {
+  kind: LocatorKind;
+  value: string;
+};
+
 export type UserInteraction = {
   kind: number;
   label: string;
@@ -55,18 +62,21 @@ export type UserInteraction = {
   viewTag: string;
   ts: number;
   isEditText: boolean;
+  locators: Locator[];
 
   // Embelishments for code generation
   swipe: boolean;
-  isEditTextFocusGain: boolean;
   buttonPressed: boolean;
   tableCellPressed: boolean; // TODO : Android SDK doesn't send this yet
   checkpointReached: boolean; // TODO : Android SDK doesn't send this yet
   dialogAppeared: boolean; // TODO : Android SDK doesn't send this yet
   dialogDismissed: boolean; // TODO : Android SDK doesn't send this yet
-  textFieldLostFocus: boolean; // TODO : Android SDK doesn't send this yet
+  textFieldLostFocus: boolean;
   buttonLongPressed: boolean;
   buttonDoublePressed: boolean;
+  textFieldGainedFocus: boolean;
+  xPath: string;
+  textBeforeFocusLoss: string;
   timeString: string;
 };
 
