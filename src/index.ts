@@ -129,26 +129,11 @@ const generateTestLines = (sessionData: SessionData): AppiumTest => {
           checkpointIndex++;
           break;
         case currentUserInteraction:
-          if (
-            testLines.length > 1 &&
-            (testLines[testLines.length - 1] as any).input &&
-            (testLines[testLines.length - 1] as any).input.ts + 0.05 >=
-              currentLine.ts
-          ) {
-            // Inject before last event to make sure a screen transition is deferred after view assertions
-            testLines.splice(testLines.length - 2, 0, {
-              userInteraction: currentLine as UserInteraction,
-              sleep: 0,
-              ts: currentLine.ts
-            });
-          } else {
-            testLines.push({
-              userInteraction: currentLine as UserInteraction,
-              sleep: 0,
-              ts: currentLine.ts
-            });
-          }
-
+          testLines.push({
+            userInteraction: currentLine as UserInteraction,
+            sleep: 0,
+            ts: currentLine.ts
+          });
           userInteractionIndex++;
           break;
         case currentForegroundActivity:
@@ -172,23 +157,11 @@ const generateTestLines = (sessionData: SessionData): AppiumTest => {
           );
           */
 
-          if (
-            testLines.length > 0 &&
-            (testLines[testLines.length - 1] as any).foregroundActivity
-          ) {
-            // Override last activity, it's probably splash like
-            testLines[testLines.length - 1] = {
-              foregroundActivity: currentLine as ForegroundActivity,
-              sleep: 0 + testLines[testLines.length - 1].sleep,
-              ts: currentLine.ts + testLines[testLines.length - 1].sleep
-            };
-          } else {
-            testLines.push({
-              foregroundActivity: currentLine as ForegroundActivity,
-              sleep: 0,
-              ts: currentLine.ts
-            });
-          }
+          testLines.push({
+            foregroundActivity: currentLine as ForegroundActivity,
+            sleep: 0,
+            ts: currentLine.ts
+          });
           foregroundActivityIndex++;
           break;
       }

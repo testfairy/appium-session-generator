@@ -111,7 +111,9 @@ exports.touchUp = function(x, y) {
     action.moveTo({ x: x, y: y });
     action.release({ x: x, y: y });
 
-    return action.perform();
+    return action.perform().catch(function() {
+      /* ignore broken touches */
+    });
   }));
 };
 

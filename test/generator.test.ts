@@ -64,7 +64,7 @@ describe('generator tests', () => {
 
       expect(zipFileExists).toBeTruthy();
 
-      fs.unlinkSync(zipFilePath);
+      // fs.unlinkSync(zipFilePath);
     });
   } else {
     console.log('Testing in browser...');

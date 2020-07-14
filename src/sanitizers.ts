@@ -27,6 +27,10 @@ export const sanitizeUserInteraction = (
 ) => (userInteraction: UserInteraction): UserInteraction => {
   let interaction = { ...userInteraction }; // Copy interaction to modify
 
+  if (interaction.viewId.indexOf('id/0x') != -1) {
+    interaction.viewId = '';
+  }
+
   if (interaction.className && interaction.className.length > 0) {
     delete interaction.accessibilityClassName; // Not needed if className is known
     delete interaction.viewTag;
@@ -180,7 +184,7 @@ export const ignoreSplashActivity = (
     foregroundActivity.ts <= 0 &&
     activities[index + 1].ts <= 0 - 1
   ) {
-    return true; // Assume last activity with 0 ts is not splash
+    return false; // Assume last activity with 0 ts is not splash
   }
 
   return foregroundActivity.ts >= 0;
