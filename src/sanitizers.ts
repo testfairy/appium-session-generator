@@ -27,7 +27,7 @@ export const sanitizeUserInteraction = (
 ) => (userInteraction: UserInteraction): UserInteraction => {
   let interaction = { ...userInteraction }; // Copy interaction to modify
 
-  if (interaction.viewId.indexOf('id/0x') != -1) {
+  if (interaction.viewId.indexOf('id/0x') !== -1) {
     interaction.viewId = '';
   }
 

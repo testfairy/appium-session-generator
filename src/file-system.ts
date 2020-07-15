@@ -7,7 +7,7 @@ let S3_PREFIX = 's3/';
 
 let isBrowserCache: boolean | null = null;
 export const isBrowser = (): boolean => {
-  if (isBrowserCache != null) {
+  if (isBrowserCache !== null) {
     return isBrowserCache;
   }
 
