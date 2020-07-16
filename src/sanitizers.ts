@@ -61,14 +61,14 @@ export const sanitizeUserInteraction = (
     delete interaction.contentDescription; // Not needed if viewId is known
   }
 
-  let xPath: string = '';
+  let xpath: string = '';
   if (interaction.locators.length > 0) {
-    let xPathLocator = interaction.locators.find(function(locator) {
-      return locator.kind === 'xPath';
+    let xpathLocator = interaction.locators.find(function(locator) {
+      return locator.kind === 'xpath';
     });
 
-    if (xPathLocator) {
-      xPath = xPathLocator.value;
+    if (xpathLocator) {
+      xpath = xpathLocator.value;
     }
   }
 
@@ -103,7 +103,7 @@ export const sanitizeUserInteraction = (
     buttonLongPressed: interaction.kind === 8,
     buttonDoublePressed: interaction.kind === 9,
     textFieldGainedFocus,
-    xPath,
+    xpath,
     textBeforeFocusLoss
   };
 };

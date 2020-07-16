@@ -45,7 +45,7 @@ export type Checkpoint = {
   timeString: string;
 };
 
-export type LocatorKind = 'xPath';
+export type LocatorKind = 'xpath';
 
 export type Locator = {
   kind: LocatorKind;
@@ -75,7 +75,7 @@ export type UserInteraction = {
   buttonLongPressed: boolean;
   buttonDoublePressed: boolean;
   textFieldGainedFocus: boolean;
-  xPath: string;
+  xpath: string;
   textBeforeFocusLoss: string;
   timeString: string;
 };

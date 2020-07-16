@@ -4188,10 +4188,10 @@ window.sessionData = {
       className: 'android.widget.Button',
       accessibilityClassName: 'android.widget.Button',
       viewTag: '',
-      idMissing: false,
+      isIdMissing: false,
       locators: [
         {
-          kind: 'xPath',
+          kind: 'xpath',
           value:
             "//com.android.internal.policy.DecorView/android.widget.LinearLayout[0]/android.widget.FrameLayout[@index='1' and @resource-id='android:id/content']/android.widget.ScrollView[0]/android.widget.RelativeLayout[0]/android.widget.Button[@index='4' and @resource-id='com.testfairy.samples.drawmefairy:id/add_attibutes_button']"
         }
@@ -4207,10 +4207,10 @@ window.sessionData = {
       className: 'android.widget.EditText',
       accessibilityClassName: 'android.widget.EditText',
       viewTag: '',
-      idMissing: false,
+      isIdMissing: false,
       locators: [
         {
-          kind: 'xPath',
+          kind: 'xpath',
           value:
             "//com.android.internal.policy.DecorView/android.widget.LinearLayout[0]/android.widget.FrameLayout[@index='1' and @resource-id='android:id/content']/android.widget.LinearLayout[0]/android.widget.EditText[@index='1' and @resource-id='com.testfairy.samples.drawmefairy:id/attributes_key_edittext']"
         }
@@ -4226,10 +4226,10 @@ window.sessionData = {
       className: 'android.widget.EditText',
       accessibilityClassName: 'android.widget.EditText',
       viewTag: '',
-      idMissing: false,
+      isIdMissing: false,
       locators: [
         {
-          kind: 'xPath',
+          kind: 'xpath',
           value:
             "//com.android.internal.policy.DecorView/android.widget.LinearLayout[0]/android.widget.FrameLayout[@index='1' and @resource-id='android:id/content']/android.widget.LinearLayout[0]/android.widget.EditText[@index='1' and @resource-id='com.testfairy.samples.drawmefairy:id/attributes_key_edittext']"
         }
@@ -4245,10 +4245,10 @@ window.sessionData = {
       className: 'android.widget.EditText',
       accessibilityClassName: 'android.widget.EditText',
       viewTag: '',
-      idMissing: false,
+      isIdMissing: false,
       locators: [
         {
-          kind: 'xPath',
+          kind: 'xpath',
           value:
             "//com.android.internal.policy.DecorView/android.widget.LinearLayout[0]/android.widget.FrameLayout[@index='1' and @resource-id='android:id/content']/android.widget.LinearLayout[0]/android.widget.EditText[@index='2' and @resource-id='com.testfairy.samples.drawmefairy:id/attributes_value_edittext']"
         }
@@ -4264,10 +4264,10 @@ window.sessionData = {
       className: 'android.widget.EditText',
       accessibilityClassName: 'android.widget.EditText',
       viewTag: '',
-      idMissing: false,
+      isIdMissing: false,
       locators: [
         {
-          kind: 'xPath',
+          kind: 'xpath',
           value:
             "//com.android.internal.policy.DecorView/android.widget.LinearLayout[0]/android.widget.FrameLayout[@index='1' and @resource-id='android:id/content']/android.widget.LinearLayout[0]/android.widget.EditText[@index='1' and @resource-id='com.testfairy.samples.drawmefairy:id/attributes_key_edittext']"
         }
@@ -4283,10 +4283,10 @@ window.sessionData = {
       className: 'android.widget.EditText',
       accessibilityClassName: 'android.widget.EditText',
       viewTag: '',
-      idMissing: false,
+      isIdMissing: false,
       locators: [
         {
-          kind: 'xPath',
+          kind: 'xpath',
           value:
             "//com.android.internal.policy.DecorView/android.widget.LinearLayout[0]/android.widget.FrameLayout[@index='1' and @resource-id='android:id/content']/android.widget.LinearLayout[0]/android.widget.EditText[@index='2' and @resource-id='com.testfairy.samples.drawmefairy:id/attributes_value_edittext']"
         }
@@ -4302,10 +4302,10 @@ window.sessionData = {
       className: 'android.widget.Button',
       accessibilityClassName: 'android.widget.Button',
       viewTag: '',
-      idMissing: false,
+      isIdMissing: false,
       locators: [
         {
-          kind: 'xPath',
+          kind: 'xpath',
           value:
             "//com.android.internal.policy.DecorView/android.widget.LinearLayout[0]/android.widget.FrameLayout[@index='1' and @resource-id='android:id/content']/android.widget.LinearLayout[0]/android.widget.Button[@index='3' and @resource-id='com.testfairy.samples.drawmefairy:id/add_attibute_button']"
         }
@@ -4321,10 +4321,10 @@ window.sessionData = {
       className: 'android.widget.Button',
       accessibilityClassName: 'android.widget.Button',
       viewTag: '',
-      idMissing: false,
+      isIdMissing: false,
       locators: [
         {
-          kind: 'xPath',
+          kind: 'xpath',
           value:
             "//com.android.internal.policy.DecorView/android.widget.LinearLayout[0]/android.widget.FrameLayout[@index='1' and @resource-id='android:id/content']/android.widget.RelativeLayout[0]/android.widget.Button[@index='2' and @resource-id='com.testfairy.samples.drawmefairy:id/blank_canvas']"
         }
@@ -4340,10 +4340,10 @@ window.sessionData = {
       className: 'colorpicker.ColorPicker',
       accessibilityClassName: 'android.view.View',
       viewTag: '',
-      idMissing: true,
+      isIdMissing: true,
       locators: [
         {
-          kind: 'xPath',
+          kind: 'xpath',
           value:
             "//com.android.internal.policy.DecorView/android.widget.FrameLayout[0]/android.widget.FrameLayout[@index='0' and @resource-id='android:id/content']/com.android.internal.widget.AlertDialogLayout[@index='0' and @resource-id='android:id/parentPanel']/android.widget.FrameLayout[@index='2' and @resource-id='android:id/customPanel']/android.widget.FrameLayout[@index='0' and @resource-id='android:id/custom']/android.widget.RelativeLayout[0]/colorpicker.ColorPicker[0]"
         }
@@ -4359,10 +4359,10 @@ window.sessionData = {
       className: 'android.widget.Button',
       accessibilityClassName: 'android.widget.Button',
       viewTag: '',
-      idMissing: false,
+      isIdMissing: false,
       locators: [
         {
-          kind: 'xPath',
+          kind: 'xpath',
           value:
             "//com.android.internal.policy.DecorView/android.widget.FrameLayout[0]/android.widget.FrameLayout[@index='0' and @resource-id='android:id/content']/com.android.internal.widget.AlertDialogLayout[@index='0' and @resource-id='android:id/parentPanel']/android.widget.ScrollView[@index='3' and @resource-id='android:id/buttonPanel']/com.android.internal.widget.ButtonBarLayout[0]/android.widget.Button[@index='3' and @resource-id='android:id/button1']"
         }
@@ -4378,10 +4378,10 @@ window.sessionData = {
       className: 'android.widget.ImageButton',
       accessibilityClassName: 'android.widget.ImageButton',
       viewTag: 'saveButton',
-      idMissing: false,
+      isIdMissing: false,
       locators: [
         {
-          kind: 'xPath',
+          kind: 'xpath',
           value:
             "//com.android.internal.policy.DecorView/android.widget.LinearLayout[0]/android.widget.FrameLayout[@index='1' and @resource-id='android:id/content']/android.widget.RelativeLayout[@index='0' and @resource-id='com.testfairy.samples.drawmefairy:id/from_gallery_layout']/android.widget.LinearLayout[@index='0' and @resource-id='com.testfairy.samples.drawmefairy:id/top']/android.widget.ImageButton[@index='3' and @resource-id='com.testfairy.samples.drawmefairy:id/0x3039']"
         }
@@ -4397,10 +4397,10 @@ window.sessionData = {
       className: 'android.widget.Button',
       accessibilityClassName: 'android.widget.Button',
       viewTag: '',
-      idMissing: false,
+      isIdMissing: false,
       locators: [
         {
-          kind: 'xPath',
+          kind: 'xpath',
           value:
             "//com.android.internal.policy.DecorView/android.widget.FrameLayout[0]/android.widget.FrameLayout[@index='0' and @resource-id='android:id/content']/com.android.internal.widget.AlertDialogLayout[@index='0' and @resource-id='android:id/parentPanel']/android.widget.ScrollView[@index='3' and @resource-id='android:id/buttonPanel']/com.android.internal.widget.ButtonBarLayout[0]/android.widget.Button[@index='2' and @resource-id='android:id/button2']"
         }
@@ -4416,10 +4416,10 @@ window.sessionData = {
       className: 'android.widget.Button',
       accessibilityClassName: 'android.widget.Button',
       viewTag: '',
-      idMissing: false,
+      isIdMissing: false,
       locators: [
         {
-          kind: 'xPath',
+          kind: 'xpath',
           value:
             "//com.android.internal.policy.DecorView/android.widget.LinearLayout[0]/android.widget.FrameLayout[@index='1' and @resource-id='android:id/content']/android.widget.RelativeLayout[0]/android.widget.Button[@index='3' and @resource-id='com.testfairy.samples.drawmefairy:id/about_app']"
         }
