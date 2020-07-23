@@ -12,3 +12,15 @@ exports.androidEmulator = {
   automationName: 'UiAutomator2',
   app: undefined // Will be filed before test begins
 };
+
+exports.iOSSimulator = {
+  'appium-version': '1.6',
+  platformName: 'iOS',
+  platformVersion: '12.2',
+  deviceName: 'iPhone Simulator',
+  autoAcceptAlerts: true,
+  noReset: false,
+  fullReset: false,
+  automationName: 'XCUITest',
+  app: undefined
+};

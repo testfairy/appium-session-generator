@@ -108,9 +108,10 @@ export const sanitizeUserInteraction = (
   };
 };
 
-export const correctScaling = (options: string, metaEvents: MetaEvent[]) => (
-  input: Input
-): Input => {
+export const correctScalingAndroid = (
+  options: string,
+  metaEvents: MetaEvent[]
+) => (input: Input): Input => {
   let optionsArr = options.split(',');
 
   let inverseVideoScaling = 1;
@@ -157,8 +158,21 @@ export const correctScaling = (options: string, metaEvents: MetaEvent[]) => (
     result.x = result.x * inverseVideoScaling;
     result.y = Math.max(
       0,
-      result.y * inverseVideoScaling + (statusBarHeight - statusBarHeight)
+      result.y * inverseVideoScaling + (statusBarHeight - statusBarHeight) // This is temporary until we find a conflicting device
     );
+  }
+
+  return result;
+};
+
+export const correctScalingIOS = (input: Input): Input => {
+  let result = {
+    ...input
+  } as TouchInput;
+
+  if (result.x && result.y) {
+    result.x = result.x * 0.5;
+    result.y = result.y * 0.5;
   }
 
   return result;

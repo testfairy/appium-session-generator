@@ -7,12 +7,9 @@ import nodeStatic from 'node-static';
 import opener from 'opener';
 import enableDestroy from 'server-destroy';
 
-import {
-  SessionData,
-  generateAppiumIndexJs,
-  saveGeneratedAppiumTest
-} from '../src';
+import { generateAppiumIndexJs, saveGeneratedAppiumTest } from '../src';
 import { buildAppiumZipFile, saveZipFileAs } from '../src/file-system';
+import { SessionData } from '../src/generator-types';
 
 const BROWSER_TEST =
   process.env.TF_BROWSER_TEST && parseInt(process.env.TF_BROWSER_TEST) === 1;
@@ -32,10 +29,10 @@ describe('generator tests', () => {
       expect(zip).toBeInstanceOf(JSZip);
     });
 
-    it('should generate valid js for index.js', async () => {
+    it('should generate valid js for index.js on Android', async () => {
       let sessionUrl =
         'https://automatic-tests.testfairy.com/projects/6852543-drawmeafairy/builds/9228222/sessions/4450931346';
-      let sessionData = require('./session/sessionData.json') as SessionData;
+      let sessionData = require('./session/sessionData-Android.json') as SessionData;
       let indexJs = await generateAppiumIndexJs(sessionUrl, sessionData);
 
       // console.log(indexJs);
@@ -43,10 +40,22 @@ describe('generator tests', () => {
       expect(indexJs).toBeDefined();
     });
 
-    it('should generate an appium.zip and save it to project root for a given session', async () => {
+    it('should generate valid js for index.js on iOS', async () => {
       let sessionUrl =
         'https://automatic-tests.testfairy.com/projects/6852543-drawmeafairy/builds/9228222/sessions/4450931346';
-      let sessionData = require('./session/sessionData.json') as SessionData;
+      let sessionData = require('./session/sessionData-iOS.json') as SessionData;
+      let indexJs = await generateAppiumIndexJs(sessionUrl, sessionData);
+
+      // console.log(indexJs);
+
+      expect(indexJs).toBeDefined();
+    });
+
+    it('should generate an appium.zip and save it to project root for a given session on Android', async () => {
+      let sessionUrl =
+        'https://automatic-tests.testfairy.com/projects/6852543-drawmeafairy/builds/9228222/sessions/4450931346';
+      let sessionData = require('./session/sessionData-Android.json') as SessionData;
+      let zipFilePath = path.resolve('appium.zip');
 
       await saveGeneratedAppiumTest(
         await generateAppiumIndexJs(sessionUrl, sessionData),
@@ -55,7 +64,6 @@ describe('generator tests', () => {
         path.resolve('appium.zip')
       );
 
-      let zipFilePath = path.resolve('appium.zip');
       let zipFileExists = await new Promise(function(resolve) {
         fs.exists(zipFilePath, function(exists) {
           resolve(exists);
@@ -66,10 +74,34 @@ describe('generator tests', () => {
 
       fs.unlinkSync(zipFilePath);
     });
+
+    it('should generate an appium.zip and save it to project root for a given session on iOS', async () => {
+      let sessionUrl =
+        'https://automatic-tests.testfairy.com/projects/6852543-drawmeafairy/builds/9228222/sessions/4450931346';
+      let sessionData = require('./session/sessionData-iOS.json') as SessionData;
+      let zipFilePath = path.resolve('appium.zip');
+
+      await saveGeneratedAppiumTest(
+        await generateAppiumIndexJs(sessionUrl, sessionData),
+        sessionData,
+        fs.readFileSync(path.resolve('./test/session/app.zip')),
+        path.resolve('appium.zip')
+      );
+
+      let zipFileExists = await new Promise(function(resolve) {
+        fs.exists(zipFilePath, function(exists) {
+          resolve(exists);
+        });
+      });
+
+      expect(zipFileExists).toBeTruthy();
+
+      // fs.unlinkSync(zipFilePath);
+    });
   } else {
     console.log('Testing in browser...');
 
-    it('should open a browser and prompt save popup for appium.zip', async () => {
+    const browserTest = (platform: string) => async () => {
       let templateZip = await buildAppiumZipFile();
       await saveZipFileAs('test/browser/s3/template.zip', templateZip);
 
@@ -119,10 +151,12 @@ describe('generator tests', () => {
         enableDestroy(httpServer);
 
         console.log(
-          'Serving for 60 seconds on http://localhost:8080 - Finish the test manually in browser!'
+          'Serving for 60 seconds on http://localhost:8080/index-' +
+            platform +
+            '.html - Finish the test manually in browser!'
         );
 
-        opener('http://localhost:8080');
+        opener('http://localhost:8080/index-' + platform + '.html');
 
         timeout = setTimeout(function() {
           requests.forEach(function(request) {
@@ -137,6 +171,16 @@ describe('generator tests', () => {
           );
         }, TIMEOUT_DURATION / 2);
       });
-    });
+    };
+
+    it(
+      'should open a browser and prompt save popup for appium.zip for Android',
+      browserTest('Android')
+    );
+
+    it(
+      'should open a browser and prompt save popup for appium.zip for iOS',
+      browserTest('iOS')
+    );
   }
 });
