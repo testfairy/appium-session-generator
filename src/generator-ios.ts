@@ -3,9 +3,9 @@ import {
   AppiumTest,
   TestLines,
   MAX_EVENTS
-} from 'generator-types';
-import { sanitizeInput, correctScalingIOS, addTimeString } from 'sanitizers';
-import { Event, Input, Checkpoint } from 'session-types';
+} from './generator-types';
+import { sanitizeInput, correctScalingIOS, addTimeString } from './sanitizers';
+import { Event, Input, Checkpoint } from './session-types';
 
 export const generateTestLines = (sessionData: SessionData): AppiumTest => {
   let inputIndex = 0;

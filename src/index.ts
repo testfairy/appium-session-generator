@@ -6,9 +6,9 @@ import {
   BinaryFile,
   isBrowser
 } from './file-system';
-import { SessionData, correctSessionDataFromBrowser } from 'generator-types';
-import { generateTestLines as generateAndroid } from 'generator-android';
-import { generateTestLines as generateIOS } from 'generator-iOS';
+import { SessionData, correctSessionDataFromBrowser } from './generator-types';
+import { generateTestLines as generateAndroid } from './generator-android';
+import { generateTestLines as generateIOS } from './generator-ios';
 
 // Public API ////////////////////////////////////////////////////////
 

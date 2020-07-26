@@ -27,7 +27,7 @@ export const sanitizeUserInteraction = (
 ) => (userInteraction: UserInteraction): UserInteraction => {
   let interaction = { ...userInteraction }; // Copy interaction to modify
 
-  if (interaction.viewId.indexOf('id/0x') !== -1) {
+  if (!interaction.viewId || interaction.viewId.indexOf('id/0x') !== -1) {
     interaction.viewId = '';
   }
 
@@ -62,11 +62,8 @@ export const sanitizeUserInteraction = (
   }
 
   let xpath: string = '';
-  if (interaction.locators.length > 0) {
-    let xpathLocator = interaction.locators.find(function(locator) {
-      return locator.kind === 'xpath';
-    });
-
+  if (interaction.locators) {
+    let xpathLocator = interaction.locators.find(locator => locator.kind === 'xpath');
     if (xpathLocator) {
       xpath = xpathLocator.value;
     }

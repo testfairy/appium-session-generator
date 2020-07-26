@@ -4,7 +4,7 @@ import {
   UserInteraction,
   ForegroundActivity,
   MetaEvent
-} from 'session-types';
+} from './session-types';
 
 export const MAX_EVENTS = 10000;
 

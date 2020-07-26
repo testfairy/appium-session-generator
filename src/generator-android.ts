@@ -3,7 +3,7 @@ import {
   AppiumTest,
   TestLines,
   MAX_EVENTS
-} from 'generator-types';
+} from './generator-types';
 import {
   sanitizeInput,
   correctScalingAndroid,
@@ -11,14 +11,14 @@ import {
   sanitizeUserInteraction,
   ignoreSplashActivity,
   sanitizeForegroundActivity
-} from 'sanitizers';
+} from './sanitizers';
 import {
   Event,
   Input,
   Checkpoint,
   UserInteraction,
   ForegroundActivity
-} from 'session-types';
+} from './session-types';
 
 export const generateTestLines = (sessionData: SessionData): AppiumTest => {
   let inputIndex = 0;
