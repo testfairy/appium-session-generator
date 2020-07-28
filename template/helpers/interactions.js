@@ -4,6 +4,7 @@ exports.packageName = undefined; // Will be filed before test begins
 exports.driver = undefined; // Will be filed before test begins
 
 let promiseChain = null;
+let lastAction = null;
 
 exports.begin = function(initialDelay) {
   promiseChain = exports.driver.sleep(initialDelay);
@@ -86,34 +87,61 @@ exports.click = function() {
 
 exports.touchDown = function(x, y) {
   return (promiseChain = promiseChain.then(function() {
-    var action = new wd.TouchAction(exports.driver);
+    if (lastAction) {
+      return lastAction.perform().then(function() {
+        lastAction = new wd.TouchAction(exports.driver);
 
-    action.press({ x: x, y: y });
+        x = Math.round(x);
+        y = Math.round(y);
 
-    return action.perform();
+        lastAction.press({ x: x, y: y });
+        lastAction.wait({ ms: 10 });
+
+        return lastAction.perform();
+      });
+    }
+
+    lastAction = new wd.TouchAction(exports.driver);
+
+    x = Math.round(x);
+    y = Math.round(y);
+
+    lastAction.press({ x: x, y: y });
+    return lastAction.wait({ ms: 10 });
   }));
 };
 
 exports.touchMove = function(x, y) {
   return (promiseChain = promiseChain.then(function() {
-    var action = new wd.TouchAction(exports.driver);
+    var action = lastAction ? lastAction : new wd.TouchAction(exports.driver);
 
-    action.moveTo({ x: x, y: y });
+    x = Math.round(x);
+    y = Math.round(y);
 
-    return action.perform();
+    return action.moveTo({ x: x, y: y });
   }));
 };
 
 exports.touchUp = function(x, y) {
   return (promiseChain = promiseChain.then(function() {
-    var action = new wd.TouchAction(exports.driver);
+    var action = lastAction ? lastAction : new wd.TouchAction(exports.driver);
+
+    x = Math.round(x);
+    y = Math.round(y);
 
     action.moveTo({ x: x, y: y });
     action.release({ x: x, y: y });
 
-    return action.perform().catch(function() {
-      /* ignore broken touches */
-    });
+    return action
+      .perform()
+      .then(function(result) {
+        lastAction = null;
+        return result;
+      })
+      .catch(function() {
+        lastAction = null;
+        /* ignore broken touches */
+      });
   }));
 };
 

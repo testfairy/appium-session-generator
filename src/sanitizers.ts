@@ -27,7 +27,7 @@ export const sanitizeUserInteraction = (
 ) => (userInteraction: UserInteraction): UserInteraction => {
   let interaction = { ...userInteraction }; // Copy interaction to modify
 
-  if (interaction.viewId.indexOf('id/0x') !== -1) {
+  if (!interaction.viewId || interaction.viewId.indexOf('id/0x') !== -1) {
     interaction.viewId = '';
   }
 
@@ -62,11 +62,8 @@ export const sanitizeUserInteraction = (
   }
 
   let xpath: string = '';
-  if (interaction.locators.length > 0) {
-    let xpathLocator = interaction.locators.find(function(locator) {
-      return locator.kind === 'xpath';
-    });
-
+  if (interaction.locators) {
+    let xpathLocator = interaction.locators.find(locator => locator.kind === 'xpath');
     if (xpathLocator) {
       xpath = xpathLocator.value;
     }
@@ -108,9 +105,10 @@ export const sanitizeUserInteraction = (
   };
 };
 
-export const correctScaling = (options: string, metaEvents: MetaEvent[]) => (
-  input: Input
-): Input => {
+export const correctScalingAndroid = (
+  options: string,
+  metaEvents: MetaEvent[]
+) => (input: Input): Input => {
   let optionsArr = options.split(',');
 
   let inverseVideoScaling = 1;
@@ -157,8 +155,21 @@ export const correctScaling = (options: string, metaEvents: MetaEvent[]) => (
     result.x = result.x * inverseVideoScaling;
     result.y = Math.max(
       0,
-      result.y * inverseVideoScaling + (statusBarHeight - statusBarHeight)
+      result.y * inverseVideoScaling + (statusBarHeight - statusBarHeight) // This is temporary until we find a conflicting device
     );
+  }
+
+  return result;
+};
+
+export const correctScalingIOS = (input: Input): Input => {
+  let result = {
+    ...input
+  } as TouchInput;
+
+  if (result.x && result.y) {
+    result.x = result.x * 0.5;
+    result.y = result.y * 0.5;
   }
 
   return result;
