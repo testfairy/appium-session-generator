@@ -63,7 +63,9 @@ export const sanitizeUserInteraction = (
 
   let xpath: string = '';
   if (interaction.locators) {
-    let xpathLocator = interaction.locators.find(locator => locator.kind === 'xpath');
+    let xpathLocator = interaction.locators.find(
+      locator => locator.kind === 'xpath'
+    );
     if (xpathLocator) {
       xpath = xpathLocator.value;
     }

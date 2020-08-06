@@ -11,18 +11,22 @@ const options = getopts(process.argv.slice(2), {
     help: 'h',
     zip: '',
     'apk-url': '',
-    'session-url': ''
+    'session-url': '',
+    provider: ''
   },
   default: {
     zip: false,
     'apk-url': '',
-    'session-url': ''
+    'session-url': '',
+    provider: 'aws'
   }
 });
 
+console.log(options);
+
 function help() {
   console.log(
-    'usage: node cli.js --session-url=SESSION_URL [--zip] [--apk-url=APK_URL]'
+    'usage: node cli.js --session-url=SESSION_URL [--zip] [--apk-url=APK_URL] [--provider=aws|perfecto]'
   );
   process.exit(0);
 }
@@ -32,6 +36,13 @@ if (options.help || process.argv.length === 2) {
 }
 
 if (!options['session-url']) {
+  help();
+}
+
+if (
+  !options['provider'] ||
+  ['aws', 'perfecto'].indexOf(options['provider']) === -1
+) {
   help();
 }
 

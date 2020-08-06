@@ -5,22 +5,11 @@ import {
   ForegroundActivity,
   MetaEvent
 } from './session-types';
+import { TestLines } from 'test-lines/test-lines-visitor';
 
 export const MAX_EVENTS = 10000;
 
-export type TestLine =
-  | { input: Input; sleep: number; ts: number }
-  | { checkpoint: Checkpoint; sleep: number; ts: number }
-  | { userInteraction: UserInteraction; sleep: number; ts: number }
-  | { foregroundActivity: ForegroundActivity; sleep: number; ts: number };
-
-export type TestLines = TestLine[];
-
-export type AppiumTest = {
-  incomplete: boolean;
-  testLines: TestLines;
-};
-
+// Test input
 export type SessionData = {
   platform: string;
   packageName: string;
@@ -34,6 +23,14 @@ export type SessionData = {
   };
 };
 
+// Platform agnostic test suite, will be visited by visitors to generate
+// platform aware javascript code
+export type AppiumTest = {
+  incomplete: boolean;
+  testLines: TestLines;
+};
+
+// Helper for supporting different kinds of session data json formats
 export const correctSessionDataFromBrowser = (
   sessionData: SessionData
 ): SessionData => {

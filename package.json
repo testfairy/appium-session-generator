@@ -12,10 +12,8 @@
   },
   "scripts": {
     "start": "tsdx watch",
-    "build": "npm run build-node",
-    "build-node": "rm -rf dist-node; tsdx build --target node && mv dist dist-node && cp -R template dist-node && cp src/cli.js dist-node",
-    "test": "npm run test-node",
-    "test-node": "export TF_BROWSER_TEST=0 && tsdx test; unset TF_BROWSER_TEST",
+    "build": "rm -rf dist; tsdx build --target node && cp -R template dist && cp src/cli.js dist",
+    "test": "tsdx test",
     "lint": "tsdx lint",
     "prepare": "tsdx build"
   },
@@ -48,7 +46,6 @@
     "@types/node-static": "^0.7.5",
     "@types/opener": "^1.4.0",
     "@types/server-destroy": "^1.0.0",
-    "browserify": "^16.5.1",
     "husky": "^4.2.5",
     "node-static": "^0.7.11",
     "opener": "^1.5.1",
@@ -58,11 +55,9 @@
     "typescript": "^3.8.3"
   },
   "dependencies": {
-    "@types/mustache": "^4.0.1",
     "file-saver": "^2.0.2",
     "getopts": "^2.2.5",
     "jszip": "^3.4.0",
-    "mustache": "^4.0.1",
     "request": "^2.88.2",
     "uuid": "^8.2.0"
   }

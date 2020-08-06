@@ -1,6 +1,4 @@
-import Mustache from 'mustache';
 import {
-  readTextFile,
   buildAppiumZipFile,
   saveZipFileAs,
   BinaryFile,
@@ -9,12 +7,16 @@ import {
 import { SessionData, correctSessionDataFromBrowser } from './generator-types';
 import { generateTestLines as generateAndroid } from './generator-android';
 import { generateTestLines as generateIOS } from './generator-ios';
+import { Provider } from 'test-lines/environment';
+import { TestConfiguration } from 'test-lines/test-lines-visitor';
+import { render } from 'appium-js-renderer';
 
 // Public API ////////////////////////////////////////////////////////
 
 export const generateAppiumIndexJs = async (
   sessionUrl: string,
-  sessionData: SessionData
+  sessionData: SessionData,
+  provider: Provider
 ): Promise<string> => {
   sessionData = correctSessionDataFromBrowser(sessionData);
 
@@ -22,19 +24,15 @@ export const generateAppiumIndexJs = async (
   let { testLines, incomplete } = isIOS
     ? generateIOS(sessionData)
     : generateAndroid(sessionData);
+  let config: TestConfiguration = {
+    platform: isIOS ? 'ios' : 'android',
+    provider,
+    sessionUrl,
+    incomplete,
+    initialDelay: 5000
+  };
 
-  let indexJs = Mustache.render(
-    await readTextFile('template/index.js.mustache'),
-    {
-      testLines,
-      sessionUrl,
-      incomplete,
-      isIOS,
-      initialDelay: 5000
-    }
-  );
-
-  return indexJs;
+  return render(testLines, config);
 };
 
 export const saveGeneratedAppiumTest = async (
@@ -48,7 +46,6 @@ export const saveGeneratedAppiumTest = async (
   let appiumZip = await buildAppiumZipFile();
 
   appiumZip.remove('.gitignore');
-  appiumZip.remove('index.js.mustache');
   appiumZip.remove('session/app.apk');
   appiumZip.remove('session/app.zip');
   appiumZip.remove('session/README.md');
