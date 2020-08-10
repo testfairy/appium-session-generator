@@ -14,7 +14,7 @@ export interface TestLineVisitor {
   /* These are visited once per code generation */
   visitInitialDocs(sessionUrl: string): void;
   visitImports(provider: Provider, sessionUrl: string): void;
-  visitTestBegin(platform: Platform): void;
+  visitTestBegin(platform: Platform, provider: Provider): void;
   visitTestLimits(isComplete: boolean): void;
   visitAppLaunch(initialDelay: number): void;
 
@@ -55,7 +55,7 @@ export const createTestLines = (testLines: TestLine[]): TestLines => {
     accept: (visitor: TestLineVisitor, config: TestConfiguration) => {
       visitor.visitInitialDocs(config.sessionUrl);
       visitor.visitImports(config.provider, config.sessionUrl);
-      visitor.visitTestBegin(config.platform);
+      visitor.visitTestBegin(config.platform, config.provider);
       visitor.visitTestLimits(config.incomplete);
       visitor.visitAppLaunch(config.initialDelay);
 
@@ -101,8 +101,8 @@ export const BaseTestLinesVisitor: TestLineVisitorConstructor = class BaseTestLi
   visitImports(provider: Provider, sessionUrl: string) {
     this.visitor?.visitImports(provider, sessionUrl);
   }
-  visitTestBegin(platform: Platform) {
-    this.visitor?.visitTestBegin(platform);
+  visitTestBegin(platform: Platform, provider: Provider) {
+    this.visitor?.visitTestBegin(platform, provider);
   }
   visitTestLimits(isComplete: boolean) {
     this.visitor?.visitTestLimits(isComplete);

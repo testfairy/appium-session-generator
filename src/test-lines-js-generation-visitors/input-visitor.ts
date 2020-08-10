@@ -11,7 +11,7 @@ export class InputVisitor extends TestLinesAppenderVisitor {
 
       generatedJsLine += `
     // TF : ${input.timeString}
-    await interactions.touchDown(${input.x}, ${input.y}).sleep(${line.sleep});
+    await interactions.touchDown(${input.x}, ${input.y}, ${line.sleep});
 `;
     }
 
@@ -20,7 +20,7 @@ export class InputVisitor extends TestLinesAppenderVisitor {
 
       generatedJsLine += `
     // TF : ${input.timeString}
-    await interactions.touchMove(${input.x}, ${input.y}).sleep(${line.sleep});
+    await interactions.touchMove(${input.x}, ${input.y}, ${line.sleep});
 `;
     }
 
@@ -29,7 +29,7 @@ export class InputVisitor extends TestLinesAppenderVisitor {
 
       generatedJsLine += `
     // TF : ${input.timeString}
-    await interactions.touchUp(${input.x}, ${input.y}).sleep(${line.sleep});
+    await interactions.touchUp(${input.x}, ${input.y}, ${line.sleep});
 `;
     }
 

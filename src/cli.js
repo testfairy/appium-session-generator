@@ -12,13 +12,17 @@ const options = getopts(process.argv.slice(2), {
     zip: '',
     'apk-url': '',
     'session-url': '',
-    provider: ''
+    provider: '',
+    'perfecto-host': '',
+    'perfecto-security-token': ''
   },
   default: {
     zip: false,
     'apk-url': '',
     'session-url': '',
-    provider: 'aws'
+    provider: 'aws',
+    'perfecto-host': '',
+    'perfecto-security-token': ''
   }
 });
 
@@ -26,7 +30,7 @@ console.log(options);
 
 function help() {
   console.log(
-    'usage: node cli.js --session-url=SESSION_URL [--zip] [--apk-url=APK_URL] [--provider=aws|perfecto]'
+    'usage: node cli.js --session-url=SESSION_URL [--zip] [--apk-url=APK_URL] [--provider=aws|perfecto] [--perfecto-host=CLOUD_URL] [--perfecto-security-token=PERFECTO_TOKEN]'
   );
   process.exit(0);
 }
@@ -50,6 +54,7 @@ if (options['zip'] && !options['apk-url']) {
   help();
 }
 
+// TODO : Distinguish by provider
 request.get(options['session-url'], function(err, res, body) {
   const json = JSON.parse(body);
   const sessionData = json.session;
