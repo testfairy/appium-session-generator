@@ -61,7 +61,6 @@ capabilities.androidEmulator.securityToken = tester.findPerfectoSecurityToken();
 
     let perfectoUpload = '//-------------';
     if (provider === 'perfecto') {
-      let appExtension = platform === 'android' ? 'apk' : 'zip';
       perfectoUpload = `desired.app = await tester.uploadAppToPerfecto(serverConfig.host, desired.securityToken, desired.app);`;
     }
 
