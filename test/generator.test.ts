@@ -3,7 +3,7 @@ import path from 'path';
 
 import JSZip from 'jszip';
 
-import { generateAppiumIndexJs, saveGeneratedAppiumTest } from '../src';
+import { generateAppiumIndexJs, saveGeneratedAppiumTest } from '../src/index';
 import { buildAppiumZipFile } from '../src/file-system';
 import { SessionData } from '../src/generator-types';
 import {

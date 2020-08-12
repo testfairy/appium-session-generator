@@ -13,7 +13,7 @@
   "scripts": {
     "start": "tsdx watch",
     "build": "rm -rf dist; tsdx build --target node && cp -R template dist && cp ./dist/appium-session-generator.cjs.development.js ./dist/cli.js",
-    "test": "tsdx test",
+    "test": "cd template; npm i; cd ..; tsdx test",
     "lint": "tsdx lint",
     "prepare": "tsdx build"
   },
