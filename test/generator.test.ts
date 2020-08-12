@@ -45,9 +45,12 @@ describe('generator tests', () => {
   ) => async () => {
     let sessionUrl =
       'https://automatic-tests.testfairy.com/projects/6852543-drawmeafairy/builds/9228222/sessions/4450931346';
-    let sessionData = require('./session/sessionData-' +
-      platform +
-      '.json') as SessionData;
+    let sessionData = JSON.parse(
+      fs.readFileSync(
+        path.resolve('./test/session/sessionData-' + platform + '.json'),
+        { encoding: 'utf8' }
+      )
+    ) as SessionData;
     let indexJs = await generateAppiumIndexJs(
       sessionUrl,
       sessionData,
@@ -65,9 +68,12 @@ describe('generator tests', () => {
   ) => async () => {
     let sessionUrl =
       'https://automatic-tests.testfairy.com/projects/6852543-drawmeafairy/builds/9228222/sessions/4450931346';
-    let sessionData = require('./session/sessionData-' +
-      platform +
-      '.json') as SessionData;
+    let sessionData = JSON.parse(
+      fs.readFileSync(
+        path.resolve('./test/session/sessionData-' + platform + '.json'),
+        { encoding: 'utf8' }
+      )
+    ) as SessionData;
     let zipFilePath = path.resolve('appium.zip');
 
     await saveGeneratedAppiumTest(
