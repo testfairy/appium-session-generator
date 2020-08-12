@@ -47,7 +47,7 @@ describe('generator tests', () => {
       'https://automatic-tests.testfairy.com/projects/6852543-drawmeafairy/builds/9228222/sessions/4450931346';
     let sessionData = JSON.parse(
       fs.readFileSync(
-        path.resolve('./test/session/sessionData-' + platform + '.json'),
+        path.resolve('test/session/sessionData-' + platform + '.json'),
         { encoding: 'utf8' }
       )
     ) as SessionData;
@@ -70,7 +70,7 @@ describe('generator tests', () => {
       'https://automatic-tests.testfairy.com/projects/6852543-drawmeafairy/builds/9228222/sessions/4450931346';
     let sessionData = JSON.parse(
       fs.readFileSync(
-        path.resolve('./test/session/sessionData-' + platform + '.json'),
+        path.resolve('test/session/sessionData-' + platform + '.json'),
         { encoding: 'utf8' }
       )
     ) as SessionData;
