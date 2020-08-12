@@ -1,24 +1,24 @@
-exports.androidEmulator = {
+exports.android = {
   // appWaitActivity: 'EDITME', // EDITME : specify initial activity if necessary
+
+  // AWS only
   browserName: '',
   'appium-version': '1.6',
   platformName: 'Android',
   platformVersion: '10',
-
-  // deviceName: 'Android Emulator', // TODO : AWS
-  // deviceName: 'Android Emulator', // Local
-  deviceName: 'R38M604TNBZ', // Perfecto
-
   autoGrantPermissions: true,
   noReset: false,
   fullReset: true,
   allowTestPackages: true,
   automationName: 'UiAutomator2',
-  app: undefined, // Will be filed before test begins
-  securityToken: undefined // Will be filed before test begins for Perfecto tests
+
+  // Common
+  deviceName: undefined, // Will be filled before test begins
+  app: undefined, // Will be filled before test begins
+  securityToken: undefined // Will be filled before test begins if necessary (only on Perfecto)
 };
 
-exports.iOSSimulator = {
+exports.iOS = {
   'appium-version': '1.6',
   platformName: 'iOS',
   platformVersion: '12.2',
@@ -28,5 +28,5 @@ exports.iOSSimulator = {
   fullReset: false,
   automationName: 'XCUITest',
   app: undefined,
-  securityToken: undefined // Will be filed before test begins for Perfecto tests
+  securityToken: undefined // Will be filled before test begins if necessary (only on Perfecto)
 };

@@ -1,5 +1,5 @@
-import { TestLinesAppenderVisitor } from 'test-lines/test-lines-visitor';
-import { ForegroundActivityTestLine } from 'test-lines/foreground-activity';
+import { TestLinesAppenderVisitor } from '../test-lines/test-lines-visitor';
+import { ForegroundActivityTestLine } from '../test-lines/foreground-activity';
 
 export class ForegroundActivityVisitor extends TestLinesAppenderVisitor {
   visitForegroundActivityTestLine(line: ForegroundActivityTestLine) {

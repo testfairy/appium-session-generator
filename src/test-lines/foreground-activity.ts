@@ -1,4 +1,4 @@
-import { ForegroundActivity } from 'session-types';
+import { ForegroundActivity } from '../session-types';
 import { TestLineVisitor } from './test-lines-visitor';
 
 export type ForegroundActivityTestLine = {

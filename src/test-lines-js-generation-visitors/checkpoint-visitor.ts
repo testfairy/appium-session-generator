@@ -1,5 +1,5 @@
-import { TestLinesAppenderVisitor } from 'test-lines/test-lines-visitor';
-import { CheckpointTestLine } from 'test-lines/checkpoint';
+import { TestLinesAppenderVisitor } from '../test-lines/test-lines-visitor';
+import { CheckpointTestLine } from '../test-lines/checkpoint';
 
 export class CheckpointVisitor extends TestLinesAppenderVisitor {
   visitCheckpointTestLine(line: CheckpointTestLine) {

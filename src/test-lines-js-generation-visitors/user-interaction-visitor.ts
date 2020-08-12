@@ -1,5 +1,5 @@
-import { TestLinesAppenderVisitor } from 'test-lines/test-lines-visitor';
-import { UserInteractionTestLine } from 'test-lines/user-interaction';
+import { TestLinesAppenderVisitor } from '../test-lines/test-lines-visitor';
+import { UserInteractionTestLine } from '../test-lines/user-interaction';
 
 export class UserInteractionVisitor extends TestLinesAppenderVisitor {
   visitUserInteractionTestLine(line: UserInteractionTestLine) {

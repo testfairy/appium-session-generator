@@ -14,11 +14,11 @@ import {
   UserInteraction,
   ForegroundActivity
 } from './session-types';
-import { createTestLines } from 'test-lines/test-lines-visitor';
-import { createInputTestLine } from 'test-lines/input';
-import { createCheckpointTestLine } from 'test-lines/checkpoint';
-import { createUserInteractionTestLine } from 'test-lines/user-interaction';
-import { createForegroundActivityTestLine } from 'test-lines/foreground-activity';
+import { createTestLines } from './test-lines/test-lines-visitor';
+import { createInputTestLine } from './test-lines/input';
+import { createCheckpointTestLine } from './test-lines/checkpoint';
+import { createUserInteractionTestLine } from './test-lines/user-interaction';
+import { createForegroundActivityTestLine } from './test-lines/foreground-activity';
 
 export const generateTestLines = (sessionData: SessionData): AppiumTest => {
   let inputIndex = 0;

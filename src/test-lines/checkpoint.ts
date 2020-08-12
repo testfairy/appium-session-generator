@@ -1,4 +1,4 @@
-import { Checkpoint } from 'session-types';
+import { Checkpoint } from '../session-types';
 import { TestLineVisitor } from './test-lines-visitor';
 
 export type CheckpointTestLine = {

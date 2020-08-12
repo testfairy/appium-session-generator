@@ -16,14 +16,17 @@ chaiAsPromised.transferPromiseness = wd.transferPromiseness;
 var expect = chai.expect;
 var assert = chai.assert;
 
-function findPerfectoSecurityToken() {
+function findPerfectoIni() {
   var perfectoConfigPath = path.resolve('perfecto.ini');
   var perfectoConfigExists = fs.existsSync(perfectoConfigPath);
 
   if (perfectoConfigExists) {
     var properties = propertiesReader(perfectoConfigPath);
 
-    return properties.get('Perfecto.security-token');
+    return {
+      securityToken: properties.get('Perfecto.security-token'),
+      deviceName: properties.get('Perfecto.device-name')
+    };
   }
 
   return;
@@ -72,10 +75,20 @@ async function uploadAppToPerfecto(host, securityToken, appPath) {
   return appName;
 }
 
+function filterPerfectoCaps(caps) {
+  return {
+    deviceName: caps.deviceName,
+    app: caps.app,
+    securityToken: caps.securityToken,
+    appPackage: caps.appPackage
+  };
+}
+
 module.exports = {
   should: should,
   expect: expect,
   assert: assert,
-  findPerfectoSecurityToken: findPerfectoSecurityToken,
-  uploadAppToPerfecto: uploadAppToPerfecto
+  findPerfectoIni: findPerfectoIni,
+  uploadAppToPerfecto: uploadAppToPerfecto,
+  filterPerfectoCaps: filterPerfectoCaps
 };

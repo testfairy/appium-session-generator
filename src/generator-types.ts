@@ -5,12 +5,13 @@ import {
   ForegroundActivity,
   MetaEvent
 } from './session-types';
-import { TestLines } from 'test-lines/test-lines-visitor';
+import { TestLines } from './test-lines/test-lines-visitor';
 
 export const MAX_EVENTS = 10000;
 
 // Test input
 export type SessionData = {
+  appName: string;
   platform: string;
   packageName: string;
   options: string;
@@ -23,8 +24,8 @@ export type SessionData = {
   };
 };
 
-// Platform agnostic test suite, will be visited by visitors to generate
-// platform aware javascript code
+// Platform-aware but provider-agnostic test suite, will be
+// visited by visitors to generate provider-aware javascript code
 export type AppiumTest = {
   incomplete: boolean;
   testLines: TestLines;
@@ -41,6 +42,7 @@ export const correctSessionDataFromBrowser = (
 
   // Make it conform to the SessionData type we expect
   let newSessionData: SessionData = {
+    appName: sessionData.appName,
     platform: sessionData.platform,
     packageName: sessionData.packageName,
     options: sessionData.options,

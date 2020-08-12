@@ -3,6 +3,7 @@ import { InputTestLine } from './input';
 import { CheckpointTestLine } from './checkpoint';
 import { UserInteractionTestLine } from './user-interaction';
 import { ForegroundActivityTestLine } from './foreground-activity';
+import { AppiumTest } from '../generator-types';
 
 // Mandatory constructor for all test line visitors, must be conformed by the class object
 export interface TestLineVisitorConstructor {
@@ -18,7 +19,7 @@ export interface TestLineVisitor {
   visitTestLimits(isComplete: boolean): void;
   visitAppLaunch(initialDelay: number): void;
 
-  /* These are looped in a polymorphic array and called multiple times */
+  /* These are looped over in a polymorphic array and called multiple times */
   visitInputTestLine(line: InputTestLine): void;
   visitCheckpointTestLine(line: CheckpointTestLine): void;
   visitUserInteractionTestLine(line: UserInteractionTestLine): void;
@@ -29,11 +30,11 @@ export interface TestLineVisitor {
 }
 
 // Globals for each test suite
-export type TestConfiguration = {
+export type GeneratorConfiguration = {
+  appiumTest: AppiumTest;
   platform: Platform;
   provider: Provider;
   sessionUrl: string;
-  incomplete: boolean;
   initialDelay: number;
 };
 
@@ -47,16 +48,16 @@ export type TestLine =
 // Wrapper for test lines to accept visitors
 export type TestLines = {
   testLines: TestLine[];
-  accept(visitor: TestLineVisitor, config: TestConfiguration): void;
+  accept(visitor: TestLineVisitor, config: GeneratorConfiguration): void;
 };
 export const createTestLines = (testLines: TestLine[]): TestLines => {
   const result = {
     testLines,
-    accept: (visitor: TestLineVisitor, config: TestConfiguration) => {
+    accept: (visitor: TestLineVisitor, config: GeneratorConfiguration) => {
       visitor.visitInitialDocs(config.sessionUrl);
       visitor.visitImports(config.provider, config.sessionUrl);
       visitor.visitTestBegin(config.platform, config.provider);
-      visitor.visitTestLimits(config.incomplete);
+      visitor.visitTestLimits(config.appiumTest.incomplete);
       visitor.visitAppLaunch(config.initialDelay);
 
       result.testLines.forEach((testLine: TestLine) => {

@@ -1,6 +1,6 @@
-import { TestLinesAppenderVisitor } from 'test-lines/test-lines-visitor';
-import { InputTestLine } from 'test-lines/input';
-import { KeyInput, TouchInput } from 'session-types';
+import { TestLinesAppenderVisitor } from '../test-lines/test-lines-visitor';
+import { InputTestLine } from '../test-lines/input';
+import { KeyInput, TouchInput } from '../session-types';
 
 export class InputVisitor extends TestLinesAppenderVisitor {
   visitInputTestLine(line: InputTestLine) {

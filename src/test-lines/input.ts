@@ -1,4 +1,4 @@
-import { Input } from 'session-types';
+import { Input } from '../session-types';
 import { TestLineVisitor } from './test-lines-visitor';
 
 // Test lines

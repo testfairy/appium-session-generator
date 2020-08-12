@@ -1,9 +1,9 @@
 import { SessionData, AppiumTest, MAX_EVENTS } from './generator-types';
 import { sanitizeInput, correctScalingIOS, addTimeString } from './sanitizers';
 import { Event, Input, Checkpoint } from './session-types';
-import { createTestLines } from 'test-lines/test-lines-visitor';
-import { createInputTestLine } from 'test-lines/input';
-import { createCheckpointTestLine } from 'test-lines/checkpoint';
+import { createTestLines } from './test-lines/test-lines-visitor';
+import { createInputTestLine } from './test-lines/input';
+import { createCheckpointTestLine } from './test-lines/checkpoint';
 
 // TODO : This is a temporary code duplication to be able to experiment with iOS safely.
 //        Eventually, the generator will be unified with the Android one.
