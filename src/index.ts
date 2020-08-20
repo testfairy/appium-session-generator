@@ -1,6 +1,4 @@
-import Mustache from 'mustache';
 import {
-  readTextFile,
   buildAppiumZipFile,
   saveZipFileAs,
   BinaryFile,
@@ -9,36 +7,46 @@ import {
 import { SessionData, correctSessionDataFromBrowser } from './generator-types';
 import { generateTestLines as generateAndroid } from './generator-android';
 import { generateTestLines as generateIOS } from './generator-ios';
+import {
+  Provider,
+  ProviderConfiguration,
+  PerfectoConfiguration
+} from './test-lines/environment';
+import { GeneratorConfiguration } from './test-lines/test-lines-visitor';
+import { render } from './appium-js-renderer';
+import { cli } from './cli';
+import ini from 'ini';
 
 // Public API ////////////////////////////////////////////////////////
 
+// Call this to preview generated index.js, otherwise this is useless
 export const generateAppiumIndexJs = async (
   sessionUrl: string,
-  sessionData: SessionData
+  sessionData: SessionData,
+  providerConfig: ProviderConfiguration
 ): Promise<string> => {
   sessionData = correctSessionDataFromBrowser(sessionData);
 
+  let provider = providerConfig.provider as Provider;
   let isIOS = sessionData.platform === '1';
-  let { testLines, incomplete } = isIOS
+  let appiumTest = isIOS
     ? generateIOS(sessionData)
-    : generateAndroid(sessionData);
+    : generateAndroid(sessionData); // TODO : Get rid of this by unifying generate*() functions in a platform-agnostic manner (they are already provider-agnostic)
+  let config: GeneratorConfiguration = {
+    appiumTest,
+    platform: isIOS ? 'ios' : 'android',
+    provider,
+    sessionUrl,
+    initialDelay: 5000
+  };
 
-  let indexJs = Mustache.render(
-    await readTextFile('template/index.js.mustache'),
-    {
-      testLines,
-      sessionUrl,
-      incomplete,
-      isIOS,
-      initialDelay: 5000
-    }
-  );
-
-  return indexJs;
+  return render(config);
 };
 
+// Call ONLY this if you want to generate an appium project, it will generate its own index.js internally
 export const saveGeneratedAppiumTest = async (
-  indexJs: string,
+  sessionUrl: string,
+  providerConfig: ProviderConfiguration,
   sessionData: SessionData,
   apkOrZipFile: BinaryFile,
   outputFilePath: string
@@ -48,18 +56,36 @@ export const saveGeneratedAppiumTest = async (
   let appiumZip = await buildAppiumZipFile();
 
   appiumZip.remove('.gitignore');
-  appiumZip.remove('index.js.mustache');
   appiumZip.remove('session/app.apk');
   appiumZip.remove('session/app.zip');
   appiumZip.remove('session/README.md');
   appiumZip.remove('session/sessionData.json');
+  appiumZip.remove('perfecto.ini');
 
-  appiumZip.file('index.js', indexJs);
+  appiumZip.file(
+    'index.js',
+    generateAppiumIndexJs(sessionUrl, sessionData, providerConfig)
+  );
 
   if (sessionData.platform === '1') {
     appiumZip.file('session/app.zip', apkOrZipFile);
   } else {
     appiumZip.file('session/app.apk', apkOrZipFile);
+  }
+
+  if (providerConfig.provider === 'perfecto') {
+    let perfectoConfig = providerConfig as PerfectoConfiguration;
+
+    appiumZip.file(
+      'perfecto.ini',
+      ini.encode({
+        Perfecto: {
+          host: perfectoConfig.host,
+          'security-token': perfectoConfig.securityToken,
+          'device-name': perfectoConfig.deviceName
+        }
+      })
+    );
   }
 
   appiumZip.file('session/sessionData.json', JSON.stringify(sessionData));
@@ -70,4 +96,6 @@ export const saveGeneratedAppiumTest = async (
 if (isBrowser()) {
   (window as any).generateAppiumIndexJs = generateAppiumIndexJs;
   (window as any).saveGeneratedAppiumTest = saveGeneratedAppiumTest;
+} else if (require.main === module) {
+  cli(generateAppiumIndexJs, saveGeneratedAppiumTest); // Hack but works
 }

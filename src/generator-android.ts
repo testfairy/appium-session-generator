@@ -1,9 +1,4 @@
-import {
-  SessionData,
-  AppiumTest,
-  TestLines,
-  MAX_EVENTS
-} from './generator-types';
+import { SessionData, AppiumTest, MAX_EVENTS } from './generator-types';
 import {
   sanitizeInput,
   correctScalingAndroid,
@@ -19,6 +14,11 @@ import {
   UserInteraction,
   ForegroundActivity
 } from './session-types';
+import { createTestLines } from './test-lines/test-lines-visitor';
+import { createInputTestLine } from './test-lines/input';
+import { createCheckpointTestLine } from './test-lines/checkpoint';
+import { createUserInteractionTestLine } from './test-lines/user-interaction';
+import { createForegroundActivityTestLine } from './test-lines/foreground-activity';
 
 export const generateTestLines = (sessionData: SessionData): AppiumTest => {
   let inputIndex = 0;
@@ -39,7 +39,8 @@ export const generateTestLines = (sessionData: SessionData): AppiumTest => {
     .map(sanitizeForegroundActivity(sessionData.packageName))
     .map(addTimeString);
 
-  let testLines: TestLines = [];
+  let testLinesObject = createTestLines([]);
+  let testLines = testLinesObject.testLines;
 
   let i = 0;
   while (
@@ -92,30 +93,32 @@ export const generateTestLines = (sessionData: SessionData): AppiumTest => {
 
     // Insert a test line for selected
     if (currentLine.ts !== Number.MAX_SAFE_INTEGER) {
-      // Pushing lines with the wrappers below lets mustache select the necessary template by key lookup, check TestLine type for valid keys
+      // Pushing lines with the wrappers below lets them be visited by the code generator
       switch (currentLine) {
         case currentInput:
-          testLines.push({
-            input: currentLine as Input,
-            sleep: 0,
-            ts: currentLine.ts
-          });
+          testLines.push(
+            createInputTestLine(currentLine as Input, 0, currentLine.ts)
+          );
           inputIndex++;
           break;
         case currentCheckpoint:
-          testLines.push({
-            checkpoint: currentLine as Checkpoint,
-            sleep: 0,
-            ts: currentLine.ts
-          });
+          testLines.push(
+            createCheckpointTestLine(
+              currentLine as Checkpoint,
+              0,
+              currentLine.ts
+            )
+          );
           checkpointIndex++;
           break;
         case currentUserInteraction:
-          testLines.push({
-            userInteraction: currentLine as UserInteraction,
-            sleep: 0,
-            ts: currentLine.ts
-          });
+          testLines.push(
+            createUserInteractionTestLine(
+              currentLine as UserInteraction,
+              0,
+              currentLine.ts
+            )
+          );
           userInteractionIndex++;
           break;
         case currentForegroundActivity:
@@ -139,11 +142,13 @@ export const generateTestLines = (sessionData: SessionData): AppiumTest => {
           );
           */
 
-          testLines.push({
-            foregroundActivity: currentLine as ForegroundActivity,
-            sleep: 0,
-            ts: currentLine.ts
-          });
+          testLines.push(
+            createForegroundActivityTestLine(
+              currentLine as ForegroundActivity,
+              0,
+              currentLine.ts
+            )
+          );
           foregroundActivityIndex++;
           break;
       }
@@ -153,5 +158,5 @@ export const generateTestLines = (sessionData: SessionData): AppiumTest => {
     }
   }
 
-  return { testLines, incomplete: i >= MAX_EVENTS };
+  return { testLines: testLinesObject, incomplete: i >= MAX_EVENTS };
 };

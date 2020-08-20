@@ -70,6 +70,10 @@ const getFilePathsRecursively = (dir: string): string[] => {
   for (let file of list) {
     file = path.resolve(dir, file);
 
+    if (!fs.existsSync(file)) {
+      continue;
+    }
+
     let stat = fs.lstatSync(file);
 
     if (stat && stat.isDirectory()) {

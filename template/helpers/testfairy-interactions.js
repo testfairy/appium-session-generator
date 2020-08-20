@@ -1,4 +1,4 @@
-var wd = require('wd');
+const wd = require('wd');
 
 exports.packageName = undefined; // Will be filed before test begins
 exports.driver = undefined; // Will be filed before test begins
@@ -73,7 +73,7 @@ exports.findViewByPath = function(path, pure) {
 
 exports.click = function() {
   return (promiseChain = promiseChain.then(function(button) {
-    var action = new wd.TouchAction(exports.driver);
+    let action = new wd.TouchAction(exports.driver);
 
     if (Array.isArray(button)) {
       action.tap({ el: button[0] });
@@ -85,7 +85,7 @@ exports.click = function() {
   }));
 };
 
-exports.touchDown = function(x, y) {
+exports.touchDown = function(x, y, delay) {
   return (promiseChain = promiseChain.then(function() {
     if (lastAction) {
       return lastAction.perform().then(function() {
@@ -97,6 +97,10 @@ exports.touchDown = function(x, y) {
         lastAction.press({ x: x, y: y });
         lastAction.wait({ ms: 10 });
 
+        if (delay && delay > 0) {
+          lastAction.wait({ ms: delay });
+        }
+
         return lastAction.perform();
       });
     }
@@ -107,24 +111,35 @@ exports.touchDown = function(x, y) {
     y = Math.round(y);
 
     lastAction.press({ x: x, y: y });
+
+    if (delay && delay > 0) {
+      lastAction.wait({ ms: delay });
+    }
+
     return lastAction.wait({ ms: 10 });
   }));
 };
 
-exports.touchMove = function(x, y) {
+exports.touchMove = function(x, y, delay) {
   return (promiseChain = promiseChain.then(function() {
-    var action = lastAction ? lastAction : new wd.TouchAction(exports.driver);
+    let action = lastAction ? lastAction : new wd.TouchAction(exports.driver);
 
     x = Math.round(x);
     y = Math.round(y);
 
-    return action.moveTo({ x: x, y: y });
+    let result = action.moveTo({ x: x, y: y });
+
+    if (delay && delay > 0) {
+      result = lastAction.wait({ ms: delay });
+    }
+
+    return result;
   }));
 };
 
-exports.touchUp = function(x, y) {
+exports.touchUp = function(x, y, delay) {
   return (promiseChain = promiseChain.then(function() {
-    var action = lastAction ? lastAction : new wd.TouchAction(exports.driver);
+    let action = lastAction ? lastAction : new wd.TouchAction(exports.driver);
 
     x = Math.round(x);
     y = Math.round(y);
@@ -132,10 +147,15 @@ exports.touchUp = function(x, y) {
     action.moveTo({ x: x, y: y });
     action.release({ x: x, y: y });
 
+    if (delay && delay > 0) {
+      action.wait({ ms: delay });
+    }
+
     return action
       .perform()
       .then(function(result) {
         lastAction = null;
+
         return result;
       })
       .catch(function() {
