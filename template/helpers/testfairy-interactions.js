@@ -165,6 +165,31 @@ exports.touchUp = function(x, y, delay) {
   }));
 };
 
+exports.touches = async function(touchesArray) {
+  if (touchesArray.length >= 2) {
+    let down = touchesArray[0];
+    let up = touchesArray[touchesArray.length - 1];
+
+    if (down.length === 3) {
+      await exports.touchDown(down[0], down[1], down[2]);
+    }
+
+    touchesArray.forEach((t, i) => {
+      if (i !== 0 && i !== touchesArray.length - 1) {
+        let move = t;
+
+        if (move.length === 3) {
+          await exports.touchMove(move[0], move[1], move[2]);
+        }
+      }
+    });
+
+    if (up.length === 3) {
+      await exports.touchUp(up[0], up[1], up[2]);
+    }
+  }
+};
+
 exports.back = function() {
   return (promiseChain = promiseChain.back());
 };
