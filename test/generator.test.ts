@@ -82,7 +82,7 @@ describe('generator tests', () => {
       sessionData,
       fs.readFileSync(
         path.resolve(
-          './test/session/app.' + (platform === 'android' ? 'apk' : 'zip')
+          'test/session/app.' + (platform === 'android' ? 'apk' : 'zip')
         )
       ),
       path.resolve('appium.zip')
@@ -96,7 +96,7 @@ describe('generator tests', () => {
 
     expect(zipFileExists).toBeTruthy();
 
-    // fs.unlinkSync(zipFilePath);
+    fs.unlinkSync(zipFilePath);
   };
 
   it(
@@ -104,28 +104,28 @@ describe('generator tests', () => {
     buildIndexJsGenerationTest(awsConfig, 'android')
   );
 
-  // it(
-  //   'should generate valid js for index.js on iOS',
-  //   buildIndexJsGenerationTest(awsConfig, 'ios')
-  // );
+  it(
+    'should generate valid js for index.js on iOS',
+    buildIndexJsGenerationTest(awsConfig, 'ios')
+  );
 
-  // it(
-  //   'should generate an appium.zip for AWS and save it to project root for a given session on Android',
-  //   buildAppiumZipGenerationTest(awsConfig, 'android')
-  // );
+  it(
+    'should generate an appium.zip for AWS and save it to project root for a given session on Android',
+    buildAppiumZipGenerationTest(awsConfig, 'android')
+  );
 
-  // it(
-  //   'should generate an appium.zip for AWS and save it to project root for a given session on iOS',
-  //   buildAppiumZipGenerationTest(awsConfig, 'ios')
-  // );
+  it(
+    'should generate an appium.zip for AWS and save it to project root for a given session on iOS',
+    buildAppiumZipGenerationTest(awsConfig, 'ios')
+  );
 
   it(
     'should generate an appium.zip for Perfecto and save it to project root for a given session on Android',
     buildAppiumZipGenerationTest(perfectoConfig, 'android')
   );
 
-  // it(
-  //   'should generate an appium.zip for Perfecto and save it to project root for a given session on iOS',
-  //   buildAppiumZipGenerationTest(perfectoConfig, 'ios')
-  // );
+  it(
+    'should generate an appium.zip for Perfecto and save it to project root for a given session on iOS',
+    buildAppiumZipGenerationTest(perfectoConfig, 'ios')
+  );
 });
