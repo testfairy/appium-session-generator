@@ -76,7 +76,7 @@ capabilities.android.deviceName = perfectoIni.deviceName;
       // TODO : Change 'http://' below to 'https://' once wd is updated on npm
       driverSetup = `
     desired.app = await tester.uploadAppToPerfecto(serverConfig.host, desired.securityToken, desired.app);
-    driver = wd.promiseChainRemote("http://" + serverConfig.host + "/nexperience/perfectomobile/wd/hub/fast");`;
+    driver = wd.promiseChainRemote("https://" + serverConfig.host + "/nexperience/perfectomobile/wd/hub/fast");`;
 
       init = `return driver.init(tester.filterPerfectoCaps(desired)).setImplicitWaitTimeout(5000);`;
     }

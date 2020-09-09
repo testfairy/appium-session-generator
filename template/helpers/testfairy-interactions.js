@@ -31,18 +31,21 @@ exports.findTextInView = function(text, viewClassName, pure) {
   return result;
 };
 
-exports.findViewById = function(viewId, fallbackText, viewClassName, pure) {
+exports.findViewById = function(viewId, text, viewClassName, pure) {
+  let idBundle = exports.packageName + ':id/' + viewId;
+  let textMatch = '';
+
+  if (text && text.length > 0 && idBundle !== text) {
+    textMatch = '.textStartsWith("' + text + '")';
+  }
+
   let result = exports.driver
     .elementsByAndroidUIAutomator(
-      'new UiSelector().resourceId("' +
-        exports.packageName +
-        ':id/' +
-        viewId +
-        '")'
+      'new UiSelector().resourceId("' + idBundle + '")' + textMatch
     )
     .then(function(views) {
-      if (views.length == 0) {
-        return exports.findTextInView(fallbackText, viewClassName, pure);
+      if (views.length == 0 && text && text.length > 0 && text !== idBundle) {
+        return exports.findTextInView(text, viewClassName, pure);
       }
 
       return views;
@@ -71,7 +74,49 @@ exports.findViewByPath = function(path, pure) {
   return result;
 };
 
-exports.click = function() {
+exports.scrollToTextByPath = function(path, text, pure) {
+  let idBundle = exports.packageName + ':id/';
+
+  if (text.indexOf(idBundle) !== -1) {
+    return exports.driver;
+  }
+
+  let result = exports.driver.elementByXPath(path).then(function(view) {
+    if (!view) {
+      throw new Error("No view found with path '" + path + "'");
+    }
+
+    let textsOnScreen = text.split(' ').reverse();
+
+    let scrollUntilAllTextVisible = v => {
+      if (textsOnScreen.length == 0) {
+        return v;
+      }
+
+      let currentText = textsOnScreen.pop();
+
+      return view
+        .elementsByAndroidUIAutomator(
+          'new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().textContains("' +
+            currentText +
+            '").instance(0));'
+        )
+        .then(function(v) {
+          return scrollUntilAllTextVisible(v);
+        });
+    };
+
+    return scrollUntilAllTextVisible(view);
+  });
+
+  if (!pure) {
+    promiseChain = result;
+  }
+
+  return result;
+};
+
+exports.tap = function() {
   return (promiseChain = promiseChain.then(function(button) {
     let action = new wd.TouchAction(exports.driver);
 
@@ -79,6 +124,40 @@ exports.click = function() {
       action.tap({ el: button[0] });
     } else {
       action.tap({ el: button });
+    }
+
+    return action.perform();
+  }));
+};
+
+exports.doublePress = function() {
+  return (promiseChain = promiseChain.then(function(button) {
+    let action = new wd.TouchAction(exports.driver);
+
+    if (Array.isArray(button)) {
+      action.press({ el: button[0] });
+      action.release({ el: button[0] });
+      action.press({ el: button[0] });
+      action.release({ el: button[0] });
+    } else {
+      action.press({ el: button });
+      action.release({ el: button });
+      action.press({ el: button });
+      action.release({ el: button });
+    }
+
+    return action.perform();
+  }));
+};
+
+exports.longPress = function() {
+  return (promiseChain = promiseChain.then(function(button) {
+    let action = new wd.TouchAction(exports.driver);
+
+    if (Array.isArray(button)) {
+      action.longPress({ el: button[0] });
+    } else {
+      action.longPress({ el: button });
     }
 
     return action.perform();
@@ -174,7 +253,8 @@ exports.touches = async function(touchesArray) {
       await exports.touchDown(down[0], down[1], down[2]);
     }
 
-    touchesArray.forEach((t, i) => {
+    for (let i = 0; i < touchesArray.length; i++) {
+      const t = touchesArray[i];
       if (i !== 0 && i !== touchesArray.length - 1) {
         let move = t;
 
@@ -182,7 +262,7 @@ exports.touches = async function(touchesArray) {
           await exports.touchMove(move[0], move[1], move[2]);
         }
       }
-    });
+    }
 
     if (up.length === 3) {
       await exports.touchUp(up[0], up[1], up[2]);

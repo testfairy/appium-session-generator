@@ -90,19 +90,36 @@ export const sanitizeUserInteraction = (
     }
   }
 
+  let viewScrolled = false;
+  if (
+    interaction.scroll &&
+    (interaction.isListView ||
+      interaction.isScrollView ||
+      interaction.isRecyclerView)
+  ) {
+    viewScrolled = true;
+  }
+
+  let scrollableParentXpath: string = '';
+  if (interaction.scrollableParentLocators) {
+    let xpathLocator = interaction.scrollableParentLocators.find(
+      locator => locator.kind === 'xpath'
+    );
+    if (xpathLocator) {
+      scrollableParentXpath = xpathLocator.value;
+    }
+  }
+
   return {
     ...interaction,
-    swipe: interaction.kind === 0,
     buttonPressed: interaction.kind === 1,
-    tableCellPressed: interaction.kind === 2, // TODO : Android SDK doesn't send this yet
-    checkpointReached: interaction.kind === 3, // TODO : Android SDK doesn't send this yet
-    dialogAppeared: interaction.kind === 5, // TODO : Android SDK doesn't send this yet
-    dialogDismissed: interaction.kind === 6, // TODO : Android SDK doesn't send this yet
     textFieldLostFocus: interaction.isEditText && interaction.kind === 7,
     buttonLongPressed: interaction.kind === 8,
     buttonDoublePressed: interaction.kind === 9,
+    viewScrolled: interaction.kind === 11 && viewScrolled,
     textFieldGainedFocus,
     xpath,
+    scrollableParentXpath,
     textBeforeFocusLoss
   };
 };

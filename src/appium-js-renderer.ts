@@ -14,8 +14,12 @@ export const render = (config: GeneratorConfiguration): string => {
   let tests = new TestCaseCreationVisitor(null, indexJsBuilder);
   tests = new CheckpointVisitor(tests, indexJsBuilder);
   tests = new ForegroundActivityVisitor(tests, indexJsBuilder);
-  tests = new InputAggregateVisitor(tests, indexJsBuilder);
-  tests = new UserInteractionVisitor(tests, indexJsBuilder);
+
+  if (config.platform === 'android') {
+    tests = new UserInteractionVisitor(tests, indexJsBuilder);
+  } else {
+    tests = new InputAggregateVisitor(tests, indexJsBuilder);
+  }
 
   config.appiumTest.testLines.accept(tests, config);
 

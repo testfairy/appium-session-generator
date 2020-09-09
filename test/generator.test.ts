@@ -82,7 +82,7 @@ describe('generator tests', () => {
       sessionData,
       fs.readFileSync(
         path.resolve(
-          './test/session/app.' + (platform === 'android' ? 'apk' : 'zip')
+          'test/session/app.' + (platform === 'android' ? 'apk' : 'zip')
         )
       ),
       path.resolve('appium.zip')

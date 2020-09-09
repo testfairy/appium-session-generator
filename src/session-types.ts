@@ -52,9 +52,26 @@ export type Locator = {
   value: string;
 };
 
+export type Fling = {
+  velocityX: number;
+  velocityY: number;
+};
+
+export type ScrollDistance = {
+  distanceX: number;
+  distanceY: number;
+};
+
+export type Scroll = {
+  scrolls: ScrollDistance[];
+  fling: Fling;
+  screenDensity: number;
+};
+
 export type UserInteraction = {
   kind: number;
   label: string;
+  textInScrollableParent: string;
   contentDescription: string;
   viewId: string;
   className: string;
@@ -62,20 +79,22 @@ export type UserInteraction = {
   viewTag: string;
   ts: number;
   isEditText: boolean;
+  isScrollView: boolean;
+  isListView: boolean;
+  isRecyclerView: boolean;
   locators: Locator[];
+  scrollableParentLocators: Locator[];
+  scroll: Scroll;
 
   // Embelishments for code generation
-  swipe: boolean;
   buttonPressed: boolean;
-  tableCellPressed: boolean; // TODO : Android SDK doesn't send this yet
-  checkpointReached: boolean; // TODO : Android SDK doesn't send this yet
-  dialogAppeared: boolean; // TODO : Android SDK doesn't send this yet
-  dialogDismissed: boolean; // TODO : Android SDK doesn't send this yet
   textFieldLostFocus: boolean;
   buttonLongPressed: boolean;
   buttonDoublePressed: boolean;
   textFieldGainedFocus: boolean;
+  viewScrolled: boolean;
   xpath: string;
+  scrollableParentXpath: string;
   textBeforeFocusLoss: string;
   timeString: string;
 };
