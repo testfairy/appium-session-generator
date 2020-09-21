@@ -97,7 +97,7 @@ export class UserInteractionVisitor extends TestLinesAppenderVisitor {
   ): string {
     generatedJsLine += `
     // TF : ${line.userInteraction.timeString}
-    // await interactions.findViewByPath("${line.userInteraction.xpath}");
+    await interactions.findViewByPath("${line.userInteraction.xpath}");
 `;
     return generatedJsLine;
   }
@@ -107,9 +107,7 @@ export class UserInteractionVisitor extends TestLinesAppenderVisitor {
     generatedJsLine: string
   ): string {
     if (line.userInteraction.buttonDoublePressed) {
-      generatedJsLine += `
-    // TF : ${line.userInteraction.timeString}
-    await interactions.doublePress();
+      generatedJsLine += `    await interactions.doublePress();
     console.log("\\nTF : Double pressed ${line.userInteraction.label}, time: ${line.userInteraction.timeString}\\n".magenta.underline);
 `;
     }
@@ -121,9 +119,7 @@ export class UserInteractionVisitor extends TestLinesAppenderVisitor {
     generatedJsLine: string
   ): string {
     if (line.userInteraction.buttonLongPressed) {
-      generatedJsLine += `
-    // TF : ${line.userInteraction.timeString}
-    await interactions.longPress();
+      generatedJsLine += `    await interactions.longPress();
     console.log("\\nTF : Long pressed ${line.userInteraction.label}, time: ${line.userInteraction.timeString}\\n".magenta.underline);
 `;
     }
@@ -135,9 +131,7 @@ export class UserInteractionVisitor extends TestLinesAppenderVisitor {
     generatedJsLine: string
   ): string {
     if (line.userInteraction.buttonPressed) {
-      generatedJsLine += `
-    // TF : ${line.userInteraction.timeString}
-    await interactions.tap();
+      generatedJsLine += `    await interactions.tap();
     console.log("\\nTF : Clicked ${line.userInteraction.label}, time: ${line.userInteraction.timeString}\\n".magenta.underline);
 `;
     }
@@ -174,9 +168,7 @@ export class UserInteractionVisitor extends TestLinesAppenderVisitor {
     generatedJsLine: string
   ): string {
     if (line.userInteraction.buttonDoublePressed) {
-      generatedJsLine += `
-    // TF : ${line.userInteraction.timeString}
-    await interactions.doublePress();
+      generatedJsLine += `    await interactions.doublePress();
     console.log("\\nTF : Double pressed id/${line.userInteraction.viewId}, time: ${line.userInteraction.timeString}\\n".magenta.underline);
 `;
     }
@@ -188,9 +180,7 @@ export class UserInteractionVisitor extends TestLinesAppenderVisitor {
     generatedJsLine: string
   ): string {
     if (line.userInteraction.buttonLongPressed) {
-      generatedJsLine += `
-    // TF : ${line.userInteraction.timeString}
-    await interactions.longPress();
+      generatedJsLine += `    await interactions.longPress();
     console.log("\\nTF : Long pressed id/${line.userInteraction.viewId}, time: ${line.userInteraction.timeString}\\n".magenta.underline);
 `;
     }
@@ -202,9 +192,7 @@ export class UserInteractionVisitor extends TestLinesAppenderVisitor {
     generatedJsLine: string
   ): string {
     if (line.userInteraction.buttonPressed) {
-      generatedJsLine += `
-    // TF : ${line.userInteraction.timeString}
-    await interactions.tap();
+      generatedJsLine += `    await interactions.tap();
     console.log("\\nTF : Clicked id/${line.userInteraction.viewId}, time: ${line.userInteraction.timeString}\\n".magenta.underline);
 `;
     }

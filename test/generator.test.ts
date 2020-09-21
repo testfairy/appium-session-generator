@@ -57,7 +57,7 @@ describe('generator tests', () => {
       providerConfig
     );
 
-    // console.log(indexJs);
+    console.log(indexJs);
 
     expect(indexJs).toBeDefined();
   };
