@@ -1,3 +1,9 @@
+// IMPORTANT : All further improvements into this file should be designed in a
+// way satisfying all combinations of [platform, provider, framework]. To achieve
+// this, it is good practice to differentiate as late (deep) as possible in the
+// visitor hierarchy. [platform, provider, framework] matrix is passed into all
+// visitors via the `config` variable.
+
 import {
   GeneratorConfiguration,
   createSourceCodeBuilder
@@ -16,8 +22,10 @@ export const render = (config: GeneratorConfiguration): string => {
   tests = new ForegroundActivityVisitor(tests, indexJsBuilder);
 
   if (config.platform === 'android') {
+    // Use ids, xpath (screen size independent)
     tests = new UserInteractionVisitor(tests, indexJsBuilder);
   } else {
+    // Use touch inputs (screen size dependent)
     tests = new InputAggregateVisitor(tests, indexJsBuilder);
   }
 

@@ -28,5 +28,8 @@ exports.iOS = {
   fullReset: false,
   automationName: 'XCUITest',
   app: undefined,
-  securityToken: undefined // Will be filled before test begins if necessary (only on Perfecto)
+  securityToken: undefined, // Will be filled before test begins if necessary (only on Perfecto)
+  username: undefined, // Will be filled before test begins if necessary (only on Sauce Labs)
+  accessKey: undefined, // Will be filled before test begins if necessary (only on Sauce Labs)
+  deviceOrientation: undefined // Will be filled before test begins if necessary (only on Sauce Labs)
 };

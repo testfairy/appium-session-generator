@@ -1,3 +1,6 @@
+// IMPORTANT : All further improvements into this file should be designed in a
+// [platform, provider, framework]-agnostic manner!
+
 import { UserInteraction } from '../session-types';
 import { TestLineVisitor } from './test-lines-visitor';
 

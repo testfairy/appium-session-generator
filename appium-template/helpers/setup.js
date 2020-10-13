@@ -1,5 +1,8 @@
 require('colors');
 
+// Older Sauce Labs documentations uses different storage location for uploaded app files. Opt-in if necessary.
+const LEGACY_SAUCELABS = false;
+
 var fs = require('fs');
 var path = require('path');
 var propertiesReader = require('properties-reader');
@@ -163,7 +166,8 @@ async function uploadAppToSauceLabs(username, accessKey, region, appPath) {
   let androidPrefix = 'sauce-storage:';
 
   // Hush hush
-  let prefix = appExtension === 'apk' ? androidPrefix : iosPrefix;
+  let prefix =
+    !LEGACY_SAUCELABS || appExtension === 'apk' ? androidPrefix : iosPrefix;
 
   return prefix + appName;
 }

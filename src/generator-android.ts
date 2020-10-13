@@ -1,3 +1,6 @@
+// IMPORTANT : All further improvements into this file should be designed in a
+// [provider, framework]-agnostic manner!
+
 import { SessionData, Test, MAX_EVENTS } from './generator-types';
 import {
   sanitizeInput,

@@ -49,4 +49,4 @@ exports.aws = {
 };
 
 exports.perfecto = findPerfectoHost();
-exports.sauceLabs = findSauceLabsHost();
+exports.saucelabs = findSauceLabsHost();

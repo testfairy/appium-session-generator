@@ -66,8 +66,8 @@ export const getDriverLines = (provider: Provider) => {
     desired.app = await tester.uploadAppToSauceLabs(
       sauceLabsIni.username,
       sauceLabsIni.accessKey,
-      sauceLabsIni.region
-      desired.app,
+      sauceLabsIni.region,
+      desired.app
     );
 
     driver = wd.promiseChainRemote(serverConfig.driverEndpoint);`;
