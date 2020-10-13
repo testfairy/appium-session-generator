@@ -32,21 +32,21 @@ export const sanitizeUserInteraction = (
   }
 
   if (interaction.className && interaction.className.length > 0) {
-    delete interaction.accessibilityClassName; // Not needed if className is known
-    delete interaction.viewTag;
+    delete (interaction as any).accessibilityClassName; // Not needed if className is known
+    delete (interaction as any).viewTag;
   } else {
-    delete interaction.className;
+    delete (interaction as any).className;
 
     let accessibilityClassName = interaction.accessibilityClassName;
     if (accessibilityClassName && accessibilityClassName.length > 0) {
-      delete interaction.viewTag; // Not needed if accessibilityClassName is known
+      delete (interaction as any).viewTag; // Not needed if accessibilityClassName is known
     } else {
-      delete interaction.accessibilityClassName;
+      delete (interaction as any).accessibilityClassName;
     }
   }
 
   if (!interaction.viewTag) {
-    delete interaction.viewTag;
+    delete (interaction as any).viewTag;
   }
 
   if (interaction.viewId) {
@@ -56,9 +56,9 @@ export const sanitizeUserInteraction = (
       interaction.viewId = packageIdPair[1];
     }
 
-    delete interaction.accessibilityClassName; // Not needed if viewId is known
-    delete interaction.viewTag; // Not needed if viewId is known
-    delete interaction.contentDescription; // Not needed if viewId is known
+    delete (interaction as any).accessibilityClassName; // Not needed if viewId is known
+    delete (interaction as any).viewTag; // Not needed if viewId is known
+    delete (interaction as any).contentDescription; // Not needed if viewId is known
   }
 
   let xpath: string = '';

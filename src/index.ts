@@ -10,10 +10,12 @@ import { generateTestLines as generateIOS } from './generator-ios';
 import {
   Provider,
   ProviderConfiguration,
-  PerfectoConfiguration
-} from './test-lines/environment';
+  PerfectoConfiguration,
+  SauceLabsConfiguration,
+  Framework
+} from './environment-types';
 import { GeneratorConfiguration } from './test-lines/test-lines-visitor';
-import { render } from './appium-js-renderer';
+import { render as appiumRender } from './renderers/appium-js-renderer';
 import { cli } from './cli';
 import ini from 'ini';
 
@@ -29,22 +31,20 @@ export const generateAppiumIndexJs = async (
 
   let provider = providerConfig.provider as Provider;
   let isIOS = sessionData.platform === '1';
-  let appiumTest = isIOS
-    ? generateIOS(sessionData)
-    : generateAndroid(sessionData); // TODO : Get rid of this by unifying generate*() functions in a platform-agnostic manner (they are already provider-agnostic)
+  let test = isIOS ? generateIOS(sessionData) : generateAndroid(sessionData); // TODO : Get rid of this by unifying generate*() functions in a platform-agnostic manner (they are already provider-agnostic)
   let config: GeneratorConfiguration = {
-    appiumTest,
+    test,
     platform: isIOS ? 'ios' : 'android',
     provider,
     sessionUrl,
     initialDelay: 5000
   };
 
-  return render(config);
+  return appiumRender(config);
 };
 
-// Call ONLY this if you want to generate an appium project, it will generate its own index.js internally
-export const saveGeneratedAppiumTest = async (
+// Call ONLY this if you want to generate an appium javascript project, it will generate its own index.js internally
+const saveGeneratedAppiumJsTest = async (
   sessionUrl: string,
   providerConfig: ProviderConfiguration,
   sessionData: SessionData,
@@ -60,7 +60,6 @@ export const saveGeneratedAppiumTest = async (
   appiumZip.remove('session/app.zip');
   appiumZip.remove('session/README.md');
   appiumZip.remove('session/sessionData.json');
-  appiumZip.remove('perfecto.ini');
 
   appiumZip.file(
     'index.js',
@@ -88,14 +87,56 @@ export const saveGeneratedAppiumTest = async (
     );
   }
 
+  if (providerConfig.provider === 'saucelabs') {
+    let perfectoConfig = providerConfig as SauceLabsConfiguration;
+
+    appiumZip.file(
+      'saucelabs.ini',
+      ini.encode({
+        SauceLabs: {
+          username: perfectoConfig.username,
+          'access-key': perfectoConfig.accessKey,
+          region: perfectoConfig.region,
+          datacenter: perfectoConfig.datacenter,
+          'device-name': perfectoConfig.deviceName,
+          'device-orientation': perfectoConfig.deviceOrientation,
+          'platform-version': perfectoConfig.platformVersion
+        }
+      })
+    );
+  }
+
   appiumZip.file('session/sessionData.json', JSON.stringify(sessionData));
 
   await saveZipFileAs(outputFilePath, appiumZip);
 };
 
+// Main entry point to this library, 99% of the time you are here for this function
+export const saveGeneratedTest = (
+  framework: Framework,
+  sessionUrl: string,
+  providerConfig: ProviderConfiguration,
+  sessionData: SessionData,
+  apkOrZipFile: BinaryFile,
+  outputFilePath: string
+) => {
+  switch (framework) {
+    case 'appium':
+      return saveGeneratedAppiumJsTest(
+        sessionUrl,
+        providerConfig,
+        sessionData,
+        apkOrZipFile,
+        outputFilePath
+      );
+    default:
+      throw new Error(framework + ' is not supported yet');
+  }
+};
+
 if (isBrowser()) {
   (window as any).generateAppiumIndexJs = generateAppiumIndexJs;
-  (window as any).saveGeneratedAppiumTest = saveGeneratedAppiumTest;
+  (window as any).saveGeneratedTest = saveGeneratedTest;
 } else if (require.main === module) {
-  cli(generateAppiumIndexJs, saveGeneratedAppiumTest); // Hack but works
+  cli(generateAppiumIndexJs, saveGeneratedTest); // Hack but works
 }

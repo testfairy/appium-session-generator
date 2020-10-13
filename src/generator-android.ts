@@ -1,4 +1,4 @@
-import { SessionData, AppiumTest, MAX_EVENTS } from './generator-types';
+import { SessionData, Test, MAX_EVENTS } from './generator-types';
 import {
   sanitizeInput,
   correctScalingAndroid,
@@ -20,7 +20,7 @@ import { createCheckpointTestLine } from './test-lines/checkpoint';
 import { createUserInteractionTestLine } from './test-lines/user-interaction';
 import { createForegroundActivityTestLine } from './test-lines/foreground-activity';
 
-export const generateTestLines = (sessionData: SessionData): AppiumTest => {
+export const generateTestLines = (sessionData: SessionData): Test => {
   let inputIndex = 0;
   let checkpointIndex = 0;
   let userInteractionIndex = 0;

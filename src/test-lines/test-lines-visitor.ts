@@ -1,9 +1,9 @@
-import { Provider, Platform } from './environment';
+import { Provider, Platform } from '../environment-types';
 import { InputTestLine } from './input';
 import { CheckpointTestLine } from './checkpoint';
 import { UserInteractionTestLine } from './user-interaction';
 import { ForegroundActivityTestLine } from './foreground-activity';
-import { AppiumTest } from '../generator-types';
+import { Test } from '../generator-types';
 
 // Mandatory constructor for all test line visitors, must be conformed by the class object
 export interface TestLineVisitorConstructor {
@@ -31,7 +31,7 @@ export interface TestLineVisitor {
 
 // Globals for each test suite
 export type GeneratorConfiguration = {
-  appiumTest: AppiumTest;
+  test: Test;
   platform: Platform;
   provider: Provider;
   sessionUrl: string;
@@ -57,7 +57,7 @@ export const createTestLines = (testLines: TestLine[]): TestLines => {
       visitor.visitInitialDocs(config.sessionUrl);
       visitor.visitImports(config.provider, config.sessionUrl);
       visitor.visitTestBegin(config.platform, config.provider);
-      visitor.visitTestLimits(config.appiumTest.incomplete);
+      visitor.visitTestLimits(config.test.incomplete);
       visitor.visitAppLaunch(config.initialDelay);
 
       result.testLines.forEach((testLine: TestLine) => {
@@ -71,12 +71,12 @@ export const createTestLines = (testLines: TestLine[]): TestLines => {
   return result;
 };
 
-// A small utility to build a javascript string by appending other strings
-export type IndexJsBuilder = {
+// A small utility to build a source code by appending valid strings
+export type SourceCodeBuilder = {
   script: string;
   append(str: string): void;
 };
-export const createIndexJsBuilder = (): IndexJsBuilder => {
+export const createSourceCodeBuilder = (): SourceCodeBuilder => {
   const result = {
     script: '',
     append(str: string): void {
@@ -130,9 +130,9 @@ export const BaseTestLinesVisitor: TestLineVisitorConstructor = class BaseTestLi
 
 // A special implementation of test line visitor which can build strings as it visits test lines
 export class TestLinesAppenderVisitor extends BaseTestLinesVisitor {
-  indexJs: IndexJsBuilder;
+  indexJs: SourceCodeBuilder;
 
-  constructor(visitor: TestLineVisitor | null, indexJs: IndexJsBuilder) {
+  constructor(visitor: TestLineVisitor | null, indexJs: SourceCodeBuilder) {
     super(visitor);
 
     this.indexJs = indexJs;

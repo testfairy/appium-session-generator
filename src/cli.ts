@@ -5,8 +5,10 @@ import { v4 as uuidv4 } from 'uuid';
 import {
   ProviderConfiguration,
   PerfectoConfiguration,
-  DeviceFarmConfiguration
-} from './test-lines/environment';
+  DeviceFarmConfiguration,
+  LocalConfiguration,
+  SauceLabsConfiguration
+} from './environment-types';
 
 // These type erasures prevent circular dependencies between by cli.ts and index.ts
 export type JsGenerator = Function;
@@ -14,7 +16,7 @@ export type ZipGenerator = Function;
 
 export const cli = (
   generateAppiumIndexJs: JsGenerator,
-  saveGeneratedAppiumTest: ZipGenerator
+  saveGeneratedTest: ZipGenerator
 ) => {
   const options = getopts(process.argv.slice(2), {
     alias: {
@@ -23,24 +25,40 @@ export const cli = (
       'apk-url': '',
       'session-url': '',
       provider: '',
+      framework: '',
       'perfecto-host': '',
       'perfecto-security-token': '',
-      'perfecto-device-name': ''
+      'perfecto-device-name': '',
+      'saucelabs-username': '',
+      'saucelabs-access-key': '',
+      'saucelabs-datacenter': '',
+      'saucelabs-device-name': '',
+      'saucelabs-device-orientation': '',
+      'saucelabs-platform-version': ''
     },
     default: {
       zip: false,
       'apk-url': '',
       'session-url': '',
-      provider: 'aws',
+      provider: 'local',
+      framework: 'appium',
       'perfecto-host': '',
       'perfecto-security-token': '',
-      'perfecto-device-name': ''
+      'perfecto-device-name': '',
+      'saucelabs-username': '',
+      'saucelabs-access-key': '',
+      'saucelabs-datacenter': '',
+      'saucelabs-device-name': '',
+      'saucelabs-device-orientation': '',
+      'saucelabs-platform-version': ''
     }
   });
 
   function help() {
     console.log(
-      'usage: node cli.js --session-url=SESSION_URL [--zip] [--apk-url=APK_URL] [--provider=aws|perfecto] [--perfecto-host=PERFECTO_CLOUD_NAME] [--perfecto-security-token=PERFECTO_SECURITY_TOKEN] [--perfecto-device-name=PERFECTO_DEVICE_NAME]'
+      'usage: node cli.js --session-url=SESSION_URL [--zip] [--apk-url=APK_URL] [--provider=local|aws|perfecto|saucelabs] [--framework=appium|flutter-driver|espresso|uiautomator]' +
+        '[--perfecto-host=PERFECTO_CLOUD_NAME] [--perfecto-security-token=PERFECTO_SECURITY_TOKEN] [--perfecto-device-name=PERFECTO_DEVICE_NAME] ' +
+        '[--saucelabs-username=SAUCELABS_USERNAME] [--saucelabs-access-key=SAUCELABS_ACCESS_KEY] [--saucelabs-datacenter=SAUCELABS_DATACENTER] [--saucelabs-device-name=SAUCELABS_DEVICE_NAME] [--saucelabs-device-orientation=SAUCELABS_DEVICE_ORIENTATION] [--ssaucelabs-platform-version=SAUCELABS_PLATFORM_VERSION] '
     );
     console.log('\n  i.e: node cli.js');
     process.exit(0);
@@ -54,11 +72,17 @@ export const cli = (
     help();
   }
 
+  let providerArgumentMissing = !options['provider'];
+  let providerNotSupported =
+    ['local', 'aws', 'perfecto', 'saucelabs'].indexOf(options['provider']) ===
+    -1;
+  let frameworkNotSupported = ['appium'].indexOf(options['framework']) === -1;
   let providerConfig: ProviderConfiguration | null = null;
   if (
     // Exit if provider is not recognized
-    !options['provider'] ||
-    ['aws', 'perfecto'].indexOf(options['provider']) === -1
+    providerArgumentMissing ||
+    providerNotSupported ||
+    frameworkNotSupported
   ) {
     help();
   } else if (
@@ -69,24 +93,51 @@ export const cli = (
       !options['perfecto-device-name'])
   ) {
     help();
+  } else if (
+    // Exit if perfecto configuration is missing
+    options['provider'] === 'saucelabs' &&
+    (!options['saucelabs-username'] ||
+      !options['saucelabs-access-key'] ||
+      !options['saucelabs-datacenter'] ||
+      !options['saucelabs-device-name'] ||
+      !options['saucelabs-device-orientation'] ||
+      !options['saucelabs-platform-version'])
+  ) {
+    help();
   } else {
     // Choose provider configuration
+    let localConfig: LocalConfiguration = { provider: 'local' };
+    let awsConfig: DeviceFarmConfiguration = { provider: 'aws' };
     let perfectoConfig: PerfectoConfiguration = {
       provider: 'perfecto',
       host: options['perfecto-host'],
       securityToken: options['perfecto-security-token'],
       deviceName: options['perfecto-device-name']
     };
-
-    let awsConfig: DeviceFarmConfiguration = { provider: 'aws' };
+    let saucelabsConfig: SauceLabsConfiguration = {
+      provider: 'saucelabs',
+      username: options['saucelabs-username'],
+      accessKey: options['saucelabs-access-key'],
+      region: options['saucelabs-region'],
+      datacenter: options['saucelabs-datacenter'],
+      deviceName: options['saucelabs-device-name'],
+      deviceOrientation: options['saucelabs-device-orientation'],
+      platformVersion: options['saucelabs-platform-version']
+    };
 
     switch (options['provider']) {
       default:
+      case 'local':
+        providerConfig = localConfig;
+        break;
       case 'aws':
         providerConfig = awsConfig;
         break;
       case 'perfecto':
         providerConfig = perfectoConfig;
+        break;
+      case 'saucelabs':
+        providerConfig = saucelabsConfig;
         break;
     }
   }
@@ -112,7 +163,8 @@ export const cli = (
         _res: any,
         apkBuffer: any
       ) {
-        saveGeneratedAppiumTest(
+        saveGeneratedTest(
+          'appium',
           'TODO : pretty url',
           providerConfig as ProviderConfiguration,
           sessionData,

@@ -12,8 +12,8 @@
   },
   "scripts": {
     "start": "tsdx watch",
-    "build": "rm -rf dist; tsdx build --target node && cp -R template dist && cp ./dist/appium-session-generator.cjs.development.js ./dist/cli.js",
-    "test": "cd template; npm i; cd ..; tsdx test",
+    "build": "rm -rf dist; tsdx build --target node && cp -R appium-template dist && cp ./dist/appium-session-generator.cjs.development.js ./dist/cli.js",
+    "test": "cd appium-template; npm i; cd ..; tsdx test",
     "lint": "tsdx lint",
     "prepare": "tsdx build"
   },
@@ -53,7 +53,7 @@
     "node-static": "^0.7.11",
     "opener": "^1.5.1",
     "server-destroy": "^1.0.1",
-    "tsdx": "^0.13.2",
+    "tsdx": "^0.14.1",
     "tslib": "^1.11.1",
     "typescript": "^3.8.3"
   },

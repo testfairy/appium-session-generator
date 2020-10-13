@@ -157,10 +157,10 @@ export const readBinaryFile = async (fileName: string): Promise<BinaryFile> => {
 
 export const buildAppiumZipFile = async (): Promise<JSZip> => {
   if (isBrowser()) {
-    let templateZipBinary = await readBinaryFile('template.zip');
+    let templateZipBinary = await readBinaryFile('appium-template.zip');
     return await JSZip.loadAsync(templateZipBinary);
   } else {
-    return getZipOfFolder('template');
+    return getZipOfFolder('appium-template');
   }
 };
 
