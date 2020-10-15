@@ -24,9 +24,9 @@ export type SessionData = {
   };
 };
 
-// Platform-aware but provider-agnostic test suite, will be
-// visited by visitors to generate provider-aware javascript code
-export type AppiumTest = {
+// Totally agnostic test suite, will be visited by visitors
+// to generate [platform, provider, framework]-aware test code
+export type Test = {
   incomplete: boolean;
   testLines: TestLines;
 };
