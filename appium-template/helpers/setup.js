@@ -167,7 +167,7 @@ async function uploadAppToSauceLabs(username, accessKey, region, appPath) {
 
   // Hush hush
   let prefix =
-    !LEGACY_SAUCELABS || appExtension === 'apk' ? androidPrefix : iosPrefix;
+    (!LEGACY_SAUCELABS || appExtension === 'apk') ? androidPrefix : iosPrefix;
 
   return prefix + appName;
 }
