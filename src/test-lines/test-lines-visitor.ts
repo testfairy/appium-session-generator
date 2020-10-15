@@ -85,7 +85,7 @@ export const createTestLines = (testLines: TestLine[]): TestLines => {
   return result;
 };
 
-// A small utility to build a source code by appending valid strings
+// A small utility to build source code by appending strings
 export type SourceCodeBuilder = {
   script: string;
   append(str: string): void;
@@ -155,17 +155,17 @@ export const BaseTestLinesVisitor: TestLineVisitorConstructor = class BaseTestLi
   }
 };
 
-// A special implementation of test line visitor which can build strings as it visits test lines
+// A special implementation of test line visitor which can build source code as it visits test lines
 export class TestLinesAppenderVisitor extends BaseTestLinesVisitor {
-  indexJs: SourceCodeBuilder;
+  sourceCode: SourceCodeBuilder;
 
   constructor(visitor: TestLineVisitor | null, indexJs: SourceCodeBuilder) {
     super(visitor);
 
-    this.indexJs = indexJs;
+    this.sourceCode = indexJs;
   }
 
   append(str: string): void {
-    this.indexJs.append(str);
+    this.sourceCode.append(str);
   }
 }

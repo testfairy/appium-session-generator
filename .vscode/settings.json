@@ -3,16 +3,21 @@
     "Appender",
     "Automator",
     "EDITME",
+    "Promiseness",
     "Rasterized",
+    "XCUI",
     "datacenter",
     "diegoperini",
     "esnext",
     "jszip",
+    "nexperience",
     "ondemand",
+    "perfectomobile",
     "saucelabs",
     "scrollable",
     "tsdx",
     "tslib",
-    "uiautomator"
+    "uiautomator",
+    "yiewd"
   ]
 }
