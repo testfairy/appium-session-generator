@@ -6,7 +6,7 @@ import { InputTestLine } from './input';
 import { CheckpointTestLine } from './checkpoint';
 import { UserInteractionTestLine } from './user-interaction';
 import { ForegroundActivityTestLine } from './foreground-activity';
-import { Test } from '../generator-types';
+import { SessionMetaData, Test } from '../generator-types';
 
 // Mandatory constructor for all test line visitors, must be conformed by the class object
 export interface TestLineVisitorConstructor {
@@ -18,7 +18,12 @@ export interface TestLineVisitor {
   /* These are visited once per code generation */
   visitInitialDocs(sessionUrl: string): void;
   visitImports(provider: Provider, sessionUrl: string): void;
-  visitTestBegin(platform: Platform, provider: Provider): void;
+  visitTestBegin(
+    platform: Platform,
+    provider: Provider,
+    sessionUrl: string,
+    sessionMetaData: SessionMetaData
+  ): void;
   visitTestLimits(isComplete: boolean): void;
   visitAppLaunch(initialDelay: number): void;
 
@@ -39,6 +44,7 @@ export type GeneratorConfiguration = {
   provider: Provider;
   sessionUrl: string;
   initialDelay: number;
+  sessionMetaData: SessionMetaData;
 };
 
 // Various types of test lines in the timeline
@@ -59,7 +65,12 @@ export const createTestLines = (testLines: TestLine[]): TestLines => {
     accept: (visitor: TestLineVisitor, config: GeneratorConfiguration) => {
       visitor.visitInitialDocs(config.sessionUrl);
       visitor.visitImports(config.provider, config.sessionUrl);
-      visitor.visitTestBegin(config.platform, config.provider);
+      visitor.visitTestBegin(
+        config.platform,
+        config.provider,
+        config.sessionUrl,
+        config.sessionMetaData
+      );
       visitor.visitTestLimits(config.test.incomplete);
       visitor.visitAppLaunch(config.initialDelay);
 
@@ -108,8 +119,18 @@ export const BaseTestLinesVisitor: TestLineVisitorConstructor = class BaseTestLi
   visitImports(provider: Provider, sessionUrl: string) {
     this.visitor?.visitImports(provider, sessionUrl);
   }
-  visitTestBegin(platform: Platform, provider: Provider) {
-    this.visitor?.visitTestBegin(platform, provider);
+  visitTestBegin(
+    platform: Platform,
+    provider: Provider,
+    sessionUrl: string,
+    sessionMetaData: SessionMetaData
+  ) {
+    this.visitor?.visitTestBegin(
+      platform,
+      provider,
+      sessionUrl,
+      sessionMetaData
+    );
   }
   visitTestLimits(isComplete: boolean) {
     this.visitor?.visitTestLimits(isComplete);

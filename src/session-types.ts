@@ -85,6 +85,10 @@ export type UserInteraction = {
   locators: Locator[];
   scrollableParentLocators: Locator[];
   scroll: Scroll;
+  accessibilityLabel: string;
+  accessibilityIdentifier: string;
+  accessibilityHint: string;
+  scrollableParentAccessibilityIdentifier: string;
 
   // Embelishments for code generation
   buttonPressed: boolean;

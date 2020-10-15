@@ -7,15 +7,27 @@ import {
   PerfectoConfiguration,
   DeviceFarmConfiguration,
   LocalConfiguration,
-  SauceLabsConfiguration
+  SauceLabsConfiguration,
+
+  // These are just type-safe string literals for name consistency across the project
+  Appium,
+  FlutterDriver,
+  Local,
+  AWS,
+  Perfecto,
+  SauceLabs
 } from './environment-types';
 
 // These type erasures prevent circular dependencies between by cli.ts and index.ts
 export type JsGenerator = Function;
+export type DartGenerator = Function;
 export type ZipGenerator = Function;
 
+// CLI interface
 export const cli = (
+  // Arguments below are functions injected by index.ts to expose its module API to cli
   generateAppiumIndexJs: JsGenerator,
+  generateFlutterDriverAppTestDart: DartGenerator,
   saveGeneratedTest: ZipGenerator
 ) => {
   const options = getopts(process.argv.slice(2), {
@@ -58,50 +70,60 @@ export const cli = (
     console.log(
       'usage: node cli.js --session-url=SESSION_URL [--zip] [--apk-url=APK_URL] [--provider=local|aws|perfecto|saucelabs] [--framework=appium|flutter-driver|espresso|uiautomator]' +
         '[--perfecto-host=PERFECTO_CLOUD_NAME] [--perfecto-security-token=PERFECTO_SECURITY_TOKEN] [--perfecto-device-name=PERFECTO_DEVICE_NAME] ' +
-        '[--saucelabs-username=SAUCELABS_USERNAME] [--saucelabs-access-key=SAUCELABS_ACCESS_KEY] [--saucelabs-datacenter=SAUCELABS_DATACENTER] [--saucelabs-device-name=SAUCELABS_DEVICE_NAME] [--saucelabs-device-orientation=SAUCELABS_DEVICE_ORIENTATION] [--ssaucelabs-platform-version=SAUCELABS_PLATFORM_VERSION] '
+        '[--saucelabs-username=SAUCELABS_USERNAME] [--saucelabs-access-key=SAUCELABS_ACCESS_KEY] [--saucelabs-datacenter=SAUCELABS_DATACENTER] [--saucelabs-device-name=SAUCELABS_DEVICE_NAME] [--saucelabs-device-orientation=SAUCELABS_DEVICE_ORIENTATION] [--saucelabs-platform-version=SAUCELABS_PLATFORM_VERSION] '
     );
     console.log('\n  i.e: node cli.js');
     process.exit(0);
   }
 
+  // Help
   if (options.help || process.argv.length === 2) {
     help();
   }
 
+  // The most important input for this tool to work, exit if missing
   if (!options['session-url']) {
     help();
   }
 
+  // CLI input validation
   let providerArgumentMissing = !options['provider'];
+
   let providerNotSupported =
-    ['local', 'aws', 'perfecto', 'saucelabs'].indexOf(options['provider']) ===
-    -1;
-  let frameworkNotSupported = ['appium'].indexOf(options['framework']) === -1;
-  let providerConfig: ProviderConfiguration | null = null;
-  if (
-    // Exit if provider is not recognized
-    providerArgumentMissing ||
-    providerNotSupported ||
-    frameworkNotSupported
-  ) {
-    help();
-  } else if (
-    // Exit if perfecto configuration is missing
+    [
+      'local' as Local,
+      'aws' as AWS,
+      'perfecto' as Perfecto,
+      'saucelabs' as SauceLabs
+    ].indexOf(options['provider']) === -1;
+
+  let frameworkNotSupported =
+    ['appium' as Appium, 'flutter-driver' as FlutterDriver].indexOf(
+      options['framework']
+    ) === -1;
+
+  let perfectoInputsMissing =
     options['provider'] === 'perfecto' &&
     (!options['perfecto-host'] ||
       !options['perfecto-security-token'] ||
-      !options['perfecto-device-name'])
-  ) {
-    help();
-  } else if (
-    // Exit if perfecto configuration is missing
+      !options['perfecto-device-name']);
+
+  let saucelabsInputsMissing =
     options['provider'] === 'saucelabs' &&
     (!options['saucelabs-username'] ||
       !options['saucelabs-access-key'] ||
       !options['saucelabs-datacenter'] ||
       !options['saucelabs-device-name'] ||
       !options['saucelabs-device-orientation'] ||
-      !options['saucelabs-platform-version'])
+      !options['saucelabs-platform-version']);
+
+  let providerConfig: ProviderConfiguration | null = null;
+  if (
+    providerArgumentMissing ||
+    providerNotSupported ||
+    frameworkNotSupported ||
+    perfectoInputsMissing ||
+    saucelabsInputsMissing
   ) {
     help();
   } else {
@@ -179,7 +201,19 @@ export const cli = (
     }
 
     if (!options['zip']) {
-      generateAppiumIndexJs(
+      let generate: Function | null = null;
+
+      if (options['framework'] === 'appium') {
+        generate = generateAppiumIndexJs;
+      } else if (options['framework'] === 'flutter-driver') {
+        generate = generateFlutterDriverAppTestDart;
+      } else {
+        generate = () => {
+          throw new Error(options['framework'] + ' not supported!');
+        };
+      }
+
+      generate(
         'TODO : pretty url',
         sessionData,
         providerConfig as ProviderConfiguration

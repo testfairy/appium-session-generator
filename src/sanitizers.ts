@@ -1,3 +1,4 @@
+import { SessionData, SessionMetaData } from 'generator-types';
 import {
   UserInteraction,
   ForegroundActivity,
@@ -228,5 +229,47 @@ export const sanitizeForegroundActivity = (packageName: string) => (
     name: foregroundActivity.name.replace(packageName, ''),
     isLastActionBackButton: false,
     ts: Math.max(0, foregroundActivity.ts)
+  };
+};
+
+// Helper for supporting different kinds of session data json formats
+export const correctSessionDataFromBrowser = (
+  sessionData: SessionData
+): SessionData => {
+  // Create a copy if already conforms to the SessionData type
+  if (sessionData.events) {
+    return JSON.parse(JSON.stringify(sessionData));
+  }
+
+  // Make it conform to the SessionData type we expect
+  let newSessionData: SessionData = {
+    appName: sessionData.appName,
+    platform: sessionData.platform,
+    packageName: sessionData.packageName,
+    options: sessionData.options,
+    events: {
+      inputEvents: (sessionData as any).input,
+      checkpoints: (sessionData as any).checkpoints,
+      userInteractions: (sessionData as any).userInteractions,
+      foregroundActivities: (sessionData as any).foregroundActivities,
+      meta: (sessionData as any).meta
+    }
+  };
+
+  // Create a copy
+  return JSON.parse(JSON.stringify(newSessionData));
+};
+
+export const extractMetaData = (sessionData: SessionData): SessionMetaData => {
+  let isIOS = sessionData.platform === '1';
+
+  return {
+    appName: sessionData.appName,
+    platform: isIOS ? 'ios' : 'android',
+    packageName: sessionData.packageName,
+    options: sessionData.options,
+    events: {
+      meta: JSON.parse(JSON.stringify(sessionData.events.meta))
+    }
   };
 };
