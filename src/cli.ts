@@ -55,12 +55,22 @@ export const cli = (
   });
 
   function help() {
-    console.log(
-      'usage: node cli.js --session-url=SESSION_URL [--zip] [--apk-url=APK_URL] [--provider=local|aws|perfecto|saucelabs] [--framework=appium|flutter-driver|espresso|uiautomator]' +
-        '[--perfecto-host=PERFECTO_CLOUD_NAME] [--perfecto-security-token=PERFECTO_SECURITY_TOKEN] [--perfecto-device-name=PERFECTO_DEVICE_NAME] ' +
-        '[--saucelabs-username=SAUCELABS_USERNAME] [--saucelabs-access-key=SAUCELABS_ACCESS_KEY] [--saucelabs-datacenter=SAUCELABS_DATACENTER] [--saucelabs-device-name=SAUCELABS_DEVICE_NAME] [--saucelabs-device-orientation=SAUCELABS_DEVICE_ORIENTATION] [--ssaucelabs-platform-version=SAUCELABS_PLATFORM_VERSION] '
-    );
-    console.log('\n  i.e: node cli.js');
+    console.log('usage: node cli.js');
+    console.log('    --session-url=SESSION_URL');
+    console.log('    --zip');
+    console.log('    --apk-url=APK_URL');
+    console.log('    --provider=local|aws|perfecto|saucelabs');
+    console.log('    --framework=appium|flutter-driver|espresso|uiautomator');
+    console.log('    --perfecto-host=PERFECTO_CLOUD_NAME');
+    console.log('    --perfecto-security-token=PERFECTO_SECURITY_TOKEN');
+    console.log('    --perfecto-device-name=PERFECTO_DEVICE_NAME');
+    console.log('    --saucelabs-username=SAUCELABS_USERNAME');
+    console.log('    --saucelabs-access-key=SAUCELABS_ACCESS_KEY');
+    console.log('    --saucelabs-datacenter=SAUCELABS_DATACENTER');
+    console.log('    --saucelabs-device-name=SAUCELABS_DEVICE_NAME');
+    console.log('    --saucelabs-device-orientation=SAUCELABS_DEVICE_ORIENTATION');
+    console.log('    --saucelabs-platform-version=SAUCELABS_PLATFORM_VERSION');
+    console.log('');
     process.exit(0);
   }
 
