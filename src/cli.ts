@@ -79,6 +79,7 @@ export const cli = (
   }
 
   if (!options['session-url']) {
+    console.error('Missing --session-url');
     help();
   }
 
@@ -94,6 +95,7 @@ export const cli = (
     providerNotSupported ||
     frameworkNotSupported
   ) {
+    console.error('Framework ' + options['framework'] + ' is not supported');
     help();
   } else if (
     // Exit if perfecto configuration is missing
@@ -102,6 +104,7 @@ export const cli = (
       !options['perfecto-security-token'] ||
       !options['perfecto-device-name'])
   ) {
+    console.error('Perfecto provider is missing host, security-token or device-name');
     help();
   } else if (
     // Exit if perfecto configuration is missing
@@ -113,6 +116,7 @@ export const cli = (
       !options['saucelabs-device-orientation'] ||
       !options['saucelabs-platform-version'])
   ) {
+    console.error('Suacelabs provider is missing username, access-key, datacenter, device-name, device-orientation or platform-version');
     help();
   } else {
     // Choose provider configuration
@@ -153,6 +157,7 @@ export const cli = (
   }
 
   if (options['zip'] && !options['apk-url']) {
+    console.error('--zip requires --apk-url');
     help();
   }
 
