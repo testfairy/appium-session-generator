@@ -66,10 +66,15 @@ const saveGeneratedAppiumJsTest = async (
     generateAppiumIndexJs(sessionUrl, sessionData, providerConfig)
   );
 
+  const zipOptions = {
+    binary: true,
+    compression: 'STORE'
+  };
+
   if (sessionData.platform === '1') {
-    appiumZip.file('session/app.zip', apkOrZipFile);
+    appiumZip.file('session/app.zip', apkOrZipFile, zipOptions);
   } else {
-    appiumZip.file('session/app.apk', apkOrZipFile);
+    appiumZip.file('session/app.apk', apkOrZipFile, zipOptions);
   }
 
   if (providerConfig.provider === 'perfecto') {

@@ -67,6 +67,7 @@ export const cli = (
     console.log('    --saucelabs-username=SAUCELABS_USERNAME');
     console.log('    --saucelabs-access-key=SAUCELABS_ACCESS_KEY');
     console.log('    --saucelabs-datacenter=SAUCELABS_DATACENTER');
+    console.log('    --saucelabs-region=SAUCELABS_REGION');
     console.log('    --saucelabs-device-name=SAUCELABS_DEVICE_NAME');
     console.log('    --saucelabs-device-orientation=SAUCELABS_DEVICE_ORIENTATION');
     console.log('    --saucelabs-platform-version=SAUCELABS_PLATFORM_VERSION');
@@ -173,7 +174,8 @@ export const cli = (
     if (options['zip']) {
       const tmpFilename = '/tmp/appium-generator-' + uuidv4() + '.zip';
 
-      request.get(options['apk-url'], function(
+      const requestOptions: any = {uri: options['apk-url'], encoding: null};
+      request.get(requestOptions, function(
         _err: any,
         _res: any,
         apkBuffer: any
