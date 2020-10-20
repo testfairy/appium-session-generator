@@ -203,6 +203,8 @@ export class UserInteractionVisitor extends TestLinesAppenderVisitor {
     line: UserInteractionTestLine,
     generatedJsLine: string
   ): string {
+    // TODO FIXME: bad mojo bug here!
+    if (`${line.userInteraction.textInScrollableParent}`.indexOf("\n") >= 0) return generatedJsLine;
     generatedJsLine += `
     // TF : ${line.userInteraction.timeString}
     await interactions.scrollToTextByPath('${line.userInteraction.scrollableParentXpath}', '${line.userInteraction.textInScrollableParent}');
