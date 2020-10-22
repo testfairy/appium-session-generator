@@ -67,12 +67,26 @@ export const cli = (
   });
 
   function help() {
+    console.log('usage: node cli.js');
+    console.log('    --session-url=SESSION_URL');
+    console.log('    --zip');
+    console.log('    --apk-url=APK_URL');
+    console.log('    --provider=local|aws|perfecto|saucelabs');
+    console.log('    --framework=appium|flutter-driver|espresso|uiautomator');
+    console.log('    --perfecto-host=PERFECTO_CLOUD_NAME');
+    console.log('    --perfecto-security-token=PERFECTO_SECURITY_TOKEN');
+    console.log('    --perfecto-device-name=PERFECTO_DEVICE_NAME');
+    console.log('    --saucelabs-username=SAUCELABS_USERNAME');
+    console.log('    --saucelabs-access-key=SAUCELABS_ACCESS_KEY');
+    console.log('    --saucelabs-datacenter=SAUCELABS_DATACENTER');
+    console.log('    --saucelabs-region=SAUCELABS_REGION');
+    console.log('    --saucelabs-device-name=SAUCELABS_DEVICE_NAME');
     console.log(
-      'usage: node cli.js --session-url=SESSION_URL [--zip] [--apk-url=APK_URL] [--provider=local|aws|perfecto|saucelabs] [--framework=appium|flutter-driver|espresso|uiautomator]' +
-        '[--perfecto-host=PERFECTO_CLOUD_NAME] [--perfecto-security-token=PERFECTO_SECURITY_TOKEN] [--perfecto-device-name=PERFECTO_DEVICE_NAME] ' +
-        '[--saucelabs-username=SAUCELABS_USERNAME] [--saucelabs-access-key=SAUCELABS_ACCESS_KEY] [--saucelabs-datacenter=SAUCELABS_DATACENTER] [--saucelabs-device-name=SAUCELABS_DEVICE_NAME] [--saucelabs-device-orientation=SAUCELABS_DEVICE_ORIENTATION] [--saucelabs-platform-version=SAUCELABS_PLATFORM_VERSION] '
+      '    --saucelabs-device-orientation=SAUCELABS_DEVICE_ORIENTATION'
     );
-    console.log('\n  i.e: node cli.js');
+    console.log('    --saucelabs-platform-version=SAUCELABS_PLATFORM_VERSION');
+    console.log('');
+
     process.exit(0);
   }
 
@@ -83,6 +97,7 @@ export const cli = (
 
   // The most important input for this tool to work, exit if missing
   if (!options['session-url']) {
+    console.error('Missing --session-url');
     help();
   }
 
@@ -102,29 +117,39 @@ export const cli = (
       options['framework']
     ) === -1;
 
-  let perfectoInputsMissing =
+  let providerConfig: ProviderConfiguration | null = null;
+  if (
+    // Exit if provider is not recognized
+    providerArgumentMissing ||
+    providerNotSupported ||
+    frameworkNotSupported
+  ) {
+    console.error('Framework ' + options['framework'] + ' is not supported');
+    help();
+  } else if (
+    // Exit if perfecto configuration is missing
     options['provider'] === 'perfecto' &&
     (!options['perfecto-host'] ||
       !options['perfecto-security-token'] ||
-      !options['perfecto-device-name']);
-
-  let saucelabsInputsMissing =
+      !options['perfecto-device-name'])
+  ) {
+    console.error(
+      'Perfecto provider is missing host, security-token or device-name'
+    );
+    help();
+  } else if (
+    // Exit if perfecto configuration is missing
     options['provider'] === 'saucelabs' &&
     (!options['saucelabs-username'] ||
       !options['saucelabs-access-key'] ||
       !options['saucelabs-datacenter'] ||
       !options['saucelabs-device-name'] ||
       !options['saucelabs-device-orientation'] ||
-      !options['saucelabs-platform-version']);
-
-  let providerConfig: ProviderConfiguration | null = null;
-  if (
-    providerArgumentMissing ||
-    providerNotSupported ||
-    frameworkNotSupported ||
-    perfectoInputsMissing ||
-    saucelabsInputsMissing
+      !options['saucelabs-platform-version'])
   ) {
+    console.error(
+      'Saucelabs provider is missing username, access-key, datacenter, device-name, device-orientation or platform-version'
+    );
     help();
   } else {
     // Choose provider configuration
@@ -165,6 +190,7 @@ export const cli = (
   }
 
   if (options['zip'] && !options['apk-url']) {
+    console.error('--zip requires --apk-url');
     help();
   }
 
@@ -180,7 +206,8 @@ export const cli = (
     if (options['zip']) {
       const tmpFilename = '/tmp/appium-generator-' + uuidv4() + '.zip';
 
-      request.get(options['apk-url'], function(
+      const requestOptions: any = { uri: options['apk-url'], encoding: null };
+      request.get(requestOptions, function(
         _err: any,
         _res: any,
         apkBuffer: any
