@@ -1413,7 +1413,7 @@
         }
       ],
       "kind": 1,
-      "label": "A \t \" bout 'App",
+      "label": "A \t \" bout \n 'App",
       "viewId": "com.testfairy.samples.drawmefairy:id/about_app",
       "contentDescription": "About app",
       "className": "android.widget.Button",

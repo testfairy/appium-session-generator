@@ -1,4 +1,5 @@
 const wd = require('wd');
+const xmlEscape = require('xml-escape');
 
 exports.packageName = undefined; // Will be filed before test begins
 exports.driver = undefined; // Will be filed before test begins
@@ -13,7 +14,7 @@ exports.begin = function(initialDelay) {
 
 exports.findTextInView = function(text, viewClassName, pure) {
   let result = exports.driver
-    .elementByXPath('//' + viewClassName + "[@text='" + text + "']")
+    .elementByXPath('//' + viewClassName + "[@text='" + xmlEscape(text) + "']")
     .then(function(view) {
       if (!view) {
         throw new Error(
@@ -36,7 +37,7 @@ exports.findViewById = function(viewId, text, viewClassName, pure) {
   let textMatch = '';
 
   if (text && text.length > 0 && idBundle !== text) {
-    textMatch = '.textStartsWith("' + text + '")';
+    textMatch = '.textStartsWith("' + xmlEscape(text) + '")';
   }
 
   let result = exports.driver

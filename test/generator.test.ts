@@ -90,13 +90,14 @@ describe('generator tests', () => {
 
   const buildAppiumZipGenerationTest = (
     providerConfig: ProviderConfiguration,
-    platform: Platform
+    platform: Platform,
+    deleteAfter: boolean = true
   ) => async () => {
     let sessionUrl =
       'https://automatic-tests.testfairy.com/projects/6852543-drawmeafairy/builds/9228222/sessions/4450931346';
     let sessionData = JSON.parse(
       fs.readFileSync(
-        path.resolve('test/session/sessionData-' + platform + '.json'),
+        path.resolve('test/session3/sessionData-' + platform + '.json'),
         { encoding: 'utf8' }
       )
     ) as SessionData;
@@ -109,7 +110,7 @@ describe('generator tests', () => {
       sessionData,
       fs.readFileSync(
         path.resolve(
-          'test/session/app.' + (platform === 'android' ? 'apk' : 'zip')
+          'test/session3/app.' + (platform === 'android' ? 'apk' : 'zip')
         )
       ),
       zipFilePath
@@ -123,12 +124,15 @@ describe('generator tests', () => {
 
     expect(zipFileExists).toBeTruthy();
 
-    fs.unlinkSync(zipFilePath);
+    if (deleteAfter) {
+      fs.unlinkSync(zipFilePath);
+    }
   };
 
   const buildFlutterDriveZipGenerationTest = (
     providerConfig: LocalConfiguration,
-    platform: Platform
+    platform: Platform,
+    deleteAfter: boolean = true
   ) => async () => {
     let sessionUrl =
       'https://automatic-tests.testfairy.com/projects/6852543-drawmeafairy/builds/9228222/sessions/4450931346';
@@ -166,7 +170,9 @@ describe('generator tests', () => {
 
     expect(zipFileExists).toBeTruthy();
 
-    fs.unlinkSync(zipFilePath);
+    if (deleteAfter) {
+      fs.unlinkSync(zipFilePath);
+    }
   };
 
   it(
