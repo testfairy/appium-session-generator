@@ -1,0 +1,1969 @@
+{
+  "appName": "Draw Me A Fairy",
+  "packageName": "com.testfairy.samples.drawmefairy",
+  "memory": [
+    {
+      "pss": 145535,
+      "shared": 12292,
+      "private": 139904,
+      "ts": 2.521
+    }
+  ],
+  "cpu": [
+    {
+      "utime": 163,
+      "threads": 40,
+      "stime": 23,
+      "ts": 2.332
+    },
+    {
+      "utime": 32,
+      "threads": 44,
+      "stime": 7,
+      "ts": 3.331
+    },
+    {
+      "utime": 7,
+      "threads": 44,
+      "stime": 2,
+      "ts": 4.331
+    },
+    {
+      "utime": 29,
+      "threads": 40,
+      "stime": 14,
+      "ts": 5.332
+    },
+    {
+      "utime": 16,
+      "threads": 40,
+      "stime": 10,
+      "ts": 6.332
+    },
+    {
+      "utime": 14,
+      "threads": 38,
+      "stime": 3,
+      "ts": 7.332
+    },
+    {
+      "utime": 6,
+      "threads": 38,
+      "stime": 1,
+      "ts": 8.333
+    },
+    {
+      "utime": 13,
+      "threads": 38,
+      "stime": 6,
+      "ts": 9.333
+    },
+    {
+      "utime": 11,
+      "threads": 38,
+      "stime": 1,
+      "ts": 10.334
+    },
+    {
+      "utime": 16,
+      "threads": 38,
+      "stime": 2,
+      "ts": 11.336
+    }
+  ],
+  "battery": [
+    {
+      "level": 96,
+      "temperature": 253,
+      "health": 2,
+      "scale": 100,
+      "technology": "Li-ion",
+      "present": true,
+      "plugged": 2,
+      "status": 2,
+      "voltage": 4210,
+      "ts": 2.355
+    },
+    {
+      "level": 96,
+      "temperature": 253,
+      "health": 2,
+      "scale": 100,
+      "technology": "Li-ion",
+      "present": true,
+      "plugged": 2,
+      "status": 2,
+      "voltage": 4210,
+      "ts": 5.516
+    },
+    {
+      "level": 96,
+      "temperature": 256,
+      "health": 2,
+      "scale": 100,
+      "technology": "Li-ion",
+      "present": true,
+      "plugged": 2,
+      "status": 2,
+      "voltage": 4217,
+      "ts": 7.426
+    }
+  ],
+  "gps": [],
+  "input": [
+    {
+      "x": 506,
+      "y": 909,
+      "act": 0,
+      "t": 0,
+      "ts": 4.226
+    },
+    {
+      "x": 506,
+      "y": 908,
+      "act": 2,
+      "t": 0,
+      "ts": 4.269
+    },
+    {
+      "x": 506,
+      "y": 908,
+      "act": 2,
+      "t": 0,
+      "ts": 4.273
+    },
+    {
+      "x": 506,
+      "y": 908,
+      "act": 1,
+      "t": 0,
+      "ts": 4.274
+    },
+    {
+      "x": 466,
+      "y": 1064,
+      "act": 0,
+      "t": 0,
+      "ts": 5.273
+    },
+    {
+      "x": 466,
+      "y": 1065,
+      "act": 2,
+      "t": 0,
+      "ts": 5.306
+    },
+    {
+      "x": 466,
+      "y": 1065,
+      "act": 2,
+      "t": 0,
+      "ts": 5.323
+    },
+    {
+      "x": 466,
+      "y": 1065,
+      "act": 2,
+      "t": 0,
+      "ts": 5.356
+    },
+    {
+      "x": 466,
+      "y": 1065,
+      "act": 1,
+      "t": 0,
+      "ts": 5.369
+    }
+  ],
+  "phoneSignal": [],
+  "phoneCalls": [],
+  "networkThroughput": [],
+  "networkAvailability": [],
+  "responsiveness": [
+    {
+      "delay": 1,
+      "ts": 2.5209999084472656
+    },
+    {
+      "delay": 0,
+      "ts": 3.3340001106262207
+    },
+    {
+      "delay": 21,
+      "ts": 4.330999851226807
+    },
+    {
+      "delay": 8,
+      "ts": 5.331999778747559
+    },
+    {
+      "delay": 0,
+      "ts": 6.336999893188477
+    },
+    {
+      "delay": 0,
+      "ts": 7.333000183105469
+    },
+    {
+      "delay": 1,
+      "ts": 8.333999633789062
+    },
+    {
+      "delay": 0,
+      "ts": 9.335000038146973
+    },
+    {
+      "delay": 0,
+      "ts": 10.335000038146973
+    },
+    {
+      "delay": 0,
+      "ts": 11.347000122070312
+    }
+  ],
+  "diskInfo": [
+    {
+      "disksList": [
+        {
+          "path": "/sdcard",
+          "available": 105869705216,
+          "total": 118032510976
+        },
+        {
+          "path": "/mnt/sdcard",
+          "available": 105869705216,
+          "total": 118032510976
+        },
+        {
+          "path": "/",
+          "available": 246304768,
+          "total": 5790150656
+        }
+      ],
+      "ts": 2.524
+    }
+  ],
+  "openGl": [],
+  "logs": [
+    {
+      "level": "V",
+      "tag": "MyApplication",
+      "text": "Remote logging is enabled",
+      "ts": -1603272081.766
+    },
+    {
+      "level": "V",
+      "tag": "MyApplication",
+      "text": "Random UUID for this session is b7fe0a7c-18e3-4e77-b7fc-dc05dabaa5ad",
+      "ts": -1603272081.765999
+    },
+    {
+      "level": "D",
+      "tag": "InputMethodManager",
+      "text": "prepareNavigationBarInfo() DecorView@179098f[MenuActivity]",
+      "ts": 0.256
+    },
+    {
+      "level": "I",
+      "tag": "gralloc",
+      "text": "Arm Module v1.0",
+      "ts": 0.211
+    },
+    {
+      "level": "I",
+      "tag": "ViewRootImpl@8ec550c[MenuActivity]",
+      "text": "MSG_WINDOW_FOCUS_CHANGED 1 1",
+      "ts": 0.241
+    },
+    {
+      "level": "D",
+      "tag": "InputMethodManager",
+      "text": "prepareNavigationBarInfo() DecorView@179098f[MenuActivity]",
+      "ts": 0.241001
+    },
+    {
+      "level": "D",
+      "tag": "InputMethodManager",
+      "text": "getNavigationBarColor() -855310",
+      "ts": 0.241002
+    },
+    {
+      "level": "D",
+      "tag": "InputMethodManager",
+      "text": "prepareNavigationBarInfo() DecorView@179098f[MenuActivity]",
+      "ts": 0.244
+    },
+    {
+      "level": "D",
+      "tag": "InputMethodManager",
+      "text": "getNavigationBarColor() -855310",
+      "ts": 0.244001
+    },
+    {
+      "level": "V",
+      "tag": "InputMethodManager",
+      "text": "Starting input: tba=com.testfairy.samples.drawmefairy ic=null mNaviBarColor -855310 mIsGetNaviBarColorSuccess true , NavVisible : true , NavTrans : false",
+      "ts": 0.244002
+    },
+    {
+      "level": "D",
+      "tag": "InputMethodManager",
+      "text": "startInputInner - Id : 0",
+      "ts": 0.244003
+    },
+    {
+      "level": "I",
+      "tag": "InputMethodManager",
+      "text": "startInputInner - mService.startInputOrWindowGainedFocus",
+      "ts": 0.244004
+    },
+    {
+      "level": "I",
+      "tag": "ViewRootImpl@8ec550c[MenuActivity]",
+      "text": "MSG_RESIZED: frame=(0,0,1440,3040) ci=(0,150,0,0) vi=(0,150,0,0) or=1",
+      "ts": 0.255
+    },
+    {
+      "level": "D",
+      "tag": "InputMethodManager",
+      "text": "startInputInner - Id : 0",
+      "ts": 0.256003
+    },
+    {
+      "level": "D",
+      "tag": "InputMethodManager",
+      "text": "getNavigationBarColor() -855310",
+      "ts": 0.256001
+    },
+    {
+      "level": "D",
+      "tag": "OpenGLRenderer",
+      "text": "makeCurrent EglSurface : 0x0 -> 0x7876df0800",
+      "ts": 0.207
+    },
+    {
+      "level": "D",
+      "tag": "libmdf",
+      "text": "libmdf v2.9.0.0 On 64bit PLATFORM",
+      "ts": 0.435
+    },
+    {
+      "level": "V",
+      "tag": "TESTFAIRYSDK",
+      "text": "Received: {\"status\":\"ok\",\"sessionToken\":\"164515906-6852543-9413336-0-be91710850ca4269bcae4c1f7a1347dc5bfd943b\",\"options\":\"video-quality=medium,screenshot-interval=1,session-length=60m,video,video-quality=medium,logcat,shake,cpu,memory,phone-signal,battery,wifi,anr,viewtree,text-on-screen,user-interactions,event-buffer-size=128,max-shakes-allowed=99,x-invalidate-appbar,x-enable-pixelcopy,request-layout-on-constraint-layout,feedback-on-manual-screenshot,video-rescale=0.5,video-jpeg-quality=0.5\",\"endpointAddress\":\"https://collector-9-lb.testfairy.com/services/\",\"sessionUrl\":\"https://automatic-tests.testfairy.com/projects/6852543-drawmeafairy/builds/9413336/sessions/4459483202\",\"build\":\"9413336\",\"requestAppIcon\":1,\"requestBuildInfo\":1,\"backgroundTimeUntilStopSession\":300000}",
+      "ts": 1.035
+    },
+    {
+      "level": "D",
+      "tag": "TESTFAIRYSDK",
+      "text": "Using https://collector-9-lb.testfairy.com/services/ as our endpoint for events",
+      "ts": 1.043
+    },
+    {
+      "level": "V",
+      "tag": "TESTFAIRYSDK",
+      "text": "Maximum session length is 60 minutes",
+      "ts": 1.045
+    },
+    {
+      "level": "V",
+      "tag": "TESTFAIRYSDK",
+      "text": "Update saved file names with new token (164515906-6852543-9413336-0-be91710850ca4269bcae4c1f7a1347dc5bfd943b)",
+      "ts": 1.047
+    },
+    {
+      "level": "D",
+      "tag": "TESTFAIRYSDK",
+      "text": "Forcing a flush of all 6 events that are in memory",
+      "ts": 1.048
+    },
+    {
+      "level": "D",
+      "tag": "TESTFAIRYSDK",
+      "text": "Starting event uploader background thread",
+      "ts": 1.051
+    },
+    {
+      "level": "D",
+      "tag": "TESTFAIRYSDK",
+      "text": "There are 6 events in memory, sending out a batch of 128",
+      "ts": 1.054
+    },
+    {
+      "level": "D",
+      "tag": "TESTFAIRYSDK",
+      "text": "Registered battery receiver com.testfairy.i.j.a@c75c483 on com.testfairy.samples.drawmefairy.MyApplication@2a96b3d",
+      "ts": 1.065
+    },
+    {
+      "level": "W",
+      "tag": "System",
+      "text": "A resource failed to call close. ",
+      "ts": 1.106
+    },
+    {
+      "level": "W",
+      "tag": "Gralloc3",
+      "text": "mapper 3.x is not supported",
+      "ts": 0.209
+    },
+    {
+      "level": "V",
+      "tag": "InputMethodManager",
+      "text": "Starting input: tba=com.testfairy.samples.drawmefairy ic=null mNaviBarColor -855310 mIsGetNaviBarColorSuccess true , NavVisible : true , NavTrans : false",
+      "ts": 0.256002
+    },
+    {
+      "level": "D",
+      "tag": "OpenGLRenderer",
+      "text": "eglCreateWindowSurface : 0x7876df0800",
+      "ts": 0.202001
+    },
+    {
+      "level": "V",
+      "tag": "TESTFAIRYSDK",
+      "text": "Using TestFairy server endpoint: https://app.testfairy.com/services/",
+      "ts": 0
+    },
+    {
+      "level": "I",
+      "tag": "mali_winsys",
+      "text": "new_window_surface() [1440x3040] return: 0x3000",
+      "ts": 0.202
+    },
+    {
+      "level": "V",
+      "tag": "TESTFAIRYSDK",
+      "text": "Starting new session, com.testfairy.f.n@aa2502b, previous session url = null. 1.11.23",
+      "ts": 0.000001
+    },
+    {
+      "level": "V",
+      "tag": "TESTFAIRYSDK",
+      "text": "Absolute path: /data/user/0/com.testfairy.samples.drawmefairy/files",
+      "ts": 0.007
+    },
+    {
+      "level": "V",
+      "tag": "TESTFAIRYSDK",
+      "text": "No previous screenshot found",
+      "ts": 0.007001
+    },
+    {
+      "level": "V",
+      "tag": "TESTFAIRYSDK",
+      "text": "Absolute path: /data/user/0/com.testfairy.samples.drawmefairy/files",
+      "ts": 0.009
+    },
+    {
+      "level": "D",
+      "tag": "TESTFAIRYSDK",
+      "text": "Found 1 traces",
+      "ts": 0.009001
+    },
+    {
+      "level": "V",
+      "tag": "TESTFAIRYSDK",
+      "text": "Sending testfairy-stacktrace.anonymous.1603272054055",
+      "ts": 0.009002
+    },
+    {
+      "level": "D",
+      "tag": "TESTFAIRYSDK",
+      "text": "Read this from file: '{\"data\":{\"bundleDisplayName\":\"Draw Me A Fairy\",\"frameworks\":\"testfairy-sdk\",\"bundleVersion\":\"187\",\"deviceData\":\"{\\\"product\\\":\\\"beyond1ltexx\\\",\\\"deviceModel\\\":\\\"SM-G973F\\\",\\\"brand\\\":\\\"samsung\\\",\\\"bootloader\\\":\\\"G973FXXS9DTI8\\\",\\\"board\\\":\\\"exynos9820\\\",\\\"deviceId\\\":\\\"QP1A.190711.020\\\",\\\"device\\\":\\\"beyond1\\\",\\\"display\\\":\\\"QP1A.190711.020.G973FXXS9DTI8\\\",\\\"manufacturer\\\":\\\"samsung\\\",\\\"osRelease\\\":\\\"10\\\",\\\"apiLevel\\\":\\\"29\\\",\\\"screenWidth\\\":\\\"1440\\\",\\\"screenHeight\\\":\\\"2891\\\",\\\"screenDensity\\\":\\\"560\\\",\\\"cpuCores\\\":\\\"8\\\",\\\"abi\\\":\\\"arm64-v8a\\\",\\\"abi2\\\":\\\"\\\",\\\"memorySize\\\":\\\"7604072\\\",\\\"osVersion\\\":\\\"4.14.113-19530501\\\",\\\"fingerprint\\\":\\\"samsung\\\\\\/beyond1ltexx\\\\\\/beyond1:10\\\\\\/QP1A.190711.020\\\\\\/G973FXXS9DTI8:user\\\\\\/release-keys\\\",\\\"isRoot\\\":\\\"false\\\",\\\"localeCountry\\\":\\\"US\\\",\\\"localeLanguage\\\":\\\"en\\\"}\",\"installerPackageName\":null,\"bundleIdentifier\":\"com.testfairy.samples.drawmefairy\",\"targetSdkVersion\":\"29\",\"message\":\"Attempt to invoke virtual method 'java.lang.String android.widget.TextView.toString()' on a null object reference\",\"version\":\"2\",\"userId\":\"yellow.dog@demo.com\",\"platform\":\"0\",\"token\":\"SDK-gLeZiE9i\",\"bundleShortVersion\":\"2.2.10\",\"testerId\":null,\"agentVersion\":\"20201015-ae355ec-1.11.23\",\"certificateSignature\":\"3e:c2:e2:b1:95:33:0d:bd:7a:d0:b8:f5:65:91:a6:0d:9f:c8:4d:38\",\"sessionAttributes\":\"{}\",\"stackTrace\":\"java.lang.NullPointerException: Attempt to invoke virtual method 'java.lang.String android.widget.TextView.toString()' on a null object reference\\n\\tat com.testfairy.samples.drawmefairy.CrashActivity$MyCountDownTimer.run(CrashActivity.java:54)\\n\\tat android.os.Handler.handleCallback(Handler.java:883)\\n\\tat android.os.Handler.dispatchMessage(Handler.java:100)\\n\\tat android.os.Looper.loop(Looper.java:237)\\n\\tat android.app.ActivityThread.main(ActivityThread.java:8167)\\n\\tat java.lang.reflect.Method.invoke(Native Method)\\n\\tat com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:496)\\n\\tat com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1100)\\n\",\"isService\":\"0\",\"timestamp\":\"1603272054\",\"guid\":\"59126ef7-14d5-4868-8015-7e1b952cc1af\"}}'",
+      "ts": 0.01
+    },
+    {
+      "level": "D",
+      "tag": "TESTFAIRYSDK",
+      "text": "Sending anonymous crash report from testfairy-stacktrace.anonymous.1603272054055",
+      "ts": 0.010001
+    },
+    {
+      "level": "V",
+      "tag": "TESTFAIRYSDK",
+      "text": "Absolute path: /data/user/0/com.testfairy.samples.drawmefairy/files",
+      "ts": 0.015
+    },
+    {
+      "level": "V",
+      "tag": "TESTFAIRYSDK",
+      "text": "No previous feedback found",
+      "ts": 0.015001
+    },
+    {
+      "level": "D",
+      "tag": "NetworkSecurityConfig",
+      "text": "No Network Security Config specified, using platform default",
+      "ts": 0.031
+    },
+    {
+      "level": "D",
+      "tag": "MenuActivity",
+      "text": "onCreate",
+      "ts": 0.091
+    },
+    {
+      "level": "D",
+      "tag": "MultiWindowDecorSupport",
+      "text": "setCaptionType = 0, DecorView = DecorView@179098f[]",
+      "ts": 0.109002
+    },
+    {
+      "level": "D",
+      "tag": "OpenGLRenderer",
+      "text": "makeCurrent EglSurface : 0x0 -> 0x0",
+      "ts": 0.195
+    },
+    {
+      "level": "D",
+      "tag": "OpenGLRenderer",
+      "text": "createReliableSurface : 0x7905a186c0(0x7905951000)",
+      "ts": 0.178001
+    },
+    {
+      "level": "I",
+      "tag": "ViewRootImpl@8ec550c[MenuActivity]",
+      "text": "Relayout returned: old=(0,0,1440,3040) new=(0,0,1440,3040) req=(1440,3040)0 dur=6 res=0x7 s={true 519784697856} ch=true",
+      "ts": 0.178
+    },
+    {
+      "level": "I",
+      "tag": "ViewRootImpl@8ec550c[MenuActivity]",
+      "text": "setView = com.android.internal.policy.DecorView@179098f TM=true MM=false",
+      "ts": 0.161
+    },
+    {
+      "level": "D",
+      "tag": "TESTFAIRYSDK",
+      "text": "onActivityResumed com.testfairy.samples.drawmefairy.MenuActivity",
+      "ts": 0.139
+    },
+    {
+      "level": "I",
+      "tag": "MultiWindowDecorSupport",
+      "text": "updateCaptionType >> DecorView@179098f[], isFloating: false, isApplication: true, hasWindowDecorCaption: false, hasWindowControllerCallback: true",
+      "ts": 0.109001
+    },
+    {
+      "level": "I",
+      "tag": "MultiWindowDecorSupport",
+      "text": "[INFO] isPopOver = false",
+      "ts": 0.109
+    },
+    {
+      "level": "D",
+      "tag": "PhoneWindow",
+      "text": "forceLight changed to true [] from com.android.internal.policy.PhoneWindow.updateForceLightNavigationBar:4274 com.android.internal.policy.DecorView.updateColorViews:1547 com.android.internal.policy.PhoneWindow.dispatchWindowAttributesChanged:3252 android.view.Window.setFlags:1153 com.android.internal.policy.PhoneWindow.generateLayout:2474 ",
+      "ts": 0.108
+    },
+    {
+      "level": "D",
+      "tag": "TcpOptimizer",
+      "text": "TcpOptimizer-ON",
+      "ts": 0.098
+    },
+    {
+      "level": "D",
+      "tag": "MenuActivity",
+      "text": "onCreate MenuActivity",
+      "ts": 0.094
+    },
+    {
+      "level": "W",
+      "tag": "les.drawmefair",
+      "text": "Accessing hidden field Lcom/android/internal/policy/DecorView;->mWindow:Lcom/android/internal/policy/PhoneWindow; (greylist, reflection, allowed)",
+      "ts": 2.531
+    },
+    {
+      "level": "D",
+      "tag": "TESTFAIRYSDK",
+      "text": "There are 76 events in memory, sending out a batch of 128",
+      "ts": 3.056
+    },
+    {
+      "level": "W",
+      "tag": "System",
+      "text": "A resource failed to call close. ",
+      "ts": 2.59
+    },
+    {
+      "level": "D",
+      "tag": "TESTFAIRYSDK",
+      "text": "Forcing a flush of all 70 events that are in memory",
+      "ts": 2.544001
+    },
+    {
+      "level": "D",
+      "tag": "TESTFAIRYSDK",
+      "text": "Forcing a flush of all 69 events that are in memory",
+      "ts": 2.544
+    },
+    {
+      "level": "D",
+      "tag": "SensorManager",
+      "text": "registerListener :: 1, LSM6DSO Acceleration Sensor, 200000, 0,  ",
+      "ts": 2.278
+    },
+    {
+      "level": "W",
+      "tag": "les.drawmefair",
+      "text": "Accessing hidden field Landroid/view/WindowManagerGlobal;->sDefaultWindowManager:Landroid/view/WindowManagerGlobal; (greylist, reflection, allowed)",
+      "ts": 2.526
+    },
+    {
+      "level": "D",
+      "tag": "TESTFAIRYSDK",
+      "text": "disksList [{\"path\":\"\\/sdcard\",\"available\":105869705216,\"total\":118032510976},{\"path\":\"\\/mnt\\/sdcard\",\"available\":105869705216,\"total\":118032510976},{\"path\":\"\\/\",\"available\":246304768,\"total\":5790150656}]",
+      "ts": 2.524
+    },
+    {
+      "level": "V",
+      "tag": "TESTFAIRYSDK",
+      "text": "Installing hooks",
+      "ts": 2.215
+    },
+    {
+      "level": "D",
+      "tag": "TESTFAIRYSDK",
+      "text": "Successfully sent events from memory over the wire",
+      "ts": 2.018
+    },
+    {
+      "level": "W",
+      "tag": "les.drawmefair",
+      "text": "Accessing hidden field Landroid/view/WindowManagerGlobal;->mViews:Ljava/util/ArrayList; (greylist, reflection, allowed)",
+      "ts": 2.525
+    },
+    {
+      "level": "D",
+      "tag": "InputTransport",
+      "text": "Input channel destroyed: 'ClientS', fd=86",
+      "ts": 4.4
+    },
+    {
+      "level": "D",
+      "tag": "InputMethodManager",
+      "text": "getNavigationBarColor() -855310",
+      "ts": 4.391002
+    },
+    {
+      "level": "D",
+      "tag": "InputMethodManager",
+      "text": "prepareNavigationBarInfo() DecorView@3b80bf0[AboutActivity]",
+      "ts": 4.393
+    },
+    {
+      "level": "D",
+      "tag": "InputMethodManager",
+      "text": "getNavigationBarColor() -855310",
+      "ts": 4.393001
+    },
+    {
+      "level": "V",
+      "tag": "InputMethodManager",
+      "text": "Starting input: tba=com.testfairy.samples.drawmefairy ic=null mNaviBarColor -855310 mIsGetNaviBarColorSuccess true , NavVisible : true , NavTrans : false",
+      "ts": 4.393002
+    },
+    {
+      "level": "I",
+      "tag": "ViewRootImpl@11d8662[AboutActivity]",
+      "text": "MSG_WINDOW_FOCUS_CHANGED 1 1",
+      "ts": 4.391
+    },
+    {
+      "level": "D",
+      "tag": "InputMethodManager",
+      "text": "startInputInner - Id : 0",
+      "ts": 4.393003
+    },
+    {
+      "level": "I",
+      "tag": "InputMethodManager",
+      "text": "startInputInner - mService.startInputOrWindowGainedFocus",
+      "ts": 4.393004
+    },
+    {
+      "level": "I",
+      "tag": "mali_egl",
+      "text": "eglDestroySurface() in",
+      "ts": 4.423001
+    },
+    {
+      "level": "I",
+      "tag": "ViewRootImpl@11d8662[AboutActivity]",
+      "text": "MSG_RESIZED: frame=(0,0,1440,3040) ci=(0,150,0,0) vi=(0,150,0,0) or=1",
+      "ts": 4.408
+    },
+    {
+      "level": "D",
+      "tag": "OpenGLRenderer",
+      "text": "destroyEglSurface : 0x7876df0800",
+      "ts": 4.423
+    },
+    {
+      "level": "I",
+      "tag": "mali_winsys",
+      "text": "delete_surface() [1440x3040] return",
+      "ts": 4.424
+    },
+    {
+      "level": "I",
+      "tag": "mali_egl",
+      "text": "eglDestroySurface() out",
+      "ts": 4.424001
+    },
+    {
+      "level": "E",
+      "tag": "OpenGLRenderer",
+      "text": "ReliableSurface: perform returned an error",
+      "ts": 4.424002
+    },
+    {
+      "level": "W",
+      "tag": "libEGL",
+      "text": "EGLNativeWindowType 0x7905a186d0 disconnect failed",
+      "ts": 4.424003
+    },
+    {
+      "level": "D",
+      "tag": "OpenGLRenderer",
+      "text": "~ReliableSurface : 0x7905a186c0",
+      "ts": 4.424004
+    },
+    {
+      "level": "I",
+      "tag": "ViewRootImpl@8ec550c[MenuActivity]",
+      "text": "Relayout returned: old=(0,0,1440,3040) new=(0,0,1440,3040) req=(1440,3040)8 dur=6 res=0x5 s={false 0} ch=true",
+      "ts": 4.43
+    },
+    {
+      "level": "D",
+      "tag": "TESTFAIRYSDK",
+      "text": "Successfully sent events from memory over the wire",
+      "ts": 4.917
+    },
+    {
+      "level": "D",
+      "tag": "InputMethodManager",
+      "text": "prepareNavigationBarInfo() DecorView@3b80bf0[AboutActivity]",
+      "ts": 4.391001
+    },
+    {
+      "level": "I",
+      "tag": "ViewRootImpl@11d8662[AboutActivity]",
+      "text": "Relayout returned: old=(0,0,1440,3040) new=(0,0,1440,3040) req=(1440,3040)0 dur=8 res=0x7 s={true 515392708608} ch=true",
+      "ts": 4.37
+    },
+    {
+      "level": "D",
+      "tag": "OpenGLRenderer",
+      "text": "makeCurrent EglSurface : 0x7876df0800 -> 0x77ffad1080",
+      "ts": 4.39
+    },
+    {
+      "level": "D",
+      "tag": "TESTFAIRYSDK",
+      "text": "Registered battery receiver com.testfairy.i.j.a@c75c483 on com.testfairy.samples.drawmefairy.AboutActivity@c186957",
+      "ts": 4.339
+    },
+    {
+      "level": "D",
+      "tag": "OpenGLRenderer",
+      "text": "makeCurrent EglSurface : 0x77ffad1080 -> 0x7876df0800",
+      "ts": 4.388
+    },
+    {
+      "level": "D",
+      "tag": "TESTFAIRYSDK",
+      "text": "onActivityPaused com.testfairy.samples.drawmefairy.MenuActivity",
+      "ts": 4.302
+    },
+    {
+      "level": "D",
+      "tag": "AboutActivity",
+      "text": "onCreate AboutActivity",
+      "ts": 4.315
+    },
+    {
+      "level": "D",
+      "tag": "PhoneWindow",
+      "text": "forceLight changed to true [] from com.android.internal.policy.PhoneWindow.updateForceLightNavigationBar:4274 com.android.internal.policy.DecorView.updateColorViews:1547 com.android.internal.policy.PhoneWindow.dispatchWindowAttributesChanged:3252 android.view.Window.setFlags:1153 com.android.internal.policy.PhoneWindow.generateLayout:2474 ",
+      "ts": 4.32
+    },
+    {
+      "level": "I",
+      "tag": "MultiWindowDecorSupport",
+      "text": "[INFO] isPopOver = false",
+      "ts": 4.321
+    },
+    {
+      "level": "I",
+      "tag": "MultiWindowDecorSupport",
+      "text": "updateCaptionType >> DecorView@3b80bf0[], isFloating: false, isApplication: true, hasWindowDecorCaption: false, hasWindowControllerCallback: true",
+      "ts": 4.321001
+    },
+    {
+      "level": "D",
+      "tag": "ScrollView",
+      "text": "initGoToTop",
+      "ts": 4.326
+    },
+    {
+      "level": "D",
+      "tag": "TESTFAIRYSDK",
+      "text": "onActivityResumed com.testfairy.samples.drawmefairy.AboutActivity",
+      "ts": 4.338
+    },
+    {
+      "level": "D",
+      "tag": "MultiWindowDecorSupport",
+      "text": "setCaptionType = 0, DecorView = DecorView@3b80bf0[]",
+      "ts": 4.321002
+    },
+    {
+      "level": "I",
+      "tag": "ViewRootImpl@11d8662[AboutActivity]",
+      "text": "setView = com.android.internal.policy.DecorView@3b80bf0 TM=true MM=false",
+      "ts": 4.348
+    },
+    {
+      "level": "D",
+      "tag": "OpenGLRenderer",
+      "text": "makeCurrent EglSurface : 0x7876df0800 -> 0x77ffad1080",
+      "ts": 4.379
+    },
+    {
+      "level": "D",
+      "tag": "InputMethodManager",
+      "text": "prepareNavigationBarInfo() DecorView@179098f[MenuActivity]",
+      "ts": 4.350001
+    },
+    {
+      "level": "D",
+      "tag": "InputMethodManager",
+      "text": "getNavigationBarColor() -855310",
+      "ts": 4.350002
+    },
+    {
+      "level": "D",
+      "tag": "OpenGLRenderer",
+      "text": "createReliableSurface : 0x77ff871a00(0x77ffcca000)",
+      "ts": 4.370001
+    },
+    {
+      "level": "I",
+      "tag": "mali_winsys",
+      "text": "new_window_surface() [1440x3040] return: 0x3000",
+      "ts": 4.371
+    },
+    {
+      "level": "D",
+      "tag": "OpenGLRenderer",
+      "text": "eglCreateWindowSurface : 0x77ffad1080",
+      "ts": 4.371001
+    },
+    {
+      "level": "D",
+      "tag": "ScrollView",
+      "text": " onsize change changed ",
+      "ts": 4.372
+    },
+    {
+      "level": "I",
+      "tag": "ViewRootImpl@8ec550c[MenuActivity]",
+      "text": "MSG_WINDOW_FOCUS_CHANGED 0 1",
+      "ts": 4.35
+    },
+    {
+      "level": "D",
+      "tag": "InputTransport",
+      "text": "Input channel destroyed: 'ClientS', fd=119",
+      "ts": 5.542
+    },
+    {
+      "level": "I",
+      "tag": "InputMethodManager",
+      "text": "startInputInner - mService.startInputOrWindowGainedFocus",
+      "ts": 5.541001
+    },
+    {
+      "level": "D",
+      "tag": "InputMethodManager",
+      "text": "startInputInner - Id : 0",
+      "ts": 5.541
+    },
+    {
+      "level": "D",
+      "tag": "InputMethodManager",
+      "text": "getNavigationBarColor() -855310",
+      "ts": 5.539002
+    },
+    {
+      "level": "V",
+      "tag": "InputMethodManager",
+      "text": "Starting input: tba=com.testfairy.samples.drawmefairy ic=null mNaviBarColor -855310 mIsGetNaviBarColorSuccess true , NavVisible : true , NavTrans : false",
+      "ts": 5.540002
+    },
+    {
+      "level": "D",
+      "tag": "InputMethodManager",
+      "text": "getNavigationBarColor() -855310",
+      "ts": 5.540001
+    },
+    {
+      "level": "D",
+      "tag": "InputMethodManager",
+      "text": "prepareNavigationBarInfo() DecorView@8e7631a[CrashActivity]",
+      "ts": 5.54
+    },
+    {
+      "level": "I",
+      "tag": "mali_egl",
+      "text": "eglDestroySurface() in",
+      "ts": 5.546001
+    },
+    {
+      "level": "D",
+      "tag": "OpenGLRenderer",
+      "text": "destroyEglSurface : 0x77ffad1080",
+      "ts": 5.546
+    },
+    {
+      "level": "I",
+      "tag": "ViewRootImpl@11d8662[AboutActivity]",
+      "text": "Relayout returned: old=(0,0,1440,3040) new=(0,0,1440,3040) req=(1440,3040)8 dur=9 res=0x5 s={false 0} ch=false",
+      "ts": 5.582
+    },
+    {
+      "level": "I",
+      "tag": "mali_winsys",
+      "text": "delete_surface() [1440x3040] return",
+      "ts": 5.549
+    },
+    {
+      "level": "I",
+      "tag": "mali_egl",
+      "text": "eglDestroySurface() out",
+      "ts": 5.549001
+    },
+    {
+      "level": "E",
+      "tag": "OpenGLRenderer",
+      "text": "ReliableSurface: perform returned an error",
+      "ts": 5.549002
+    },
+    {
+      "level": "W",
+      "tag": "libEGL",
+      "text": "EGLNativeWindowType 0x77ff871a10 disconnect failed",
+      "ts": 5.549003
+    },
+    {
+      "level": "D",
+      "tag": "OpenGLRenderer",
+      "text": "~ReliableSurface : 0x77ff871a00",
+      "ts": 5.549004
+    },
+    {
+      "level": "I",
+      "tag": "ViewRootImpl@11d8662[AboutActivity]",
+      "text": "Relayout returned: old=(0,0,1440,3040) new=(0,0,1440,3040) req=(1440,3040)8 dur=2 res=0x5 s={false 0} ch=true",
+      "ts": 5.552
+    },
+    {
+      "level": "I",
+      "tag": "ViewRootImpl@49a8596[CrashActivity]",
+      "text": "MSG_RESIZED: frame=(0,0,1440,3040) ci=(0,150,0,0) vi=(0,150,0,0) or=1",
+      "ts": 5.554
+    },
+    {
+      "level": "I",
+      "tag": "ViewRootImpl@11d8662[AboutActivity]",
+      "text": "stopped(true) old=false",
+      "ts": 5.564
+    },
+    {
+      "level": "D",
+      "tag": "TESTFAIRYSDK",
+      "text": "onActivityStopped com.testfairy.samples.drawmefairy.AboutActivity",
+      "ts": 5.565
+    },
+    {
+      "level": "I",
+      "tag": "ViewRootImpl@49a8596[CrashActivity]",
+      "text": "MSG_WINDOW_FOCUS_CHANGED 1 1",
+      "ts": 5.539
+    },
+    {
+      "level": "D",
+      "tag": "InputMethodManager",
+      "text": "prepareNavigationBarInfo() DecorView@8e7631a[CrashActivity]",
+      "ts": 5.539001
+    },
+    {
+      "level": "D",
+      "tag": "TESTFAIRYSDK",
+      "text": "onActivityStopped com.testfairy.samples.drawmefairy.MenuActivity",
+      "ts": 5.513001
+    },
+    {
+      "level": "D",
+      "tag": "OpenGLRenderer",
+      "text": "makeCurrent EglSurface : 0x77ffad1080 -> 0x7876bec880",
+      "ts": 5.527
+    },
+    {
+      "level": "D",
+      "tag": "TESTFAIRYSDK",
+      "text": "Registered battery receiver com.testfairy.i.j.a@c75c483 on com.testfairy.samples.drawmefairy.CrashActivity@178603b",
+      "ts": 5.472
+    },
+    {
+      "level": "D",
+      "tag": "TESTFAIRYSDK",
+      "text": "onActivityPaused com.testfairy.samples.drawmefairy.AboutActivity",
+      "ts": 5.403
+    },
+    {
+      "level": "D",
+      "tag": "TESTFAIRYSDK",
+      "text": "Unregistering battery receiver com.testfairy.i.j.a$a@efd6f32 from context com.testfairy.samples.drawmefairy.AboutActivity@c186957",
+      "ts": 5.403001
+    },
+    {
+      "level": "W",
+      "tag": "ActivityThread",
+      "text": "handleWindowVisibility: no activity for token android.os.BinderProxy@c9a140e",
+      "ts": 5.422
+    },
+    {
+      "level": "D",
+      "tag": "PhoneWindow",
+      "text": "forceLight changed to true [] from com.android.internal.policy.PhoneWindow.updateForceLightNavigationBar:4274 com.android.internal.policy.DecorView.updateColorViews:1547 com.android.internal.policy.PhoneWindow.dispatchWindowAttributesChanged:3252 android.view.Window.setFlags:1153 com.android.internal.policy.PhoneWindow.generateLayout:2474 ",
+      "ts": 5.434
+    },
+    {
+      "level": "I",
+      "tag": "MultiWindowDecorSupport",
+      "text": "[INFO] isPopOver = false",
+      "ts": 5.435
+    },
+    {
+      "level": "D",
+      "tag": "OpenGLRenderer",
+      "text": "makeCurrent EglSurface : 0x7876bec880 -> 0x77ffad1080",
+      "ts": 5.521
+    },
+    {
+      "level": "D",
+      "tag": "MultiWindowDecorSupport",
+      "text": "setCaptionType = 0, DecorView = DecorView@8e7631a[]",
+      "ts": 5.436
+    },
+    {
+      "level": "D",
+      "tag": "TESTFAIRYSDK",
+      "text": "onActivityResumed com.testfairy.samples.drawmefairy.CrashActivity",
+      "ts": 5.47
+    },
+    {
+      "level": "I",
+      "tag": "MultiWindowDecorSupport",
+      "text": "updateCaptionType >> DecorView@8e7631a[], isFloating: false, isApplication: true, hasWindowDecorCaption: false, hasWindowControllerCallback: true",
+      "ts": 5.435001
+    },
+    {
+      "level": "I",
+      "tag": "ViewRootImpl@49a8596[CrashActivity]",
+      "text": "setView = com.android.internal.policy.DecorView@8e7631a TM=true MM=false",
+      "ts": 5.477
+    },
+    {
+      "level": "I",
+      "tag": "ViewRootImpl@8ec550c[MenuActivity]",
+      "text": "stopped(true) old=false",
+      "ts": 5.513
+    },
+    {
+      "level": "I",
+      "tag": "ViewRootImpl@49a8596[CrashActivity]",
+      "text": "Relayout returned: old=(0,0,1440,3040) new=(0,0,1440,3040) req=(1440,3040)0 dur=7 res=0x7 s={true 519784513536} ch=true",
+      "ts": 5.493
+    },
+    {
+      "level": "D",
+      "tag": "InputMethodManager",
+      "text": "prepareNavigationBarInfo() DecorView@3b80bf0[AboutActivity]",
+      "ts": 5.514001
+    },
+    {
+      "level": "I",
+      "tag": "ViewRootImpl@11d8662[AboutActivity]",
+      "text": "MSG_WINDOW_FOCUS_CHANGED 0 1",
+      "ts": 5.514
+    },
+    {
+      "level": "D",
+      "tag": "InputMethodManager",
+      "text": "getNavigationBarColor() -855310",
+      "ts": 5.514002
+    },
+    {
+      "level": "D",
+      "tag": "OpenGLRenderer",
+      "text": "makeCurrent EglSurface : 0x77ffad1080 -> 0x7876bec880",
+      "ts": 5.5
+    },
+    {
+      "level": "D",
+      "tag": "OpenGLRenderer",
+      "text": "eglCreateWindowSurface : 0x7876bec880",
+      "ts": 5.494001
+    },
+    {
+      "level": "I",
+      "tag": "mali_winsys",
+      "text": "new_window_surface() [1440x3040] return: 0x3000",
+      "ts": 5.494
+    },
+    {
+      "level": "D",
+      "tag": "OpenGLRenderer",
+      "text": "createReliableSurface : 0x7905944dc0(0x7905924000)",
+      "ts": 5.493001
+    },
+    {
+      "level": "D",
+      "tag": "TESTFAIRYSDK",
+      "text": "Pixel copy timeout",
+      "ts": 6.558
+    },
+    {
+      "level": "W",
+      "tag": "System",
+      "text": "A resource failed to call close. ",
+      "ts": 9.098
+    },
+    {
+      "level": "D",
+      "tag": "TESTFAIRYSDK",
+      "text": "There are 133 events in memory, sending out a batch of 128",
+      "ts": 10.08
+    },
+    {
+      "level": "D",
+      "tag": "TESTFAIRYSDK",
+      "text": "Successfully sent events from memory over the wire",
+      "ts": 11.003
+    },
+    {
+      "level": "W",
+      "tag": "System",
+      "text": "A resource failed to call close. ",
+      "ts": 11.369
+    },
+    {
+      "level": "D",
+      "tag": "AndroidRuntime",
+      "text": "Shutting down VM",
+      "ts": 11.484
+    },
+    {
+      "level": "E",
+      "tag": "AndroidRuntime",
+      "text": "FATAL EXCEPTION: main",
+      "ts": 11.489
+    },
+    {
+      "level": "E",
+      "tag": "AndroidRuntime",
+      "text": "Process: com.testfairy.samples.drawmefairy, PID: 945",
+      "ts": 11.489001
+    },
+    {
+      "level": "E",
+      "tag": "AndroidRuntime",
+      "text": "java.lang.NullPointerException: Attempt to invoke virtual method 'java.lang.String android.widget.TextView.toString()' on a null object reference",
+      "ts": 11.489002
+    }
+  ],
+  "foregroundAppInfo": [],
+  "trackingEvents": [],
+  "platform": "0",
+  "cert": null,
+  "agentVersion": "20201015-ae355ec-1.11.23",
+  "sessionId": 164515906,
+  "meta": [
+    {
+      "type": 27,
+      "method": "setUserId",
+      "ts": -1
+    },
+    {
+      "size": 320,
+      "type": 26,
+      "ts": -1
+    },
+    {
+      "type": 27,
+      "method": "log",
+      "ts": -1
+    },
+    {
+      "type": 10,
+      "ts": 2.222
+    },
+    {
+      "type": 9,
+      "ts": 2.311
+    },
+    {
+      "type": 12,
+      "ts": 2.33
+    },
+    {
+      "type": 36,
+      "level": "I",
+      "text": "Listening touches: 1 windows",
+      "ts": 2.539
+    },
+    {
+      "type": 37,
+      "statusBarHeight": 150,
+      "ts": 2.544
+    },
+    {
+      "type": 36,
+      "level": "I",
+      "text": "Took a screenshot with 1 window, 0 hidden views, time: 131",
+      "ts": 2.699
+    },
+    {
+      "size": 4587,
+      "type": 26,
+      "ts": 2.222
+    },
+    {
+      "type": 36,
+      "level": "I",
+      "text": "Listening touches: 1 windows",
+      "ts": 3.525
+    },
+    {
+      "size": 3891,
+      "type": 26,
+      "ts": 3.056
+    },
+    {
+      "type": 38,
+      "seq": 1,
+      "method": 1,
+      "captureTime": 154,
+      "hashTime": 3,
+      "resizeTime": 58,
+      "compressTime": 9,
+      "rotationTime": 0,
+      "networkTime": 1705,
+      "ts": 4.474
+    },
+    {
+      "type": 36,
+      "level": "I",
+      "text": "Screenshot upload succeeded.",
+      "ts": 4.474001
+    },
+    {
+      "type": 36,
+      "level": "I",
+      "text": "Listening touches: 2 windows",
+      "ts": 4.525
+    },
+    {
+      "type": 36,
+      "level": "I",
+      "text": "Took a screenshot with 1 window, 0 hidden views, time: 100",
+      "ts": 6.911
+    },
+    {
+      "type": 36,
+      "level": "I",
+      "text": "Listening touches: 3 windows",
+      "ts": 6.525
+    },
+    {
+      "type": 36,
+      "level": "I",
+      "text": "Listening touches: 3 windows",
+      "ts": 5.526
+    },
+    {
+      "type": 36,
+      "level": "I",
+      "text": "Screenshot bitmap is empty.",
+      "ts": 6.559
+    },
+    {
+      "type": 36,
+      "level": "I",
+      "text": "Listening touches: 3 windows",
+      "ts": 7.525
+    },
+    {
+      "type": 38,
+      "seq": 2,
+      "method": 1,
+      "captureTime": 112,
+      "hashTime": 7,
+      "resizeTime": 73,
+      "compressTime": 8,
+      "rotationTime": 0,
+      "networkTime": 905,
+      "ts": 7.904
+    },
+    {
+      "type": 36,
+      "level": "I",
+      "text": "Screenshot upload succeeded.",
+      "ts": 7.904001
+    },
+    {
+      "type": 36,
+      "level": "I",
+      "text": "Listening touches: 3 windows",
+      "ts": 8.525
+    },
+    {
+      "type": 36,
+      "level": "I",
+      "text": "Took a screenshot with 1 window, 0 hidden views, time: 104",
+      "ts": 9.169
+    },
+    {
+      "type": 36,
+      "level": "I",
+      "text": "Listening touches: 3 windows",
+      "ts": 9.525
+    },
+    {
+      "type": 38,
+      "seq": 3,
+      "method": 1,
+      "captureTime": 116,
+      "hashTime": 26,
+      "resizeTime": 36,
+      "compressTime": 7,
+      "rotationTime": 0,
+      "networkTime": 962,
+      "ts": 10.2
+    },
+    {
+      "type": 36,
+      "level": "I",
+      "text": "Screenshot upload succeeded.",
+      "ts": 10.200001
+    },
+    {
+      "size": 1292,
+      "type": 26,
+      "ts": 9.238
+    },
+    {
+      "type": 36,
+      "level": "I",
+      "text": "Listening touches: 3 windows",
+      "ts": 10.526
+    },
+    {
+      "type": 36,
+      "level": "I",
+      "text": "Took a screenshot with 1 window, 0 hidden views, time: 111",
+      "ts": 11.432
+    }
+  ],
+  "startedActivities": [],
+  "networkRequests": [],
+  "encryptedLogs": null,
+  "foregroundActivities": [
+    {
+      "name": "com.testfairy.samples.drawmefairy.MyApplication",
+      "ts": -1
+    },
+    {
+      "name": "com.testfairy.samples.drawmefairy.MenuActivity",
+      "ts": -1
+    },
+    {
+      "name": "com.testfairy.samples.drawmefairy.AboutActivity",
+      "ts": 4.338
+    },
+    {
+      "name": "com.testfairy.samples.drawmefairy.CrashActivity",
+      "ts": 5.47
+    }
+  ],
+  "wifi": [],
+  "checkpoints": [],
+  "userInteractions": [
+    {
+      "locators": [
+        {
+          "kind": "xpath",
+          "value": "//android.widget.RelativeLayout[1]/android.widget.Button[3]"
+        }
+      ],
+      "kind": 1,
+      "label": "About App",
+      "viewId": "com.testfairy.samples.drawmefairy:id/about_app",
+      "contentDescription": "About app",
+      "className": "android.widget.Button",
+      "accessibilityClassName": "android.widget.Button",
+      "viewTag": "",
+      "isIdMissing": false,
+      "isEditText": false,
+      "isScrollView": false,
+      "isListView": false,
+      "isRecyclerView": false,
+      "ts": 4.227
+    },
+    {
+      "locators": [
+        {
+          "kind": "xpath",
+          "value": "//android.widget.ScrollView[1]/android.widget.RelativeLayout[1]/android.widget.Button[5]"
+        }
+      ],
+      "scrollableParentLocators": [
+        {
+          "kind": "xpath",
+          "value": "//android.widget.ScrollView[1]"
+        }
+      ],
+      "kind": 1,
+      "label": "Crash This App",
+      "viewId": "com.testfairy.samples.drawmefairy:id/crash_button",
+      "contentDescription": "Crash app button",
+      "className": "android.widget.Button",
+      "accessibilityClassName": "android.widget.Button",
+      "viewTag": "",
+      "isIdMissing": false,
+      "isEditText": false,
+      "isScrollView": false,
+      "isListView": false,
+      "isRecyclerView": false,
+      "ts": 5.273
+    }
+  ],
+  "videos": [],
+  "viewtree": [
+    {
+      "seq": 1,
+      "viewNode": {
+        "children": [
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "children": [],
+                            "name": "class android.widget.ImageView",
+                            "visibility": "VISIBLE",
+                            "x": 0,
+                            "y": 150,
+                            "width": 1440,
+                            "height": 1178,
+                            "contentDescription": "",
+                            "id": "com.testfairy.samples.drawmefairy:id/menu_logo",
+                            "alpha": 1,
+                            "focusable": false,
+                            "enabled": true
+                          },
+                          {
+                            "children": [],
+                            "name": "class android.widget.Button",
+                            "visibility": "VISIBLE",
+                            "x": 0,
+                            "y": 1328,
+                            "width": 1440,
+                            "height": 178,
+                            "contentDescription": "Open from gallery",
+                            "id": "com.testfairy.samples.drawmefairy:id/from_gallery",
+                            "alpha": 1,
+                            "focusable": true,
+                            "enabled": true,
+                            "text": "Open From Gallery"
+                          },
+                          {
+                            "children": [],
+                            "name": "class android.widget.Button",
+                            "visibility": "VISIBLE",
+                            "x": 0,
+                            "y": 1506,
+                            "width": 1440,
+                            "height": 178,
+                            "contentDescription": "Open blank canvas",
+                            "id": "com.testfairy.samples.drawmefairy:id/blank_canvas",
+                            "alpha": 1,
+                            "focusable": true,
+                            "enabled": true,
+                            "text": "Open Blank Canvas"
+                          },
+                          {
+                            "children": [],
+                            "name": "class android.widget.Button",
+                            "visibility": "VISIBLE",
+                            "x": 0,
+                            "y": 1684,
+                            "width": 1440,
+                            "height": 178,
+                            "contentDescription": "About app",
+                            "id": "com.testfairy.samples.drawmefairy:id/about_app",
+                            "alpha": 1,
+                            "focusable": true,
+                            "enabled": true,
+                            "text": "About App"
+                          },
+                          {
+                            "children": [],
+                            "name": "class android.widget.TextView",
+                            "visibility": "VISIBLE",
+                            "x": 18,
+                            "y": 168,
+                            "width": 321,
+                            "height": 47,
+                            "contentDescription": "",
+                            "id": "com.testfairy.samples.drawmefairy:id/version",
+                            "alpha": 1,
+                            "focusable": false,
+                            "enabled": true,
+                            "text": "Version: 187 - 2.2.10"
+                          }
+                        ],
+                        "name": "class android.widget.RelativeLayout",
+                        "visibility": "VISIBLE",
+                        "x": 0,
+                        "y": 150,
+                        "width": 1440,
+                        "height": 2890,
+                        "contentDescription": "",
+                        "id": "",
+                        "alpha": 1,
+                        "focusable": false,
+                        "enabled": true
+                      }
+                    ],
+                    "name": "class android.widget.FrameLayout",
+                    "visibility": "VISIBLE",
+                    "x": 0,
+                    "y": 150,
+                    "width": 1440,
+                    "height": 2890,
+                    "contentDescription": "",
+                    "id": "android:id/content",
+                    "alpha": 1,
+                    "focusable": false,
+                    "enabled": true
+                  }
+                ],
+                "name": "class android.widget.LinearLayout",
+                "visibility": "VISIBLE",
+                "x": 0,
+                "y": 0,
+                "width": 1440,
+                "height": 3040,
+                "contentDescription": "",
+                "id": "",
+                "alpha": 1,
+                "focusable": false,
+                "enabled": true
+              },
+              {
+                "children": [],
+                "name": "class android.view.View",
+                "visibility": "VISIBLE",
+                "x": 0,
+                "y": 0,
+                "width": 1440,
+                "height": 150,
+                "contentDescription": "",
+                "id": "android:id/statusBarBackground",
+                "alpha": 1,
+                "focusable": false,
+                "enabled": true
+              }
+            ],
+            "name": "class com.android.internal.policy.DecorView",
+            "visibility": "VISIBLE",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 3040,
+            "contentDescription": "",
+            "id": "",
+            "alpha": 1,
+            "focusable": false,
+            "enabled": true
+          }
+        ],
+        "name": "app",
+        "width": 1440,
+        "height": 3040
+      },
+      "ts": 2.769
+    },
+    {
+      "seq": 2,
+      "viewNode": {
+        "children": [
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "children": [],
+                            "name": "class android.widget.TextView",
+                            "visibility": "VISIBLE",
+                            "x": 199,
+                            "y": 1366,
+                            "width": 1042,
+                            "height": 140,
+                            "contentDescription": "",
+                            "id": "",
+                            "alpha": 1,
+                            "focusable": false,
+                            "enabled": true,
+                            "text": "This App will crash in :"
+                          },
+                          {
+                            "children": [],
+                            "name": "class android.widget.TextView",
+                            "visibility": "VISIBLE",
+                            "x": 671,
+                            "y": 1576,
+                            "width": 98,
+                            "height": 233,
+                            "contentDescription": "",
+                            "id": "com.testfairy.samples.drawmefairy:id/timer",
+                            "alpha": 1,
+                            "focusable": false,
+                            "enabled": true,
+                            "text": "3"
+                          }
+                        ],
+                        "name": "class android.widget.RelativeLayout",
+                        "visibility": "VISIBLE",
+                        "x": 0,
+                        "y": 346,
+                        "width": 1440,
+                        "height": 2694,
+                        "contentDescription": "",
+                        "id": "",
+                        "alpha": 1,
+                        "focusable": false,
+                        "enabled": true
+                      }
+                    ],
+                    "name": "class android.widget.FrameLayout",
+                    "visibility": "VISIBLE",
+                    "x": 0,
+                    "y": 346,
+                    "width": 1440,
+                    "height": 2694,
+                    "contentDescription": "",
+                    "id": "android:id/content",
+                    "alpha": 1,
+                    "focusable": false,
+                    "enabled": true
+                  },
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "children": [],
+                            "name": "class android.widget.TextView",
+                            "visibility": "VISIBLE",
+                            "x": 56,
+                            "y": 201,
+                            "width": 435,
+                            "height": 93,
+                            "contentDescription": "",
+                            "id": "",
+                            "alpha": 1,
+                            "focusable": false,
+                            "enabled": true,
+                            "text": "Crash Activity"
+                          },
+                          {
+                            "children": [],
+                            "name": "class android.widget.ActionMenuView",
+                            "visibility": "VISIBLE",
+                            "x": 1440,
+                            "y": 248,
+                            "width": 0,
+                            "height": 0,
+                            "contentDescription": "",
+                            "id": "",
+                            "alpha": 1,
+                            "focusable": false,
+                            "enabled": true
+                          }
+                        ],
+                        "name": "class android.widget.Toolbar",
+                        "visibility": "VISIBLE",
+                        "x": 0,
+                        "y": 150,
+                        "width": 1440,
+                        "height": 196,
+                        "contentDescription": "",
+                        "id": "android:id/action_bar",
+                        "alpha": 1,
+                        "focusable": false,
+                        "enabled": true
+                      }
+                    ],
+                    "name": "class com.android.internal.widget.ActionBarContainer",
+                    "visibility": "VISIBLE",
+                    "x": 0,
+                    "y": 150,
+                    "width": 1440,
+                    "height": 196,
+                    "contentDescription": "",
+                    "id": "android:id/action_bar_container",
+                    "alpha": 1,
+                    "focusable": false,
+                    "enabled": true
+                  }
+                ],
+                "name": "class com.android.internal.widget.ActionBarOverlayLayout",
+                "visibility": "VISIBLE",
+                "x": 0,
+                "y": 0,
+                "width": 1440,
+                "height": 3040,
+                "contentDescription": "",
+                "id": "android:id/decor_content_parent",
+                "alpha": 1,
+                "focusable": false,
+                "enabled": true
+              },
+              {
+                "children": [],
+                "name": "class android.view.View",
+                "visibility": "VISIBLE",
+                "x": 0,
+                "y": 0,
+                "width": 1440,
+                "height": 150,
+                "contentDescription": "",
+                "id": "android:id/statusBarBackground",
+                "alpha": 1,
+                "focusable": false,
+                "enabled": true
+              }
+            ],
+            "name": "class com.android.internal.policy.DecorView",
+            "visibility": "VISIBLE",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 3040,
+            "contentDescription": "",
+            "id": "",
+            "alpha": 1,
+            "focusable": false,
+            "enabled": true
+          }
+        ],
+        "name": "app",
+        "width": 1440,
+        "height": 3040
+      },
+      "ts": 6.999
+    },
+    {
+      "seq": 3,
+      "viewNode": {
+        "children": [
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "children": [],
+                            "name": "class android.widget.TextView",
+                            "visibility": "VISIBLE",
+                            "x": 199,
+                            "y": 1366,
+                            "width": 1042,
+                            "height": 140,
+                            "contentDescription": "",
+                            "id": "",
+                            "alpha": 1,
+                            "focusable": false,
+                            "enabled": true,
+                            "text": "This App will crash in :"
+                          },
+                          {
+                            "children": [],
+                            "name": "class android.widget.TextView",
+                            "visibility": "VISIBLE",
+                            "x": 671,
+                            "y": 1576,
+                            "width": 98,
+                            "height": 233,
+                            "contentDescription": "",
+                            "id": "com.testfairy.samples.drawmefairy:id/timer",
+                            "alpha": 1,
+                            "focusable": false,
+                            "enabled": true,
+                            "text": "1"
+                          }
+                        ],
+                        "name": "class android.widget.RelativeLayout",
+                        "visibility": "VISIBLE",
+                        "x": 0,
+                        "y": 346,
+                        "width": 1440,
+                        "height": 2694,
+                        "contentDescription": "",
+                        "id": "",
+                        "alpha": 1,
+                        "focusable": false,
+                        "enabled": true
+                      }
+                    ],
+                    "name": "class android.widget.FrameLayout",
+                    "visibility": "VISIBLE",
+                    "x": 0,
+                    "y": 346,
+                    "width": 1440,
+                    "height": 2694,
+                    "contentDescription": "",
+                    "id": "android:id/content",
+                    "alpha": 1,
+                    "focusable": false,
+                    "enabled": true
+                  },
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "children": [],
+                            "name": "class android.widget.TextView",
+                            "visibility": "VISIBLE",
+                            "x": 56,
+                            "y": 201,
+                            "width": 435,
+                            "height": 93,
+                            "contentDescription": "",
+                            "id": "",
+                            "alpha": 1,
+                            "focusable": false,
+                            "enabled": true,
+                            "text": "Crash Activity"
+                          },
+                          {
+                            "children": [],
+                            "name": "class android.widget.ActionMenuView",
+                            "visibility": "VISIBLE",
+                            "x": 1440,
+                            "y": 248,
+                            "width": 0,
+                            "height": 0,
+                            "contentDescription": "",
+                            "id": "",
+                            "alpha": 1,
+                            "focusable": false,
+                            "enabled": true
+                          }
+                        ],
+                        "name": "class android.widget.Toolbar",
+                        "visibility": "VISIBLE",
+                        "x": 0,
+                        "y": 150,
+                        "width": 1440,
+                        "height": 196,
+                        "contentDescription": "",
+                        "id": "android:id/action_bar",
+                        "alpha": 1,
+                        "focusable": false,
+                        "enabled": true
+                      }
+                    ],
+                    "name": "class com.android.internal.widget.ActionBarContainer",
+                    "visibility": "VISIBLE",
+                    "x": 0,
+                    "y": 150,
+                    "width": 1440,
+                    "height": 196,
+                    "contentDescription": "",
+                    "id": "android:id/action_bar_container",
+                    "alpha": 1,
+                    "focusable": false,
+                    "enabled": true
+                  }
+                ],
+                "name": "class com.android.internal.widget.ActionBarOverlayLayout",
+                "visibility": "VISIBLE",
+                "x": 0,
+                "y": 0,
+                "width": 1440,
+                "height": 3040,
+                "contentDescription": "",
+                "id": "android:id/decor_content_parent",
+                "alpha": 1,
+                "focusable": false,
+                "enabled": true
+              },
+              {
+                "children": [],
+                "name": "class android.view.View",
+                "visibility": "VISIBLE",
+                "x": 0,
+                "y": 0,
+                "width": 1440,
+                "height": 150,
+                "contentDescription": "",
+                "id": "android:id/statusBarBackground",
+                "alpha": 1,
+                "focusable": false,
+                "enabled": true
+              }
+            ],
+            "name": "class com.android.internal.policy.DecorView",
+            "visibility": "VISIBLE",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 3040,
+            "contentDescription": "",
+            "id": "",
+            "alpha": 1,
+            "focusable": false,
+            "enabled": true
+          }
+        ],
+        "name": "app",
+        "width": 1440,
+        "height": 3040
+      },
+      "ts": 9.238
+    }
+  ],
+  "options": "video-quality=medium,screenshot-interval=1,session-length=60m,video,video-quality=medium,logcat,shake,cpu,memory,phone-signal,battery,wifi,anr,viewtree,text-on-screen,user-interactions,event-buffer-size=128,max-shakes-allowed=99,x-invalidate-appbar,x-enable-pixelcopy,request-layout-on-constraint-layout,feedback-on-manual-screenshot,video-rescale=0.5,video-jpeg-quality=0.5",
+  "audioEvents": null
+}
