@@ -4,7 +4,7 @@ import path from 'path';
 import JSZip from 'jszip';
 
 import {
-  generateFlutterDriverAppTestDart,
+  // generateFlutterDriverAppTestDart,
   generateAppiumIndexJs,
   saveGeneratedTest
 } from '../src/index';
@@ -73,7 +73,7 @@ describe('generator tests', () => {
       'https://automatic-tests.testfairy.com/projects/6852543-drawmeafairy/builds/9228222/sessions/4450931346';
     let sessionData = JSON.parse(
       fs.readFileSync(
-        path.resolve('test/session3/sessionData-' + platform + '.json'),
+        path.resolve('test/session/sessionData-' + platform + '.json'),
         { encoding: 'utf8' }
       )
     ) as SessionData;
@@ -96,7 +96,7 @@ describe('generator tests', () => {
       'https://automatic-tests.testfairy.com/projects/6852543-drawmeafairy/builds/9228222/sessions/4450931346';
     let sessionData = JSON.parse(
       fs.readFileSync(
-        path.resolve('test/session3/sessionData-' + platform + '.json'),
+        path.resolve('test/session/sessionData-' + platform + '.json'),
         { encoding: 'utf8' }
       )
     ) as SessionData;
@@ -109,7 +109,7 @@ describe('generator tests', () => {
       sessionData,
       fs.readFileSync(
         path.resolve(
-          'test/session3/app.' + (platform === 'android' ? 'apk' : 'zip')
+          'test/session/app.' + (platform === 'android' ? 'apk' : 'zip')
         )
       ),
       zipFilePath
@@ -141,13 +141,13 @@ describe('generator tests', () => {
     let zipFilePath = path.resolve('flutter-driver.zip');
 
     // Debug helper, have no other purpose
-    console.log(
-      await generateFlutterDriverAppTestDart(
-        sessionUrl,
-        sessionData,
-        providerConfig
-      )
-    );
+    // console.log(
+    //   await generateFlutterDriverAppTestDart(
+    //     sessionUrl,
+    //     sessionData,
+    //     providerConfig
+    //   )
+    // );
 
     await saveGeneratedTest(
       'flutter-driver',
