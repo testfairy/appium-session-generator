@@ -148,7 +148,7 @@ export const cli = (
       !options['saucelabs-platform-version'])
   ) {
     console.error(
-      'Saucelabs provider is missing username, access-key, datacenter, device-name, device-orientation or platform-version'
+      'Sauce Labs provider is missing username, access-key, datacenter, device-name, device-orientation or platform-version'
     );
     help();
   } else {
