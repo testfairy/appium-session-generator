@@ -1,4 +1,5 @@
 import { SessionData, SessionMetaData } from 'generator-types';
+import jsStringEscape from 'js-string-escape';
 import {
   UserInteraction,
   ForegroundActivity,
@@ -6,8 +7,17 @@ import {
   Event,
   KeyInput,
   TouchInput,
-  MetaEvent
+  MetaEvent,
+  Locator
 } from './session-types';
+
+const escape = (str: string | null | undefined): string => {
+  if (str) {
+    return jsStringEscape(str);
+  }
+
+  return str as string;
+};
 
 export const addTimeString = (event: Event) => {
   let timeString = new Date(event.ts * 1000).toISOString().substr(11, 8);
@@ -119,9 +129,29 @@ export const sanitizeUserInteraction = (
     buttonDoublePressed: interaction.kind === 9,
     viewScrolled: interaction.kind === 11 && viewScrolled,
     textFieldGainedFocus,
-    xpath,
-    scrollableParentXpath,
-    textBeforeFocusLoss
+    className: escape(interaction.className),
+    accessibilityClassName: escape(interaction.className),
+    viewTag: escape(interaction.viewTag),
+    label: escape(interaction.label),
+    contentDescription: escape(interaction.contentDescription),
+    xpath: escape(xpath),
+    scrollableParentXpath: escape(scrollableParentXpath),
+    textInScrollableParent: escape(interaction.textInScrollableParent),
+    textBeforeFocusLoss: escape(textBeforeFocusLoss),
+    accessibilityLabel: escape(interaction.accessibilityLabel),
+    accessibilityIdentifier: escape(interaction.accessibilityIdentifier),
+    accessibilityHint: escape(interaction.accessibilityHint),
+    scrollableParentAccessibilityIdentifier: escape(
+      interaction.scrollableParentAccessibilityIdentifier
+    ),
+    locators: interaction.locators.map(
+      (l: Locator): Locator => {
+        return {
+          kind: l.kind,
+          value: escape(l.value)
+        };
+      }
+    )
   };
 };
 

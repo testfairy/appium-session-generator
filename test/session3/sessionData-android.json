@@ -1413,7 +1413,7 @@
         }
       ],
       "kind": 1,
-      "label": "About App",
+      "label": "A \t \" bout 'App",
       "viewId": "com.testfairy.samples.drawmefairy:id/about_app",
       "contentDescription": "About app",
       "className": "android.widget.Button",
@@ -1440,7 +1440,7 @@
         }
       ],
       "kind": 1,
-      "label": "Crash This App",
+      "label": "Crash \nThis App",
       "viewId": "com.testfairy.samples.drawmefairy:id/crash_button",
       "contentDescription": "Crash app button",
       "className": "android.widget.Button",
