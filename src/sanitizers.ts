@@ -1,3 +1,5 @@
+import { SessionData, SessionMetaData } from 'generator-types';
+import jsStringEscape from 'js-string-escape';
 import {
   UserInteraction,
   ForegroundActivity,
@@ -5,8 +7,17 @@ import {
   Event,
   KeyInput,
   TouchInput,
-  MetaEvent
+  MetaEvent,
+  Locator
 } from './session-types';
+
+const escape = (str: string | null | undefined): string => {
+  if (str) {
+    return jsStringEscape(str);
+  }
+
+  return str as string;
+};
 
 export const addTimeString = (event: Event) => {
   let timeString = new Date(event.ts * 1000).toISOString().substr(11, 8);
@@ -118,9 +129,29 @@ export const sanitizeUserInteraction = (
     buttonDoublePressed: interaction.kind === 9,
     viewScrolled: interaction.kind === 11 && viewScrolled,
     textFieldGainedFocus,
-    xpath,
-    scrollableParentXpath,
-    textBeforeFocusLoss
+    className: escape(interaction.className),
+    accessibilityClassName: escape(interaction.className),
+    viewTag: escape(interaction.viewTag),
+    label: escape(interaction.label),
+    contentDescription: escape(interaction.contentDescription),
+    xpath: escape(xpath),
+    scrollableParentXpath: escape(scrollableParentXpath),
+    textInScrollableParent: escape(interaction.textInScrollableParent),
+    textBeforeFocusLoss: escape(textBeforeFocusLoss),
+    accessibilityLabel: escape(interaction.accessibilityLabel),
+    accessibilityIdentifier: escape(interaction.accessibilityIdentifier),
+    accessibilityHint: escape(interaction.accessibilityHint),
+    scrollableParentAccessibilityIdentifier: escape(
+      interaction.scrollableParentAccessibilityIdentifier
+    ),
+    locators: interaction.locators.map(
+      (l: Locator): Locator => {
+        return {
+          kind: l.kind,
+          value: escape(l.value)
+        };
+      }
+    )
   };
 };
 
@@ -228,5 +259,47 @@ export const sanitizeForegroundActivity = (packageName: string) => (
     name: foregroundActivity.name.replace(packageName, ''),
     isLastActionBackButton: false,
     ts: Math.max(0, foregroundActivity.ts)
+  };
+};
+
+// Helper for supporting different kinds of session data json formats
+export const correctSessionDataFromBrowser = (
+  sessionData: SessionData
+): SessionData => {
+  // Create a copy if already conforms to the SessionData type
+  if (sessionData.events) {
+    return JSON.parse(JSON.stringify(sessionData));
+  }
+
+  // Make it conform to the SessionData type we expect
+  let newSessionData: SessionData = {
+    appName: sessionData.appName,
+    platform: sessionData.platform,
+    packageName: sessionData.packageName,
+    options: sessionData.options,
+    events: {
+      inputEvents: (sessionData as any).input,
+      checkpoints: (sessionData as any).checkpoints,
+      userInteractions: (sessionData as any).userInteractions,
+      foregroundActivities: (sessionData as any).foregroundActivities,
+      meta: (sessionData as any).meta
+    }
+  };
+
+  // Create a copy
+  return JSON.parse(JSON.stringify(newSessionData));
+};
+
+export const extractMetaData = (sessionData: SessionData): SessionMetaData => {
+  let isIOS = sessionData.platform === '1';
+
+  return {
+    appName: sessionData.appName,
+    platform: isIOS ? 'ios' : 'android',
+    packageName: sessionData.packageName,
+    options: sessionData.options,
+    events: {
+      meta: JSON.parse(JSON.stringify(sessionData.events.meta))
+    }
   };
 };

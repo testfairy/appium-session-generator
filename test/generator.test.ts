@@ -3,16 +3,20 @@ import path from 'path';
 
 import JSZip from 'jszip';
 
-import { generateAppiumIndexJs, saveGeneratedTest } from '../src/index';
+import {
+  // generateFlutterDriverAppTestDart,
+  generateAppiumIndexJs,
+  saveGeneratedTest
+} from '../src/index';
 import { buildAppiumZipFile } from '../src/file-system';
 import { SessionData } from '../src/generator-types';
 import {
   Platform,
   ProviderConfiguration,
   LocalConfiguration,
-  DeviceFarmConfiguration,
   PerfectoConfiguration,
-  SauceLabsConfiguration
+  SauceLabsConfiguration,
+  DeviceFarmConfiguration
 } from '../src/environment-types';
 
 describe('generator tests', () => {
@@ -79,20 +83,21 @@ describe('generator tests', () => {
       providerConfig
     );
 
-    console.log(indexJs);
+    // console.log(indexJs);
 
     expect(indexJs).toBeDefined();
   };
 
   const buildAppiumZipGenerationTest = (
     providerConfig: ProviderConfiguration,
-    platform: Platform
+    platform: Platform,
+    deleteAfter: boolean = true
   ) => async () => {
     let sessionUrl =
       'https://automatic-tests.testfairy.com/projects/6852543-drawmeafairy/builds/9228222/sessions/4450931346';
     let sessionData = JSON.parse(
       fs.readFileSync(
-        path.resolve('test/session/sessionData-' + platform + '.json'),
+        path.resolve('test/session3/sessionData-' + platform + '.json'),
         { encoding: 'utf8' }
       )
     ) as SessionData;
@@ -105,10 +110,10 @@ describe('generator tests', () => {
       sessionData,
       fs.readFileSync(
         path.resolve(
-          'test/session/app.' + (platform === 'android' ? 'apk' : 'zip')
+          'test/session3/app.' + (platform === 'android' ? 'apk' : 'zip')
         )
       ),
-      path.resolve('appium.zip')
+      zipFilePath
     );
 
     let zipFileExists = await new Promise(function(resolve) {
@@ -119,7 +124,55 @@ describe('generator tests', () => {
 
     expect(zipFileExists).toBeTruthy();
 
-    fs.unlinkSync(zipFilePath);
+    if (deleteAfter) {
+      fs.unlinkSync(zipFilePath);
+    }
+  };
+
+  const buildFlutterDriveZipGenerationTest = (
+    providerConfig: LocalConfiguration,
+    platform: Platform,
+    deleteAfter: boolean = true
+  ) => async () => {
+    let sessionUrl =
+      'https://automatic-tests.testfairy.com/projects/6852543-drawmeafairy/builds/9228222/sessions/4450931346';
+    let sessionData = JSON.parse(
+      fs.readFileSync(
+        path.resolve('test/session/sessionData-' + platform + '.json'),
+        { encoding: 'utf8' }
+      )
+    ) as SessionData;
+    let zipFilePath = path.resolve('flutter-driver.zip');
+
+    // Debug helper, have no other purpose
+    // console.log(
+    //   await generateFlutterDriverAppTestDart(
+    //     sessionUrl,
+    //     sessionData,
+    //     providerConfig
+    //   )
+    // );
+
+    await saveGeneratedTest(
+      'flutter-driver',
+      sessionUrl,
+      providerConfig,
+      sessionData,
+      null, // Flutter doesn't need an apk/zip
+      zipFilePath
+    );
+
+    let zipFileExists = await new Promise(function(resolve) {
+      fs.exists(zipFilePath, function(exists) {
+        resolve(exists);
+      });
+    });
+
+    expect(zipFileExists).toBeTruthy();
+
+    if (deleteAfter) {
+      fs.unlinkSync(zipFilePath);
+    }
   };
 
   it(
@@ -170,5 +223,15 @@ describe('generator tests', () => {
   it(
     'should generate an appium.zip for Sauce Labs and save it to project root for a given session on iOS',
     buildAppiumZipGenerationTest(saucelabsIOSConfig, 'ios')
+  );
+
+  it(
+    'should generate an flutter-driver.zip for local and save it to project root for a given session on Android',
+    buildFlutterDriveZipGenerationTest(localConfig, 'android')
+  );
+
+  it(
+    'should generate an flutter-driver.zip for local and save it to project root for a given session on iOS',
+    buildFlutterDriveZipGenerationTest(localConfig, 'ios')
   );
 });

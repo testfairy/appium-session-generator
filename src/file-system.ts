@@ -164,6 +164,15 @@ export const buildAppiumZipFile = async (): Promise<JSZip> => {
   }
 };
 
+export const buildFlutterDriverZipFile = async (): Promise<JSZip> => {
+  if (isBrowser()) {
+    let templateZipBinary = await readBinaryFile('flutter-driver.zip');
+    return await JSZip.loadAsync(templateZipBinary);
+  } else {
+    return getZipOfFolder('flutter-driver-template');
+  }
+};
+
 export const saveZipFileAs = async (fileName: string, zip: JSZip) => {
   if (isBrowser()) {
     await zip

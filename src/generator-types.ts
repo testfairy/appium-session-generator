@@ -1,3 +1,4 @@
+import { Platform } from 'environment-types';
 import {
   Input,
   Checkpoint,
@@ -12,7 +13,7 @@ export const MAX_EVENTS = 10000;
 // Test input
 export type SessionData = {
   appName: string;
-  platform: string;
+  platform: string; // This is '0' or '1', similar to TestFairy db
   packageName: string;
   options: string;
   events: {
@@ -24,37 +25,20 @@ export type SessionData = {
   };
 };
 
+// Test input without the events, sanitized
+export type SessionMetaData = {
+  appName: string;
+  platform: Platform; // This is 'ios' or 'android', to be type-safe
+  packageName: string;
+  options: string;
+  events: {
+    meta: MetaEvent[];
+  };
+};
+
 // Totally agnostic test suite, will be visited by visitors
 // to generate [platform, provider, framework]-aware test code
 export type Test = {
   incomplete: boolean;
   testLines: TestLines;
-};
-
-// Helper for supporting different kinds of session data json formats
-export const correctSessionDataFromBrowser = (
-  sessionData: SessionData
-): SessionData => {
-  // Create a copy if already conforms to the SessionData type
-  if (sessionData.events) {
-    return JSON.parse(JSON.stringify(sessionData));
-  }
-
-  // Make it conform to the SessionData type we expect
-  let newSessionData: SessionData = {
-    appName: sessionData.appName,
-    platform: sessionData.platform,
-    packageName: sessionData.packageName,
-    options: sessionData.options,
-    events: {
-      inputEvents: (sessionData as any).input,
-      checkpoints: (sessionData as any).checkpoints,
-      userInteractions: (sessionData as any).userInteractions,
-      foregroundActivities: (sessionData as any).foregroundActivities,
-      meta: (sessionData as any).meta
-    }
-  };
-
-  // Create a copy
-  return JSON.parse(JSON.stringify(newSessionData));
 };

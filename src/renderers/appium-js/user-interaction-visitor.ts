@@ -203,14 +203,20 @@ export class UserInteractionVisitor extends TestLinesAppenderVisitor {
     line: UserInteractionTestLine,
     generatedJsLine: string
   ): string {
-    // TODO FIXME: bad mojo bug here!
-    if (`${line.userInteraction.textInScrollableParent}`.indexOf("\n") >= 0) return generatedJsLine;
-    generatedJsLine += `
+    if (line.userInteraction.textInScrollableParent) {
+      generatedJsLine += `
     // TF : ${line.userInteraction.timeString}
     await interactions.scrollToTextByPath('${line.userInteraction.scrollableParentXpath}', '${line.userInteraction.textInScrollableParent}');
     await interactions.scrollToTextByPath('${line.userInteraction.scrollableParentXpath}', '${line.userInteraction.label}');
     console.log("\\nTF : Scrolled to ${line.userInteraction.label}, time: ${line.userInteraction.timeString}\\n".magenta.underline);
 `;
+    } else {
+      generatedJsLine += `
+    // TF : ${line.userInteraction.timeString}
+    await interactions.scrollToTextByPath('${line.userInteraction.scrollableParentXpath}', '${line.userInteraction.label}');
+    console.log("\\nTF : Scrolled to ${line.userInteraction.label}, time: ${line.userInteraction.timeString}\\n".magenta.underline);
+`;
+    }
 
     return generatedJsLine;
   }

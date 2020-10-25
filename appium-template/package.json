@@ -9,11 +9,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "selenium-webdriver": "^3.0.0-beta-3",
-    "wd-bridge": "0.0.2",
-    "yiewd": "^0.6.0",
     "properties-reader": "^2.0.0",
-    "uuid": "^8.3.0"
+    "selenium-webdriver": "^3.0.0-beta-3",
+    "uuid": "^8.3.0",
+    "wd-bridge": "0.0.2",
+    "xml-escape": "^1.1.0",
+    "yiewd": "^0.6.0"
   },
   "devDependencies": {
     "chai": "^2.2.0",

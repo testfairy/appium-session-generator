@@ -7,15 +7,27 @@ import {
   PerfectoConfiguration,
   DeviceFarmConfiguration,
   LocalConfiguration,
-  SauceLabsConfiguration
+  SauceLabsConfiguration,
+
+  // These are just type-safe string literals for name consistency across the project
+  Appium,
+  FlutterDriver,
+  Local,
+  AWS,
+  Perfecto,
+  SauceLabs
 } from './environment-types';
 
 // These type erasures prevent circular dependencies between by cli.ts and index.ts
 export type JsGenerator = Function;
+export type DartGenerator = Function;
 export type ZipGenerator = Function;
 
+// CLI interface
 export const cli = (
+  // Arguments below are functions injected by index.ts to expose its module API to cli
   generateAppiumIndexJs: JsGenerator,
+  generateFlutterDriverAppTestDart: DartGenerator,
   saveGeneratedTest: ZipGenerator
 ) => {
   const options = getopts(process.argv.slice(2), {
@@ -69,26 +81,42 @@ export const cli = (
     console.log('    --saucelabs-datacenter=SAUCELABS_DATACENTER');
     console.log('    --saucelabs-region=SAUCELABS_REGION');
     console.log('    --saucelabs-device-name=SAUCELABS_DEVICE_NAME');
-    console.log('    --saucelabs-device-orientation=SAUCELABS_DEVICE_ORIENTATION');
+    console.log(
+      '    --saucelabs-device-orientation=SAUCELABS_DEVICE_ORIENTATION'
+    );
     console.log('    --saucelabs-platform-version=SAUCELABS_PLATFORM_VERSION');
     console.log('');
+
     process.exit(0);
   }
 
+  // Help
   if (options.help || process.argv.length === 2) {
     help();
   }
 
+  // The most important input for this tool to work, exit if missing
   if (!options['session-url']) {
     console.error('Missing --session-url');
     help();
   }
 
+  // CLI input validation
   let providerArgumentMissing = !options['provider'];
+
   let providerNotSupported =
-    ['local', 'aws', 'perfecto', 'saucelabs'].indexOf(options['provider']) ===
-    -1;
-  let frameworkNotSupported = ['appium'].indexOf(options['framework']) === -1;
+    [
+      'local' as Local,
+      'aws' as AWS,
+      'perfecto' as Perfecto,
+      'saucelabs' as SauceLabs
+    ].indexOf(options['provider']) === -1;
+
+  let frameworkNotSupported =
+    ['appium' as Appium, 'flutter-driver' as FlutterDriver].indexOf(
+      options['framework']
+    ) === -1;
+
   let providerConfig: ProviderConfiguration | null = null;
   if (
     // Exit if provider is not recognized
@@ -105,7 +133,9 @@ export const cli = (
       !options['perfecto-security-token'] ||
       !options['perfecto-device-name'])
   ) {
-    console.error('Perfecto provider is missing host, security-token or device-name');
+    console.error(
+      'Perfecto provider is missing host, security-token or device-name'
+    );
     help();
   } else if (
     // Exit if perfecto configuration is missing
@@ -117,7 +147,9 @@ export const cli = (
       !options['saucelabs-device-orientation'] ||
       !options['saucelabs-platform-version'])
   ) {
-    console.error('Suacelabs provider is missing username, access-key, datacenter, device-name, device-orientation or platform-version');
+    console.error(
+      'Sauce Labs provider is missing username, access-key, datacenter, device-name, device-orientation or platform-version'
+    );
     help();
   } else {
     // Choose provider configuration
@@ -174,7 +206,7 @@ export const cli = (
     if (options['zip']) {
       const tmpFilename = '/tmp/appium-generator-' + uuidv4() + '.zip';
 
-      const requestOptions: any = {uri: options['apk-url'], encoding: null};
+      const requestOptions: any = { uri: options['apk-url'], encoding: null };
       request.get(requestOptions, function(
         _err: any,
         _res: any,
@@ -196,7 +228,19 @@ export const cli = (
     }
 
     if (!options['zip']) {
-      generateAppiumIndexJs(
+      let generate: Function | null = null;
+
+      if (options['framework'] === 'appium') {
+        generate = generateAppiumIndexJs;
+      } else if (options['framework'] === 'flutter-driver') {
+        generate = generateFlutterDriverAppTestDart;
+      } else {
+        generate = () => {
+          throw new Error(options['framework'] + ' not supported!');
+        };
+      }
+
+      generate(
         'TODO : pretty url',
         sessionData,
         providerConfig as ProviderConfiguration
