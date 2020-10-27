@@ -20,7 +20,7 @@ import { render as appiumRender } from './renderers/appium-js-renderer';
 import { render as flutterRender } from './renderers/flutter-driver-dart2-renderer';
 import { cli } from './cli';
 import ini from 'ini';
-import { correctSessionDataFromBrowser, extractMetaData } from 'sanitizers';
+import { correctSessionDataFromBrowser, extractMetaData } from './sanitizers';
 
 // Private API
 

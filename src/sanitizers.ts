@@ -1,4 +1,4 @@
-import { SessionData, SessionMetaData } from 'generator-types';
+import { SessionData, SessionMetaData } from './generator-types';
 import jsStringEscape from 'js-string-escape';
 import {
   UserInteraction,
