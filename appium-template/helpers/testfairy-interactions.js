@@ -36,7 +36,7 @@ exports.findViewById = function(viewId, text, viewClassName, pure) {
   let idBundle = exports.packageName + ':id/' + viewId;
   let textMatch = '';
 
-  if (text && text.length > 0 && idBundle !== text) {
+  if (text && text.length > 0 && idBundle !== text && viewClassName != "android.widget.ImageButton") {
     textMatch = '.textStartsWith("' + xmlEscape(text) + '")';
   }
 
