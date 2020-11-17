@@ -299,7 +299,7 @@ export const extractMetaData = (sessionData: SessionData): SessionMetaData => {
     packageName: sessionData.packageName,
     options: sessionData.options,
     events: {
-      meta: JSON.parse(JSON.stringify(sessionData.events.meta))
+      meta: JSON.parse(JSON.stringify(sessionData.events.meta || []))
     }
   };
 };
