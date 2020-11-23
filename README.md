@@ -8,28 +8,21 @@ It was bootstrapped with [TSDX](https://github.com/jaredpalmer/tsdx).
 
 Below is a list of commands you can run to build or test this library.
 
-### `npm build` or `yarn build`
+`npm build`
 
 Bundles the package to the `dist-*` folders for deployment. Currently supports node and browsers.
 
 The package is optimized and bundled with Rollup into multiple formats (CommonJS, UMD, and ES Module).
 
-### `npm run build-node` or `yarn run build-node`
+`npm run build-node`
 
 Bundles the package to `dist-node` for Node deployment.
 
-### `npm run build-browser` or `yarn run build-browser`
-
-Bundles the package to `dist-browser` for browser deployment. 
-
-### `npm test` or `yarn test`
+`npm test`
 
 Runs the test watcher (Jest) to test the generator in node and browser.
 
-### `npm run test-node` or `yarn run test-node`
+`npm run test-node`
 
 Runs the test watcher (Jest) to test the generator in node.
 
-### `npm run test-browser` or `yarn run test-browser`
-
-Runs the test watcher (Jest) to test the generator in browser.
