@@ -23,6 +23,15 @@ export type JsGenerator = Function;
 export type DartGenerator = Function;
 export type ZipGenerator = Function;
 
+const getUrlWithoutParameters = (url: string): string => {
+	const p = url.indexOf("?");
+	return p > 0 ? url.substring(0, p) : url;
+}
+
+const getSessionUrlFromApiUrl = (url: string): string => {
+	return getUrlWithoutParameters(url).replace("/api/1/projects/", "/projects/");
+}
+
 // CLI interface
 export const cli = (
   // Arguments below are functions injected by index.ts to expose its module API to cli
@@ -203,6 +212,8 @@ export const cli = (
     const sessionData = json.session;
     sessionData.options = '';
 
+    const sessionUrl = getSessionUrlFromApiUrl(options['session-url']);
+
     if (options['zip']) {
       const tmpFilename = '/tmp/appium-generator-' + uuidv4() + '.zip';
 
@@ -214,7 +225,7 @@ export const cli = (
       ) {
         saveGeneratedTest(
           'appium',
-          'TODO : pretty url',
+          sessionUrl,
           providerConfig as ProviderConfiguration,
           sessionData,
           apkBuffer,
@@ -241,7 +252,7 @@ export const cli = (
       }
 
       generate(
-        'TODO : pretty url',
+        sessionUrl,
         sessionData,
         providerConfig as ProviderConfiguration
       ).then((response: any) => {
