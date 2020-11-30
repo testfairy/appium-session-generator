@@ -141,7 +141,9 @@ export const sanitizeUserInteraction = (
     accessibilityLabel: escape(interaction.accessibilityLabel),
     accessibilityIdentifier: escape(interaction.accessibilityIdentifier),
     accessibilityHint: escape(interaction.accessibilityHint),
-    scrollableParentAccessibilityIdentifier: escape(interaction.scrollableParentAccessibilityIdentifier),
+    scrollableParentAccessibilityIdentifier: escape(
+      interaction.scrollableParentAccessibilityIdentifier
+    ),
     locators: (interaction.locators || []).map(
       (l: Locator): Locator => {
         return {

@@ -1,0 +1,4338 @@
+{
+  "appName": "Draw Me A Fairy",
+  "packageName": "draw.me.fairy",
+  "memory": [
+    {
+      "pss": 87120,
+      "shared": 12144,
+      "private": 72276,
+      "ts": 1.373
+    }
+  ],
+  "cpu": [
+    {
+      "utime": 53,
+      "threads": 28,
+      "stime": 10,
+      "ts": 1.295
+    },
+    {
+      "utime": 48,
+      "threads": 30,
+      "stime": 9,
+      "ts": 2.297
+    },
+    {
+      "utime": 46,
+      "threads": 30,
+      "stime": 6,
+      "ts": 3.297
+    },
+    {
+      "utime": 12,
+      "threads": 30,
+      "stime": 4,
+      "ts": 4.298
+    },
+    {
+      "utime": 27,
+      "threads": 26,
+      "stime": 3,
+      "ts": 5.301
+    },
+    {
+      "utime": 3,
+      "threads": 26,
+      "stime": 0,
+      "ts": 6.299
+    },
+    {
+      "utime": 80,
+      "threads": 27,
+      "stime": 13,
+      "ts": 7.299
+    },
+    {
+      "utime": 13,
+      "threads": 32,
+      "stime": 1,
+      "ts": 8.301
+    },
+    {
+      "utime": 2,
+      "threads": 32,
+      "stime": 0,
+      "ts": 9.302
+    },
+    {
+      "utime": 35,
+      "threads": 33,
+      "stime": 8,
+      "ts": 10.302
+    },
+    {
+      "utime": 6,
+      "threads": 33,
+      "stime": 0,
+      "ts": 11.303
+    },
+    {
+      "utime": 2,
+      "threads": 33,
+      "stime": 0,
+      "ts": 12.307
+    },
+    {
+      "utime": 31,
+      "threads": 33,
+      "stime": 9,
+      "ts": 13.306
+    },
+    {
+      "utime": 11,
+      "threads": 33,
+      "stime": 2,
+      "ts": 14.312
+    },
+    {
+      "utime": 2,
+      "threads": 33,
+      "stime": 0,
+      "ts": 15.313
+    },
+    {
+      "utime": 24,
+      "threads": 33,
+      "stime": 2,
+      "ts": 16.314
+    },
+    {
+      "utime": 20,
+      "threads": 33,
+      "stime": 5,
+      "ts": 17.316
+    },
+    {
+      "utime": 2,
+      "threads": 33,
+      "stime": 0,
+      "ts": 18.317
+    },
+    {
+      "utime": 27,
+      "threads": 33,
+      "stime": 4,
+      "ts": 19.316
+    },
+    {
+      "utime": 23,
+      "threads": 33,
+      "stime": 5,
+      "ts": 20.318
+    },
+    {
+      "utime": 1,
+      "threads": 33,
+      "stime": 0,
+      "ts": 21.319
+    },
+    {
+      "utime": 26,
+      "threads": 33,
+      "stime": 8,
+      "ts": 22.32
+    },
+    {
+      "utime": 6,
+      "threads": 33,
+      "stime": 0,
+      "ts": 23.322
+    },
+    {
+      "utime": 9,
+      "threads": 33,
+      "stime": 3,
+      "ts": 24.322
+    }
+  ],
+  "battery": [
+    {
+      "level": 3,
+      "temperature": 303,
+      "health": 2,
+      "scale": 100,
+      "technology": "Li-ion",
+      "present": true,
+      "plugged": 0,
+      "status": 3,
+      "voltage": 3576,
+      "ts": 1.306
+    },
+    {
+      "level": 3,
+      "temperature": 303,
+      "health": 2,
+      "scale": 100,
+      "technology": "Li-ion",
+      "present": true,
+      "plugged": 0,
+      "status": 3,
+      "voltage": 3576,
+      "ts": 3.187
+    },
+    {
+      "level": 3,
+      "temperature": 303,
+      "health": 2,
+      "scale": 100,
+      "technology": "Li-ion",
+      "present": true,
+      "plugged": 0,
+      "status": 3,
+      "voltage": 3576,
+      "ts": 6.887
+    }
+  ],
+  "gps": [],
+  "input": [
+    {
+      "x": 465,
+      "y": 626,
+      "act": 0,
+      "t": 0,
+      "ts": 2.764
+    },
+    {
+      "x": 465,
+      "y": 626,
+      "act": 2,
+      "t": 0,
+      "ts": 2.777
+    },
+    {
+      "x": 465,
+      "y": 626,
+      "act": 2,
+      "t": 0,
+      "ts": 2.811
+    },
+    {
+      "x": 465,
+      "y": 626,
+      "act": 2,
+      "t": 0,
+      "ts": 2.827
+    },
+    {
+      "x": 465,
+      "y": 626,
+      "act": 2,
+      "t": 0,
+      "ts": 2.844
+    },
+    {
+      "x": 465,
+      "y": 626,
+      "act": 2,
+      "t": 0,
+      "ts": 2.86
+    },
+    {
+      "x": 465,
+      "y": 626,
+      "act": 1,
+      "t": 0,
+      "ts": 2.863
+    },
+    {
+      "x": 406,
+      "y": 442,
+      "act": 0,
+      "t": 0,
+      "ts": 6.269
+    },
+    {
+      "x": 406,
+      "y": 442,
+      "act": 1,
+      "t": 0,
+      "ts": 6.366
+    },
+    {
+      "x": 88,
+      "y": 195,
+      "act": 0,
+      "t": 0,
+      "ts": 9.913
+    },
+    {
+      "x": 88,
+      "y": 195,
+      "act": 2,
+      "t": 0,
+      "ts": 9.964
+    },
+    {
+      "x": 88,
+      "y": 195,
+      "act": 1,
+      "t": 0,
+      "ts": 10.043
+    },
+    {
+      "x": 606,
+      "y": 820,
+      "act": 0,
+      "t": 0,
+      "ts": 13.097
+    },
+    {
+      "x": 606,
+      "y": 820,
+      "act": 2,
+      "t": 0,
+      "ts": 13.115
+    },
+    {
+      "x": 606,
+      "y": 820,
+      "act": 2,
+      "t": 0,
+      "ts": 13.132
+    },
+    {
+      "x": 606,
+      "y": 820,
+      "act": 2,
+      "t": 0,
+      "ts": 13.148
+    },
+    {
+      "x": 606,
+      "y": 820,
+      "act": 2,
+      "t": 0,
+      "ts": 13.198
+    },
+    {
+      "x": 606,
+      "y": 820,
+      "act": 1,
+      "t": 0,
+      "ts": 13.202
+    },
+    {
+      "x": 107,
+      "y": 174,
+      "act": 0,
+      "t": 0,
+      "ts": 16.389
+    },
+    {
+      "x": 107,
+      "y": 174,
+      "act": 2,
+      "t": 0,
+      "ts": 16.417
+    },
+    {
+      "x": 107,
+      "y": 174,
+      "act": 2,
+      "t": 0,
+      "ts": 16.433
+    },
+    {
+      "x": 107,
+      "y": 174,
+      "act": 2,
+      "t": 0,
+      "ts": 16.467
+    },
+    {
+      "x": 107,
+      "y": 174,
+      "act": 2,
+      "t": 0,
+      "ts": 16.483
+    },
+    {
+      "x": 107,
+      "y": 174,
+      "act": 2,
+      "t": 0,
+      "ts": 16.5
+    },
+    {
+      "x": 107,
+      "y": 174,
+      "act": 2,
+      "t": 0,
+      "ts": 16.533
+    },
+    {
+      "x": 107,
+      "y": 174,
+      "act": 1,
+      "t": 0,
+      "ts": 16.537
+    },
+    {
+      "x": 138,
+      "y": 787,
+      "act": 0,
+      "t": 0,
+      "ts": 19.453
+    },
+    {
+      "x": 138,
+      "y": 787,
+      "act": 2,
+      "t": 0,
+      "ts": 19.485
+    },
+    {
+      "x": 138,
+      "y": 787,
+      "act": 2,
+      "t": 0,
+      "ts": 19.518
+    },
+    {
+      "x": 138,
+      "y": 787,
+      "act": 1,
+      "t": 0,
+      "ts": 19.589
+    },
+    {
+      "x": 490,
+      "y": 167,
+      "act": 0,
+      "t": 0,
+      "ts": 23.769
+    },
+    {
+      "x": 490,
+      "y": 167,
+      "act": 2,
+      "t": 0,
+      "ts": 23.803
+    },
+    {
+      "x": 490,
+      "y": 167,
+      "act": 2,
+      "t": 0,
+      "ts": 23.82
+    },
+    {
+      "x": 490,
+      "y": 167,
+      "act": 2,
+      "t": 0,
+      "ts": 23.837
+    },
+    {
+      "x": 490,
+      "y": 167,
+      "act": 2,
+      "t": 0,
+      "ts": 23.854
+    },
+    {
+      "x": 490,
+      "y": 167,
+      "act": 2,
+      "t": 0,
+      "ts": 23.899
+    },
+    {
+      "x": 490,
+      "y": 167,
+      "act": 1,
+      "t": 0,
+      "ts": 23.9
+    }
+  ],
+  "phoneSignal": [],
+  "phoneCalls": [],
+  "networkThroughput": [],
+  "networkAvailability": [],
+  "responsiveness": [
+    {
+      "delay": 0,
+      "ts": 1.3739999532699585
+    },
+    {
+      "delay": 1,
+      "ts": 2.2990000247955322
+    },
+    {
+      "delay": 0,
+      "ts": 3.2980000972747803
+    },
+    {
+      "delay": 0,
+      "ts": 4.298999786376953
+    },
+    {
+      "delay": 1,
+      "ts": 5.302000045776367
+    },
+    {
+      "delay": 0,
+      "ts": 6.300000190734863
+    },
+    {
+      "delay": 0,
+      "ts": 7.300000190734863
+    },
+    {
+      "delay": 1,
+      "ts": 8.303000450134277
+    },
+    {
+      "delay": 1,
+      "ts": 9.303999900817871
+    },
+    {
+      "delay": 0,
+      "ts": 10.303000450134277
+    },
+    {
+      "delay": 1,
+      "ts": 11.305000305175781
+    },
+    {
+      "delay": 2,
+      "ts": 12.310999870300293
+    },
+    {
+      "delay": 10,
+      "ts": 13.305999755859375
+    },
+    {
+      "delay": 1,
+      "ts": 14.314000129699707
+    },
+    {
+      "delay": 0,
+      "ts": 15.3149995803833
+    },
+    {
+      "delay": 0,
+      "ts": 16.31599998474121
+    },
+    {
+      "delay": 1,
+      "ts": 17.31800079345703
+    },
+    {
+      "delay": 1,
+      "ts": 18.319000244140625
+    },
+    {
+      "delay": 1,
+      "ts": 19.316999435424805
+    },
+    {
+      "delay": 0,
+      "ts": 20.31999969482422
+    },
+    {
+      "delay": 1,
+      "ts": 21.32699966430664
+    },
+    {
+      "delay": 1,
+      "ts": 22.320999145507812
+    },
+    {
+      "delay": 1,
+      "ts": 23.322999954223633
+    },
+    {
+      "delay": 1,
+      "ts": 24.323999404907227
+    }
+  ],
+  "diskInfo": [
+    {
+      "disksList": [
+        {
+          "path": "/sdcard",
+          "available": 52458283008,
+          "total": 119359385600
+        },
+        {
+          "path": "/",
+          "available": 0,
+          "total": 811347968
+        }
+      ],
+      "ts": 1.376
+    }
+  ],
+  "openGl": [],
+  "logs": [
+    {
+      "level": "V",
+      "tag": "MyApplication",
+      "text": "Remote logging is enabled",
+      "ts": -1603965320.374
+    },
+    {
+      "level": "V",
+      "tag": "MyApplication",
+      "text": "Random UUID for this session is caebc10c-e5e3-42c8-86fd-f2d9725c8489",
+      "ts": -1603965320.373999
+    },
+    {
+      "level": "D",
+      "tag": "TESTFAIRYSDK",
+      "text": "onActivityResumed com.testfairy.samples.drawmefairy.MenuActivity",
+      "ts": 0.151
+    },
+    {
+      "level": "D",
+      "tag": "MenuActivity",
+      "text": "onCreate",
+      "ts": 0.072
+    },
+    {
+      "level": "V",
+      "tag": "TESTFAIRYSDK",
+      "text": "Maximum session length is 10 minutes",
+      "ts": 0.021
+    },
+    {
+      "level": "D",
+      "tag": "TESTFAIRYSDK",
+      "text": "Cached options was found 'anr,logcat,cpu,memory,battery,shake,video,session-length=10m,viewtree,text-on-screen,user-interactions,event-buffer-size=128,max-shakes-allowed=99,x-invalidate-appbar,phone-signal,wifi,x-enable-pixelcopy,request-layout-on-constraint-layout,x-request-layout-on-constraintlayout,screenshot-interval=1,video-quality=medium,video-rescale=0.5,video-jpeg-quality=0.5'",
+      "ts": 0.02
+    },
+    {
+      "level": "I",
+      "tag": "TetheringManager",
+      "text": "registerTetheringEventCallback:draw.me.fairy",
+      "ts": 0.018
+    },
+    {
+      "level": "V",
+      "tag": "TESTFAIRYSDK",
+      "text": "No previous feedback found",
+      "ts": 0.01
+    },
+    {
+      "level": "V",
+      "tag": "TESTFAIRYSDK",
+      "text": "Absolute path: /data/user/0/draw.me.fairy/files",
+      "ts": 0.009001
+    },
+    {
+      "level": "V",
+      "tag": "TESTFAIRYSDK",
+      "text": "No previous screenshot found",
+      "ts": 0.007
+    },
+    {
+      "level": "V",
+      "tag": "TESTFAIRYSDK",
+      "text": "Absolute path: /data/user/0/draw.me.fairy/files",
+      "ts": 0.008
+    },
+    {
+      "level": "D",
+      "tag": "MenuActivity",
+      "text": "onCreate MenuActivity",
+      "ts": 0.072001
+    },
+    {
+      "level": "V",
+      "tag": "TESTFAIRYSDK",
+      "text": "Absolute path: /data/user/0/draw.me.fairy/files",
+      "ts": 0.006
+    },
+    {
+      "level": "V",
+      "tag": "TESTFAIRYSDK",
+      "text": "Using TestFairy server endpoint: https://app.testfairy.com/services/",
+      "ts": 0
+    },
+    {
+      "level": "D",
+      "tag": "TESTFAIRYSDK",
+      "text": "No previous stack traces found",
+      "ts": 0.009
+    },
+    {
+      "level": "V",
+      "tag": "TESTFAIRYSDK",
+      "text": "Starting new session, com.testfairy.f.n@a63e9a0, previous session url = null. 1.11.25",
+      "ts": 0.000001
+    },
+    {
+      "level": "I",
+      "tag": "AdrenoGLES-0",
+      "text": "Local Branch                     : gfx-adreno.lnx.2.0",
+      "ts": 0.198003
+    },
+    {
+      "level": "I",
+      "tag": "AdrenoGLES-0",
+      "text": "Driver Path                      : /vendor/lib64/egl/libGLESv2_adreno.so",
+      "ts": 0.198008
+    },
+    {
+      "level": "I",
+      "tag": "AdrenoGLES-0",
+      "text": "QUALCOMM build                   : c9bef8a, Ie73904e3bd",
+      "ts": 0.198
+    },
+    {
+      "level": "I",
+      "tag": "AdrenoGLES-0",
+      "text": "Build Date                       : 06/26/20",
+      "ts": 0.198001
+    },
+    {
+      "level": "W",
+      "tag": "AdrenoUtils",
+      "text": "<ReadGpuID_from_sysfs:197>: Failed to open /sys/class/kgsl/kgsl-3d0/gpu_model",
+      "ts": 0.204
+    },
+    {
+      "level": "I",
+      "tag": "AdrenoGLES-0",
+      "text": "PFP: 0x016ee189, ME: 0x00000000",
+      "ts": 0.202
+    },
+    {
+      "level": "W",
+      "tag": "AdrenoUtils",
+      "text": "<ReadGpuID:221>: Failed to read chip ID from gpu_model. Fallback to use the GSL path",
+      "ts": 0.204001
+    },
+    {
+      "level": "I",
+      "tag": "AdrenoGLES-0",
+      "text": "Build Config                     : C P 11.0.1 AArch64",
+      "ts": 0.198007
+    },
+    {
+      "level": "I",
+      "tag": "AdrenoGLES-0",
+      "text": "Reconstruct Branch               : NOTHING",
+      "ts": 0.198006
+    },
+    {
+      "level": "I",
+      "tag": "AdrenoGLES-0",
+      "text": "Remote Branch                    : NONE",
+      "ts": 0.198005
+    },
+    {
+      "level": "I",
+      "tag": "AdrenoGLES-0",
+      "text": "Remote Branch                    : quic/gfx-adreno.lnx.2.0",
+      "ts": 0.198004
+    },
+    {
+      "level": "I",
+      "tag": "AdrenoGLES-0",
+      "text": "OpenGL ES Shader Compiler Version: EV031.31.04.00",
+      "ts": 0.198002
+    },
+    {
+      "level": "W",
+      "tag": "System",
+      "text": "A resource failed to call close. ",
+      "ts": 1.888
+    },
+    {
+      "level": "V",
+      "tag": "TESTFAIRYSDK",
+      "text": "Received: {\"status\":\"ok\",\"sessionToken\":\"164847251-2388101-9420974-0-25e7f4a0179d70993ff74e49d2859e2d5843d90e\",\"options\":\"anr,logcat,cpu,memory,battery,shake,video,session-length=10m,viewtree,text-on-screen,user-interactions,event-buffer-size=128,max-shakes-allowed=99,x-invalidate-appbar,phone-signal,wifi,x-enable-pixelcopy,request-layout-on-constraint-layout,x-request-layout-on-constraintlayout,screenshot-interval=1,video-quality=medium,video-rescale=0.5,video-jpeg-quality=0.5\",\"endpointAddress\":\"https://collector-9-lb.testfairy.com/services/\",\"sessionUrl\":\"https://yairba1.testfairy.com/projects/2388101-drawmeafairy/builds/9420974/sessions/4459814547\",\"build\":\"9420974\",\"backgroundTimeUntilStopSession\":300000}",
+      "ts": 1.225
+    },
+    {
+      "level": "V",
+      "tag": "TESTFAIRYSDK",
+      "text": "Installing hooks",
+      "ts": 1.266001
+    },
+    {
+      "level": "V",
+      "tag": "TESTFAIRYSDK",
+      "text": "Maximum session length is 10 minutes",
+      "ts": 1.227001
+    },
+    {
+      "level": "V",
+      "tag": "TESTFAIRYSDK",
+      "text": "Update saved file names with new token (164847251-2388101-9420974-0-25e7f4a0179d70993ff74e49d2859e2d5843d90e)",
+      "ts": 1.23
+    },
+    {
+      "level": "D",
+      "tag": "TESTFAIRYSDK",
+      "text": "Forcing a flush of all 6 events that are in memory",
+      "ts": 1.231
+    },
+    {
+      "level": "D",
+      "tag": "TESTFAIRYSDK",
+      "text": "Starting event uploader background thread",
+      "ts": 1.231001
+    },
+    {
+      "level": "D",
+      "tag": "TESTFAIRYSDK",
+      "text": "There are 6 events in memory, sending out a batch of 128",
+      "ts": 1.231002
+    },
+    {
+      "level": "D",
+      "tag": "TESTFAIRYSDK",
+      "text": "Registered battery receiver com.testfairy.i.j.a@d4f2b4e on com.testfairy.samples.drawmefairy.MyApplication@a7e0102",
+      "ts": 1.266
+    },
+    {
+      "level": "D",
+      "tag": "TESTFAIRYSDK",
+      "text": "disksList [{\"path\":\"\\/sdcard\",\"available\":52458283008,\"total\":119359385600},{\"path\":\"\\/\",\"available\":0,\"total\":811347968}]",
+      "ts": 1.376
+    },
+    {
+      "level": "D",
+      "tag": "TESTFAIRYSDK",
+      "text": "Using https://collector-9-lb.testfairy.com/services/ as our endpoint for events",
+      "ts": 1.227
+    },
+    {
+      "level": "W",
+      "tag": "Gralloc3",
+      "text": "mapper 3.x is not supported",
+      "ts": 0.238001
+    },
+    {
+      "level": "I",
+      "tag": "Gralloc4",
+      "text": "mapper 4.x is not supported",
+      "ts": 0.238
+    },
+    {
+      "level": "W",
+      "tag": "draw.me.fairy",
+      "text": "Accessing hidden field Landroid/view/WindowManagerGlobal;->sDefaultWindowManager:Landroid/view/WindowManagerGlobal; (greylist, reflection, allowed)",
+      "ts": 1.377001
+    },
+    {
+      "level": "D",
+      "tag": "TESTFAIRYSDK",
+      "text": "Successfully sent events from memory over the wire",
+      "ts": 2.327
+    },
+    {
+      "level": "W",
+      "tag": "draw.me.fairy",
+      "text": "Accessing hidden field Landroid/view/WindowManagerGlobal;->mViews:Ljava/util/ArrayList; (greylist, reflection, allowed)",
+      "ts": 1.377
+    },
+    {
+      "level": "W",
+      "tag": "testfairy-recor",
+      "text": "type=1400 audit(0.0:1949): avc: denied { read } for name=\"sdcard\" dev=\"tmpfs\" ino=24696 scontext=u:r:untrusted_app_29:s0:c111,c257,c512,c768 tcontext=u:object_r:mnt_sdcard_file:s0 tclass=lnk_file permissive=0 app=draw.me.fairy",
+      "ts": 1.37
+    },
+    {
+      "level": "D",
+      "tag": "TESTFAIRYSDK",
+      "text": "Forcing a flush of all 33 events that are in memory",
+      "ts": 1.385
+    },
+    {
+      "level": "D",
+      "tag": "TESTFAIRYSDK",
+      "text": "Forcing a flush of all 30 events that are in memory",
+      "ts": 1.381
+    },
+    {
+      "level": "W",
+      "tag": "testfairy-recor",
+      "text": "type=1400 audit(0.0:1950): avc: denied { read } for name=\"sdcard\" dev=\"tmpfs\" ino=24696 scontext=u:r:untrusted_app_29:s0:c111,c257,c512,c768 tcontext=u:object_r:mnt_sdcard_file:s0 tclass=lnk_file permissive=0 app=draw.me.fairy",
+      "ts": 1.37
+    },
+    {
+      "level": "W",
+      "tag": "draw.me.fairy",
+      "text": "Accessing hidden field Lcom/android/internal/policy/DecorView;->mWindow:Lcom/android/internal/policy/PhoneWindow; (greylist, reflection, allowed)",
+      "ts": 1.379
+    },
+    {
+      "level": "D",
+      "tag": "SelectPhotoActivity",
+      "text": "onCreate SelectPhotoActivity",
+      "ts": 2.957
+    },
+    {
+      "level": "D",
+      "tag": "TESTFAIRYSDK",
+      "text": "onActivityPaused com.testfairy.samples.drawmefairy.MenuActivity",
+      "ts": 2.883
+    },
+    {
+      "level": "D",
+      "tag": "TESTFAIRYSDK",
+      "text": "Registered battery receiver com.testfairy.i.j.a@d4f2b4e on com.testfairy.samples.drawmefairy.SelectPhotoActivity@cdb95b3",
+      "ts": 3.119
+    },
+    {
+      "level": "D",
+      "tag": "TESTFAIRYSDK",
+      "text": "onActivityResumed com.testfairy.samples.drawmefairy.SelectPhotoActivity",
+      "ts": 3.117
+    },
+    {
+      "level": "D",
+      "tag": "TESTFAIRYSDK",
+      "text": "There are 80 events in memory, sending out a batch of 128",
+      "ts": 3.236
+    },
+    {
+      "level": "D",
+      "tag": "TESTFAIRYSDK",
+      "text": "Successfully sent events from memory over the wire",
+      "ts": 4.39
+    },
+    {
+      "level": "D",
+      "tag": "TESTFAIRYSDK",
+      "text": "onActivityStopped com.testfairy.samples.drawmefairy.MenuActivity",
+      "ts": 3.606
+    },
+    {
+      "level": "W",
+      "tag": "draw.me.fairy",
+      "text": "Accessing hidden method Ldalvik/system/CloseGuard;->warnIfOpen()V (greylist,core-platform-api, reflection, allowed)",
+      "ts": 6.862002
+    },
+    {
+      "level": "D",
+      "tag": "TESTFAIRYSDK",
+      "text": "onActivityPaused com.testfairy.samples.drawmefairy.SelectPhotoActivity",
+      "ts": 6.385
+    },
+    {
+      "level": "D",
+      "tag": "TESTFAIRYSDK",
+      "text": "Unregistering battery receiver com.testfairy.i.j.a$a@5813a13 from context com.testfairy.samples.drawmefairy.SelectPhotoActivity@cdb95b3",
+      "ts": 6.385001
+    },
+    {
+      "level": "D",
+      "tag": "DrawingActivity",
+      "text": "onCreate DrawingActivity",
+      "ts": 6.397
+    },
+    {
+      "level": "V",
+      "tag": "DrawingActivity",
+      "text": "Total images edited: 1",
+      "ts": 6.833
+    },
+    {
+      "level": "W",
+      "tag": "System",
+      "text": "A resource failed to call close. ",
+      "ts": 6.852
+    },
+    {
+      "level": "W",
+      "tag": "draw.me.fairy",
+      "text": "Accessing hidden method Ldalvik/system/CloseGuard;->get()Ldalvik/system/CloseGuard; (greylist,core-platform-api, reflection, allowed)",
+      "ts": 6.862
+    },
+    {
+      "level": "W",
+      "tag": "draw.me.fairy",
+      "text": "Accessing hidden method Ldalvik/system/CloseGuard;->open(Ljava/lang/String;)V (greylist,core-platform-api, reflection, allowed)",
+      "ts": 6.862001
+    },
+    {
+      "level": "D",
+      "tag": "TESTFAIRYSDK",
+      "text": "onActivityResumed com.testfairy.samples.drawmefairy.DrawingActivity",
+      "ts": 6.873
+    },
+    {
+      "level": "E",
+      "tag": "draw.me.fairy",
+      "text": "Invalid ID 0x00003039.",
+      "ts": 7.103
+    },
+    {
+      "level": "D",
+      "tag": "DrawingPanel",
+      "text": "onSizeChanged",
+      "ts": 6.908
+    },
+    {
+      "level": "W",
+      "tag": "draw.me.fairy",
+      "text": "Accessing hidden method Lcom/android/org/conscrypt/ConscryptEngineSocket;->setUseSessionTickets(Z)V (greylist-max-q,core-platform-api, reflection, allowed)",
+      "ts": 7.158
+    },
+    {
+      "level": "W",
+      "tag": "draw.me.fairy",
+      "text": "Accessing hidden method Lcom/android/org/conscrypt/ConscryptEngineSocket;->setHostname(Ljava/lang/String;)V (greylist-max-q,core-platform-api, reflection, allowed)",
+      "ts": 7.158001
+    },
+    {
+      "level": "W",
+      "tag": "draw.me.fairy",
+      "text": "Accessing hidden method Lcom/android/org/conscrypt/OpenSSLSocketImpl;->setAlpnProtocols([B)V (greylist-max-q,core-platform-api, reflection, allowed)",
+      "ts": 7.159
+    },
+    {
+      "level": "W",
+      "tag": "draw.me.fairy",
+      "text": "Accessing hidden method Lcom/android/org/conscrypt/OpenSSLSocketImpl;->getAlpnSelectedProtocol()[B (greylist-max-q,core-platform-api, reflection, allowed)",
+      "ts": 7.313
+    },
+    {
+      "level": "D",
+      "tag": "TESTFAIRYSDK",
+      "text": "onActivityStopped com.testfairy.samples.drawmefairy.SelectPhotoActivity",
+      "ts": 7.375
+    },
+    {
+      "level": "D",
+      "tag": "TESTFAIRYSDK",
+      "text": "Registered battery receiver com.testfairy.i.j.a@d4f2b4e on com.testfairy.samples.drawmefairy.DrawingActivity@8bd3f39",
+      "ts": 6.875
+    },
+    {
+      "level": "E",
+      "tag": "draw.me.fairy",
+      "text": "Invalid ID 0x00003039.",
+      "ts": 10.067
+    },
+    {
+      "level": "W",
+      "tag": "System",
+      "text": "A resource failed to call close. ",
+      "ts": 13.038
+    },
+    {
+      "level": "E",
+      "tag": "draw.me.fairy",
+      "text": "Invalid ID 0x00003039.",
+      "ts": 13.1
+    },
+    {
+      "level": "I",
+      "tag": "DrawingPanel",
+      "text": "set brush size to 40",
+      "ts": 13.204
+    },
+    {
+      "level": "E",
+      "tag": "draw.me.fairy",
+      "text": "Invalid ID 0x00003039.",
+      "ts": 16.104
+    },
+    {
+      "level": "E",
+      "tag": "draw.me.fairy",
+      "text": "Invalid ID 0x00003039.",
+      "ts": 19.13
+    },
+    {
+      "level": "D",
+      "tag": "TESTFAIRYSDK",
+      "text": "There are 128 events in memory, sending out a batch of 128",
+      "ts": 19.284
+    },
+    {
+      "level": "I",
+      "tag": "DrawingPanel",
+      "text": "set brush size to 10",
+      "ts": 19.591
+    },
+    {
+      "level": "D",
+      "tag": "TESTFAIRYSDK",
+      "text": "Successfully sent events from memory over the wire",
+      "ts": 20.366
+    },
+    {
+      "level": "W",
+      "tag": "System",
+      "text": "A resource failed to call close. ",
+      "ts": 22.069
+    },
+    {
+      "level": "I",
+      "tag": "chatty",
+      "text": "uid=10367(draw.me.fairy) FinalizerDaemon identical 2 lines",
+      "ts": 22.071
+    },
+    {
+      "level": "W",
+      "tag": "System",
+      "text": "A resource failed to call close. ",
+      "ts": 22.073
+    },
+    {
+      "level": "E",
+      "tag": "draw.me.fairy",
+      "text": "Invalid ID 0x00003039.",
+      "ts": 22.114
+    },
+    {
+      "level": "E",
+      "tag": "draw.me.fairy",
+      "text": "Invalid ID 0x00003039.",
+      "ts": 24.07
+    },
+    {
+      "level": "D",
+      "tag": "AndroidRuntime",
+      "text": "Shutting down VM",
+      "ts": 24.414
+    },
+    {
+      "level": "E",
+      "tag": "AndroidRuntime",
+      "text": "FATAL EXCEPTION: main",
+      "ts": 24.416
+    },
+    {
+      "level": "E",
+      "tag": "AndroidRuntime",
+      "text": "Process: draw.me.fairy, PID: 11206",
+      "ts": 24.416001
+    },
+    {
+      "level": "E",
+      "tag": "AndroidRuntime",
+      "text": "java.lang.NullPointerException: Attempt to invoke virtual method 'java.lang.String java.lang.Object.toString()' on a null object reference",
+      "ts": 24.416002
+    },
+    {
+      "level": "E",
+      "tag": "AndroidRuntime",
+      "text": "\tat com.testfairy.samples.drawmefairy.DrawingActivity$5.onClick(DrawingActivity.java:128)",
+      "ts": 24.416003
+    },
+    {
+      "level": "E",
+      "tag": "AndroidRuntime",
+      "text": "\tat android.view.View.callOnClick(View.java:7472)",
+      "ts": 24.416004
+    },
+    {
+      "level": "E",
+      "tag": "AndroidRuntime",
+      "text": "\tat com.testfairy.samples.drawmefairy.DrawingActivity$5$1.run(DrawingActivity.java:134)",
+      "ts": 24.416005
+    }
+  ],
+  "foregroundAppInfo": [],
+  "trackingEvents": [],
+  "platform": "0",
+  "cert": 1,
+  "agentVersion": "20201027-545cb29-1.11.25",
+  "sessionId": 164847251,
+  "meta": [
+    {
+      "type": 27,
+      "method": "setUserId",
+      "ts": -1
+    },
+    {
+      "size": 321,
+      "type": 26,
+      "ts": -1
+    },
+    {
+      "type": 27,
+      "method": "log",
+      "ts": -1
+    },
+    {
+      "type": 10,
+      "ts": 1.279
+    },
+    {
+      "type": 9,
+      "ts": 1.291
+    },
+    {
+      "type": 12,
+      "ts": 1.293
+    },
+    {
+      "type": 36,
+      "level": "I",
+      "text": "Listening touches: 1 windows",
+      "ts": 1.381
+    },
+    {
+      "type": 37,
+      "statusBarHeight": 171,
+      "ts": 1.385
+    },
+    {
+      "type": 36,
+      "level": "I",
+      "text": "Took a screenshot with 1 window, 0 hidden views, time: 111 seq: 0",
+      "ts": 1.515
+    },
+    {
+      "size": 3655,
+      "type": 26,
+      "ts": 1.279
+    },
+    {
+      "size": 4269,
+      "type": 26,
+      "ts": 3.236
+    },
+    {
+      "type": 36,
+      "level": "I",
+      "text": "Listening touches: 1 windows",
+      "ts": 2.379
+    },
+    {
+      "type": 38,
+      "seq": 1,
+      "method": 1,
+      "captureTime": 130,
+      "hashTime": 3,
+      "resizeTime": 132,
+      "compressTime": 23,
+      "rotationTime": 0,
+      "networkTime": 1281,
+      "ts": 2.954
+    },
+    {
+      "type": 36,
+      "level": "I",
+      "text": "Screenshot upload succeeded. seq: 1",
+      "ts": 2.954001
+    },
+    {
+      "type": 36,
+      "level": "I",
+      "text": "Took a screenshot with 1 window, 0 hidden views, time: 119 seq: 1",
+      "ts": 4.288
+    },
+    {
+      "type": 36,
+      "level": "I",
+      "text": "Listening touches: 2 windows",
+      "ts": 3.38
+    },
+    {
+      "type": 36,
+      "level": "I",
+      "text": "Listening touches: 2 windows",
+      "ts": 4.38
+    },
+    {
+      "type": 38,
+      "seq": 2,
+      "method": 1,
+      "captureTime": 144,
+      "hashTime": 10,
+      "resizeTime": 123,
+      "compressTime": 24,
+      "rotationTime": 0,
+      "networkTime": 1384,
+      "ts": 5.829
+    },
+    {
+      "type": 36,
+      "level": "I",
+      "text": "Screenshot upload succeeded. seq: 2",
+      "ts": 5.829001
+    },
+    {
+      "type": 36,
+      "level": "I",
+      "text": "Listening touches: 2 windows",
+      "ts": 5.383
+    },
+    {
+      "type": 36,
+      "level": "I",
+      "text": "Listening touches: 2 windows",
+      "ts": 6.383
+    },
+    {
+      "type": 36,
+      "level": "I",
+      "text": "Took a screenshot with 2 window, 0 hidden views, time: 143 seq: 2",
+      "ts": 7.097
+    },
+    {
+      "type": 36,
+      "level": "I",
+      "text": "Listening touches: 3 windows",
+      "ts": 7.384
+    },
+    {
+      "type": 36,
+      "level": "I",
+      "text": "Screenshot upload succeeded. seq: 3",
+      "ts": 8.758
+    },
+    {
+      "type": 36,
+      "level": "I",
+      "text": "Listening touches: 3 windows",
+      "ts": 8.387
+    },
+    {
+      "type": 27,
+      "method": "addNetworkEvent",
+      "ts": 7.498
+    },
+    {
+      "type": 38,
+      "seq": 3,
+      "method": 1,
+      "captureTime": 185,
+      "hashTime": 16,
+      "resizeTime": 128,
+      "compressTime": 25,
+      "rotationTime": 0,
+      "networkTime": 1491,
+      "ts": 8.757
+    },
+    {
+      "type": 36,
+      "level": "I",
+      "text": "Listening touches: 3 windows",
+      "ts": 9.391
+    },
+    {
+      "type": 36,
+      "level": "I",
+      "text": "Took a screenshot with 1 window, 0 hidden views, time: 110 seq: 3",
+      "ts": 10.057
+    },
+    {
+      "type": 36,
+      "level": "I",
+      "text": "Listening touches: 4 windows",
+      "ts": 10.391
+    },
+    {
+      "type": 36,
+      "level": "I",
+      "text": "Listening touches: 4 windows",
+      "ts": 11.394
+    },
+    {
+      "type": 36,
+      "level": "I",
+      "text": "Took a screenshot with 2 window, 0 hidden views, time: 132 seq: 4",
+      "ts": 13.098
+    },
+    {
+      "type": 36,
+      "level": "I",
+      "text": "Listening touches: 4 windows",
+      "ts": 13.399
+    },
+    {
+      "type": 36,
+      "level": "I",
+      "text": "Listening touches: 4 windows",
+      "ts": 12.401
+    },
+    {
+      "type": 36,
+      "level": "I",
+      "text": "Screenshot upload succeeded. seq: 4",
+      "ts": 11.870001
+    },
+    {
+      "type": 38,
+      "seq": 4,
+      "method": 1,
+      "captureTime": 126,
+      "hashTime": 21,
+      "resizeTime": 124,
+      "compressTime": 23,
+      "rotationTime": 0,
+      "networkTime": 1645,
+      "ts": 11.87
+    },
+    {
+      "type": 27,
+      "method": "addEvent",
+      "ts": 13.204
+    },
+    {
+      "type": 36,
+      "level": "I",
+      "text": "Listening touches: 3 windows",
+      "ts": 14.401
+    },
+    {
+      "type": 38,
+      "seq": 5,
+      "method": 1,
+      "captureTime": 142,
+      "hashTime": 14,
+      "resizeTime": 123,
+      "compressTime": 24,
+      "rotationTime": 0,
+      "networkTime": 1527,
+      "ts": 14.787
+    },
+    {
+      "type": 36,
+      "level": "I",
+      "text": "Screenshot upload succeeded. seq: 5",
+      "ts": 14.787001
+    },
+    {
+      "type": 36,
+      "level": "I",
+      "text": "Listening touches: 3 windows",
+      "ts": 15.403
+    },
+    {
+      "type": 36,
+      "level": "I",
+      "text": "Took a screenshot with 1 window, 0 hidden views, time: 115 seq: 5",
+      "ts": 16.103
+    },
+    {
+      "type": 36,
+      "level": "I",
+      "text": "Listening touches: 3 windows",
+      "ts": 16.402
+    },
+    {
+      "type": 36,
+      "level": "I",
+      "text": "Listening touches: 4 windows",
+      "ts": 17.404
+    },
+    {
+      "type": 38,
+      "seq": 6,
+      "method": 1,
+      "captureTime": 133,
+      "hashTime": 43,
+      "resizeTime": 125,
+      "compressTime": 23,
+      "rotationTime": 0,
+      "networkTime": 1617,
+      "ts": 17.911
+    },
+    {
+      "type": 36,
+      "level": "I",
+      "text": "Screenshot upload succeeded. seq: 6",
+      "ts": 17.912
+    },
+    {
+      "size": 2373,
+      "type": 26,
+      "ts": 19.284
+    },
+    {
+      "type": 36,
+      "level": "I",
+      "text": "Took a screenshot with 2 window, 0 hidden views, time: 140 seq: 6",
+      "ts": 19.128
+    },
+    {
+      "type": 36,
+      "level": "I",
+      "text": "Listening touches: 4 windows",
+      "ts": 18.406
+    },
+    {
+      "type": 36,
+      "level": "I",
+      "text": "Listening touches: 4 windows",
+      "ts": 19.408
+    },
+    {
+      "type": 36,
+      "level": "I",
+      "text": "Listening touches: 3 windows",
+      "ts": 20.409
+    },
+    {
+      "type": 38,
+      "seq": 7,
+      "method": 1,
+      "captureTime": 146,
+      "hashTime": 44,
+      "resizeTime": 125,
+      "compressTime": 28,
+      "rotationTime": 0,
+      "networkTime": 1458,
+      "ts": 20.783
+    },
+    {
+      "type": 36,
+      "level": "I",
+      "text": "Screenshot upload succeeded. seq: 7",
+      "ts": 20.783001
+    },
+    {
+      "type": 36,
+      "level": "I",
+      "text": "Listening touches: 3 windows",
+      "ts": 21.411
+    },
+    {
+      "type": 36,
+      "level": "I",
+      "text": "Took a screenshot with 1 window, 0 hidden views, time: 101 seq: 7",
+      "ts": 22.113
+    },
+    {
+      "type": 36,
+      "level": "I",
+      "text": "Listening touches: 3 windows",
+      "ts": 22.412
+    },
+    {
+      "type": 36,
+      "level": "I",
+      "text": "Listening touches: 3 windows",
+      "ts": 23.414
+    },
+    {
+      "type": 38,
+      "seq": 8,
+      "method": 1,
+      "captureTime": 118,
+      "hashTime": 43,
+      "resizeTime": 123,
+      "compressTime": 25,
+      "rotationTime": 0,
+      "networkTime": 1475,
+      "ts": 23.779
+    },
+    {
+      "type": 36,
+      "level": "I",
+      "text": "Screenshot upload succeeded. seq: 8",
+      "ts": 23.779001
+    },
+    {
+      "type": 36,
+      "level": "I",
+      "text": "Listening touches: 3 windows",
+      "ts": 24.414
+    }
+  ],
+  "startedActivities": [],
+  "networkRequests": [
+    {
+      "method": "POST",
+      "responseTime": "625",
+      "errorMessage": null,
+      "host": "api.google.com",
+      "errorCode": "-1",
+      "received": "1575",
+      "sent": "11",
+      "url": "https://api.google.com/send_analytics?event-type=453&event-data=hjk542gfs",
+      "responseCode": "404",
+      "ts": 6
+    }
+  ],
+  "encryptedLogs": null,
+  "foregroundActivities": [
+    {
+      "name": "com.testfairy.samples.drawmefairy.MyApplication",
+      "ts": -1
+    },
+    {
+      "name": "com.testfairy.samples.drawmefairy.MenuActivity",
+      "ts": -1
+    },
+    {
+      "name": "com.testfairy.samples.drawmefairy.SelectPhotoActivity",
+      "ts": 3.117
+    },
+    {
+      "name": "com.testfairy.samples.drawmefairy.DrawingActivity",
+      "ts": 6.873
+    }
+  ],
+  "wifi": [],
+  "checkpoints": [
+    {
+      "name": "Selected large brush",
+      "ts": 13.204001
+    },
+    {
+      "name": "Drawing running for 10 sec",
+      "ts": 15.901
+    }
+  ],
+  "userInteractions": [
+    {
+      "locators": [
+        {
+          "kind": "xpath",
+          "value": "//android.widget.RelativeLayout[1]/android.widget.Button[1]"
+        }
+      ],
+      "kind": 1,
+      "label": "Open From Gallery",
+      "viewId": "draw.me.fairy:id/from_gallery",
+      "contentDescription": "Open from gallery",
+      "className": "android.widget.Button",
+      "accessibilityClassName": "android.widget.Button",
+      "viewTag": "",
+      "isIdMissing": false,
+      "isEditText": false,
+      "isScrollView": false,
+      "isListView": false,
+      "isRecyclerView": false,
+      "ts": 2.764
+    },
+    {
+      "locators": [
+        {
+          "kind": "xpath",
+          "value": "//android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.ImageView[1]"
+        }
+      ],
+      "scrollableParentLocators": [
+        {
+          "kind": "xpath",
+          "value": "//android.widget.ScrollView[1]"
+        }
+      ],
+      "kind": 1,
+      "label": "",
+      "viewId": "",
+      "contentDescription": "",
+      "className": "android.widget.ImageView",
+      "accessibilityClassName": "android.widget.ImageView",
+      "viewTag": "",
+      "isIdMissing": true,
+      "isEditText": false,
+      "isScrollView": false,
+      "isListView": false,
+      "isRecyclerView": false,
+      "ts": 6.27
+    },
+    {
+      "locators": [
+        {
+          "kind": "xpath",
+          "value": "//android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.ImageButton[1]"
+        }
+      ],
+      "kind": 1,
+      "label": "Painter picker button",
+      "viewId": "draw.me.fairy:id/painter_picker",
+      "contentDescription": "Painter picker button",
+      "className": "android.widget.ImageButton",
+      "accessibilityClassName": "android.widget.ImageButton",
+      "viewTag": "",
+      "isIdMissing": false,
+      "isEditText": false,
+      "isScrollView": false,
+      "isListView": false,
+      "isRecyclerView": false,
+      "ts": 9.914
+    },
+    {
+      "locators": [
+        {
+          "kind": "xpath",
+          "value": "//android.widget.LinearLayout[1]/android.widget.Button[3]"
+        }
+      ],
+      "kind": 1,
+      "label": "Large",
+      "viewId": "draw.me.fairy:id/large_brush",
+      "contentDescription": "Large brush selection",
+      "className": "android.widget.Button",
+      "accessibilityClassName": "android.widget.Button",
+      "viewTag": "2",
+      "isIdMissing": false,
+      "isEditText": false,
+      "isScrollView": false,
+      "isListView": false,
+      "isRecyclerView": false,
+      "ts": 13.097
+    },
+    {
+      "locators": [
+        {
+          "kind": "xpath",
+          "value": "//android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.ImageButton[1]"
+        }
+      ],
+      "kind": 1,
+      "label": "Painter picker button",
+      "viewId": "draw.me.fairy:id/painter_picker",
+      "contentDescription": "Painter picker button",
+      "className": "android.widget.ImageButton",
+      "accessibilityClassName": "android.widget.ImageButton",
+      "viewTag": "",
+      "isIdMissing": false,
+      "isEditText": false,
+      "isScrollView": false,
+      "isListView": false,
+      "isRecyclerView": false,
+      "ts": 16.389
+    },
+    {
+      "locators": [
+        {
+          "kind": "xpath",
+          "value": "//android.widget.LinearLayout[1]/android.widget.Button[1]"
+        }
+      ],
+      "kind": 1,
+      "label": "Small",
+      "viewId": "draw.me.fairy:id/small_brush",
+      "contentDescription": "Small brush Selection",
+      "className": "android.widget.Button",
+      "accessibilityClassName": "android.widget.Button",
+      "viewTag": "0",
+      "isIdMissing": false,
+      "isEditText": false,
+      "isScrollView": false,
+      "isListView": false,
+      "isRecyclerView": false,
+      "ts": 19.453
+    },
+    {
+      "locators": [
+        {
+          "kind": "xpath",
+          "value": "//android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.ImageButton[4]"
+        }
+      ],
+      "kind": 1,
+      "label": "Save button",
+      "viewId": "draw.me.fairy:id/0x3039",
+      "contentDescription": "Save button",
+      "className": "android.widget.ImageButton",
+      "accessibilityClassName": "android.widget.ImageButton",
+      "viewTag": "saveButton",
+      "isIdMissing": false,
+      "isEditText": false,
+      "isScrollView": false,
+      "isListView": false,
+      "isRecyclerView": false,
+      "ts": 23.769
+    }
+  ],
+  "videos": [],
+  "viewtree": [
+    {
+      "seq": 1,
+      "viewNode": {
+        "children": [
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "children": [],
+                            "name": "class android.widget.ImageView",
+                            "visibility": "VISIBLE",
+                            "x": 0,
+                            "y": 171,
+                            "width": 1440,
+                            "height": 935,
+                            "contentDescription": "",
+                            "id": "draw.me.fairy:id/menu_logo",
+                            "alpha": 1,
+                            "focusable": false,
+                            "enabled": true
+                          },
+                          {
+                            "children": [],
+                            "name": "class android.widget.Button",
+                            "visibility": "VISIBLE",
+                            "x": 0,
+                            "y": 1106,
+                            "width": 1440,
+                            "height": 234,
+                            "contentDescription": "Open from gallery",
+                            "id": "draw.me.fairy:id/from_gallery",
+                            "alpha": 1,
+                            "focusable": true,
+                            "enabled": true,
+                            "text": "Open From Gallery"
+                          },
+                          {
+                            "children": [],
+                            "name": "class android.widget.Button",
+                            "visibility": "VISIBLE",
+                            "x": 0,
+                            "y": 1340,
+                            "width": 1440,
+                            "height": 234,
+                            "contentDescription": "Open blank canvas",
+                            "id": "draw.me.fairy:id/blank_canvas",
+                            "alpha": 1,
+                            "focusable": true,
+                            "enabled": true,
+                            "text": "Open Blank Canvas"
+                          },
+                          {
+                            "children": [],
+                            "name": "class android.widget.Button",
+                            "visibility": "VISIBLE",
+                            "x": 0,
+                            "y": 1574,
+                            "width": 1440,
+                            "height": 234,
+                            "contentDescription": "About app",
+                            "id": "draw.me.fairy:id/about_app",
+                            "alpha": 1,
+                            "focusable": true,
+                            "enabled": true,
+                            "text": "About App"
+                          },
+                          {
+                            "children": [],
+                            "name": "class android.widget.TextView",
+                            "visibility": "VISIBLE",
+                            "x": 23,
+                            "y": 194,
+                            "width": 537,
+                            "height": 79,
+                            "contentDescription": "",
+                            "id": "draw.me.fairy:id/version",
+                            "alpha": 1,
+                            "focusable": false,
+                            "enabled": true,
+                            "text": "Version: 194 - 2.2.18"
+                          }
+                        ],
+                        "name": "class android.widget.RelativeLayout",
+                        "visibility": "VISIBLE",
+                        "x": 0,
+                        "y": 171,
+                        "width": 1440,
+                        "height": 2573,
+                        "contentDescription": "",
+                        "id": "",
+                        "alpha": 1,
+                        "focusable": false,
+                        "enabled": true
+                      }
+                    ],
+                    "name": "class android.widget.FrameLayout",
+                    "visibility": "VISIBLE",
+                    "x": 0,
+                    "y": 171,
+                    "width": 1440,
+                    "height": 2573,
+                    "contentDescription": "",
+                    "id": "android:id/content",
+                    "alpha": 1,
+                    "focusable": false,
+                    "enabled": true
+                  }
+                ],
+                "name": "class android.widget.LinearLayout",
+                "visibility": "VISIBLE",
+                "x": 0,
+                "y": 0,
+                "width": 1440,
+                "height": 2744,
+                "contentDescription": "",
+                "id": "",
+                "alpha": 1,
+                "focusable": false,
+                "enabled": true
+              },
+              {
+                "children": [],
+                "name": "class android.view.View",
+                "visibility": "VISIBLE",
+                "x": 0,
+                "y": 2744,
+                "width": 1440,
+                "height": 216,
+                "contentDescription": "",
+                "id": "android:id/navigationBarBackground",
+                "alpha": 1,
+                "focusable": false,
+                "enabled": true
+              },
+              {
+                "children": [],
+                "name": "class android.view.View",
+                "visibility": "VISIBLE",
+                "x": 0,
+                "y": 0,
+                "width": 1440,
+                "height": 171,
+                "contentDescription": "",
+                "id": "android:id/statusBarBackground",
+                "alpha": 1,
+                "focusable": false,
+                "enabled": true
+              }
+            ],
+            "name": "class com.android.internal.policy.DecorView",
+            "visibility": "VISIBLE",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 2960,
+            "contentDescription": "",
+            "id": "",
+            "alpha": 1,
+            "focusable": false,
+            "enabled": true
+          }
+        ],
+        "name": "app",
+        "width": 1440,
+        "height": 2960
+      },
+      "ts": 1.674
+    },
+    {
+      "seq": 2,
+      "viewNode": {
+        "children": [
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "children": [],
+                                "name": "class android.widget.ImageView",
+                                "visibility": "VISIBLE",
+                                "x": 0,
+                                "y": 423,
+                                "width": 1440,
+                                "height": 685,
+                                "contentDescription": "",
+                                "id": "",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true
+                              },
+                              {
+                                "children": [],
+                                "name": "class android.widget.ImageView",
+                                "visibility": "VISIBLE",
+                                "x": 0,
+                                "y": 1108,
+                                "width": 1440,
+                                "height": 685,
+                                "contentDescription": "",
+                                "id": "",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true
+                              },
+                              {
+                                "children": [],
+                                "name": "class android.widget.ImageView",
+                                "visibility": "VISIBLE",
+                                "x": 0,
+                                "y": 1793,
+                                "width": 1440,
+                                "height": 685,
+                                "contentDescription": "",
+                                "id": "",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true
+                              },
+                              {
+                                "children": [],
+                                "name": "class android.widget.ImageView",
+                                "visibility": "VISIBLE",
+                                "x": 0,
+                                "y": 2478,
+                                "width": 1440,
+                                "height": 685,
+                                "contentDescription": "",
+                                "id": "",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true
+                              },
+                              {
+                                "children": [],
+                                "name": "class android.widget.ImageView",
+                                "visibility": "VISIBLE",
+                                "x": 0,
+                                "y": 3163,
+                                "width": 1440,
+                                "height": 685,
+                                "contentDescription": "",
+                                "id": "",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true
+                              },
+                              {
+                                "children": [],
+                                "name": "class android.widget.ImageView",
+                                "visibility": "VISIBLE",
+                                "x": 0,
+                                "y": 3848,
+                                "width": 1440,
+                                "height": 685,
+                                "contentDescription": "",
+                                "id": "",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true
+                              },
+                              {
+                                "children": [],
+                                "name": "class android.widget.ImageView",
+                                "visibility": "VISIBLE",
+                                "x": 0,
+                                "y": 4533,
+                                "width": 1440,
+                                "height": 685,
+                                "contentDescription": "",
+                                "id": "",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true
+                              },
+                              {
+                                "children": [],
+                                "name": "class android.widget.ImageView",
+                                "visibility": "VISIBLE",
+                                "x": 0,
+                                "y": 5218,
+                                "width": 1440,
+                                "height": 685,
+                                "contentDescription": "",
+                                "id": "",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true
+                              },
+                              {
+                                "children": [],
+                                "name": "class android.widget.ImageView",
+                                "visibility": "VISIBLE",
+                                "x": 0,
+                                "y": 5903,
+                                "width": 1440,
+                                "height": 685,
+                                "contentDescription": "",
+                                "id": "",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true
+                              },
+                              {
+                                "children": [],
+                                "name": "class android.widget.ImageView",
+                                "visibility": "VISIBLE",
+                                "x": 0,
+                                "y": 6588,
+                                "width": 1440,
+                                "height": 685,
+                                "contentDescription": "",
+                                "id": "",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true
+                              },
+                              {
+                                "children": [],
+                                "name": "class android.widget.ImageView",
+                                "visibility": "VISIBLE",
+                                "x": 0,
+                                "y": 7273,
+                                "width": 1440,
+                                "height": 685,
+                                "contentDescription": "",
+                                "id": "",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true
+                              },
+                              {
+                                "children": [],
+                                "name": "class android.widget.ImageView",
+                                "visibility": "VISIBLE",
+                                "x": 0,
+                                "y": 7958,
+                                "width": 1440,
+                                "height": 685,
+                                "contentDescription": "",
+                                "id": "",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true
+                              },
+                              {
+                                "children": [],
+                                "name": "class android.widget.ImageView",
+                                "visibility": "VISIBLE",
+                                "x": 0,
+                                "y": 8643,
+                                "width": 1440,
+                                "height": 685,
+                                "contentDescription": "",
+                                "id": "",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true
+                              },
+                              {
+                                "children": [],
+                                "name": "class android.widget.ImageView",
+                                "visibility": "VISIBLE",
+                                "x": 0,
+                                "y": 9328,
+                                "width": 1440,
+                                "height": 685,
+                                "contentDescription": "",
+                                "id": "",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true
+                              },
+                              {
+                                "children": [],
+                                "name": "class android.widget.ImageView",
+                                "visibility": "VISIBLE",
+                                "x": 0,
+                                "y": 10013,
+                                "width": 1440,
+                                "height": 685,
+                                "contentDescription": "",
+                                "id": "",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true
+                              }
+                            ],
+                            "name": "class android.widget.LinearLayout",
+                            "visibility": "VISIBLE",
+                            "x": 0,
+                            "y": 423,
+                            "width": 1440,
+                            "height": 10275,
+                            "contentDescription": "",
+                            "id": "draw.me.fairy:id/thumbnails",
+                            "alpha": 1,
+                            "focusable": false,
+                            "enabled": true
+                          }
+                        ],
+                        "name": "class android.widget.ScrollView",
+                        "visibility": "VISIBLE",
+                        "x": 0,
+                        "y": 423,
+                        "width": 1440,
+                        "height": 2321,
+                        "contentDescription": "",
+                        "id": "",
+                        "alpha": 1,
+                        "focusable": true,
+                        "enabled": true
+                      }
+                    ],
+                    "name": "class android.widget.FrameLayout",
+                    "visibility": "VISIBLE",
+                    "x": 0,
+                    "y": 423,
+                    "width": 1440,
+                    "height": 2321,
+                    "contentDescription": "",
+                    "id": "android:id/content",
+                    "alpha": 1,
+                    "focusable": false,
+                    "enabled": true
+                  },
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "children": [],
+                            "name": "class android.widget.TextView",
+                            "visibility": "VISIBLE",
+                            "x": 72,
+                            "y": 236,
+                            "width": 511,
+                            "height": 121,
+                            "contentDescription": "",
+                            "id": "",
+                            "alpha": 1,
+                            "focusable": false,
+                            "enabled": true,
+                            "text": "Select Photo"
+                          },
+                          {
+                            "children": [],
+                            "name": "class android.widget.ActionMenuView",
+                            "visibility": "VISIBLE",
+                            "x": 1440,
+                            "y": 171,
+                            "width": 0,
+                            "height": 252,
+                            "contentDescription": "",
+                            "id": "",
+                            "alpha": 1,
+                            "focusable": false,
+                            "enabled": true
+                          }
+                        ],
+                        "name": "class android.widget.Toolbar",
+                        "visibility": "VISIBLE",
+                        "x": 0,
+                        "y": 171,
+                        "width": 1440,
+                        "height": 252,
+                        "contentDescription": "",
+                        "id": "android:id/action_bar",
+                        "alpha": 1,
+                        "focusable": false,
+                        "enabled": true
+                      }
+                    ],
+                    "name": "class com.android.internal.widget.ActionBarContainer",
+                    "visibility": "VISIBLE",
+                    "x": 0,
+                    "y": 171,
+                    "width": 1440,
+                    "height": 252,
+                    "contentDescription": "",
+                    "id": "android:id/action_bar_container",
+                    "alpha": 1,
+                    "focusable": false,
+                    "enabled": true
+                  }
+                ],
+                "name": "class com.android.internal.widget.ActionBarOverlayLayout",
+                "visibility": "VISIBLE",
+                "x": 0,
+                "y": 0,
+                "width": 1440,
+                "height": 2744,
+                "contentDescription": "",
+                "id": "android:id/decor_content_parent",
+                "alpha": 1,
+                "focusable": false,
+                "enabled": true
+              },
+              {
+                "children": [],
+                "name": "class android.view.View",
+                "visibility": "VISIBLE",
+                "x": 0,
+                "y": 2744,
+                "width": 1440,
+                "height": 216,
+                "contentDescription": "",
+                "id": "android:id/navigationBarBackground",
+                "alpha": 1,
+                "focusable": false,
+                "enabled": true
+              },
+              {
+                "children": [],
+                "name": "class android.view.View",
+                "visibility": "VISIBLE",
+                "x": 0,
+                "y": 0,
+                "width": 1440,
+                "height": 171,
+                "contentDescription": "",
+                "id": "android:id/statusBarBackground",
+                "alpha": 1,
+                "focusable": false,
+                "enabled": true
+              }
+            ],
+            "name": "class com.android.internal.policy.DecorView",
+            "visibility": "VISIBLE",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 2960,
+            "contentDescription": "",
+            "id": "",
+            "alpha": 1,
+            "focusable": false,
+            "enabled": true
+          }
+        ],
+        "name": "app",
+        "width": 1440,
+        "height": 2960
+      },
+      "ts": 4.445
+    },
+    {
+      "seq": 3,
+      "viewNode": {
+        "children": [
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "children": [],
+                                "name": "class android.widget.ImageView",
+                                "visibility": "VISIBLE",
+                                "x": 0,
+                                "y": 423,
+                                "width": 1440,
+                                "height": 685,
+                                "contentDescription": "",
+                                "id": "",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true
+                              },
+                              {
+                                "children": [],
+                                "name": "class android.widget.ImageView",
+                                "visibility": "VISIBLE",
+                                "x": 0,
+                                "y": 1108,
+                                "width": 1440,
+                                "height": 685,
+                                "contentDescription": "",
+                                "id": "",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true
+                              },
+                              {
+                                "children": [],
+                                "name": "class android.widget.ImageView",
+                                "visibility": "VISIBLE",
+                                "x": 0,
+                                "y": 1793,
+                                "width": 1440,
+                                "height": 685,
+                                "contentDescription": "",
+                                "id": "",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true
+                              },
+                              {
+                                "children": [],
+                                "name": "class android.widget.ImageView",
+                                "visibility": "VISIBLE",
+                                "x": 0,
+                                "y": 2478,
+                                "width": 1440,
+                                "height": 685,
+                                "contentDescription": "",
+                                "id": "",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true
+                              },
+                              {
+                                "children": [],
+                                "name": "class android.widget.ImageView",
+                                "visibility": "VISIBLE",
+                                "x": 0,
+                                "y": 3163,
+                                "width": 1440,
+                                "height": 685,
+                                "contentDescription": "",
+                                "id": "",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true
+                              },
+                              {
+                                "children": [],
+                                "name": "class android.widget.ImageView",
+                                "visibility": "VISIBLE",
+                                "x": 0,
+                                "y": 3848,
+                                "width": 1440,
+                                "height": 685,
+                                "contentDescription": "",
+                                "id": "",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true
+                              },
+                              {
+                                "children": [],
+                                "name": "class android.widget.ImageView",
+                                "visibility": "VISIBLE",
+                                "x": 0,
+                                "y": 4533,
+                                "width": 1440,
+                                "height": 685,
+                                "contentDescription": "",
+                                "id": "",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true
+                              },
+                              {
+                                "children": [],
+                                "name": "class android.widget.ImageView",
+                                "visibility": "VISIBLE",
+                                "x": 0,
+                                "y": 5218,
+                                "width": 1440,
+                                "height": 685,
+                                "contentDescription": "",
+                                "id": "",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true
+                              },
+                              {
+                                "children": [],
+                                "name": "class android.widget.ImageView",
+                                "visibility": "VISIBLE",
+                                "x": 0,
+                                "y": 5903,
+                                "width": 1440,
+                                "height": 685,
+                                "contentDescription": "",
+                                "id": "",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true
+                              },
+                              {
+                                "children": [],
+                                "name": "class android.widget.ImageView",
+                                "visibility": "VISIBLE",
+                                "x": 0,
+                                "y": 6588,
+                                "width": 1440,
+                                "height": 685,
+                                "contentDescription": "",
+                                "id": "",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true
+                              },
+                              {
+                                "children": [],
+                                "name": "class android.widget.ImageView",
+                                "visibility": "VISIBLE",
+                                "x": 0,
+                                "y": 7273,
+                                "width": 1440,
+                                "height": 685,
+                                "contentDescription": "",
+                                "id": "",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true
+                              },
+                              {
+                                "children": [],
+                                "name": "class android.widget.ImageView",
+                                "visibility": "VISIBLE",
+                                "x": 0,
+                                "y": 7958,
+                                "width": 1440,
+                                "height": 685,
+                                "contentDescription": "",
+                                "id": "",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true
+                              },
+                              {
+                                "children": [],
+                                "name": "class android.widget.ImageView",
+                                "visibility": "VISIBLE",
+                                "x": 0,
+                                "y": 8643,
+                                "width": 1440,
+                                "height": 685,
+                                "contentDescription": "",
+                                "id": "",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true
+                              },
+                              {
+                                "children": [],
+                                "name": "class android.widget.ImageView",
+                                "visibility": "VISIBLE",
+                                "x": 0,
+                                "y": 9328,
+                                "width": 1440,
+                                "height": 685,
+                                "contentDescription": "",
+                                "id": "",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true
+                              },
+                              {
+                                "children": [],
+                                "name": "class android.widget.ImageView",
+                                "visibility": "VISIBLE",
+                                "x": 0,
+                                "y": 10013,
+                                "width": 1440,
+                                "height": 685,
+                                "contentDescription": "",
+                                "id": "",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true
+                              }
+                            ],
+                            "name": "class android.widget.LinearLayout",
+                            "visibility": "VISIBLE",
+                            "x": 0,
+                            "y": 423,
+                            "width": 1440,
+                            "height": 10275,
+                            "contentDescription": "",
+                            "id": "draw.me.fairy:id/thumbnails",
+                            "alpha": 1,
+                            "focusable": false,
+                            "enabled": true
+                          }
+                        ],
+                        "name": "class android.widget.ScrollView",
+                        "visibility": "VISIBLE",
+                        "x": 0,
+                        "y": 423,
+                        "width": 1440,
+                        "height": 2321,
+                        "contentDescription": "",
+                        "id": "",
+                        "alpha": 1,
+                        "focusable": true,
+                        "enabled": true
+                      }
+                    ],
+                    "name": "class android.widget.FrameLayout",
+                    "visibility": "VISIBLE",
+                    "x": 0,
+                    "y": 423,
+                    "width": 1440,
+                    "height": 2321,
+                    "contentDescription": "",
+                    "id": "android:id/content",
+                    "alpha": 1,
+                    "focusable": false,
+                    "enabled": true
+                  },
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "children": [],
+                            "name": "class android.widget.TextView",
+                            "visibility": "VISIBLE",
+                            "x": 72,
+                            "y": 236,
+                            "width": 511,
+                            "height": 121,
+                            "contentDescription": "",
+                            "id": "",
+                            "alpha": 1,
+                            "focusable": false,
+                            "enabled": true,
+                            "text": "Select Photo"
+                          },
+                          {
+                            "children": [],
+                            "name": "class android.widget.ActionMenuView",
+                            "visibility": "VISIBLE",
+                            "x": 1440,
+                            "y": 171,
+                            "width": 0,
+                            "height": 252,
+                            "contentDescription": "",
+                            "id": "",
+                            "alpha": 1,
+                            "focusable": false,
+                            "enabled": true
+                          }
+                        ],
+                        "name": "class android.widget.Toolbar",
+                        "visibility": "VISIBLE",
+                        "x": 0,
+                        "y": 171,
+                        "width": 1440,
+                        "height": 252,
+                        "contentDescription": "",
+                        "id": "android:id/action_bar",
+                        "alpha": 1,
+                        "focusable": false,
+                        "enabled": true
+                      }
+                    ],
+                    "name": "class com.android.internal.widget.ActionBarContainer",
+                    "visibility": "VISIBLE",
+                    "x": 0,
+                    "y": 171,
+                    "width": 1440,
+                    "height": 252,
+                    "contentDescription": "",
+                    "id": "android:id/action_bar_container",
+                    "alpha": 1,
+                    "focusable": false,
+                    "enabled": true
+                  }
+                ],
+                "name": "class com.android.internal.widget.ActionBarOverlayLayout",
+                "visibility": "VISIBLE",
+                "x": 0,
+                "y": 0,
+                "width": 1440,
+                "height": 2744,
+                "contentDescription": "",
+                "id": "android:id/decor_content_parent",
+                "alpha": 1,
+                "focusable": false,
+                "enabled": true
+              },
+              {
+                "children": [],
+                "name": "class android.view.View",
+                "visibility": "VISIBLE",
+                "x": 0,
+                "y": 2744,
+                "width": 1440,
+                "height": 216,
+                "contentDescription": "",
+                "id": "android:id/navigationBarBackground",
+                "alpha": 1,
+                "focusable": false,
+                "enabled": true
+              },
+              {
+                "children": [],
+                "name": "class android.view.View",
+                "visibility": "VISIBLE",
+                "x": 0,
+                "y": 0,
+                "width": 1440,
+                "height": 171,
+                "contentDescription": "",
+                "id": "android:id/statusBarBackground",
+                "alpha": 1,
+                "focusable": false,
+                "enabled": true
+              }
+            ],
+            "name": "class com.android.internal.policy.DecorView",
+            "visibility": "VISIBLE",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 2960,
+            "contentDescription": "",
+            "id": "",
+            "alpha": 1,
+            "focusable": false,
+            "enabled": true
+          },
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "children": [],
+                                "name": "class android.widget.ImageButton",
+                                "visibility": "VISIBLE",
+                                "x": 45,
+                                "y": 216,
+                                "width": 225,
+                                "height": 225,
+                                "contentDescription": "Painter picker button",
+                                "id": "draw.me.fairy:id/painter_picker",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true
+                              },
+                              {
+                                "children": [],
+                                "name": "class android.widget.ImageButton",
+                                "visibility": "VISIBLE",
+                                "x": 315,
+                                "y": 216,
+                                "width": 225,
+                                "height": 225,
+                                "contentDescription": "Erase picker button",
+                                "id": "draw.me.fairy:id/erase_picker",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true
+                              },
+                              {
+                                "children": [],
+                                "name": "class android.widget.ImageButton",
+                                "visibility": "VISIBLE",
+                                "x": 585,
+                                "y": 216,
+                                "width": 225,
+                                "height": 225,
+                                "contentDescription": "Color picker button",
+                                "id": "draw.me.fairy:id/color_picker",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true
+                              },
+                              {
+                                "children": [],
+                                "name": "class android.widget.ImageButton",
+                                "visibility": "VISIBLE",
+                                "x": 855,
+                                "y": 216,
+                                "width": 225,
+                                "height": 225,
+                                "contentDescription": "Save button",
+                                "id": "draw.me.fairy:id/0x3039",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true
+                              },
+                              {
+                                "children": [],
+                                "name": "class android.widget.ImageButton",
+                                "visibility": "VISIBLE",
+                                "x": 1125,
+                                "y": 216,
+                                "width": 225,
+                                "height": 225,
+                                "contentDescription": "Share button",
+                                "id": "",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true
+                              }
+                            ],
+                            "name": "class android.widget.LinearLayout",
+                            "visibility": "VISIBLE",
+                            "x": 0,
+                            "y": 171,
+                            "width": 1440,
+                            "height": 315,
+                            "contentDescription": "",
+                            "id": "draw.me.fairy:id/top",
+                            "alpha": 1,
+                            "focusable": false,
+                            "enabled": true
+                          },
+                          {
+                            "children": [
+                              {
+                                "children": [],
+                                "name": "class android.widget.ImageView",
+                                "visibility": "VISIBLE",
+                                "x": 0,
+                                "y": 486,
+                                "width": 1440,
+                                "height": 2258,
+                                "contentDescription": "",
+                                "id": "draw.me.fairy:id/img_from_gallery",
+                                "alpha": 1,
+                                "focusable": false,
+                                "enabled": true
+                              },
+                              {
+                                "children": [],
+                                "name": "class com.testfairy.samples.drawmefairy.DrawingPanel",
+                                "visibility": "VISIBLE",
+                                "x": 0,
+                                "y": 486,
+                                "width": 1440,
+                                "height": 2258,
+                                "contentDescription": "",
+                                "id": "draw.me.fairy:id/drawing_panel",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true
+                              }
+                            ],
+                            "name": "class android.widget.RelativeLayout",
+                            "visibility": "VISIBLE",
+                            "x": 0,
+                            "y": 486,
+                            "width": 1440,
+                            "height": 2258,
+                            "contentDescription": "",
+                            "id": "draw.me.fairy:id/drawing_container",
+                            "alpha": 1,
+                            "focusable": false,
+                            "enabled": true
+                          }
+                        ],
+                        "name": "class android.widget.RelativeLayout",
+                        "visibility": "VISIBLE",
+                        "x": 0,
+                        "y": 171,
+                        "width": 1440,
+                        "height": 2573,
+                        "contentDescription": "",
+                        "id": "draw.me.fairy:id/from_gallery_layout",
+                        "alpha": 1,
+                        "focusable": false,
+                        "enabled": true
+                      }
+                    ],
+                    "name": "class android.widget.FrameLayout",
+                    "visibility": "VISIBLE",
+                    "x": 0,
+                    "y": 171,
+                    "width": 1440,
+                    "height": 2573,
+                    "contentDescription": "",
+                    "id": "android:id/content",
+                    "alpha": 1,
+                    "focusable": false,
+                    "enabled": true
+                  }
+                ],
+                "name": "class android.widget.LinearLayout",
+                "visibility": "VISIBLE",
+                "x": 0,
+                "y": 0,
+                "width": 1440,
+                "height": 2744,
+                "contentDescription": "",
+                "id": "",
+                "alpha": 1,
+                "focusable": false,
+                "enabled": true
+              },
+              {
+                "children": [],
+                "name": "class android.view.View",
+                "visibility": "VISIBLE",
+                "x": 0,
+                "y": 2744,
+                "width": 1440,
+                "height": 216,
+                "contentDescription": "",
+                "id": "android:id/navigationBarBackground",
+                "alpha": 1,
+                "focusable": false,
+                "enabled": true
+              },
+              {
+                "children": [],
+                "name": "class android.view.View",
+                "visibility": "VISIBLE",
+                "x": 0,
+                "y": 0,
+                "width": 1440,
+                "height": 171,
+                "contentDescription": "",
+                "id": "android:id/statusBarBackground",
+                "alpha": 1,
+                "focusable": false,
+                "enabled": true
+              }
+            ],
+            "name": "class com.android.internal.policy.DecorView",
+            "visibility": "VISIBLE",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 2960,
+            "contentDescription": "",
+            "id": "",
+            "alpha": 1,
+            "focusable": false,
+            "enabled": true
+          }
+        ],
+        "name": "app",
+        "width": 1440,
+        "height": 2960
+      },
+      "ts": 7.266
+    },
+    {
+      "seq": 4,
+      "viewNode": {
+        "children": [
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "children": [],
+                                "name": "class android.widget.ImageButton",
+                                "visibility": "VISIBLE",
+                                "x": 45,
+                                "y": 216,
+                                "width": 225,
+                                "height": 225,
+                                "contentDescription": "Painter picker button",
+                                "id": "draw.me.fairy:id/painter_picker",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true
+                              },
+                              {
+                                "children": [],
+                                "name": "class android.widget.ImageButton",
+                                "visibility": "VISIBLE",
+                                "x": 315,
+                                "y": 216,
+                                "width": 225,
+                                "height": 225,
+                                "contentDescription": "Erase picker button",
+                                "id": "draw.me.fairy:id/erase_picker",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true
+                              },
+                              {
+                                "children": [],
+                                "name": "class android.widget.ImageButton",
+                                "visibility": "VISIBLE",
+                                "x": 585,
+                                "y": 216,
+                                "width": 225,
+                                "height": 225,
+                                "contentDescription": "Color picker button",
+                                "id": "draw.me.fairy:id/color_picker",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true
+                              },
+                              {
+                                "children": [],
+                                "name": "class android.widget.ImageButton",
+                                "visibility": "VISIBLE",
+                                "x": 855,
+                                "y": 216,
+                                "width": 225,
+                                "height": 225,
+                                "contentDescription": "Save button",
+                                "id": "draw.me.fairy:id/0x3039",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true
+                              },
+                              {
+                                "children": [],
+                                "name": "class android.widget.ImageButton",
+                                "visibility": "VISIBLE",
+                                "x": 1125,
+                                "y": 216,
+                                "width": 225,
+                                "height": 225,
+                                "contentDescription": "Share button",
+                                "id": "",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true
+                              }
+                            ],
+                            "name": "class android.widget.LinearLayout",
+                            "visibility": "VISIBLE",
+                            "x": 0,
+                            "y": 171,
+                            "width": 1440,
+                            "height": 315,
+                            "contentDescription": "",
+                            "id": "draw.me.fairy:id/top",
+                            "alpha": 1,
+                            "focusable": false,
+                            "enabled": true
+                          },
+                          {
+                            "children": [
+                              {
+                                "children": [],
+                                "name": "class android.widget.ImageView",
+                                "visibility": "VISIBLE",
+                                "x": 0,
+                                "y": 486,
+                                "width": 1440,
+                                "height": 2258,
+                                "contentDescription": "",
+                                "id": "draw.me.fairy:id/img_from_gallery",
+                                "alpha": 1,
+                                "focusable": false,
+                                "enabled": true
+                              },
+                              {
+                                "children": [],
+                                "name": "class com.testfairy.samples.drawmefairy.DrawingPanel",
+                                "visibility": "VISIBLE",
+                                "x": 0,
+                                "y": 486,
+                                "width": 1440,
+                                "height": 2258,
+                                "contentDescription": "",
+                                "id": "draw.me.fairy:id/drawing_panel",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true
+                              }
+                            ],
+                            "name": "class android.widget.RelativeLayout",
+                            "visibility": "VISIBLE",
+                            "x": 0,
+                            "y": 486,
+                            "width": 1440,
+                            "height": 2258,
+                            "contentDescription": "",
+                            "id": "draw.me.fairy:id/drawing_container",
+                            "alpha": 1,
+                            "focusable": false,
+                            "enabled": true
+                          }
+                        ],
+                        "name": "class android.widget.RelativeLayout",
+                        "visibility": "VISIBLE",
+                        "x": 0,
+                        "y": 171,
+                        "width": 1440,
+                        "height": 2573,
+                        "contentDescription": "",
+                        "id": "draw.me.fairy:id/from_gallery_layout",
+                        "alpha": 1,
+                        "focusable": false,
+                        "enabled": true
+                      }
+                    ],
+                    "name": "class android.widget.FrameLayout",
+                    "visibility": "VISIBLE",
+                    "x": 0,
+                    "y": 171,
+                    "width": 1440,
+                    "height": 2573,
+                    "contentDescription": "",
+                    "id": "android:id/content",
+                    "alpha": 1,
+                    "focusable": false,
+                    "enabled": true
+                  }
+                ],
+                "name": "class android.widget.LinearLayout",
+                "visibility": "VISIBLE",
+                "x": 0,
+                "y": 0,
+                "width": 1440,
+                "height": 2744,
+                "contentDescription": "",
+                "id": "",
+                "alpha": 1,
+                "focusable": false,
+                "enabled": true
+              },
+              {
+                "children": [],
+                "name": "class android.view.View",
+                "visibility": "VISIBLE",
+                "x": 0,
+                "y": 2744,
+                "width": 1440,
+                "height": 216,
+                "contentDescription": "",
+                "id": "android:id/navigationBarBackground",
+                "alpha": 1,
+                "focusable": false,
+                "enabled": true
+              },
+              {
+                "children": [],
+                "name": "class android.view.View",
+                "visibility": "VISIBLE",
+                "x": 0,
+                "y": 0,
+                "width": 1440,
+                "height": 171,
+                "contentDescription": "",
+                "id": "android:id/statusBarBackground",
+                "alpha": 1,
+                "focusable": false,
+                "enabled": true
+              }
+            ],
+            "name": "class com.android.internal.policy.DecorView",
+            "visibility": "VISIBLE",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 2960,
+            "contentDescription": "",
+            "id": "",
+            "alpha": 1,
+            "focusable": false,
+            "enabled": true
+          }
+        ],
+        "name": "app",
+        "width": 1440,
+        "height": 2960
+      },
+      "ts": 10.226
+    },
+    {
+      "seq": 5,
+      "viewNode": {
+        "children": [
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "children": [],
+                                "name": "class android.widget.ImageButton",
+                                "visibility": "VISIBLE",
+                                "x": 45,
+                                "y": 216,
+                                "width": 225,
+                                "height": 225,
+                                "contentDescription": "Painter picker button",
+                                "id": "draw.me.fairy:id/painter_picker",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true
+                              },
+                              {
+                                "children": [],
+                                "name": "class android.widget.ImageButton",
+                                "visibility": "VISIBLE",
+                                "x": 315,
+                                "y": 216,
+                                "width": 225,
+                                "height": 225,
+                                "contentDescription": "Erase picker button",
+                                "id": "draw.me.fairy:id/erase_picker",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true
+                              },
+                              {
+                                "children": [],
+                                "name": "class android.widget.ImageButton",
+                                "visibility": "VISIBLE",
+                                "x": 585,
+                                "y": 216,
+                                "width": 225,
+                                "height": 225,
+                                "contentDescription": "Color picker button",
+                                "id": "draw.me.fairy:id/color_picker",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true
+                              },
+                              {
+                                "children": [],
+                                "name": "class android.widget.ImageButton",
+                                "visibility": "VISIBLE",
+                                "x": 855,
+                                "y": 216,
+                                "width": 225,
+                                "height": 225,
+                                "contentDescription": "Save button",
+                                "id": "draw.me.fairy:id/0x3039",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true
+                              },
+                              {
+                                "children": [],
+                                "name": "class android.widget.ImageButton",
+                                "visibility": "VISIBLE",
+                                "x": 1125,
+                                "y": 216,
+                                "width": 225,
+                                "height": 225,
+                                "contentDescription": "Share button",
+                                "id": "",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true
+                              }
+                            ],
+                            "name": "class android.widget.LinearLayout",
+                            "visibility": "VISIBLE",
+                            "x": 0,
+                            "y": 171,
+                            "width": 1440,
+                            "height": 315,
+                            "contentDescription": "",
+                            "id": "draw.me.fairy:id/top",
+                            "alpha": 1,
+                            "focusable": false,
+                            "enabled": true
+                          },
+                          {
+                            "children": [
+                              {
+                                "children": [],
+                                "name": "class android.widget.ImageView",
+                                "visibility": "VISIBLE",
+                                "x": 0,
+                                "y": 486,
+                                "width": 1440,
+                                "height": 2258,
+                                "contentDescription": "",
+                                "id": "draw.me.fairy:id/img_from_gallery",
+                                "alpha": 1,
+                                "focusable": false,
+                                "enabled": true
+                              },
+                              {
+                                "children": [],
+                                "name": "class com.testfairy.samples.drawmefairy.DrawingPanel",
+                                "visibility": "VISIBLE",
+                                "x": 0,
+                                "y": 486,
+                                "width": 1440,
+                                "height": 2258,
+                                "contentDescription": "",
+                                "id": "draw.me.fairy:id/drawing_panel",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true
+                              }
+                            ],
+                            "name": "class android.widget.RelativeLayout",
+                            "visibility": "VISIBLE",
+                            "x": 0,
+                            "y": 486,
+                            "width": 1440,
+                            "height": 2258,
+                            "contentDescription": "",
+                            "id": "draw.me.fairy:id/drawing_container",
+                            "alpha": 1,
+                            "focusable": false,
+                            "enabled": true
+                          }
+                        ],
+                        "name": "class android.widget.RelativeLayout",
+                        "visibility": "VISIBLE",
+                        "x": 0,
+                        "y": 171,
+                        "width": 1440,
+                        "height": 2573,
+                        "contentDescription": "",
+                        "id": "draw.me.fairy:id/from_gallery_layout",
+                        "alpha": 1,
+                        "focusable": false,
+                        "enabled": true
+                      }
+                    ],
+                    "name": "class android.widget.FrameLayout",
+                    "visibility": "VISIBLE",
+                    "x": 0,
+                    "y": 171,
+                    "width": 1440,
+                    "height": 2573,
+                    "contentDescription": "",
+                    "id": "android:id/content",
+                    "alpha": 1,
+                    "focusable": false,
+                    "enabled": true
+                  }
+                ],
+                "name": "class android.widget.LinearLayout",
+                "visibility": "VISIBLE",
+                "x": 0,
+                "y": 0,
+                "width": 1440,
+                "height": 2744,
+                "contentDescription": "",
+                "id": "",
+                "alpha": 1,
+                "focusable": false,
+                "enabled": true
+              },
+              {
+                "children": [],
+                "name": "class android.view.View",
+                "visibility": "VISIBLE",
+                "x": 0,
+                "y": 2744,
+                "width": 1440,
+                "height": 216,
+                "contentDescription": "",
+                "id": "android:id/navigationBarBackground",
+                "alpha": 1,
+                "focusable": false,
+                "enabled": true
+              },
+              {
+                "children": [],
+                "name": "class android.view.View",
+                "visibility": "VISIBLE",
+                "x": 0,
+                "y": 0,
+                "width": 1440,
+                "height": 171,
+                "contentDescription": "",
+                "id": "android:id/statusBarBackground",
+                "alpha": 1,
+                "focusable": false,
+                "enabled": true
+              }
+            ],
+            "name": "class com.android.internal.policy.DecorView",
+            "visibility": "VISIBLE",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 2960,
+            "contentDescription": "",
+            "id": "",
+            "alpha": 1,
+            "focusable": false,
+            "enabled": true
+          },
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "children": [],
+                    "name": "class android.widget.TextView",
+                    "visibility": "VISIBLE",
+                    "x": 72,
+                    "y": 1231,
+                    "width": 1296,
+                    "height": 237,
+                    "contentDescription": "",
+                    "id": "android:id/title",
+                    "alpha": 1,
+                    "focusable": false,
+                    "enabled": true,
+                    "text": "Brush size:"
+                  },
+                  {
+                    "children": [],
+                    "name": "class android.view.View",
+                    "visibility": "VISIBLE",
+                    "x": 72,
+                    "y": 1468,
+                    "width": 1296,
+                    "height": 0,
+                    "contentDescription": "",
+                    "id": "",
+                    "alpha": 1,
+                    "focusable": false,
+                    "enabled": true
+                  },
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "children": [],
+                                "name": "class android.widget.Button",
+                                "visibility": "VISIBLE",
+                                "x": 72,
+                                "y": 1468,
+                                "width": 424,
+                                "height": 216,
+                                "contentDescription": "Small brush Selection",
+                                "id": "draw.me.fairy:id/small_brush",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true,
+                                "text": "Small"
+                              },
+                              {
+                                "children": [],
+                                "name": "class android.widget.Button",
+                                "visibility": "VISIBLE",
+                                "x": 496,
+                                "y": 1468,
+                                "width": 448,
+                                "height": 216,
+                                "contentDescription": "Medium brush selection",
+                                "id": "draw.me.fairy:id/medium_brush",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true,
+                                "text": "Medium"
+                              },
+                              {
+                                "children": [],
+                                "name": "class android.widget.Button",
+                                "visibility": "VISIBLE",
+                                "x": 944,
+                                "y": 1468,
+                                "width": 424,
+                                "height": 216,
+                                "contentDescription": "Large brush selection",
+                                "id": "draw.me.fairy:id/large_brush",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true,
+                                "text": "Large"
+                              }
+                            ],
+                            "name": "class android.widget.LinearLayout",
+                            "visibility": "VISIBLE",
+                            "x": 72,
+                            "y": 1468,
+                            "width": 1296,
+                            "height": 216,
+                            "contentDescription": "",
+                            "id": "",
+                            "alpha": 1,
+                            "focusable": false,
+                            "enabled": true
+                          }
+                        ],
+                        "name": "class android.widget.FrameLayout",
+                        "visibility": "VISIBLE",
+                        "x": 72,
+                        "y": 1468,
+                        "width": 1296,
+                        "height": 216,
+                        "contentDescription": "",
+                        "id": "android:id/content",
+                        "alpha": 1,
+                        "focusable": false,
+                        "enabled": true
+                      }
+                    ],
+                    "name": "class android.widget.FrameLayout",
+                    "visibility": "VISIBLE",
+                    "x": 72,
+                    "y": 1468,
+                    "width": 1296,
+                    "height": 216,
+                    "contentDescription": "",
+                    "id": "",
+                    "alpha": 1,
+                    "focusable": false,
+                    "enabled": true
+                  }
+                ],
+                "name": "class android.widget.LinearLayout",
+                "visibility": "VISIBLE",
+                "x": 72,
+                "y": 1231,
+                "width": 1296,
+                "height": 453,
+                "contentDescription": "",
+                "id": "",
+                "alpha": 1,
+                "focusable": false,
+                "enabled": true
+              }
+            ],
+            "name": "class com.android.internal.policy.DecorView",
+            "visibility": "VISIBLE",
+            "x": 0,
+            "y": 1159,
+            "width": 1440,
+            "height": 597,
+            "contentDescription": "",
+            "id": "",
+            "alpha": 1,
+            "focusable": false,
+            "enabled": true
+          }
+        ],
+        "name": "app",
+        "width": 1440,
+        "height": 2960
+      },
+      "ts": 13.26
+    },
+    {
+      "seq": 6,
+      "viewNode": {
+        "children": [
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "children": [],
+                                "name": "class android.widget.ImageButton",
+                                "visibility": "VISIBLE",
+                                "x": 45,
+                                "y": 216,
+                                "width": 225,
+                                "height": 225,
+                                "contentDescription": "Painter picker button",
+                                "id": "draw.me.fairy:id/painter_picker",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true
+                              },
+                              {
+                                "children": [],
+                                "name": "class android.widget.ImageButton",
+                                "visibility": "VISIBLE",
+                                "x": 315,
+                                "y": 216,
+                                "width": 225,
+                                "height": 225,
+                                "contentDescription": "Erase picker button",
+                                "id": "draw.me.fairy:id/erase_picker",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true
+                              },
+                              {
+                                "children": [],
+                                "name": "class android.widget.ImageButton",
+                                "visibility": "VISIBLE",
+                                "x": 585,
+                                "y": 216,
+                                "width": 225,
+                                "height": 225,
+                                "contentDescription": "Color picker button",
+                                "id": "draw.me.fairy:id/color_picker",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true
+                              },
+                              {
+                                "children": [],
+                                "name": "class android.widget.ImageButton",
+                                "visibility": "VISIBLE",
+                                "x": 855,
+                                "y": 216,
+                                "width": 225,
+                                "height": 225,
+                                "contentDescription": "Save button",
+                                "id": "draw.me.fairy:id/0x3039",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true
+                              },
+                              {
+                                "children": [],
+                                "name": "class android.widget.ImageButton",
+                                "visibility": "VISIBLE",
+                                "x": 1125,
+                                "y": 216,
+                                "width": 225,
+                                "height": 225,
+                                "contentDescription": "Share button",
+                                "id": "",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true
+                              }
+                            ],
+                            "name": "class android.widget.LinearLayout",
+                            "visibility": "VISIBLE",
+                            "x": 0,
+                            "y": 171,
+                            "width": 1440,
+                            "height": 315,
+                            "contentDescription": "",
+                            "id": "draw.me.fairy:id/top",
+                            "alpha": 1,
+                            "focusable": false,
+                            "enabled": true
+                          },
+                          {
+                            "children": [
+                              {
+                                "children": [],
+                                "name": "class android.widget.ImageView",
+                                "visibility": "VISIBLE",
+                                "x": 0,
+                                "y": 486,
+                                "width": 1440,
+                                "height": 2258,
+                                "contentDescription": "",
+                                "id": "draw.me.fairy:id/img_from_gallery",
+                                "alpha": 1,
+                                "focusable": false,
+                                "enabled": true
+                              },
+                              {
+                                "children": [],
+                                "name": "class com.testfairy.samples.drawmefairy.DrawingPanel",
+                                "visibility": "VISIBLE",
+                                "x": 0,
+                                "y": 486,
+                                "width": 1440,
+                                "height": 2258,
+                                "contentDescription": "",
+                                "id": "draw.me.fairy:id/drawing_panel",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true
+                              }
+                            ],
+                            "name": "class android.widget.RelativeLayout",
+                            "visibility": "VISIBLE",
+                            "x": 0,
+                            "y": 486,
+                            "width": 1440,
+                            "height": 2258,
+                            "contentDescription": "",
+                            "id": "draw.me.fairy:id/drawing_container",
+                            "alpha": 1,
+                            "focusable": false,
+                            "enabled": true
+                          }
+                        ],
+                        "name": "class android.widget.RelativeLayout",
+                        "visibility": "VISIBLE",
+                        "x": 0,
+                        "y": 171,
+                        "width": 1440,
+                        "height": 2573,
+                        "contentDescription": "",
+                        "id": "draw.me.fairy:id/from_gallery_layout",
+                        "alpha": 1,
+                        "focusable": false,
+                        "enabled": true
+                      }
+                    ],
+                    "name": "class android.widget.FrameLayout",
+                    "visibility": "VISIBLE",
+                    "x": 0,
+                    "y": 171,
+                    "width": 1440,
+                    "height": 2573,
+                    "contentDescription": "",
+                    "id": "android:id/content",
+                    "alpha": 1,
+                    "focusable": false,
+                    "enabled": true
+                  }
+                ],
+                "name": "class android.widget.LinearLayout",
+                "visibility": "VISIBLE",
+                "x": 0,
+                "y": 0,
+                "width": 1440,
+                "height": 2744,
+                "contentDescription": "",
+                "id": "",
+                "alpha": 1,
+                "focusable": false,
+                "enabled": true
+              },
+              {
+                "children": [],
+                "name": "class android.view.View",
+                "visibility": "VISIBLE",
+                "x": 0,
+                "y": 2744,
+                "width": 1440,
+                "height": 216,
+                "contentDescription": "",
+                "id": "android:id/navigationBarBackground",
+                "alpha": 1,
+                "focusable": false,
+                "enabled": true
+              },
+              {
+                "children": [],
+                "name": "class android.view.View",
+                "visibility": "VISIBLE",
+                "x": 0,
+                "y": 0,
+                "width": 1440,
+                "height": 171,
+                "contentDescription": "",
+                "id": "android:id/statusBarBackground",
+                "alpha": 1,
+                "focusable": false,
+                "enabled": true
+              }
+            ],
+            "name": "class com.android.internal.policy.DecorView",
+            "visibility": "VISIBLE",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 2960,
+            "contentDescription": "",
+            "id": "",
+            "alpha": 1,
+            "focusable": false,
+            "enabled": true
+          }
+        ],
+        "name": "app",
+        "width": 1440,
+        "height": 2960
+      },
+      "ts": 16.294
+    },
+    {
+      "seq": 7,
+      "viewNode": {
+        "children": [
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "children": [],
+                                "name": "class android.widget.ImageButton",
+                                "visibility": "VISIBLE",
+                                "x": 45,
+                                "y": 216,
+                                "width": 225,
+                                "height": 225,
+                                "contentDescription": "Painter picker button",
+                                "id": "draw.me.fairy:id/painter_picker",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true
+                              },
+                              {
+                                "children": [],
+                                "name": "class android.widget.ImageButton",
+                                "visibility": "VISIBLE",
+                                "x": 315,
+                                "y": 216,
+                                "width": 225,
+                                "height": 225,
+                                "contentDescription": "Erase picker button",
+                                "id": "draw.me.fairy:id/erase_picker",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true
+                              },
+                              {
+                                "children": [],
+                                "name": "class android.widget.ImageButton",
+                                "visibility": "VISIBLE",
+                                "x": 585,
+                                "y": 216,
+                                "width": 225,
+                                "height": 225,
+                                "contentDescription": "Color picker button",
+                                "id": "draw.me.fairy:id/color_picker",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true
+                              },
+                              {
+                                "children": [],
+                                "name": "class android.widget.ImageButton",
+                                "visibility": "VISIBLE",
+                                "x": 855,
+                                "y": 216,
+                                "width": 225,
+                                "height": 225,
+                                "contentDescription": "Save button",
+                                "id": "draw.me.fairy:id/0x3039",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true
+                              },
+                              {
+                                "children": [],
+                                "name": "class android.widget.ImageButton",
+                                "visibility": "VISIBLE",
+                                "x": 1125,
+                                "y": 216,
+                                "width": 225,
+                                "height": 225,
+                                "contentDescription": "Share button",
+                                "id": "",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true
+                              }
+                            ],
+                            "name": "class android.widget.LinearLayout",
+                            "visibility": "VISIBLE",
+                            "x": 0,
+                            "y": 171,
+                            "width": 1440,
+                            "height": 315,
+                            "contentDescription": "",
+                            "id": "draw.me.fairy:id/top",
+                            "alpha": 1,
+                            "focusable": false,
+                            "enabled": true
+                          },
+                          {
+                            "children": [
+                              {
+                                "children": [],
+                                "name": "class android.widget.ImageView",
+                                "visibility": "VISIBLE",
+                                "x": 0,
+                                "y": 486,
+                                "width": 1440,
+                                "height": 2258,
+                                "contentDescription": "",
+                                "id": "draw.me.fairy:id/img_from_gallery",
+                                "alpha": 1,
+                                "focusable": false,
+                                "enabled": true
+                              },
+                              {
+                                "children": [],
+                                "name": "class com.testfairy.samples.drawmefairy.DrawingPanel",
+                                "visibility": "VISIBLE",
+                                "x": 0,
+                                "y": 486,
+                                "width": 1440,
+                                "height": 2258,
+                                "contentDescription": "",
+                                "id": "draw.me.fairy:id/drawing_panel",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true
+                              }
+                            ],
+                            "name": "class android.widget.RelativeLayout",
+                            "visibility": "VISIBLE",
+                            "x": 0,
+                            "y": 486,
+                            "width": 1440,
+                            "height": 2258,
+                            "contentDescription": "",
+                            "id": "draw.me.fairy:id/drawing_container",
+                            "alpha": 1,
+                            "focusable": false,
+                            "enabled": true
+                          }
+                        ],
+                        "name": "class android.widget.RelativeLayout",
+                        "visibility": "VISIBLE",
+                        "x": 0,
+                        "y": 171,
+                        "width": 1440,
+                        "height": 2573,
+                        "contentDescription": "",
+                        "id": "draw.me.fairy:id/from_gallery_layout",
+                        "alpha": 1,
+                        "focusable": false,
+                        "enabled": true
+                      }
+                    ],
+                    "name": "class android.widget.FrameLayout",
+                    "visibility": "VISIBLE",
+                    "x": 0,
+                    "y": 171,
+                    "width": 1440,
+                    "height": 2573,
+                    "contentDescription": "",
+                    "id": "android:id/content",
+                    "alpha": 1,
+                    "focusable": false,
+                    "enabled": true
+                  }
+                ],
+                "name": "class android.widget.LinearLayout",
+                "visibility": "VISIBLE",
+                "x": 0,
+                "y": 0,
+                "width": 1440,
+                "height": 2744,
+                "contentDescription": "",
+                "id": "",
+                "alpha": 1,
+                "focusable": false,
+                "enabled": true
+              },
+              {
+                "children": [],
+                "name": "class android.view.View",
+                "visibility": "VISIBLE",
+                "x": 0,
+                "y": 2744,
+                "width": 1440,
+                "height": 216,
+                "contentDescription": "",
+                "id": "android:id/navigationBarBackground",
+                "alpha": 1,
+                "focusable": false,
+                "enabled": true
+              },
+              {
+                "children": [],
+                "name": "class android.view.View",
+                "visibility": "VISIBLE",
+                "x": 0,
+                "y": 0,
+                "width": 1440,
+                "height": 171,
+                "contentDescription": "",
+                "id": "android:id/statusBarBackground",
+                "alpha": 1,
+                "focusable": false,
+                "enabled": true
+              }
+            ],
+            "name": "class com.android.internal.policy.DecorView",
+            "visibility": "VISIBLE",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 2960,
+            "contentDescription": "",
+            "id": "",
+            "alpha": 1,
+            "focusable": false,
+            "enabled": true
+          },
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "children": [],
+                    "name": "class android.widget.TextView",
+                    "visibility": "VISIBLE",
+                    "x": 72,
+                    "y": 1231,
+                    "width": 1296,
+                    "height": 237,
+                    "contentDescription": "",
+                    "id": "android:id/title",
+                    "alpha": 1,
+                    "focusable": false,
+                    "enabled": true,
+                    "text": "Brush size:"
+                  },
+                  {
+                    "children": [],
+                    "name": "class android.view.View",
+                    "visibility": "VISIBLE",
+                    "x": 72,
+                    "y": 1468,
+                    "width": 1296,
+                    "height": 0,
+                    "contentDescription": "",
+                    "id": "",
+                    "alpha": 1,
+                    "focusable": false,
+                    "enabled": true
+                  },
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "children": [],
+                                "name": "class android.widget.Button",
+                                "visibility": "VISIBLE",
+                                "x": 72,
+                                "y": 1468,
+                                "width": 424,
+                                "height": 216,
+                                "contentDescription": "Small brush Selection",
+                                "id": "draw.me.fairy:id/small_brush",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true,
+                                "text": "Small"
+                              },
+                              {
+                                "children": [],
+                                "name": "class android.widget.Button",
+                                "visibility": "VISIBLE",
+                                "x": 496,
+                                "y": 1468,
+                                "width": 448,
+                                "height": 216,
+                                "contentDescription": "Medium brush selection",
+                                "id": "draw.me.fairy:id/medium_brush",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true,
+                                "text": "Medium"
+                              },
+                              {
+                                "children": [],
+                                "name": "class android.widget.Button",
+                                "visibility": "VISIBLE",
+                                "x": 944,
+                                "y": 1468,
+                                "width": 424,
+                                "height": 216,
+                                "contentDescription": "Large brush selection",
+                                "id": "draw.me.fairy:id/large_brush",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true,
+                                "text": "Large"
+                              }
+                            ],
+                            "name": "class android.widget.LinearLayout",
+                            "visibility": "VISIBLE",
+                            "x": 72,
+                            "y": 1468,
+                            "width": 1296,
+                            "height": 216,
+                            "contentDescription": "",
+                            "id": "",
+                            "alpha": 1,
+                            "focusable": false,
+                            "enabled": true
+                          }
+                        ],
+                        "name": "class android.widget.FrameLayout",
+                        "visibility": "VISIBLE",
+                        "x": 72,
+                        "y": 1468,
+                        "width": 1296,
+                        "height": 216,
+                        "contentDescription": "",
+                        "id": "android:id/content",
+                        "alpha": 1,
+                        "focusable": false,
+                        "enabled": true
+                      }
+                    ],
+                    "name": "class android.widget.FrameLayout",
+                    "visibility": "VISIBLE",
+                    "x": 72,
+                    "y": 1468,
+                    "width": 1296,
+                    "height": 216,
+                    "contentDescription": "",
+                    "id": "",
+                    "alpha": 1,
+                    "focusable": false,
+                    "enabled": true
+                  }
+                ],
+                "name": "class android.widget.LinearLayout",
+                "visibility": "VISIBLE",
+                "x": 72,
+                "y": 1231,
+                "width": 1296,
+                "height": 453,
+                "contentDescription": "",
+                "id": "",
+                "alpha": 1,
+                "focusable": false,
+                "enabled": true
+              }
+            ],
+            "name": "class com.android.internal.policy.DecorView",
+            "visibility": "VISIBLE",
+            "x": 0,
+            "y": 1159,
+            "width": 1440,
+            "height": 597,
+            "contentDescription": "",
+            "id": "",
+            "alpha": 1,
+            "focusable": false,
+            "enabled": true
+          }
+        ],
+        "name": "app",
+        "width": 1440,
+        "height": 2960
+      },
+      "ts": 19.326
+    },
+    {
+      "seq": 8,
+      "viewNode": {
+        "children": [
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "children": [],
+                                "name": "class android.widget.ImageButton",
+                                "visibility": "VISIBLE",
+                                "x": 45,
+                                "y": 216,
+                                "width": 225,
+                                "height": 225,
+                                "contentDescription": "Painter picker button",
+                                "id": "draw.me.fairy:id/painter_picker",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true
+                              },
+                              {
+                                "children": [],
+                                "name": "class android.widget.ImageButton",
+                                "visibility": "VISIBLE",
+                                "x": 315,
+                                "y": 216,
+                                "width": 225,
+                                "height": 225,
+                                "contentDescription": "Erase picker button",
+                                "id": "draw.me.fairy:id/erase_picker",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true
+                              },
+                              {
+                                "children": [],
+                                "name": "class android.widget.ImageButton",
+                                "visibility": "VISIBLE",
+                                "x": 585,
+                                "y": 216,
+                                "width": 225,
+                                "height": 225,
+                                "contentDescription": "Color picker button",
+                                "id": "draw.me.fairy:id/color_picker",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true
+                              },
+                              {
+                                "children": [],
+                                "name": "class android.widget.ImageButton",
+                                "visibility": "VISIBLE",
+                                "x": 855,
+                                "y": 216,
+                                "width": 225,
+                                "height": 225,
+                                "contentDescription": "Save button",
+                                "id": "draw.me.fairy:id/0x3039",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true
+                              },
+                              {
+                                "children": [],
+                                "name": "class android.widget.ImageButton",
+                                "visibility": "VISIBLE",
+                                "x": 1125,
+                                "y": 216,
+                                "width": 225,
+                                "height": 225,
+                                "contentDescription": "Share button",
+                                "id": "",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true
+                              }
+                            ],
+                            "name": "class android.widget.LinearLayout",
+                            "visibility": "VISIBLE",
+                            "x": 0,
+                            "y": 171,
+                            "width": 1440,
+                            "height": 315,
+                            "contentDescription": "",
+                            "id": "draw.me.fairy:id/top",
+                            "alpha": 1,
+                            "focusable": false,
+                            "enabled": true
+                          },
+                          {
+                            "children": [
+                              {
+                                "children": [],
+                                "name": "class android.widget.ImageView",
+                                "visibility": "VISIBLE",
+                                "x": 0,
+                                "y": 486,
+                                "width": 1440,
+                                "height": 2258,
+                                "contentDescription": "",
+                                "id": "draw.me.fairy:id/img_from_gallery",
+                                "alpha": 1,
+                                "focusable": false,
+                                "enabled": true
+                              },
+                              {
+                                "children": [],
+                                "name": "class com.testfairy.samples.drawmefairy.DrawingPanel",
+                                "visibility": "VISIBLE",
+                                "x": 0,
+                                "y": 486,
+                                "width": 1440,
+                                "height": 2258,
+                                "contentDescription": "",
+                                "id": "draw.me.fairy:id/drawing_panel",
+                                "alpha": 1,
+                                "focusable": true,
+                                "enabled": true
+                              }
+                            ],
+                            "name": "class android.widget.RelativeLayout",
+                            "visibility": "VISIBLE",
+                            "x": 0,
+                            "y": 486,
+                            "width": 1440,
+                            "height": 2258,
+                            "contentDescription": "",
+                            "id": "draw.me.fairy:id/drawing_container",
+                            "alpha": 1,
+                            "focusable": false,
+                            "enabled": true
+                          }
+                        ],
+                        "name": "class android.widget.RelativeLayout",
+                        "visibility": "VISIBLE",
+                        "x": 0,
+                        "y": 171,
+                        "width": 1440,
+                        "height": 2573,
+                        "contentDescription": "",
+                        "id": "draw.me.fairy:id/from_gallery_layout",
+                        "alpha": 1,
+                        "focusable": false,
+                        "enabled": true
+                      }
+                    ],
+                    "name": "class android.widget.FrameLayout",
+                    "visibility": "VISIBLE",
+                    "x": 0,
+                    "y": 171,
+                    "width": 1440,
+                    "height": 2573,
+                    "contentDescription": "",
+                    "id": "android:id/content",
+                    "alpha": 1,
+                    "focusable": false,
+                    "enabled": true
+                  }
+                ],
+                "name": "class android.widget.LinearLayout",
+                "visibility": "VISIBLE",
+                "x": 0,
+                "y": 0,
+                "width": 1440,
+                "height": 2744,
+                "contentDescription": "",
+                "id": "",
+                "alpha": 1,
+                "focusable": false,
+                "enabled": true
+              },
+              {
+                "children": [],
+                "name": "class android.view.View",
+                "visibility": "VISIBLE",
+                "x": 0,
+                "y": 2744,
+                "width": 1440,
+                "height": 216,
+                "contentDescription": "",
+                "id": "android:id/navigationBarBackground",
+                "alpha": 1,
+                "focusable": false,
+                "enabled": true
+              },
+              {
+                "children": [],
+                "name": "class android.view.View",
+                "visibility": "VISIBLE",
+                "x": 0,
+                "y": 0,
+                "width": 1440,
+                "height": 171,
+                "contentDescription": "",
+                "id": "android:id/statusBarBackground",
+                "alpha": 1,
+                "focusable": false,
+                "enabled": true
+              }
+            ],
+            "name": "class com.android.internal.policy.DecorView",
+            "visibility": "VISIBLE",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 2960,
+            "contentDescription": "",
+            "id": "",
+            "alpha": 1,
+            "focusable": false,
+            "enabled": true
+          }
+        ],
+        "name": "app",
+        "width": 1440,
+        "height": 2960
+      },
+      "ts": 22.304
+    }
+  ],
+  "options": "anr,logcat,cpu,memory,battery,shake,video,session-length=10m,viewtree,text-on-screen,user-interactions,event-buffer-size=128,max-shakes-allowed=99,x-invalidate-appbar,phone-signal,wifi,x-enable-pixelcopy,request-layout-on-constraint-layout,x-request-layout-on-constraintlayout,screenshot-interval=1,video-quality=medium,video-rescale=0.5,video-jpeg-quality=0.5",
+  "audioEvents": null
+}
