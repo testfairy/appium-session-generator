@@ -75,3 +75,20 @@ export const getDriverLines = (provider: Provider) => {
 
   return driverSetup;
 };
+
+export const getDriverInitLines = (provider: Provider) => {
+  if (provider === 'perfecto') {
+    return `    return new Promise(function(resolve) {
+      driver.init(
+        desired,
+        tester.buildOnPerfectoInit(
+          serverConfig.host, perfectoIni.securityToken, desired.deviceName, function() {
+            resolve();
+          })
+        ).setImplicitWaitTimeout(5000);
+    });
+    `;
+  } else {
+    return '    return driver.init(desired).setImplicitWaitTimeout(5000);';
+  }
+};

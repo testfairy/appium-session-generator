@@ -172,6 +172,49 @@ async function uploadAppToSauceLabs(username, accessKey, region, appPath) {
   return prefix + appName;
 }
 
+function buildOnPerfectoInit(host, securityToken, deviceName, callback) {
+  return function(err, res) {
+    try {
+      if (err) {
+        console.error(err);
+        return;
+      }
+
+      let executionId = res[1].executionId;
+
+      var url =
+      'https://' +
+      host +
+      '/services/executions/' +
+      executionId +
+      '?operation=command&command=logs&subcommand=start&param.deviceId=' +
+      deviceName +
+      '&securityToken=' +
+      securityToken;
+
+      var options = {
+        method: 'POST'
+      };
+
+      console.log("");
+      console.log('~Enabling Perfecto logs on ' + executionId);
+      console.log("");
+      request.post(url, options, function(error, response) {
+        if (!error && response.statusCode == 200) {
+          console.log('~Enabled Perfecto logs!'.green);
+        } else {
+          console.error('\n~Enabling Perfecto logs failed!'.red);
+        }
+
+        callback();
+      });
+    } catch (ex) {
+      console.error(ex);
+      callback();
+    }
+  };
+}
+
 module.exports = {
   should: should,
   expect: expect,
@@ -179,6 +222,7 @@ module.exports = {
   findPerfectoIni: findPerfectoIni,
   uploadAppToPerfecto: uploadAppToPerfecto,
   filterPerfectoCaps: filterPerfectoCaps,
+  buildOnPerfectoInit: buildOnPerfectoInit,
   findSauceLabsIni: findSauceLabsIni,
   uploadAppToSauceLabs: uploadAppToSauceLabs
 };

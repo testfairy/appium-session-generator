@@ -31,7 +31,9 @@ export const generateTestLines = (sessionData: SessionData): Test => {
 
   let inputs = (sessionData.events.inputEvents || [])
     .map(sanitizeInput)
-    .map(correctScalingAndroid(sessionData.options, sessionData.events.meta || []))
+    .map(
+      correctScalingAndroid(sessionData.options, sessionData.events.meta || [])
+    )
     .map(addTimeString);
   let checkpoints = (sessionData.events.checkpoints || []).map(addTimeString);
   let userInteractions = (sessionData.events.userInteractions || [])

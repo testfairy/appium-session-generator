@@ -2,6 +2,7 @@ import { TestLinesAppenderVisitor } from '../../test-lines/test-lines-visitor';
 import { Provider, Platform } from '../../environment-types';
 import {
   getDeviceLines,
+  getDriverInitLines,
   getDriverLines,
   getImportLines,
   getTitleLines
@@ -85,7 +86,7 @@ describe(
     interactions.packageName = sessionData.packageName;
     interactions.driver = driver;
 
-    return driver.init(desired).setImplicitWaitTimeout(5000);
+    ${getDriverInitLines(provider)}
   });
 
   after(function () {
