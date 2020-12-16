@@ -235,4 +235,9 @@ describe('generator tests', () => {
     'should generate an flutter-driver.zip for local and save it to project root for a given session on iOS',
     buildFlutterDriveZipGenerationTest(localConfig, 'ios')
   );
+
+  it(
+    'Test manually',
+    buildAppiumZipGenerationTest(awsConfig, 'android', false)
+  );
 });
