@@ -35,7 +35,7 @@ export class TestCaseCreationVisitor extends TestLinesAppenderVisitor {
     super.visitInitialDocs(sessionUrl);
   }
 
-  visitImports(provider: Provider, sessionUrl: string) {
+  visitImports(provider: Provider, sessionUrl: string, splashScreen: string) {
     let generatedJsLine =
       `
 // Helpers (app agnostic)
@@ -50,11 +50,11 @@ var capabilities = require("./helpers/caps");
 // Session data (app specific)
 var sessionData = require('./session/sessionData.json');
 sessionData.sessionUrl = '${sessionUrl}';
-` + getImportLines(provider);
+` + getImportLines(provider, splashScreen);
 
     this.append(generatedJsLine);
 
-    super.visitImports(provider, sessionUrl);
+    super.visitImports(provider, sessionUrl, splashScreen);
   }
 
   visitTestBegin(

@@ -25,7 +25,7 @@ export class TestCaseCreationVisitor extends TestLinesAppenderVisitor {
     super.visitInitialDocs(sessionUrl);
   }
 
-  visitImports(provider: Provider, sessionUrl: string) {
+  visitImports(provider: Provider, sessionUrl: string, splashScreen: string) {
     let generatedDartLine = `
 import 'package:flutter_driver/flutter_driver.dart';
 import 'package:test/test.dart';
@@ -36,7 +36,7 @@ const String sessionUrl = '${sessionUrl}';
 `;
     this.append(generatedDartLine);
 
-    super.visitImports(provider, sessionUrl);
+    super.visitImports(provider, sessionUrl, splashScreen);
   }
 
   visitTestBegin(

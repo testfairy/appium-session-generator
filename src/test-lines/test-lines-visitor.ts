@@ -17,7 +17,11 @@ export interface TestLineVisitorConstructor {
 export interface TestLineVisitor {
   /* These are visited once per code generation */
   visitInitialDocs(sessionUrl: string): void;
-  visitImports(provider: Provider, sessionUrl: string): void;
+  visitImports(
+    provider: Provider,
+    sessionUrl: string,
+    splashScreen: string
+  ): void;
   visitTestBegin(
     platform: Platform,
     provider: Provider,
@@ -45,6 +49,7 @@ export type GeneratorConfiguration = {
   sessionUrl: string;
   initialDelay: number;
   sessionMetaData: SessionMetaData;
+  splashScreen: string;
 };
 
 // Various types of test lines in the timeline
@@ -64,7 +69,11 @@ export const createTestLines = (testLines: TestLine[]): TestLines => {
     testLines,
     accept: (visitor: TestLineVisitor, config: GeneratorConfiguration) => {
       visitor.visitInitialDocs(config.sessionUrl);
-      visitor.visitImports(config.provider, config.sessionUrl);
+      visitor.visitImports(
+        config.provider,
+        config.sessionUrl,
+        config.splashScreen
+      );
       visitor.visitTestBegin(
         config.platform,
         config.provider,
@@ -116,8 +125,8 @@ export const BaseTestLinesVisitor: TestLineVisitorConstructor = class BaseTestLi
   visitInitialDocs(sessionUrl: string) {
     this.visitor?.visitInitialDocs(sessionUrl);
   }
-  visitImports(provider: Provider, sessionUrl: string) {
-    this.visitor?.visitImports(provider, sessionUrl);
+  visitImports(provider: Provider, sessionUrl: string, splashScreen: string) {
+    this.visitor?.visitImports(provider, sessionUrl, splashScreen);
   }
   visitTestBegin(
     platform: Platform,

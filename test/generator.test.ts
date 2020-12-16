@@ -236,8 +236,8 @@ describe('generator tests', () => {
     buildFlutterDriveZipGenerationTest(localConfig, 'ios')
   );
 
-  it(
-    'Test manually',
-    buildAppiumZipGenerationTest(awsConfig, 'android', false)
-  );
+  // it(
+  //   'Test manually',
+  //   buildAppiumZipGenerationTest(awsConfig, 'android', false)
+  // );
 });

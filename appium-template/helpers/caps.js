@@ -1,9 +1,6 @@
 exports.android = {
-  // appWaitActivity: 'EDITME', // EDITME : specify initial activity if necessary
-
-  // AWS only
   browserName: '',
-  'appium-version': '1.6',
+  'appium-version': '1.15.1',
   platformName: 'Android',
   platformVersion: '10',
   autoGrantPermissions: true,
@@ -15,11 +12,12 @@ exports.android = {
   // Common
   deviceName: undefined, // Will be filled before test begins
   app: undefined, // Will be filled before test begins
+  appWaitActivity: undefined, // Will be filled before test begins if necessary (only on Device Farm)
   securityToken: undefined // Will be filled before test begins if necessary (only on Perfecto)
 };
 
 exports.iOS = {
-  'appium-version': '1.6',
+  'appium-version': '1.15.1',
   platformName: 'iOS',
   platformVersion: '12.2',
   deviceName: 'iPhone Simulator',

@@ -14,9 +14,7 @@
     "uuid": "^8.3.0",
     "wd-bridge": "0.0.2",
     "xml-escape": "^1.1.0",
-    "yiewd": "^0.6.0"
-  },
-  "devDependencies": {
+    "yiewd": "^0.6.0",
     "chai": "^2.2.0",
     "chai-as-promised": "^5.0.0",
     "colors": "^1.4.0",

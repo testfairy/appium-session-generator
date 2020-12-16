@@ -18,7 +18,11 @@ import { GeneratorConfiguration } from './test-lines/test-lines-visitor';
 import { render as appiumRender } from './renderers/appium-js-renderer';
 import { render as flutterRender } from './renderers/flutter-driver-dart2-renderer';
 import { cli } from './cli';
-import { correctSessionDataFromBrowser, extractMetaData } from './sanitizers';
+import {
+  correctSessionDataFromBrowser,
+  extractMetaData,
+  findSplashScreen
+} from './sanitizers';
 import { createTestZip } from './bundlers/test-zip-visitor';
 import { CommonTestZipVisitor } from './bundlers/zip-visitors/common-test-zip-visitor';
 import { AndroidTestZipVisitor } from './bundlers/zip-visitors/android-test-zip-visitor';
@@ -44,7 +48,8 @@ const createRendererConfiguration = (
     provider,
     sessionUrl,
     initialDelay: 5000,
-    sessionMetaData: extractMetaData(sessionData)
+    sessionMetaData: extractMetaData(sessionData),
+    splashScreen: findSplashScreen(sessionData)
   };
 
   return config;
@@ -101,6 +106,8 @@ const saveGeneratedAppiumJsTest = async (
 
   testZip.accept(testZipVisitor);
 
+  // Compromise: Leaving the following 4 lines outside of visitors
+  // let us keep entire zip visitor chain implementation non-async
   await saveZipFileAs(outputFilePath, testZip.zip);
 
   if (providerConfig.provider === 'aws') {

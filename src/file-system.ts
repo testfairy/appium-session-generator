@@ -204,6 +204,9 @@ export const saveZipFileAs = async (filePath: string, zip: JSZip) => {
   }
 };
 
+// Warning : this function mutates given file inplace.
+//
+// It converts a zip file into another zip file in which all initial content is bundled with npm-bundle
 export const rebundleZipFileWithNpmBundle = async (filePath: string) => {
   if (isBrowser()) {
     throw new Error('Rebundling with npm-bundle in browser is not supported!');
@@ -220,7 +223,7 @@ export const rebundleZipFileWithNpmBundle = async (filePath: string) => {
   fs.unlinkSync(tempSrcFilePath);
 
   await exec(`cd ${tempFolderPath} && npm-bundle`);
-  await exec(`zip -r ${filePath} ${tempFolderPath}/*.tgz`);
+  await exec(`cd ${tempFolderPath} && zip -r ${filePath} *.tgz`);
 
   await exec(`rm -rf ${tempFolderPath}`);
 };
