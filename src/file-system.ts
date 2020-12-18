@@ -214,6 +214,7 @@ export const rebundleZipFileWithNpmBundle = async (filePath: string) => {
 
   const tempFolderPath = '/tmp/' + uuidv4();
   const tempSrcFilePath = tempFolderPath + '/' + uuidv4();
+  const npmBundleWrapperPath = path.resolve('npm-bundle-wrapper.js');
 
   fs.mkdirSync(tempFolderPath);
   fs.renameSync(filePath, tempSrcFilePath);
@@ -222,7 +223,7 @@ export const rebundleZipFileWithNpmBundle = async (filePath: string) => {
 
   fs.unlinkSync(tempSrcFilePath);
 
-  await exec(`cd ${tempFolderPath} && npm-bundle`);
+  await exec(`cd ${tempFolderPath} && ${npmBundleWrapperPath}`);
   await exec(`cd ${tempFolderPath} && zip -r ${filePath} *.tgz`);
 
   await exec(`rm -rf ${tempFolderPath}`);
