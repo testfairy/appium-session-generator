@@ -251,6 +251,14 @@ export const ignoreSplashActivity = (
   return foregroundActivity.ts >= 0;
 };
 
+export const ignoreNonSplashActivity = (
+  foregroundActivity: ForegroundActivity,
+  index: number,
+  activities: ForegroundActivity[]
+): boolean => {
+  return !ignoreSplashActivity(foregroundActivity, index, activities);
+};
+
 export const sanitizeForegroundActivity = (packageName: string) => (
   foregroundActivity: ForegroundActivity
 ): ForegroundActivity => {
@@ -260,6 +268,29 @@ export const sanitizeForegroundActivity = (packageName: string) => (
     isLastActionBackButton: false,
     ts: Math.max(0, foregroundActivity.ts)
   };
+};
+
+export const findSplashScreen = (sessionData: SessionData): string => {
+  let isIOS = sessionData.platform === '1';
+  if (isIOS) {
+    return '';
+  }
+
+  let foregroundActivities = (sessionData.events.foregroundActivities || [])
+    .filter(ignoreNonSplashActivity)
+    .map(sanitizeForegroundActivity(sessionData.packageName));
+
+  if (foregroundActivities.length > 0) {
+    let screenFullName = (foregroundActivities[
+      foregroundActivities.length - 1
+    ] as ForegroundActivity).name;
+
+    let screenFullNameExplode = screenFullName.split('.');
+
+    return '*.' + screenFullNameExplode[screenFullNameExplode.length - 1];
+  } else {
+    return '';
+  }
 };
 
 // Helper for supporting different kinds of session data json formats

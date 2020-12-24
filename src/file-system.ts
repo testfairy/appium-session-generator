@@ -1,7 +1,12 @@
+import * as child_process from 'child_process';
 import fs from 'fs';
 import path from 'path';
 import JSZip from 'jszip';
 import { saveAs } from 'file-saver';
+import * as util from 'util';
+import { v4 as uuidv4 } from 'uuid';
+
+const exec = util.promisify(child_process.exec);
 
 let S3_PREFIX = 's3/';
 
@@ -123,35 +128,35 @@ const getZipOfFolder = (dir: string): JSZip => {
 
 export type BinaryFile = Buffer | Blob;
 
-export const readTextFile = async (fileName: string): Promise<string> => {
+export const readTextFile = async (filePath: string): Promise<string> => {
   if (isBrowser()) {
     return new Promise(function(resolve, reject) {
-      httpGetAsync(S3_PREFIX + fileName, 'text', function(data: string) {
+      httpGetAsync(S3_PREFIX + filePath, 'text', function(data: string) {
         if (data) {
           resolve(data);
         } else {
-          reject(new Error('Cannot find ' + fileName + ' in the server!'));
+          reject(new Error('Cannot find ' + filePath + ' in the server!'));
         }
       });
     });
   } else {
-    return fs.readFileSync(fileName, { encoding: 'utf8' });
+    return fs.readFileSync(filePath, { encoding: 'utf8' });
   }
 };
 
-export const readBinaryFile = async (fileName: string): Promise<BinaryFile> => {
+export const readBinaryFile = async (filePath: string): Promise<BinaryFile> => {
   if (isBrowser()) {
     return new Promise(function(resolve, reject) {
-      httpGetAsync(S3_PREFIX + fileName, 'binary', function(data: BinaryFile) {
+      httpGetAsync(S3_PREFIX + filePath, 'binary', function(data: BinaryFile) {
         if (data) {
           resolve(data);
         } else {
-          reject(new Error('Cannot find ' + fileName + ' in the server!'));
+          reject(new Error('Cannot find ' + filePath + ' in the server!'));
         }
       });
     });
   } else {
-    return fs.readFileSync(fileName);
+    return fs.readFileSync(filePath);
   }
 };
 
@@ -173,12 +178,12 @@ export const buildFlutterDriverZipFile = async (): Promise<JSZip> => {
   }
 };
 
-export const saveZipFileAs = async (fileName: string, zip: JSZip) => {
+export const saveZipFileAs = async (filePath: string, zip: JSZip) => {
   if (isBrowser()) {
     await zip
       .generateAsync({ type: 'blob', platform: 'UNIX' })
       .then(function(blob) {
-        saveAs(blob, fileName);
+        saveAs(blob, filePath);
       });
   } else {
     await new Promise(function(resolve, reject) {
@@ -188,7 +193,7 @@ export const saveZipFileAs = async (fileName: string, zip: JSZip) => {
           type: 'nodebuffer',
           streamFiles: true
         })
-        .pipe(fs.createWriteStream(fileName))
+        .pipe(fs.createWriteStream(filePath))
         .on('error', function(err) {
           reject(err);
         })
@@ -197,6 +202,31 @@ export const saveZipFileAs = async (fileName: string, zip: JSZip) => {
         });
     });
   }
+};
+
+// Warning : this function mutates given file inplace.
+//
+// It converts a zip file into another zip file in which all initial content is bundled with npm-bundle
+export const rebundleZipFileWithNpmBundle = async (filePath: string) => {
+  if (isBrowser()) {
+    throw new Error('Rebundling with npm-bundle in browser is not supported!');
+  }
+
+  const tempFolderPath = '/tmp/' + uuidv4();
+  const tempSrcFilePath = tempFolderPath + '/' + uuidv4();
+  const npmBundleWrapperPath = path.resolve('npm-bundle-wrapper.js');
+
+  fs.mkdirSync(tempFolderPath);
+  fs.renameSync(filePath, tempSrcFilePath);
+
+  await exec(`unzip ${tempSrcFilePath} -d ${tempFolderPath}`);
+
+  fs.unlinkSync(tempSrcFilePath);
+
+  await exec(`cd ${tempFolderPath} && ${npmBundleWrapperPath}`);
+  await exec(`cd ${tempFolderPath} && zip -r ${filePath} *.tgz`);
+
+  await exec(`rm -rf ${tempFolderPath}`);
 };
 
 export const setAppiumSessionGeneratorS3BaseUrl = (url: string) => {

@@ -3,7 +3,8 @@ import {
   saveZipFileAs,
   BinaryFile,
   isBrowser,
-  buildFlutterDriverZipFile
+  buildFlutterDriverZipFile,
+  rebundleZipFileWithNpmBundle
 } from './file-system';
 import { SessionData } from './generator-types';
 import { generateTestLines as generateAndroid } from './generator-android';
@@ -11,16 +12,23 @@ import { generateTestLines as generateIOS } from './generator-ios';
 import {
   Provider,
   ProviderConfiguration,
-  PerfectoConfiguration,
-  SauceLabsConfiguration,
   Framework
 } from './environment-types';
 import { GeneratorConfiguration } from './test-lines/test-lines-visitor';
 import { render as appiumRender } from './renderers/appium-js-renderer';
 import { render as flutterRender } from './renderers/flutter-driver-dart2-renderer';
 import { cli } from './cli';
-import ini from 'ini';
-import { correctSessionDataFromBrowser, extractMetaData } from './sanitizers';
+import {
+  correctSessionDataFromBrowser,
+  extractMetaData,
+  findSplashScreen
+} from './sanitizers';
+import { createTestZip } from './bundlers/test-zip-visitor';
+import { CommonTestZipVisitor } from './bundlers/zip-visitors/common-test-zip-visitor';
+import { AndroidTestZipVisitor } from './bundlers/zip-visitors/android-test-zip-visitor';
+import { IOSTestZipVisitor } from './bundlers/zip-visitors/ios-test-zip-visitor';
+import { PerfectoTestZipVisitor } from './bundlers/zip-visitors/perfecto-test-zip-visitor';
+import { SauceLabsTestZipVisitor } from './bundlers/zip-visitors/saucelabs-test-zip-visitor';
 
 // Private API
 
@@ -40,7 +48,8 @@ const createRendererConfiguration = (
     provider,
     sessionUrl,
     initialDelay: 5000,
-    sessionMetaData: extractMetaData(sessionData)
+    sessionMetaData: extractMetaData(sessionData),
+    splashScreen: findSplashScreen(sessionData)
   };
 
   return config;
@@ -80,67 +89,30 @@ const saveGeneratedAppiumJsTest = async (
 ) => {
   sessionData = correctSessionDataFromBrowser(sessionData);
 
-  let appiumZip = await buildAppiumZipFile();
-
-  appiumZip.remove('.gitignore');
-  appiumZip.remove('session/app.apk');
-  appiumZip.remove('session/app.zip');
-  appiumZip.remove('session/README.md');
-  appiumZip.remove('session/sessionData.json');
-
-  appiumZip.file(
-    'index.js',
-    generateAppiumIndexJs(sessionUrl, sessionData, providerConfig)
+  let testZip = createTestZip(
+    await buildAppiumZipFile(),
+    providerConfig,
+    sessionData,
+    await generateAppiumIndexJs(sessionUrl, sessionData, providerConfig),
+    apkOrZipFile,
+    outputFilePath
   );
 
-  const zipOptions = {
-    binary: true,
-    compression: 'STORE'
-  };
+  let testZipVisitor = new CommonTestZipVisitor(null);
+  testZipVisitor = new AndroidTestZipVisitor(testZipVisitor);
+  testZipVisitor = new IOSTestZipVisitor(testZipVisitor);
+  testZipVisitor = new PerfectoTestZipVisitor(testZipVisitor);
+  testZipVisitor = new SauceLabsTestZipVisitor(testZipVisitor);
 
-  if (sessionData.platform === '1') {
-    appiumZip.file('session/app.zip', apkOrZipFile, zipOptions);
-  } else {
-    appiumZip.file('session/app.apk', apkOrZipFile, zipOptions);
+  testZip.accept(testZipVisitor);
+
+  // Compromise: Leaving the following 4 lines outside of visitors
+  // let us keep entire zip visitor chain implementation non-async
+  await saveZipFileAs(outputFilePath, testZip.zip);
+
+  if (providerConfig.provider === 'aws') {
+    await rebundleZipFileWithNpmBundle(outputFilePath);
   }
-
-  if (providerConfig.provider === 'perfecto') {
-    let perfectoConfig = providerConfig as PerfectoConfiguration;
-
-    appiumZip.file(
-      'perfecto.ini',
-      ini.encode({
-        Perfecto: {
-          host: perfectoConfig.host,
-          'security-token': perfectoConfig.securityToken,
-          'device-name': perfectoConfig.deviceName
-        }
-      })
-    );
-  }
-
-  if (providerConfig.provider === 'saucelabs') {
-    let perfectoConfig = providerConfig as SauceLabsConfiguration;
-
-    appiumZip.file(
-      'saucelabs.ini',
-      ini.encode({
-        SauceLabs: {
-          username: perfectoConfig.username,
-          'access-key': perfectoConfig.accessKey,
-          region: perfectoConfig.region,
-          datacenter: perfectoConfig.datacenter,
-          'device-name': perfectoConfig.deviceName,
-          'device-orientation': perfectoConfig.deviceOrientation,
-          'platform-version': perfectoConfig.platformVersion
-        }
-      })
-    );
-  }
-
-  appiumZip.file('session/sessionData.json', JSON.stringify(sessionData));
-
-  await saveZipFileAs(outputFilePath, appiumZip);
 };
 
 // Call ONLY this if you want to generate an Flutter Driver Dart2 project, it will generate its own app_test.dart internally

@@ -1,6 +1,8 @@
 import { Platform, Provider } from 'environment-types';
 
-export const getImportLines = (provider: Provider) => {
+// TODO : Visitorize this entire file!!!
+
+export const getImportLines = (provider: Provider, splashScreen: string) => {
   if (provider === 'perfecto') {
     return `
 let perfectoIni = tester.findPerfectoIni();
@@ -22,6 +24,10 @@ capabilities.android.accessKey = sauceLabsIni.accessKey;
 capabilities.iOS.accessKey = sauceLabsIni.accessKey;
 capabilities.android.deviceName = sauceLabsIni.deviceName;
 capabilities.iOS.deviceName = sauceLabsIni.deviceName;
+`;
+  } else if (provider === 'aws' && splashScreen && splashScreen.length > 0) {
+    // iOS has no such concept because we don't assert active view controllers in the generated test script
+    return `capabilities.android.appWaitActivity = "${splashScreen}";
 `;
   } else {
     return '';
@@ -89,6 +95,6 @@ export const getDriverInitLines = (provider: Provider) => {
     });
     `;
   } else {
-    return '    return driver.init(desired).setImplicitWaitTimeout(5000);';
+    return 'return driver.init(desired).setImplicitWaitTimeout(5000);';
   }
 };

@@ -21,6 +21,12 @@ export const render = (config: GeneratorConfiguration): string => {
   tests = new CheckpointVisitor(tests, indexJsBuilder);
   tests = new ForegroundActivityVisitor(tests, indexJsBuilder);
 
+  // Compromise : This choice evolve quickly during development
+  // and each time it does, we add a new visitor type. Thus, it
+  // is easier to make the decision as close to outside as
+  // possible for easy debugging. Eventually we may want to
+  // move this if statement inside visitors to keep the visitor
+  // chain flat.
   if (config.platform === 'android') {
     // Use ids, xpath (screen size independent)
     tests = new UserInteractionVisitor(tests, indexJsBuilder);
