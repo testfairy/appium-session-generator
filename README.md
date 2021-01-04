@@ -8,12 +8,12 @@ It was bootstrapped with [TSDX](https://github.com/jaredpalmer/tsdx).
 
 Below is a list of commands you can run to build or test this library.
 
-`npm build`
+`npm run build`
 
 Bundles the package to the `dist` folder for deployment. Currently supports node.
 
 The package is optimized and bundled with Rollup into multiple formats (CommonJS, UMD, and ES Module).
 
-`npm test`
+`npm run test`
 
 Runs the test watcher (Jest) to test the generator in node.
