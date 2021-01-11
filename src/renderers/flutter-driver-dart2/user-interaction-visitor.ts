@@ -36,6 +36,9 @@ export class UserInteractionVisitor extends TestLinesAppenderVisitor {
     // console.log(JSON.stringify(line));
     // console.log(generatedDartLine);
 
+    generatedDartLine += `await Future<void>.delayed(Duration(seconds: 1));
+`;
+
     this.append(generatedDartLine);
 
     super.visitUserInteractionTestLine(line);
