@@ -20,7 +20,7 @@ class Interactions {
     if (scrollableKey.isNotEmpty) {
       await _driver.scrollUntilVisible(
           find.byValueKey(scrollableKey), find.byValueKey(key),
-          timeout: interactionTimeout);
+          timeout: interactionTimeout, dxScroll: 5, dyScroll: 5);
     }
 
     await _driver.tap(find.byValueKey(key), timeout: interactionTimeout);
@@ -30,7 +30,7 @@ class Interactions {
     if (scrollableKey.isNotEmpty) {
       await _driver.scrollUntilVisible(
           find.byValueKey(scrollableKey), find.byValueKey(key),
-          timeout: interactionTimeout);
+          timeout: interactionTimeout, dxScroll: 5, dyScroll: 5);
     }
 
     // Slow scroll by dx=0, dy=0 is long press, weird but true
@@ -43,7 +43,7 @@ class Interactions {
     if (scrollableKey.isNotEmpty) {
       await _driver.scrollUntilVisible(
           find.byValueKey(scrollableKey), find.byValueKey(key),
-          timeout: interactionTimeout);
+          timeout: interactionTimeout, dxScroll: 5, dyScroll: 5);
     }
 
     // Fast scroll by dx=0, dy=0 twice is double press
@@ -62,7 +62,7 @@ class Interactions {
       var t = splitText[i];
       await _driver.scrollUntilVisible(
           find.byValueKey(scrollableKey), find.text(t),
-          timeout: interactionTimeout);
+          timeout: interactionTimeout, dxScroll: 5, dyScroll: 5);
     }
   }
 }
