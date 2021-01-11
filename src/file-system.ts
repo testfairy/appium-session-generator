@@ -198,7 +198,7 @@ export const saveZipFileAs = async (filePath: string, zip: JSZip) => {
           reject(err);
         })
         .on('finish', function() {
-          resolve();
+          resolve(undefined);
         });
     });
   }

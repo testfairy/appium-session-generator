@@ -33,6 +33,7 @@ export class UserInteractionVisitor extends TestLinesAppenderVisitor {
       generatedDartLine
     );
 
+    // console.log(JSON.stringify(line));
     // console.log(generatedDartLine);
 
     this.append(generatedDartLine);

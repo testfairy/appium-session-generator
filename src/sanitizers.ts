@@ -121,6 +121,10 @@ export const sanitizeUserInteraction = (
     }
   }
 
+  if (typeof interaction.kind === 'string') {
+    interaction.kind = parseInt(interaction.kind);
+  }
+
   return {
     ...interaction,
     buttonPressed: interaction.kind === 1,
