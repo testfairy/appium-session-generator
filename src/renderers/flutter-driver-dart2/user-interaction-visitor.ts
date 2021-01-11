@@ -92,9 +92,9 @@ export class UserInteractionVisitor extends TestLinesAppenderVisitor {
         line.userInteraction.accessibilityIdentifier
       }', scrollableKey: '${line.userInteraction
         .scrollableParentAccessibilityIdentifier ?? ''}');
-      print("\\nTF : Long pressed key/${line.userInteraction.viewId}, time: ${
-        line.userInteraction.timeString
-      }\\n");
+      print("\\nTF : Long pressed key/${
+        line.userInteraction.accessibilityIdentifier
+      }, time: ${line.userInteraction.timeString}\\n");
 `;
     }
     return generatedDartLine;
@@ -112,9 +112,9 @@ export class UserInteractionVisitor extends TestLinesAppenderVisitor {
         line.userInteraction.accessibilityIdentifier
       }', scrollableKey: '${line.userInteraction
         .scrollableParentAccessibilityIdentifier ?? ''}');
-      print("\\nTF : Clicked key/${line.userInteraction.viewId}, time: ${
-        line.userInteraction.timeString
-      }\\n");
+      print("\\nTF : Clicked key/${
+        line.userInteraction.accessibilityIdentifier
+      }, time: ${line.userInteraction.timeString}\\n");
 `;
     }
     return generatedDartLine;
