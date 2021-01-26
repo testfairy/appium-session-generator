@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical"
+	tools:context=".EditTextTest">
+
+	<TextView
+		android:text="The text below should gradually change, then it should close automatically."
+		android:textSize="20dp"
+		android:layout_marginTop="20dp"
+		android:padding="20dp"
+		android:textAlignment="center"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content" />
+
+	<EditText
+		android:background="#FFEEEEEE"
+		android:hint="Appium will type something here..."
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="20dp"
+		android:padding="20dp" />
+
+</LinearLayout>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	tools:context=".ViewIdTest">
+
+	<TextView
+		android:text="These buttons look the same but have different IDs. Hopefully Appium will click the correct one."
+		android:textSize="20dp"
+		android:layout_marginTop="20dp"
+		android:padding="20dp"
+		android:textAlignment="center"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_gravity="top|center_horizontal" />
+
+	<Button
+		android:onClick="onButtonClick"
+		android:text="Button"
+		android:id="@+id/click_me"
+		android:layout_gravity="center"
+		android:layout_marginBottom="50dp"
+		android:layout_width="100dp"
+		android:layout_height="100dp" />
+
+	<Button
+		android:onClick="onButtonClick"
+		android:text="Button"
+		android:id="@+id/dont_click_me"
+		android:layout_gravity="center"
+		android:layout_marginTop="50dp"
+		android:layout_width="100dp"
+		android:layout_height="100dp" />
+
+</FrameLayout>
