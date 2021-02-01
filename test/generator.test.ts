@@ -4,14 +4,15 @@ import path from 'path';
 import JSZip from 'jszip';
 
 import {
-  generateFlutterDriverAppTestDart,
-  generateAppiumIndexJs,
+  // generateFlutterDriverAppTestDart,
+  // generateAppiumIndexJs,
   saveGeneratedTest
 } from '../src/index';
-import { buildAppiumZipFile } from '../src/file-system';
+import { buildTemplateZipFile } from '../src/file-system';
 import { SessionData } from '../src/generator-types';
 import {
   Platform,
+  Framework,
   ProviderConfiguration,
   LocalConfiguration,
   PerfectoConfiguration,
@@ -20,13 +21,13 @@ import {
 } from '../src/environment-types';
 
 describe('generator tests', () => {
-  const TIMEOUT_DURATION = 120000;
+  const TIMEOUT_DURATION = 5 * 60 * 1000; // 5 minutes
   jest.setTimeout(TIMEOUT_DURATION);
 
   console.log('Testing in node...');
 
   it('should create a zip file from template folder', async () => {
-    let zip = await buildAppiumZipFile();
+    let zip = await buildTemplateZipFile('appium');
 
     // console.log(zip);
 
@@ -65,52 +66,57 @@ describe('generator tests', () => {
     deviceOrientation: 'portrait'
   };
 
-  const buildAppiumIndexJsGenerationTest = (
-    providerConfig: ProviderConfiguration,
-    platform: Platform
-  ) => async () => {
-    let sessionUrl =
-      'https://automatic-tests.testfairy.com/projects/6852543-drawmeafairy/builds/9228222/sessions/4450931346';
-    let sessionData = JSON.parse(
-      fs.readFileSync(
-        path.resolve('test/session/sessionData-' + platform + '.json'),
-        { encoding: 'utf8' }
-      )
-    ) as SessionData;
-    let indexJs = await generateAppiumIndexJs(
-      sessionUrl,
-      sessionData,
-      providerConfig
-    );
+  // const buildAppiumIndexJsGenerationTest = (
+  //   providerConfig: ProviderConfiguration,
+  //   platform: Platform
+  // ) => async () => {
+  //   let sessionUrl =
+  //     'https://automatic-tests.testfairy.com/projects/6852543-drawmeafairy/builds/9228222/sessions/4450931346';
+  //   let sessionData = JSON.parse(
+  //     fs.readFileSync(
+  //       path.resolve('test/session/sessionData-' + platform + '.json'),
+  //       { encoding: 'utf8' }
+  //     )
+  //   ) as SessionData;
+  //   let indexJs = await generateAppiumIndexJs(
+  //     sessionUrl,
+  //     sessionData,
+  //     providerConfig
+  //   );
 
-    // console.log(indexJs);
+  //   console.log(indexJs);
 
-    expect(indexJs).toBeDefined();
-  };
+  //   expect(indexJs).toBeDefined();
+  // };
 
   const buildAppiumZipGenerationTest = (
     providerConfig: ProviderConfiguration,
     platform: Platform,
+    framework: Framework = 'appium',
     deleteAfter: boolean = true
   ) => async () => {
+    console.log(
+      `Generating ${framework} tests for ${providerConfig.provider} on ${platform}`
+    );
+
     let sessionUrl =
       'https://automatic-tests.testfairy.com/projects/6852543-drawmeafairy/builds/9228222/sessions/4450931346';
     let sessionData = JSON.parse(
       fs.readFileSync(
-        path.resolve('test/session4/sessionData-' + platform + '.json'),
+        path.resolve('test/session6/sessionData-' + platform + '.json'),
         { encoding: 'utf8' }
       )
     ) as SessionData;
     let zipFilePath = path.resolve('appium.zip');
 
     await saveGeneratedTest(
-      'appium',
+      framework,
       sessionUrl,
       providerConfig,
       sessionData,
       fs.readFileSync(
         path.resolve(
-          'test/session4/app.' + (platform === 'android' ? 'apk' : 'zip')
+          'test/session6/app.' + (platform === 'android' ? 'apk' : 'zip')
         )
       ),
       zipFilePath
@@ -134,25 +140,29 @@ describe('generator tests', () => {
     platform: Platform,
     deleteAfter: boolean = true
   ) => async () => {
+    console.log(
+      `Generating flutter-driver tests for ${providerConfig.provider} on ${platform}`
+    );
+
     let sessionUrl =
       'https://automatic-tests.testfairy.com/projects/6852543-drawmeafairy/builds/9228222/sessions/4450931346';
     let sessionData = JSON.parse(
       fs.readFileSync(
         // TODO : Use a representative flutter session
-        path.resolve('test/session/sessionData-' + platform + '.json'),
+        path.resolve('test/session5/sessionData-' + platform + '.json'),
         { encoding: 'utf8' }
       )
     ) as SessionData;
     let zipFilePath = path.resolve('flutter-driver.zip');
 
     // Debug helper, have no other purpose
-    console.log(
-      await generateFlutterDriverAppTestDart(
-        sessionUrl,
-        sessionData,
-        providerConfig
-      )
-    );
+    // console.log(
+    //   await generateFlutterDriverAppTestDart(
+    //     sessionUrl,
+    //     sessionData,
+    //     providerConfig
+    //   )
+    // );
 
     await saveGeneratedTest(
       'flutter-driver',
@@ -176,55 +186,40 @@ describe('generator tests', () => {
     }
   };
 
-  it(
-    'should generate valid appium js for index.js on Android',
-    buildAppiumIndexJsGenerationTest(awsConfig, 'android')
-  );
+  // Generate test matrix
+  (['Android', 'ios'] as Platform[]).forEach(platform => {
+    [
+      awsConfig,
+      localConfig,
+      perfectoConfig,
+      saucelabsAndroidConfig,
+      saucelabsIOSConfig
+    ].forEach(providerConfig => {
+      (['appium', 'webdriverio'] as Framework[]).forEach(framework => {
+        if (
+          platform === 'android' &&
+          providerConfig.provider === 'saucelabs' &&
+          providerConfig.deviceName.indexOf('iPhone') !== -1
+        ) {
+          return;
+        }
 
-  it(
-    'should generate valid appium js for index.js on iOS',
-    buildAppiumIndexJsGenerationTest(awsConfig, 'ios')
-  );
+        if (
+          platform === 'ios' &&
+          providerConfig.provider === 'saucelabs' &&
+          providerConfig.deviceName.indexOf('iPhone') === -1
+        ) {
+          return;
+        }
 
-  it(
-    'should generate an appium.zip for local and save it to project root for a given session on Android',
-    buildAppiumZipGenerationTest(localConfig, 'android')
-  );
-
-  it(
-    'should generate an appium.zip for local and save it to project root for a given session on iOS',
-    buildAppiumZipGenerationTest(localConfig, 'ios')
-  );
-
-  it(
-    'should generate an appium.zip for AWS and save it to project root for a given session on Android',
-    buildAppiumZipGenerationTest(awsConfig, 'android')
-  );
-
-  it(
-    'should generate an appium.zip for AWS and save it to project root for a given session on iOS',
-    buildAppiumZipGenerationTest(awsConfig, 'ios')
-  );
-
-  it(
-    'should generate an appium.zip for Perfecto and save it to project root for a given session on Android',
-    buildAppiumZipGenerationTest(perfectoConfig, 'android')
-  );
-
-  it(
-    'should generate an appium.zip for Perfecto and save it to project root for a given session on iOS',
-    buildAppiumZipGenerationTest(perfectoConfig, 'ios')
-  );
-
-  it(
-    'should generate an appium.zip for Sauce Labs and save it to project root for a given session on Android',
-    buildAppiumZipGenerationTest(saucelabsAndroidConfig, 'android')
-  );
-
-  it(
-    'should generate an appium.zip for Sauce Labs and save it to project root for a given session on iOS',
-    buildAppiumZipGenerationTest(saucelabsIOSConfig, 'ios')
-  );
+        // This line will run `count(platforms) * count(frameworks) * count(providers)` times
+        it(
+          `should generate valid ${framework} tests for ${providerConfig.provider} on ${platform}`,
+          buildAppiumZipGenerationTest(providerConfig, platform, framework)
+        );
+      });
+    });
+  });
 
   it(
     'should generate an flutter-driver.zip for local and save it to project root for a given session on Android',
@@ -236,8 +231,13 @@ describe('generator tests', () => {
     buildFlutterDriveZipGenerationTest(localConfig, 'ios')
   );
 
+  //it(
+  //  'Test Flutter manually',
+  //  buildFlutterDriveZipGenerationTest(localConfig, 'android', false)
+  //);
+
   // it(
   //   'Test manually',
-  //   buildAppiumZipGenerationTest(awsConfig, 'android', false)
+  //   buildAppiumZipGenerationTest(localConfig, 'android', 'webdriverio', false)
   // );
 });

@@ -212,7 +212,9 @@ export const rebundleZipFileWithNpmBundle = async (filePath: string) => {
   fs.mkdirSync(tempFolderPath);
   fs.renameSync(filePath, tempSrcFilePath);
 
-  await exec(`unzip ${tempSrcFilePath} -d ${tempFolderPath}`);
+  await exec(`unzip ${tempSrcFilePath} -d ${tempFolderPath}`, {
+    maxBuffer: 1024 * 1024 * 100 // 100 mb
+  });
 
   fs.unlinkSync(tempSrcFilePath);
 
