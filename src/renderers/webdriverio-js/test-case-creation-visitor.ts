@@ -31,6 +31,7 @@ export class TestCaseCreationVisitor extends TestLinesAppenderVisitor {
 
   visitImports(provider: Provider, sessionUrl: string, splashScreen: string) {
     let generatedJsLine = `
+import Gestures from '../helpers/Gestures';
 require('colors');
 const xmlEscape = require('xml-escape');
 

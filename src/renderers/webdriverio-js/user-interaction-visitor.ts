@@ -5,12 +5,15 @@ export class UserInteractionVisitor extends TestLinesAppenderVisitor {
   visitUserInteractionTestLine(line: UserInteractionTestLine) {
     let generatedJsLine = '';
 
+    // console.log('-------------');
+    // console.log(line.userInteraction);
+    // console.log('-------------');
+
     if (
       line.userInteraction.scrollableParentXpath &&
       line.userInteraction.scrollableParentLocators.length > 0
     ) {
-      // TODO : implement this in the template first
-      generatedJsLine = this.generateScrollToText(line, generatedJsLine);
+      generatedJsLine = this.generateScrollToElement(line, generatedJsLine);
     }
 
     if (line.userInteraction.viewId) {
@@ -42,7 +45,7 @@ export class UserInteractionVisitor extends TestLinesAppenderVisitor {
       );
     } else {
       // Common view assertion for all gestures below
-      generatedJsLine = this.generateViewExistsByXpathAssertion(
+      generatedJsLine = this.generateViewExistsWithoutIdAssertion(
         line,
         generatedJsLine
       );
@@ -93,13 +96,31 @@ export class UserInteractionVisitor extends TestLinesAppenderVisitor {
     return generatedJsLine;
   }
 
-  private generateViewExistsByXpathAssertion(
+  private inferSelectorWithoutViewId(line: UserInteractionTestLine): string {
+    if (line.userInteraction.contentDescription) {
+      return `selectorWithContentDescription("${line.userInteraction.contentDescription}")`;
+    } else {
+      return `"${line.userInteraction.xpath}"`;
+    }
+  }
+
+  private inferDebugDescriptionWithoutViewId(
+    line: UserInteractionTestLine
+  ): string {
+    if (line.userInteraction.contentDescription) {
+      return line.userInteraction.contentDescription;
+    } else {
+      return line.userInteraction.xpath;
+    }
+  }
+
+  private generateViewExistsWithoutIdAssertion(
     line: UserInteractionTestLine,
     generatedJsLine: string
   ): string {
     generatedJsLine += `
         // TF : ${line.userInteraction.timeString}
-        $("${line.userInteraction.xpath}").isDisplayed();
+        $(${this.inferSelectorWithoutViewId(line)}).isDisplayed();
 `;
     return generatedJsLine;
   }
@@ -109,8 +130,12 @@ export class UserInteractionVisitor extends TestLinesAppenderVisitor {
     generatedJsLine: string
   ): string {
     if (line.userInteraction.buttonDoublePressed) {
-      generatedJsLine += `        $("${line.userInteraction.xpath}").doubleClick();
-        console.log("\\nTF : Double pressed ${line.userInteraction.label}, time: ${line.userInteraction.timeString}\\n".magenta.underline);
+      generatedJsLine += `        $(${this.inferSelectorWithoutViewId(
+        line
+      )}).doubleClick();
+        console.log("\\nTF : Double pressed ${this.inferDebugDescriptionWithoutViewId(
+          line
+        )}, time: ${line.userInteraction.timeString}\\n".magenta.underline);
 `;
     }
     return generatedJsLine;
@@ -121,8 +146,12 @@ export class UserInteractionVisitor extends TestLinesAppenderVisitor {
     generatedJsLine: string
   ): string {
     if (line.userInteraction.buttonLongPressed) {
-      generatedJsLine += `        $("${line.userInteraction.xpath}").touchAction(LONG_PRESS_ACTION);
-        console.log("\\nTF : Long pressed ${line.userInteraction.label}, time: ${line.userInteraction.timeString}\\n".magenta.underline);
+      generatedJsLine += `        $(${this.inferSelectorWithoutViewId(
+        line
+      )}).touchAction(LONG_PRESS_ACTION);
+        console.log("\\nTF : Long pressed ${this.inferDebugDescriptionWithoutViewId(
+          line
+        )}, time: ${line.userInteraction.timeString}\\n".magenta.underline);
 `;
     }
     return generatedJsLine;
@@ -133,8 +162,12 @@ export class UserInteractionVisitor extends TestLinesAppenderVisitor {
     generatedJsLine: string
   ): string {
     if (line.userInteraction.buttonPressed) {
-      generatedJsLine += `        $("${line.userInteraction.xpath}").click();
-        console.log("\\nTF : Clicked ${line.userInteraction.label}, time: ${line.userInteraction.timeString}\\n".magenta.underline);
+      generatedJsLine += `        $(${this.inferSelectorWithoutViewId(
+        line
+      )}).click();
+        console.log("\\nTF : Clicked ${this.inferDebugDescriptionWithoutViewId(
+          line
+        )}, time: ${line.userInteraction.timeString}\\n".magenta.underline);
 `;
     }
     return generatedJsLine;
@@ -204,24 +237,22 @@ export class UserInteractionVisitor extends TestLinesAppenderVisitor {
     return generatedJsLine;
   }
 
-  private generateScrollToText(
+  private generateScrollToElement(
     line: UserInteractionTestLine,
     generatedJsLine: string
   ): string {
-    // TODO : implement this in the template
-    if (line.userInteraction.textInScrollableParent) {
-      //       generatedJsLine += `
-      //     // TF : ${line.userInteraction.timeString}
-      //     await interactions.scrollToTextByPath('${line.userInteraction.scrollableParentXpath}', '${line.userInteraction.textInScrollableParent}');
-      //     await interactions.scrollToTextByPath('${line.userInteraction.scrollableParentXpath}', '${line.userInteraction.label}');
-      //     console.log("\\nTF : Scrolled to ${line.userInteraction.label}, time: ${line.userInteraction.timeString}\\n".magenta.underline);
-      // `;
-    } else {
-      //       generatedJsLine += `
-      //     // TF : ${line.userInteraction.timeString}
-      //     await interactions.scrollToTextByPath('${line.userInteraction.scrollableParentXpath}', '${line.userInteraction.label}');
-      //     console.log("\\nTF : Scrolled to ${line.userInteraction.label}, time: ${line.userInteraction.timeString}\\n".magenta.underline);
-      // `;
+    if (line.userInteraction.contentDescription) {
+      generatedJsLine += `
+        // TF : ${line.userInteraction.timeString}
+        Gestures.checkIfDisplayedWithScrollDown($(selectorWithContentDescription("${line.userInteraction.contentDescription}")), 100);
+        console.log("\\nTF : Scrolled to ${line.userInteraction.contentDescription}, time: ${line.userInteraction.timeString}\\n".magenta.underline);
+      `;
+    } else if (line.userInteraction.accessibilityIdentifier) {
+      generatedJsLine += `
+        // TF : ${line.userInteraction.timeString}
+        Gestures.checkIfDisplayedWithScrollDown($(selectorWithAccessibilityId("${line.userInteraction.accessibilityIdentifier}")), 100);
+        console.log("\\nTF : Scrolled to ${line.userInteraction.accessibilityIdentifier}, time: ${line.userInteraction.timeString}\\n".magenta.underline);
+      `;
     }
 
     return generatedJsLine;
