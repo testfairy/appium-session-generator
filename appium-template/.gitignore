@@ -1,2 +1,4 @@
 # DON'T IGNORE NODE MODULES, IT IS NECESSARY
 #node_modules
+
+.DS_Store

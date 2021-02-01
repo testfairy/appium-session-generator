@@ -4,7 +4,7 @@ import { Framework, ProviderConfiguration } from '../../environment-types';
 import { SessionData } from '../../generator-types';
 import { BinaryFile } from '../../file-system';
 
-export class IOSTestZipVisitor extends BaseTestZipVisitor {
+export class WebdriverIOTestZipVisitor extends BaseTestZipVisitor {
   visitTestZip(
     zip: JSZip,
     framework: Framework,
@@ -14,6 +14,17 @@ export class IOSTestZipVisitor extends BaseTestZipVisitor {
     apkOrZipFile: BinaryFile,
     outputFilePath: string
   ) {
+    if (framework === 'webdriverio') {
+      zip.remove('.gitignore');
+      zip.remove('session/app.apk');
+      zip.remove('session/app.zip');
+      zip.remove('session/README.md');
+      zip.remove('session/sessionData.json');
+
+      zip.file('tests/specs/app.testfairy.spec.js', indexJs);
+      zip.file('session/sessionData.json', JSON.stringify(sessionData));
+    }
+
     super.visitTestZip(
       zip,
       framework,
@@ -23,14 +34,5 @@ export class IOSTestZipVisitor extends BaseTestZipVisitor {
       apkOrZipFile,
       outputFilePath
     );
-
-    if (sessionData.platform === '1') {
-      const zipOptions = {
-        binary: true,
-        compression: 'STORE'
-      };
-
-      zip.file('session/app.zip', apkOrZipFile, zipOptions);
-    }
   }
 }

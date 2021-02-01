@@ -1,4 +1,4 @@
-import { ProviderConfiguration } from '../environment-types';
+import { Framework, ProviderConfiguration } from '../environment-types';
 import JSZip from 'jszip';
 import { SessionData } from '../generator-types';
 import { BinaryFile } from '../file-system';
@@ -6,6 +6,7 @@ import { BinaryFile } from '../file-system';
 export interface TestZipVisitor {
   visitTestZip(
     zip: JSZip,
+    framework: Framework,
     providerConfig: ProviderConfiguration,
     sessionData: SessionData,
     indexJs: string,
@@ -21,6 +22,7 @@ export type TestZip = {
 };
 export const createTestZip = (
   zip: JSZip,
+  framework: Framework,
   providerConfig: ProviderConfiguration,
   sessionData: SessionData,
   indexJs: string,
@@ -32,6 +34,7 @@ export const createTestZip = (
     accept: (visitor: TestZipVisitor) => {
       visitor.visitTestZip(
         zip,
+        framework,
         providerConfig,
         sessionData,
         indexJs,
@@ -61,6 +64,7 @@ export const BaseTestZipVisitor: TestZipVisitorConstructor = class BaseTestZipVi
 
   visitTestZip(
     zip: JSZip,
+    framework: Framework,
     providerConfig: ProviderConfiguration,
     sessionData: SessionData,
     indexJs: string,
@@ -69,6 +73,7 @@ export const BaseTestZipVisitor: TestZipVisitorConstructor = class BaseTestZipVi
   ) {
     this.visitor?.visitTestZip(
       zip,
+      framework,
       providerConfig,
       sessionData,
       indexJs,

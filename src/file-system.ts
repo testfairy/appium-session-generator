@@ -160,21 +160,14 @@ export const readBinaryFile = async (filePath: string): Promise<BinaryFile> => {
   }
 };
 
-export const buildAppiumZipFile = async (): Promise<JSZip> => {
+export const buildTemplateZipFile = async (
+  framework: string
+): Promise<JSZip> => {
   if (isBrowser()) {
-    let templateZipBinary = await readBinaryFile('appium-template.zip');
+    let templateZipBinary = await readBinaryFile(framework + '-template.zip');
     return await JSZip.loadAsync(templateZipBinary);
   } else {
-    return getZipOfFolder('appium-template');
-  }
-};
-
-export const buildFlutterDriverZipFile = async (): Promise<JSZip> => {
-  if (isBrowser()) {
-    let templateZipBinary = await readBinaryFile('flutter-driver.zip');
-    return await JSZip.loadAsync(templateZipBinary);
-  } else {
-    return getZipOfFolder('flutter-driver-template');
+    return getZipOfFolder(framework + '-template');
   }
 };
 

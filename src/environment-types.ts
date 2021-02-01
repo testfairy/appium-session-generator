@@ -17,8 +17,14 @@ export type Appium = 'appium';
 export type FlutterDriver = 'flutter-driver';
 export type Espresso = 'espresso';
 export type UIAutomator = 'uiautomator';
+export type WebdriverIO = 'webdriverio';
 
-export type Framework = Appium | FlutterDriver | Espresso | UIAutomator;
+export type Framework =
+  | Appium
+  | FlutterDriver
+  | Espresso
+  | UIAutomator
+  | WebdriverIO;
 
 // Provider configurations
 export type LocalConfiguration = { provider: Local };

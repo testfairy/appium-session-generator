@@ -1,9 +1,8 @@
 import {
-  buildAppiumZipFile,
+  buildTemplateZipFile,
   saveZipFileAs,
   BinaryFile,
   isBrowser,
-  buildFlutterDriverZipFile,
   rebundleZipFileWithNpmBundle
 } from './file-system';
 import { SessionData } from './generator-types';
@@ -16,6 +15,7 @@ import {
 } from './environment-types';
 import { GeneratorConfiguration } from './test-lines/test-lines-visitor';
 import { render as appiumRender } from './renderers/appium-js-renderer';
+import { render as webdriverIORender } from './renderers/webdriverio-js-renderer';
 import { render as flutterRender } from './renderers/flutter-driver-dart2-renderer';
 import { cli } from './cli';
 import {
@@ -23,12 +23,13 @@ import {
   extractMetaData,
   findSplashScreen
 } from './sanitizers';
-import { createTestZip } from './bundlers/test-zip-visitor';
-import { CommonTestZipVisitor } from './bundlers/zip-visitors/common-test-zip-visitor';
+import { createTestZip, TestZipVisitor } from './bundlers/test-zip-visitor';
+import { AppiumTestZipVisitor } from './bundlers/zip-visitors/appium-test-zip-visitor';
 import { AndroidTestZipVisitor } from './bundlers/zip-visitors/android-test-zip-visitor';
 import { IOSTestZipVisitor } from './bundlers/zip-visitors/ios-test-zip-visitor';
 import { PerfectoTestZipVisitor } from './bundlers/zip-visitors/perfecto-test-zip-visitor';
 import { SauceLabsTestZipVisitor } from './bundlers/zip-visitors/saucelabs-test-zip-visitor';
+import { WebdriverIOTestZipVisitor } from './bundlers/zip-visitors/webdriverio-test-zip-visitor';
 
 // Private API
 
@@ -68,6 +69,17 @@ export const generateAppiumIndexJs = async (
   );
 };
 
+// Call this to preview generated index.js, otherwise this is useless
+export const generateWebdriverIOJs = async (
+  sessionUrl: string,
+  sessionData: SessionData,
+  providerConfig: ProviderConfiguration
+): Promise<string> => {
+  return webdriverIORender(
+    createRendererConfiguration(sessionUrl, sessionData, providerConfig)
+  );
+};
+
 // Call this to preview generated app_test.dart, otherwise this is useless
 export const generateFlutterDriverAppTestDart = async (
   sessionUrl: string,
@@ -81,6 +93,7 @@ export const generateFlutterDriverAppTestDart = async (
 
 // Call ONLY this if you want to generate an appium javascript project, it will generate its own index.js internally
 const saveGeneratedAppiumJsTest = async (
+  framework: Framework,
   sessionUrl: string,
   providerConfig: ProviderConfiguration,
   sessionData: SessionData,
@@ -89,16 +102,36 @@ const saveGeneratedAppiumJsTest = async (
 ) => {
   sessionData = correctSessionDataFromBrowser(sessionData);
 
+  let generatedJs = '';
+  switch (framework) {
+    case 'appium':
+      generatedJs = await generateAppiumIndexJs(
+        sessionUrl,
+        sessionData,
+        providerConfig
+      );
+      break;
+    case 'webdriverio':
+      generatedJs = await generateWebdriverIOJs(
+        sessionUrl,
+        sessionData,
+        providerConfig
+      );
+      break;
+  }
+
   let testZip = createTestZip(
-    await buildAppiumZipFile(),
+    await buildTemplateZipFile(framework),
+    framework,
     providerConfig,
     sessionData,
-    await generateAppiumIndexJs(sessionUrl, sessionData, providerConfig),
+    generatedJs,
     apkOrZipFile,
     outputFilePath
   );
 
-  let testZipVisitor = new CommonTestZipVisitor(null);
+  let testZipVisitor: TestZipVisitor = new AppiumTestZipVisitor(null);
+  testZipVisitor = new WebdriverIOTestZipVisitor(testZipVisitor);
   testZipVisitor = new AndroidTestZipVisitor(testZipVisitor);
   testZipVisitor = new IOSTestZipVisitor(testZipVisitor);
   testZipVisitor = new PerfectoTestZipVisitor(testZipVisitor);
@@ -111,6 +144,7 @@ const saveGeneratedAppiumJsTest = async (
   await saveZipFileAs(outputFilePath, testZip.zip);
 
   if (providerConfig.provider === 'aws') {
+    // TODO : Make sure webdriverio behaves in Device Farm
     await rebundleZipFileWithNpmBundle(outputFilePath);
   }
 };
@@ -124,7 +158,7 @@ const saveGeneratedFlutterDriveDartTest = async (
 ) => {
   sessionData = correctSessionDataFromBrowser(sessionData);
 
-  let flutterDriverZip = await buildFlutterDriverZipFile();
+  let flutterDriverZip = await buildTemplateZipFile('flutter-driver');
 
   flutterDriverZip.file(
     'app_test.dart',
@@ -145,6 +179,7 @@ export const saveGeneratedTest = (
 ) => {
   switch (framework) {
     case 'appium':
+    case 'webdriverio':
       if (apkOrZipFile === null) {
         throw new Error(
           'Appium needs a non-null apk or zip file to include it in the generated project.'
@@ -152,6 +187,7 @@ export const saveGeneratedTest = (
       }
 
       return saveGeneratedAppiumJsTest(
+        framework,
         sessionUrl,
         providerConfig,
         sessionData,
@@ -180,11 +216,13 @@ export const saveGeneratedTest = (
 if (isBrowser()) {
   (window as any).generateAppiumIndexJs = generateAppiumIndexJs;
   (window as any).generateFlutterDriverAppTestDart = generateFlutterDriverAppTestDart;
+  (window as any).generateWebdriverIOJs = generateWebdriverIOJs;
   (window as any).saveGeneratedTest = saveGeneratedTest;
 } else if (require.main === module) {
   cli(
     generateAppiumIndexJs,
     generateFlutterDriverAppTestDart,
+    generateWebdriverIOJs,
     saveGeneratedTest
   ); // Hack but works
 }

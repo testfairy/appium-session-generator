@@ -15,7 +15,8 @@ import {
   Local,
   AWS,
   Perfecto,
-  SauceLabs
+  SauceLabs,
+  WebdriverIO
 } from './environment-types';
 
 // These type erasures prevent circular dependencies between by cli.ts and index.ts
@@ -37,6 +38,7 @@ export const cli = (
   // Arguments below are functions injected by index.ts to expose its module API to cli
   generateAppiumIndexJs: JsGenerator,
   generateFlutterDriverAppTestDart: DartGenerator,
+  generateWebdriverIOJs: JsGenerator,
   saveGeneratedTest: ZipGenerator
 ) => {
   const options = getopts(process.argv.slice(2), {
@@ -118,7 +120,8 @@ export const cli = (
       'local' as Local,
       'aws' as AWS,
       'perfecto' as Perfecto,
-      'saucelabs' as SauceLabs
+      'saucelabs' as SauceLabs,
+      'webdriverio' as WebdriverIO
     ].indexOf(options['provider']) === -1;
 
   let frameworkNotSupported =
@@ -133,7 +136,18 @@ export const cli = (
     providerNotSupported ||
     frameworkNotSupported
   ) {
-    console.error('Framework ' + options['framework'] + ' is not supported');
+    if (frameworkNotSupported) {
+      console.error('Framework ' + options['framework'] + ' is not supported');
+    }
+
+    if (providerNotSupported) {
+      console.error('Provider ' + options['provider'] + ' is not supported');
+    }
+
+    if (providerArgumentMissing) {
+      console.error('Argument missing for provider ' + options['provider']);
+    }
+
     help();
   } else if (
     // Exit if perfecto configuration is missing
@@ -245,6 +259,8 @@ export const cli = (
         generate = generateAppiumIndexJs;
       } else if (options['framework'] === 'flutter-driver') {
         generate = generateFlutterDriverAppTestDart;
+      } else if (options['framework'] === 'webdriverio') {
+        generate = generateWebdriverIOJs;
       } else {
         generate = () => {
           throw new Error(options['framework'] + ' not supported!');

@@ -1,12 +1,13 @@
 import JSZip from 'jszip';
 import { BaseTestZipVisitor } from '../test-zip-visitor';
-import { ProviderConfiguration } from '../../environment-types';
+import { Framework, ProviderConfiguration } from '../../environment-types';
 import { SessionData } from '../../generator-types';
 import { BinaryFile } from '../../file-system';
 
 export class AndroidTestZipVisitor extends BaseTestZipVisitor {
   visitTestZip(
     zip: JSZip,
+    framework: Framework,
     providerConfig: ProviderConfiguration,
     sessionData: SessionData,
     indexJs: string,
@@ -15,6 +16,7 @@ export class AndroidTestZipVisitor extends BaseTestZipVisitor {
   ) {
     super.visitTestZip(
       zip,
+      framework,
       providerConfig,
       sessionData,
       indexJs,

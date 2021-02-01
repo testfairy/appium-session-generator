@@ -42,6 +42,11 @@ function findSauceLabsHost() {
   return null;
 }
 
+exports.local = {
+  host: 'localhost',
+  port: 4723
+}
+
 exports.aws = {
   // AWS Device Farm exposes its server as localhost
   host: 'localhost',
