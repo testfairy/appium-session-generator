@@ -1,0 +1,21 @@
+# OSX
+#
+.DS_Store
+
+# IntelliJ
+#
+.idea
+
+# node.js
+#
+npm-debug.log
+
+# custom
+*.log
+chromeDriver
+
+package-lock.json
+
+# DON'T IGNORE NODE MODULES, IT IS NECESSARY
+# node_modules
+
