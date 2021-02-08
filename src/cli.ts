@@ -98,7 +98,7 @@ export const cli = (
     console.log('    --saucelabs-platform-version=SAUCELABS_PLATFORM_VERSION');
     console.log('');
 
-    process.exit(0);
+    process.exit(1);
   }
 
   // Help
