@@ -98,7 +98,7 @@ export const cli = (
     console.log('    --saucelabs-platform-version=SAUCELABS_PLATFORM_VERSION');
     console.log('');
 
-    process.exit(0);
+    process.exit(1);
   }
 
   // Help
@@ -122,12 +122,14 @@ export const cli = (
       'perfecto' as Perfecto,
       'saucelabs' as SauceLabs,
       'webdriverio' as WebdriverIO
-    ].indexOf(options['provider']) === -1;
+    ].indexOf(options['provider']) < 0;
 
   let frameworkNotSupported =
-    ['appium' as Appium, 'flutter-driver' as FlutterDriver].indexOf(
-      options['framework']
-    ) === -1;
+    [
+      'appium' as Appium,
+      'flutter-driver' as FlutterDriver,
+      'webdriverio' as WebdriverIO
+    ].indexOf(options['framework']) < 0;
 
   let providerConfig: ProviderConfiguration | null = null;
   if (
