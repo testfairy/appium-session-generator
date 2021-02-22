@@ -68,7 +68,8 @@ export class UserInteractionVisitor extends TestLinesAppenderVisitor {
       line.userInteraction.buttonDoublePressed &&
       line.userInteraction.accessibilityIdentifier
     ) {
-      generatedDartLine += `      // TF : ${line.userInteraction.timeString}`;
+      generatedDartLine += `      // TF : ${line.userInteraction.timeString}
+      `;
       generatedDartLine += `      await interactions.doublePress('${
         line.userInteraction.accessibilityIdentifier
       }', scrollableKey: '${line.userInteraction
@@ -89,7 +90,8 @@ export class UserInteractionVisitor extends TestLinesAppenderVisitor {
       line.userInteraction.buttonLongPressed &&
       line.userInteraction.accessibilityIdentifier
     ) {
-      generatedDartLine += `      // TF : ${line.userInteraction.timeString}`;
+      generatedDartLine += `      // TF : ${line.userInteraction.timeString}
+      `;
       generatedDartLine += `      await interactions.longPress('${
         line.userInteraction.accessibilityIdentifier
       }', scrollableKey: '${line.userInteraction
@@ -110,7 +112,8 @@ export class UserInteractionVisitor extends TestLinesAppenderVisitor {
       line.userInteraction.buttonPressed &&
       line.userInteraction.accessibilityIdentifier
     ) {
-      generatedDartLine += `      // TF : ${line.userInteraction.timeString}`;
+      generatedDartLine += `      // TF : ${line.userInteraction.timeString}
+      `;
       generatedDartLine += `      await interactions.tap('${
         line.userInteraction.accessibilityIdentifier
       }', scrollableKey: '${line.userInteraction
