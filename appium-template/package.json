@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "properties-reader": "^2.0.0",
+    "properties-reader": "^2.2.0",
     "selenium-webdriver": "^3.0.0-beta-3",
     "uuid": "^8.3.0",
     "wd-bridge": "0.0.2",
