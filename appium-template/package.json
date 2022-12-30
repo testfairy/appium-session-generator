@@ -18,7 +18,7 @@
     "chai": "^2.2.0",
     "chai-as-promised": "^5.0.0",
     "colors": "^1.4.0",
-    "mocha": "^7.1.1",
+    "mocha": "^10.2.0",
     "npm-bundle": "^3.0.3",
     "q": "^2.0.2",
     "request": "^2.88.2",
